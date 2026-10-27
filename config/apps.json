@@ -1,0 +1,8 @@
+[
+ {"id":"my1pick","name":"마이원픽","package":"com.my1pick.android","color":"#e55586","url":"https://www.my1pick.com/","nav":["투표","VOTE","Vote"],"tabs":["테마","진행중","진행 중","종료","지난 투표"]},
+ {"id":"muniverse","name":"뮤니버스","package":"com.tnk.muniverse","color":"#8970e5","url":"https://www.muniverse.io/votes","nav":["투표","VOTE","Vote"],"tabs":["전체","진행중","진행 중","종료"]},
+ {"id":"idolchamp","name":"아이돌챔프","package":"com.nwz.ichampclient","color":"#e49c35","url":"https://www.idolchamp.co.kr/","nav":["투표","VOTE","Vote"],"tabs":["전체","진행중","진행 중","종료된 투표"]},
+ {"id":"mubeat","name":"뮤빗","package":"com.vlending.apps.mubeat","color":"#3b9ba2","url":"https://mubeat.tv/","nav":["투표","VOTE","Vote"],"tabs":["전체","진행중","진행 중","종료"]},
+ {"id":"coogoong","name":"쿠궁","package":"com.contentsmadang.fancast","color":"#688ad0","url":"https://coogoong.com/","nav":["투표","VOTE","Vote"],"tabs":["전체","진행중","진행 중","종료"]},
+ {"id":"fannstar","name":"팬앤스타","package":"kr.co.tf.starwars","color":"#6c9b61","url":"https://fannstar.tf.co.kr/","nav":["투표","VOTE","Vote"],"tabs":["그룹","솔로","글로벌 핫스타","트로트","뉴스타","위클리뮤직","생일","테마"]}
+]
