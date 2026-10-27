@@ -1,0 +1,8 @@
+*.apk
+*.apks
+*.tar
+*.enc
+.env*
+__pycache__/
+private/
+node_modules/
