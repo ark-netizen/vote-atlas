@@ -2,6 +2,9 @@ name: Verify Android emulator
 on:
   push:
     branches: [main]
+    paths:
+      - ".github/workflows/verify.yml"
+      - "scripts/verify_emulator.py"
   workflow_dispatch:
 permissions:
   contents: read
