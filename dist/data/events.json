@@ -14,47 +14,47 @@
         {
           "rank": 1,
           "name": "김의영",
-          "votes": 52555
+          "votes": 61080
         },
         {
           "rank": 2,
           "name": "뉴진스 (NewJeans)",
-          "votes": 10120
+          "votes": 10920
         },
         {
           "rank": 3,
           "name": "윤아 (YOONA)",
-          "votes": 3275
+          "votes": 3800
         },
         {
           "rank": 4,
+          "name": "윈터 (WINTER)",
+          "votes": 1511
+        },
+        {
+          "rank": 5,
           "name": "ITZY (있지)",
           "votes": 1330
         },
         {
-          "rank": 5,
-          "name": "윈터 (WINTER)",
-          "votes": 1321
-        },
-        {
           "rank": 6,
           "name": "Kep1er (케플러)",
-          "votes": 1175
+          "votes": 1250
         },
         {
           "rank": 7,
           "name": "해원",
-          "votes": 261
+          "votes": 936
         },
         {
           "rank": 8,
-          "name": "아일릿 (ILLIT)",
-          "votes": 201
+          "name": "NiziU (니쥬)",
+          "votes": 265
         },
         {
           "rank": 9,
-          "name": "NiziU (니쥬)",
-          "votes": 190
+          "name": "아일릿 (ILLIT)",
+          "votes": 201
         },
         {
           "rank": 10,
@@ -91,9 +91,9 @@
       "reward": null,
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/topic?mode=women",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "10월 5주차 10.26 ~ 11.02\n1 김의영 52,555표\n2 뉴진스 (NewJeans) 10,120표\n3 윤아 (YOONA) 3,275표\n4 ITZY (있지) 1,330표\n5 윈터 (WINTER) 1,321표\n6 Kep1er (케플러) 1,175표\n7 해원 261표\n8 아일릿 (ILLIT) 201표\n9 NiziU (니쥬) 190표\n10 설윤 187표\n11 원희 87표\n12 우기 0표\n12 아현 0표\n12 소연 0표\n12 홍자 0표"
+      "evidence": "10월 5주차 10.26 ~ 11.02\n1 김의영 61,080표\n2 뉴진스 (NewJeans) 10,920표\n3 윤아 (YOONA) 3,800표\n4 윈터 (WINTER) 1,511표\n5 ITZY (있지) 1,330표\n6 Kep1er (케플러) 1,250표\n7 해원 936표\n8 NiziU (니쥬) 265표\n9 아일릿 (ILLIT) 201표\n10 설윤 187표\n11 원희 87표\n12 우기 0표\n12 아현 0표\n12 소연 0표\n12 홍자 0표"
     },
     {
       "id": "fannstar-ec0c3197a3f6a705",
@@ -109,32 +109,32 @@
         {
           "rank": 1,
           "name": "PLAVE (플레이브)",
-          "votes": 234686
+          "votes": 281920
         },
         {
           "rank": 2,
           "name": "정한X조슈아 (SEVENTEEN)",
-          "votes": 97888
+          "votes": 108803
         },
         {
           "rank": 3,
           "name": "김용빈",
-          "votes": 26668
+          "votes": 27278
         },
         {
           "rank": 4,
           "name": "김재환",
-          "votes": 16535
+          "votes": 17485
         },
         {
           "rank": 5,
           "name": "홍자",
-          "votes": 2900
+          "votes": 3900
         },
         {
           "rank": 6,
           "name": "KickFlip (킥플립)",
-          "votes": 2600
+          "votes": 3075
         },
         {
           "rank": 7,
@@ -144,7 +144,7 @@
         {
           "rank": 8,
           "name": "강다니엘",
-          "votes": 1015
+          "votes": 1565
         },
         {
           "rank": 9,
@@ -154,27 +154,27 @@
         {
           "rank": 10,
           "name": "엔믹스 (NMIXX)",
-          "votes": 615
+          "votes": 798
         },
         {
           "rank": 11,
           "name": "CRAVITY (크래비티)",
-          "votes": 500
+          "votes": 600
         },
         {
           "rank": 12,
           "name": "NiziU (니쥬)",
-          "votes": 345
+          "votes": 445
         },
         {
           "rank": 13,
-          "name": "MODYSSEY (모디세이)",
-          "votes": 242
+          "name": "성한빈",
+          "votes": 391
         },
         {
           "rank": 14,
-          "name": "성한빈",
-          "votes": 191
+          "name": "MODYSSEY (모디세이)",
+          "votes": 242
         },
         {
           "rank": 15,
@@ -261,9 +261,9 @@
       "reward": null,
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/wmusic",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "10월 5주차 (26.09.21.~26.10.25) 10.26 ~ 11.02\n1 PLAVE (플레이브) 234,686표\n2 정한X조슈아 (SEVENTEEN) 97,888표\n3 김용빈 26,668표\n4 김재환 16,535표\n5 홍자 2,900표\n6 KickFlip (킥플립) 2,600표\n7 IVE (아이브) 1,660표\n8 강다니엘 1,015표\n9 하루 1,000표\n10 엔믹스 (NMIXX) 615표\n11 CRAVITY (크래비티) 500표\n12 NiziU (니쥬) 345표\n13 MODYSSEY (모디세이) 242표\n14 성한빈 191표\n15 A2O SOUL 25표\n16 크러쉬 (Crush) 20표\n17 LNGSHOT (롱샷) 0표\n17 알파드라이브원 (ALPHA DRIVE ONE) 0표\n17 최강창민 (MAX CHANGMIN) 0표\n17 EVNNE (이븐) 0표\n17 온유 (ONEW) 0표\n17 리사 0표\n17 A2O LITE 0표\n17 박우진 0표\n17 MEOVV (미야오) 0표\n17 엑스디너리 히어로즈 (Xdinary Heroes) 0표\n17 황민현 0표\n17 YENA (최예나) 0표\n17 CLOSE YOUR EYES (클로즈 유어 아이즈) 0표\n17 보이넥스트도어 (BOYNEXTDOOR) 0표"
+      "evidence": "10월 5주차 (26.09.21.~26.10.25) 10.26 ~ 11.02\n1 PLAVE (플레이브) 281,920표\n2 정한X조슈아 (SEVENTEEN) 108,803표\n3 김용빈 27,278표\n4 김재환 17,485표\n5 홍자 3,900표\n6 KickFlip (킥플립) 3,075표\n7 IVE (아이브) 1,660표\n8 강다니엘 1,565표\n9 하루 1,000표\n10 엔믹스 (NMIXX) 798표\n11 CRAVITY (크래비티) 600표\n12 NiziU (니쥬) 445표\n13 성한빈 391표\n14 MODYSSEY (모디세이) 242표\n15 A2O SOUL 25표\n16 크러쉬 (Crush) 20표\n17 LNGSHOT (롱샷) 0표\n17 알파드라이브원 (ALPHA DRIVE ONE) 0표\n17 최강창민 (MAX CHANGMIN) 0표\n17 EVNNE (이븐) 0표\n17 온유 (ONEW) 0표\n17 리사 0표\n17 A2O LITE 0표\n17 박우진 0표\n17 MEOVV (미야오) 0표\n17 엑스디너리 히어로즈 (Xdinary Heroes) 0표\n17 황민현 0표\n17 YENA (최예나) 0표\n17 CLOSE YOUR EYES (클로즈 유어 아이즈) 0표\n17 보이넥스트도어 (BOYNEXTDOOR) 0표"
     },
     {
       "id": "fannstar-cd326937077c0220",
@@ -279,55 +279,55 @@
         {
           "rank": 1,
           "name": "CORTIS (코르티스)",
-          "votes": 47067
+          "votes": 57532
         },
         {
           "rank": 2,
           "name": "에반",
-          "votes": 19096
+          "votes": 20903
         },
         {
           "rank": 3,
           "name": "CLOSE YOUR EYES (클로즈 유어 아이즈)",
-          "votes": 7885
+          "votes": 10460
         },
         {
           "rank": 4,
           "name": "NAZE (네이즈)",
-          "votes": 4300
+          "votes": 5150
         },
         {
           "rank": 5,
           "name": "UNIS (유니스)",
-          "votes": 2832
+          "votes": 3857
         },
         {
           "rank": 6,
+          "name": "라이즈 (RIIZE)",
+          "votes": 2880
+        },
+        {
+          "rank": 7,
           "name": "AND2BLE (앤더블)",
           "votes": 2641
         },
         {
-          "rank": 7,
-          "name": "라이즈 (RIIZE)",
-          "votes": 2575
-        },
-        {
           "rank": 8,
           "name": "NOWZ (나우즈)",
-          "votes": 1675
+          "votes": 1825
         },
         {
           "rank": 9,
           "name": "알파드라이브원 (ALPHA DRIVE ONE)",
-          "votes": 740
+          "votes": 865
         },
         {
           "rank": 10,
           "name": "WHIB (휘브)",
-          "votes": 100
+          "votes": 150
         },
         {
-          "rank": 10,
+          "rank": 11,
           "name": "A2O SOUL",
           "votes": 100
         },
@@ -339,12 +339,12 @@
         {
           "rank": 13,
           "name": "KEYVITUP (키빗업)",
-          "votes": 5
+          "votes": 30
         },
         {
           "rank": 13,
           "name": "VAYONN",
-          "votes": 5
+          "votes": 30
         },
         {
           "rank": 15,
@@ -381,9 +381,9 @@
       "reward": null,
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/newgen",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "10월 5주차 10.26 ~ 11.02\n1 CORTIS (코르티스) 47,067표\n2 에반 19,096표\n3 CLOSE YOUR EYES (클로즈 유어 아이즈) 7,885표\n4 NAZE (네이즈) 4,300표\n5 UNIS (유니스) 2,832표\n6 AND2BLE (앤더블) 2,641표\n7 라이즈 (RIIZE) 2,575표\n8 NOWZ (나우즈) 1,675표\n9 알파드라이브원 (ALPHA DRIVE ONE) 740표\n10 WHIB (휘브) 100표\n10 A2O SOUL 100표\n12 TUIDE (튜이드) 55표\n13 KEYVITUP (키빗업) 5표\n13 VAYONN 5표\n15 LNGSHOT (롱샷) 0표\n15 UNCHILD (언차일드) 0표\n15 ALL(H)OURS (올아워즈) 0표\n15 AEN (에이엔) 0표\n15 A2O LITE 0표\n15 FLARE U (플레어 유) 0표"
+      "evidence": "10월 5주차 10.26 ~ 11.02\n1 CORTIS (코르티스) 57,532표\n2 에반 20,903표\n3 CLOSE YOUR EYES (클로즈 유어 아이즈) 10,460표\n4 NAZE (네이즈) 5,150표\n5 UNIS (유니스) 3,857표\n6 라이즈 (RIIZE) 2,880표\n7 AND2BLE (앤더블) 2,641표\n8 NOWZ (나우즈) 1,825표\n9 알파드라이브원 (ALPHA DRIVE ONE) 865표\n10 WHIB (휘브) 150표\n11 A2O SOUL 100표\n12 TUIDE (튜이드) 55표\n13 KEYVITUP (키빗업) 30표\n13 VAYONN 30표\n15 LNGSHOT (롱샷) 0표\n15 UNCHILD (언차일드) 0표\n15 ALL(H)OURS (올아워즈) 0표\n15 AEN (에이엔) 0표\n15 A2O LITE 0표\n15 FLARE U (플레어 유) 0표"
     },
     {
       "id": "fannstar-bb82a190363ccd86",
@@ -399,42 +399,42 @@
         {
           "rank": 1,
           "name": "PLAVE (플레이브)",
-          "votes": 514075
+          "votes": 647337
         },
         {
           "rank": 2,
           "name": "Stray Kids (스트레이 키즈)",
-          "votes": 148051
+          "votes": 163655
         },
         {
           "rank": 3,
           "name": "NEXZ (넥스지)",
-          "votes": 129452
+          "votes": 150495
         },
         {
           "rank": 4,
           "name": "엔싸인 (n.SSign)",
-          "votes": 86349
+          "votes": 102327
         },
         {
           "rank": 5,
           "name": "투모로우바이투게더 (TXT)",
-          "votes": 32189
+          "votes": 35093
         },
         {
           "rank": 6,
           "name": "TWS (투어스)",
-          "votes": 26765
+          "votes": 28175
         },
         {
           "rank": 7,
           "name": "에이티즈 (ATEEZ)",
-          "votes": 21953
+          "votes": 25974
         },
         {
           "rank": 8,
           "name": "오메가엑스 (OMEGA X)",
-          "votes": 14670
+          "votes": 16015
         },
         {
           "rank": 9,
@@ -443,28 +443,28 @@
         },
         {
           "rank": 10,
+          "name": "엔하이픈 (ENHYPEN)",
+          "votes": 9040
+        },
+        {
+          "rank": 11,
           "name": "하데스 (HADES)",
           "votes": 8720
         },
         {
-          "rank": 11,
-          "name": "엔하이픈 (ENHYPEN)",
-          "votes": 8590
-        },
-        {
           "rank": 12,
-          "name": "AHOF (아홉)",
-          "votes": 7750
+          "name": "TREASURE (트레저)",
+          "votes": 8641
         },
         {
           "rank": 13,
-          "name": "TREASURE (트레저)",
-          "votes": 6991
+          "name": "AHOF (아홉)",
+          "votes": 8150
         },
         {
           "rank": 14,
           "name": "보이넥스트도어 (BOYNEXTDOOR)",
-          "votes": 2411
+          "votes": 2831
         },
         {
           "rank": 15,
@@ -474,7 +474,7 @@
         {
           "rank": 16,
           "name": "CORTIS (코르티스)",
-          "votes": 195
+          "votes": 220
         },
         {
           "rank": 17,
@@ -521,9 +521,9 @@
       "reward": null,
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/topic?mode=global",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "10월 5주차 10.26 ~ 11.02\n1 PLAVE (플레이브) 514,075표\n2 Stray Kids (스트레이 키즈) 148,051표\n3 NEXZ (넥스지) 129,452표\n4 엔싸인 (n.SSign) 86,349표\n5 투모로우바이투게더 (TXT) 32,189표\n6 TWS (투어스) 26,765표\n7 에이티즈 (ATEEZ) 21,953표\n8 오메가엑스 (OMEGA X) 14,670표\n9 연준 12,000표\n10 하데스 (HADES) 8,720표\n11 엔하이픈 (ENHYPEN) 8,590표\n12 AHOF (아홉) 7,750표\n13 TREASURE (트레저) 6,991표\n14 보이넥스트도어 (BOYNEXTDOOR) 2,411표\n15 세븐틴 (SEVENTEEN) 359표\n16 CORTIS (코르티스) 195표\n17 ZEROBASEONE (제로베이스원) 55표\n18 KickFlip (킥플립) 50표\n19 에스파 (aespa) 5표\n20 IVE (아이브) 0표\n20 에반 0표\n20 BIGBANG (빅뱅) 0표\n20 소디엑 (XODIAC) 0표\n20 &TEAM (앤팀) 0표"
+      "evidence": "10월 5주차 10.26 ~ 11.02\n1 PLAVE (플레이브) 647,337표\n2 Stray Kids (스트레이 키즈) 163,655표\n3 NEXZ (넥스지) 150,495표\n4 엔싸인 (n.SSign) 102,327표\n5 투모로우바이투게더 (TXT) 35,093표\n6 TWS (투어스) 28,175표\n7 에이티즈 (ATEEZ) 25,974표\n8 오메가엑스 (OMEGA X) 16,015표\n9 연준 12,000표\n10 엔하이픈 (ENHYPEN) 9,040표\n11 하데스 (HADES) 8,720표\n12 TREASURE (트레저) 8,641표\n13 AHOF (아홉) 8,150표\n14 보이넥스트도어 (BOYNEXTDOOR) 2,831표\n15 세븐틴 (SEVENTEEN) 359표\n16 CORTIS (코르티스) 220표\n17 ZEROBASEONE (제로베이스원) 55표\n18 KickFlip (킥플립) 50표\n19 에스파 (aespa) 5표\n20 IVE (아이브) 0표\n20 에반 0표\n20 BIGBANG (빅뱅) 0표\n20 소디엑 (XODIAC) 0표\n20 &TEAM (앤팀) 0표"
     },
     {
       "id": "fannstar-7fc5881d108d389f",
@@ -539,112 +539,112 @@
         {
           "rank": 1,
           "name": "방탄소년단",
-          "votes": 1301496
+          "votes": 1528986
         },
         {
           "rank": 2,
           "name": "PLAVE (플레이브)",
-          "votes": 68382
+          "votes": 77938
         },
         {
           "rank": 3,
-          "name": "잔나비",
-          "votes": 54375
+          "name": "AHOF (아홉)",
+          "votes": 69061
         },
         {
           "rank": 4,
-          "name": "AHOF (아홉)",
-          "votes": 53693
+          "name": "잔나비",
+          "votes": 64347
         },
         {
           "rank": 5,
           "name": "JO1 (제이오원)",
-          "votes": 33585
+          "votes": 36062
         },
         {
           "rank": 6,
           "name": "Stray Kids (스트레이 키즈)",
-          "votes": 18254
+          "votes": 22525
         },
         {
           "rank": 7,
           "name": "2PM (투피엠)",
-          "votes": 14398
+          "votes": 16983
         },
         {
           "rank": 8,
           "name": "TREASURE (트레저)",
-          "votes": 12637
+          "votes": 13312
         },
         {
           "rank": 9,
           "name": "인피니트 (INFINITE)",
-          "votes": 8091
+          "votes": 9166
         },
         {
           "rank": 10,
           "name": "에이티즈 (ATEEZ)",
-          "votes": 6975
+          "votes": 8050
         },
         {
           "rank": 11,
           "name": "다섯장",
-          "votes": 6625
+          "votes": 6825
         },
         {
           "rank": 12,
-          "name": "하이라이트 (HIGHLIGHT)",
-          "votes": 5210
+          "name": "&TEAM (앤팀)",
+          "votes": 5748
         },
         {
           "rank": 13,
-          "name": "&TEAM (앤팀)",
-          "votes": 4788
+          "name": "하이라이트 (HIGHLIGHT)",
+          "votes": 5535
         },
         {
           "rank": 14,
           "name": "SF9",
-          "votes": 4415
+          "votes": 5480
         },
         {
           "rank": 15,
-          "name": "SS501",
-          "votes": 4000
+          "name": "세븐틴 (SEVENTEEN)",
+          "votes": 4413
         },
         {
           "rank": 16,
-          "name": "세븐틴 (SEVENTEEN)",
-          "votes": 3813
+          "name": "아스트로 (ASTRO)",
+          "votes": 4375
         },
         {
           "rank": 17,
-          "name": "아스트로 (ASTRO)",
-          "votes": 3715
+          "name": "SS501",
+          "votes": 4125
         },
         {
           "rank": 18,
           "name": "SUPER JUNIOR (슈퍼주니어)",
-          "votes": 2720
+          "votes": 3190
         },
         {
           "rank": 19,
           "name": "CORTIS (코르티스)",
-          "votes": 1860
+          "votes": 2130
         },
         {
           "rank": 20,
           "name": "투모로우바이투게더 (TXT)",
-          "votes": 1218
+          "votes": 1544
         },
         {
           "rank": 21,
-          "name": "씨엔블루 (CNBLUE)",
-          "votes": 1207
+          "name": "JBJ95",
+          "votes": 1535
         },
         {
           "rank": 22,
-          "name": "JBJ95",
-          "votes": 1180
+          "name": "씨엔블루 (CNBLUE)",
+          "votes": 1432
         },
         {
           "rank": 23,
@@ -659,17 +659,17 @@
         {
           "rank": 25,
           "name": "엔하이픈 (ENHYPEN)",
-          "votes": 817
+          "votes": 877
         },
         {
           "rank": 26,
           "name": "알파드라이브원 (ALPHA DRIVE ONE)",
-          "votes": 500
+          "votes": 750
         },
         {
           "rank": 27,
           "name": "아일릿 (ILLIT)",
-          "votes": 205
+          "votes": 355
         },
         {
           "rank": 28,
@@ -691,9 +691,9 @@
       "reward": null,
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/star",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "10월 5주차 10.26 ~ 11.02\n1 방탄소년단 1,301,496표\n2 PLAVE (플레이브) 68,382표\n3 잔나비 54,375표\n4 AHOF (아홉) 53,693표\n5 JO1 (제이오원) 33,585표\n6 Stray Kids (스트레이 키즈) 18,254표\n7 2PM (투피엠) 14,398표\n8 TREASURE (트레저) 12,637표\n9 인피니트 (INFINITE) 8,091표\n10 에이티즈 (ATEEZ) 6,975표\n11 다섯장 6,625표\n12 하이라이트 (HIGHLIGHT) 5,210표\n13 &TEAM (앤팀) 4,788표\n14 SF9 4,415표\n15 SS501 4,000표\n16 세븐틴 (SEVENTEEN) 3,813표\n17 아스트로 (ASTRO) 3,715표\n18 SUPER JUNIOR (슈퍼주니어) 2,720표\n19 CORTIS (코르티스) 1,860표\n20 투모로우바이투게더 (TXT) 1,218표\n21 씨엔블루 (CNBLUE) 1,207표\n22 JBJ95 1,180표\n23 라이즈 (RIIZE) 1,100표\n24 IN2IT (인투잇) 1,000표\n25 엔하이픈 (ENHYPEN) 817표\n26 알파드라이브원 (ALPHA DRIVE ONE) 500표\n27 아일릿 (ILLIT) 205표\n28 오메가엑스 (OMEGA X) 150표\n29 엔플라잉 (N.Flying) 0표\n29 TWS (투어스) 0표"
+      "evidence": "10월 5주차 10.26 ~ 11.02\n1 방탄소년단 1,528,986표\n2 PLAVE (플레이브) 77,938표\n3 AHOF (아홉) 69,061표\n4 잔나비 64,347표\n5 JO1 (제이오원) 36,062표\n6 Stray Kids (스트레이 키즈) 22,525표\n7 2PM (투피엠) 16,983표\n8 TREASURE (트레저) 13,312표\n9 인피니트 (INFINITE) 9,166표\n10 에이티즈 (ATEEZ) 8,050표\n11 다섯장 6,825표\n12 &TEAM (앤팀) 5,748표\n13 하이라이트 (HIGHLIGHT) 5,535표\n14 SF9 5,480표\n15 세븐틴 (SEVENTEEN) 4,413표\n16 아스트로 (ASTRO) 4,375표\n17 SS501 4,125표\n18 SUPER JUNIOR (슈퍼주니어) 3,190표\n19 CORTIS (코르티스) 2,130표\n20 투모로우바이투게더 (TXT) 1,544표\n21 JBJ95 1,535표\n22 씨엔블루 (CNBLUE) 1,432표\n23 라이즈 (RIIZE) 1,100표\n24 IN2IT (인투잇) 1,000표\n25 엔하이픈 (ENHYPEN) 877표\n26 알파드라이브원 (ALPHA DRIVE ONE) 750표\n27 아일릿 (ILLIT) 355표\n28 오메가엑스 (OMEGA X) 150표\n29 엔플라잉 (N.Flying) 0표\n29 TWS (투어스) 0표"
     },
     {
       "id": "fannstar-62a966b5aa3bff1f",
@@ -709,97 +709,97 @@
         {
           "rank": 1,
           "name": "김용빈",
-          "votes": 612449
+          "votes": 690537
         },
         {
           "rank": 2,
           "name": "최수호",
-          "votes": 311863
+          "votes": 339985
         },
         {
           "rank": 3,
           "name": "장민호",
-          "votes": 86519
+          "votes": 91874
         },
         {
           "rank": 4,
           "name": "황영웅",
-          "votes": 54299
+          "votes": 66097
         },
         {
           "rank": 5,
           "name": "홍자",
-          "votes": 47970
+          "votes": 51592
         },
         {
           "rank": 6,
           "name": "오유진",
-          "votes": 43125
+          "votes": 50710
         },
         {
           "rank": 7,
           "name": "하루",
-          "votes": 32276
+          "votes": 36250
         },
         {
           "rank": 8,
           "name": "최재명",
-          "votes": 15591
+          "votes": 16641
         },
         {
           "rank": 9,
           "name": "영탁",
-          "votes": 14404
+          "votes": 16014
         },
         {
           "rank": 10,
           "name": "양지원",
-          "votes": 12325
+          "votes": 13200
         },
         {
           "rank": 11,
           "name": "성리",
-          "votes": 10170
+          "votes": 11320
         },
         {
           "rank": 12,
           "name": "유지우",
-          "votes": 7779
+          "votes": 8562
         },
         {
           "rank": 13,
-          "name": "이수연",
-          "votes": 7466
+          "name": "윤태화",
+          "votes": 8275
         },
         {
           "rank": 14,
-          "name": "윤태화",
-          "votes": 6850
+          "name": "이수연",
+          "votes": 7866
         },
         {
           "rank": 15,
           "name": "전유진",
-          "votes": 5790
+          "votes": 6170
         },
         {
           "rank": 16,
-          "name": "춘길",
-          "votes": 5366
+          "name": "김의영",
+          "votes": 6090
         },
         {
           "rank": 17,
-          "name": "김의영",
-          "votes": 4525
+          "name": "춘길",
+          "votes": 5866
         },
         {
           "rank": 18,
           "name": "김중연",
-          "votes": 4394
+          "votes": 5694
         },
         {
           "rank": 19,
           "name": "장한별",
-          "votes": 3740
+          "votes": 4433
         },
         {
           "rank": 20,
@@ -809,7 +809,7 @@
         {
           "rank": 21,
           "name": "박지후",
-          "votes": 1350
+          "votes": 1400
         },
         {
           "rank": 22,
@@ -819,7 +819,7 @@
         {
           "rank": 23,
           "name": "정동원 (JD1)",
-          "votes": 400
+          "votes": 620
         },
         {
           "rank": 24,
@@ -829,7 +829,7 @@
         {
           "rank": 25,
           "name": "손태진",
-          "votes": 100
+          "votes": 122
         },
         {
           "rank": 26,
@@ -856,9 +856,9 @@
       "reward": null,
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/class",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "10월 5주차 10.26 ~ 11.02\n1 김용빈 612,449표\n2 최수호 311,863표\n3 장민호 86,519표\n4 황영웅 54,299표\n5 홍자 47,970표\n6 오유진 43,125표\n7 하루 32,276표\n8 최재명 15,591표\n9 영탁 14,404표\n10 양지원 12,325표\n11 성리 10,170표\n12 유지우 7,779표\n13 이수연 7,466표\n14 윤태화 6,850표\n15 전유진 5,790표\n16 춘길 5,366표\n17 김의영 4,525표\n18 김중연 4,394표\n19 장한별 3,740표\n20 손빈아 2,558표\n21 박지후 1,350표\n22 이창민 700표\n23 정동원 (JD1) 400표\n24 김희재 125표\n25 손태진 100표\n26 남궁진 25표\n27 크리스영 0표\n27 지영일 0표\n27 박지현 0표"
+      "evidence": "10월 5주차 10.26 ~ 11.02\n1 김용빈 690,537표\n2 최수호 339,985표\n3 장민호 91,874표\n4 황영웅 66,097표\n5 홍자 51,592표\n6 오유진 50,710표\n7 하루 36,250표\n8 최재명 16,641표\n9 영탁 16,014표\n10 양지원 13,200표\n11 성리 11,320표\n12 유지우 8,562표\n13 윤태화 8,275표\n14 이수연 7,866표\n15 전유진 6,170표\n16 김의영 6,090표\n17 춘길 5,866표\n18 김중연 5,694표\n19 장한별 4,433표\n20 손빈아 2,558표\n21 박지후 1,400표\n22 이창민 700표\n23 정동원 (JD1) 620표\n24 김희재 125표\n25 손태진 122표\n26 남궁진 25표\n27 크리스영 0표\n27 지영일 0표\n27 박지현 0표"
     },
     {
       "id": "fannstar-265b45da205b0940",
@@ -874,92 +874,92 @@
         {
           "rank": 1,
           "name": "임영웅",
-          "votes": 2663110
+          "votes": 2777267
         },
         {
           "rank": 2,
           "name": "디노",
-          "votes": 584874
+          "votes": 615782
         },
         {
           "rank": 3,
           "name": "연준",
-          "votes": 551838
+          "votes": 603369
         },
         {
           "rank": 4,
           "name": "Stray Kids (스트레이 키즈)",
-          "votes": 512496
+          "votes": 536900
         },
         {
           "rank": 5,
           "name": "황영웅",
-          "votes": 223081
+          "votes": 235227
         },
         {
           "rank": 6,
           "name": "김기태",
-          "votes": 150181
+          "votes": 158078
         },
         {
           "rank": 7,
           "name": "WHIB (휘브)",
-          "votes": 147800
+          "votes": 156620
         },
         {
           "rank": 8,
           "name": "김용빈",
-          "votes": 145822
+          "votes": 151738
         },
         {
           "rank": 9,
           "name": "AHOF (아홉)",
-          "votes": 67392
+          "votes": 72696
         },
         {
           "rank": 10,
-          "name": "&TEAM (앤팀)",
-          "votes": 66638
+          "name": "보이넥스트도어 (BOYNEXTDOOR)",
+          "votes": 70994
         },
         {
           "rank": 11,
           "name": "알파드라이브원 (ALPHA DRIVE ONE)",
-          "votes": 66587
+          "votes": 70911
         },
         {
           "rank": 12,
-          "name": "보이넥스트도어 (BOYNEXTDOOR)",
-          "votes": 66549
+          "name": "&TEAM (앤팀)",
+          "votes": 69697
         },
         {
           "rank": 13,
           "name": "RESCENE (리센느)",
-          "votes": 27938
+          "votes": 29660
         },
         {
           "rank": 14,
           "name": "NEXZ (넥스지)",
-          "votes": 24810
+          "votes": 25685
         },
         {
           "rank": 15,
           "name": "엔하이픈 (ENHYPEN)",
-          "votes": 23020
+          "votes": 25480
         },
         {
           "rank": 16,
           "name": "에반",
-          "votes": 9168
+          "votes": 9553
         },
         {
           "rank": 17,
           "name": "원호",
-          "votes": 4049
+          "votes": 4074
         },
         {
           "rank": 18,
           "name": "전유진",
-          "votes": 2530
+          "votes": 3205
         },
         {
           "rank": 19,
@@ -976,9 +976,9 @@
       "reward": null,
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/bmusic",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "🏆TMA 베스트 뮤직 <가을> 10.19 ~ 11.02\n1 임영웅 2,663,110표\n2 디노 584,874표\n3 연준 551,838표\n4 Stray Kids (스트레이 키즈) 512,496표\n5 황영웅 223,081표\n6 김기태 150,181표\n7 WHIB (휘브) 147,800표\n8 김용빈 145,822표\n9 AHOF (아홉) 67,392표\n10 &TEAM (앤팀) 66,638표\n11 알파드라이브원 (ALPHA DRIVE ONE) 66,587표\n12 보이넥스트도어 (BOYNEXTDOOR) 66,549표\n13 RESCENE (리센느) 27,938표\n14 NEXZ (넥스지) 24,810표\n15 엔하이픈 (ENHYPEN) 23,020표\n16 에반 9,168표\n17 원호 4,049표\n18 전유진 2,530표\n19 도경수 2,223표\n20 LE SSERAFIM (르세라핌) 1,453표"
+      "evidence": "🏆TMA 베스트 뮤직 <가을> 10.19 ~ 11.02\n1 임영웅 2,777,267표\n2 디노 615,782표\n3 연준 603,369표\n4 Stray Kids (스트레이 키즈) 536,900표\n5 황영웅 235,227표\n6 김기태 158,078표\n7 WHIB (휘브) 156,620표\n8 김용빈 151,738표\n9 AHOF (아홉) 72,696표\n10 보이넥스트도어 (BOYNEXTDOOR) 70,994표\n11 알파드라이브원 (ALPHA DRIVE ONE) 70,911표\n12 &TEAM (앤팀) 69,697표\n13 RESCENE (리센느) 29,660표\n14 NEXZ (넥스지) 25,685표\n15 엔하이픈 (ENHYPEN) 25,480표\n16 에반 9,553표\n17 원호 4,074표\n18 전유진 3,205표\n19 도경수 2,223표\n20 LE SSERAFIM (르세라핌) 1,453표"
     },
     {
       "id": "fannstar-102ee4464f461bbe",
@@ -994,207 +994,207 @@
         {
           "rank": 1,
           "name": "진 (JIN)",
-          "votes": 2154053
+          "votes": 2498300
         },
         {
           "rank": 2,
           "name": "이찬원",
-          "votes": 1740435
+          "votes": 1967159
         },
         {
           "rank": 3,
           "name": "V (뷔)",
-          "votes": 1161082
+          "votes": 1346930
         },
         {
           "rank": 4,
           "name": "지민",
-          "votes": 626579
+          "votes": 736264
         },
         {
           "rank": 5,
-          "name": "제이홉",
-          "votes": 590556
+          "name": "정국",
+          "votes": 684230
         },
         {
           "rank": 6,
-          "name": "정국",
-          "votes": 579658
+          "name": "제이홉",
+          "votes": 682911
         },
         {
           "rank": 7,
           "name": "박창근",
-          "votes": 318718
+          "votes": 349108
         },
         {
           "rank": 8,
           "name": "Agust D (슈가)",
-          "votes": 222861
+          "votes": 259581
         },
         {
           "rank": 9,
           "name": "양준일",
-          "votes": 200464
+          "votes": 228771
         },
         {
           "rank": 10,
           "name": "RM",
-          "votes": 199583
+          "votes": 226602
         },
         {
           "rank": 11,
           "name": "황치열",
-          "votes": 109493
+          "votes": 122028
         },
         {
           "rank": 12,
           "name": "최수호",
-          "votes": 89899
+          "votes": 95782
         },
         {
           "rank": 13,
           "name": "임영웅",
-          "votes": 75111
+          "votes": 89471
         },
         {
           "rank": 14,
           "name": "정동원 (JD1)",
-          "votes": 72979
+          "votes": 79792
         },
         {
           "rank": 15,
           "name": "강다니엘",
-          "votes": 63849
+          "votes": 76080
         },
         {
           "rank": 16,
-          "name": "백호",
-          "votes": 61902
+          "name": "전유진",
+          "votes": 68344
         },
         {
           "rank": 17,
-          "name": "전유진",
-          "votes": 58964
+          "name": "백호",
+          "votes": 65242
         },
         {
           "rank": 18,
           "name": "WOODZ (우즈)",
-          "votes": 56336
+          "votes": 57389
         },
         {
           "rank": 19,
-          "name": "김수찬",
-          "votes": 47426
+          "name": "이승윤",
+          "votes": 54911
         },
         {
           "rank": 20,
-          "name": "이승윤",
-          "votes": 45335
+          "name": "김수찬",
+          "votes": 49526
         },
         {
           "rank": 21,
           "name": "영탁",
-          "votes": 35466
+          "votes": 39321
         },
         {
           "rank": 22,
           "name": "손태진",
-          "votes": 34486
+          "votes": 38511
         },
         {
           "rank": 23,
           "name": "장민호",
-          "votes": 33807
+          "votes": 35582
         },
         {
           "rank": 24,
-          "name": "백청강",
-          "votes": 31465
+          "name": "김현중",
+          "votes": 35150
         },
         {
           "rank": 25,
-          "name": "김현중",
-          "votes": 31284
+          "name": "백청강",
+          "votes": 34965
         },
         {
           "rank": 26,
           "name": "김희재",
-          "votes": 26605
+          "votes": 31480
         },
         {
           "rank": 27,
           "name": "헨리 (HENRY)",
-          "votes": 19036
+          "votes": 21986
         },
         {
           "rank": 28,
           "name": "홍지윤",
-          "votes": 17930
+          "votes": 20005
         },
         {
           "rank": 29,
           "name": "박지훈",
-          "votes": 16850
+          "votes": 19400
         },
         {
           "rank": 30,
-          "name": "김용빈",
-          "votes": 16060
+          "name": "윤지성",
+          "votes": 17756
         },
         {
           "rank": 31,
-          "name": "윤지성",
-          "votes": 14038
+          "name": "김용빈",
+          "votes": 16885
         },
         {
           "rank": 32,
           "name": "김기태",
-          "votes": 12585
+          "votes": 13585
         },
         {
           "rank": 33,
-          "name": "하성운",
-          "votes": 9375
+          "name": "김우석",
+          "votes": 9950
         },
         {
           "rank": 34,
-          "name": "김우석",
-          "votes": 9275
+          "name": "하성운",
+          "votes": 9850
         },
         {
           "rank": 35,
+          "name": "김성규",
+          "votes": 8225
+        },
+        {
+          "rank": 36,
           "name": "유노윤호 (U-KNOW)",
           "votes": 7255
         },
         {
-          "rank": 36,
-          "name": "김성규",
-          "votes": 7200
-        },
-        {
           "rank": 37,
           "name": "정동하",
-          "votes": 6165
+          "votes": 6701
         },
         {
           "rank": 38,
-          "name": "산들",
-          "votes": 5525
+          "name": "김종현 (JR)",
+          "votes": 6500
         },
         {
           "rank": 39,
-          "name": "김종현 (JR)",
-          "votes": 5300
+          "name": "산들",
+          "votes": 6250
         },
         {
           "rank": 40,
           "name": "최강창민 (MAX CHANGMIN)",
-          "votes": 2900
+          "votes": 3100
         },
         {
           "rank": 41,
           "name": "원호",
-          "votes": 2675
+          "votes": 2900
         },
         {
           "rank": 42,
@@ -1206,9 +1206,9 @@
       "reward": null,
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/each",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "10월 5주차 10.26 ~ 11.02\n1 진 (JIN) 2,154,053표\n2 이찬원 1,740,435표\n3 V (뷔) 1,161,082표\n4 지민 626,579표\n5 제이홉 590,556표\n6 정국 579,658표\n7 박창근 318,718표\n8 Agust D (슈가) 222,861표\n9 양준일 200,464표\n10 RM 199,583표\n11 황치열 109,493표\n12 최수호 89,899표\n13 임영웅 75,111표\n14 정동원 (JD1) 72,979표\n15 강다니엘 63,849표\n16 백호 61,902표\n17 전유진 58,964표\n18 WOODZ (우즈) 56,336표\n19 김수찬 47,426표\n20 이승윤 45,335표\n21 영탁 35,466표\n22 손태진 34,486표\n23 장민호 33,807표\n24 백청강 31,465표\n25 김현중 31,284표\n26 김희재 26,605표\n27 헨리 (HENRY) 19,036표\n28 홍지윤 17,930표\n29 박지훈 16,850표\n30 김용빈 16,060표\n31 윤지성 14,038표\n32 김기태 12,585표\n33 하성운 9,375표\n34 김우석 9,275표\n35 유노윤호 (U-KNOW) 7,255표\n36 김성규 7,200표\n37 정동하 6,165표\n38 산들 5,525표\n39 김종현 (JR) 5,300표\n40 최강창민 (MAX CHANGMIN) 2,900표\n41 원호 2,675표\n42 김재환 950표"
+      "evidence": "10월 5주차 10.26 ~ 11.02\n1 진 (JIN) 2,498,300표\n2 이찬원 1,967,159표\n3 V (뷔) 1,346,930표\n4 지민 736,264표\n5 정국 684,230표\n6 제이홉 682,911표\n7 박창근 349,108표\n8 Agust D (슈가) 259,581표\n9 양준일 228,771표\n10 RM 226,602표\n11 황치열 122,028표\n12 최수호 95,782표\n13 임영웅 89,471표\n14 정동원 (JD1) 79,792표\n15 강다니엘 76,080표\n16 전유진 68,344표\n17 백호 65,242표\n18 WOODZ (우즈) 57,389표\n19 이승윤 54,911표\n20 김수찬 49,526표\n21 영탁 39,321표\n22 손태진 38,511표\n23 장민호 35,582표\n24 김현중 35,150표\n25 백청강 34,965표\n26 김희재 31,480표\n27 헨리 (HENRY) 21,986표\n28 홍지윤 20,005표\n29 박지훈 19,400표\n30 윤지성 17,756표\n31 김용빈 16,885표\n32 김기태 13,585표\n33 김우석 9,950표\n34 하성운 9,850표\n35 김성규 8,225표\n36 유노윤호 (U-KNOW) 7,255표\n37 정동하 6,701표\n38 김종현 (JR) 6,500표\n39 산들 6,250표\n40 최강창민 (MAX CHANGMIN) 3,100표\n41 원호 2,900표\n42 김재환 950표"
     },
     {
       "id": "muniverse-f430c15f-c0f8-47f3-8b4d-8f314f755c47",
@@ -1343,7 +1343,7 @@
       "reward": "1위 아티스트 → STAGE M PICK 트로피 수여\n일정/리워드는 방송사 사정에 따라 변경될 수 있음",
       "source": "공식 공개 데이터",
       "source_url": "https://www.muniverse.io/votes/f430c15f-c0f8-47f3-8b4d-8f314f755c47",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 상세 응답 확인 · 종료·결과 공개 시각 확인",
       "evidence": "📣 STAGE M PICK 100% 팬 투표로 선정하는 ‘쇼! 음악중심 이번 주 최고의 무대’ 📅 투표 기간 토요일 17:00 ~ 다음 주 목요일 12:00 (KST) 🗳️ 투표 방법 무료 투표 : 프리루미를 사용해 1일 최대 10표 투표 가능 추가 투표 : 골드루미를 사용해 추가 투표 가능 *프리루미(Free Lumy)란? Free Lumy는 Muniverse 앱의 출석 체크 및 추천 친구를 통해 무료로 획득할 수 있는 포인트입니다. 📱 Free Lumy 획득 경로 출석 체크: Muniverse APP > Store > 충전소에서 출석 체크하고 매일 100 Free Lumy 획득 가능 추천 친구: 회원가입할 때 추천 친구의 이메일을 입력하면 서로 300 Free Lum y 획득 가능 *골드루미(Gold Lumy)란? 골드루미는 Muniverse 내 유료 상품 및 디지털 서비스 이용 시 사용되는 충전형 포인트입니다. (Muniverse APP > Store > 골드루미) 🏆 리워드 1위 아티스트 → STAGE M PICK 트로피 수여 투표 순위 → MBC 쇼! 음악중심 방송에서 발표 💡 주의 투표는 목요일 11:59:59 마감 일정/리워드는 방송사 사정에 따라 변경될 수 있음 ✨ 이번 주 최고의 무대에 투표하세요 ※ 1회 투표 시 최대 100,000표까지 투표할 수 있습니다.",
       "provider_status": "CLOSED"
@@ -1667,7 +1667,7 @@
       "reward": null,
       "source": "공식 공개 데이터",
       "source_url": "https://www.muniverse.io/votes/d9747404-4b1f-457c-b360-85be4f3cfdb0",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 상세 응답 확인 · 종료·결과 공개 시각 확인",
       "evidence": "📣 <Show! Music Core> Global pre-voting 📅 투표 기간 방송 주 화요일 18:00 ~ 목요일 11:00 (KST) 🗳️ 투표 방식 애드루미(Ad Lumy)를 사용하여 투표 *투표 일정은 내부 사정에 따라 변동될 수 있습니다. *자세한 내용은 공지사항, 자주 묻는 질문 그리고 <쇼! 음악중심> 공식 채널에서 확인 부탁드립니다. -> <쇼! 음악중심> 게시판 바로가기 💡 애드루미(Ad Lumy)란? 애드루미(Ad Lumy)는 광고 시청 등을 통해 무료로 적립할 수 있는 포인트입니다. 📱 애드루미(Ad Lumy) 적립 방법 1️⃣ 뮤니버스 앱 설치(iOS/android) 2️⃣ 뮤니버스 앱 접속 후 하단 탭에서 'Store' 이동 3️⃣ 상단의 '충전소'에서 광고 시청, 행운의 룰렛, 미션 참여 등을 통해 애드루미(Ad Lumy) 받기! *애드루미(Ad Lumy)는 앱에서만 적립이 가능합니다.",
       "provider_status": "CLOSED"
@@ -4583,7 +4583,7 @@
       "reward": "🏆 1등 리워드 : K-POP의 본진, 쇼! 음악중심 촬영일 모든 MBC 전광판을 점령하라\n1️⃣ 쇼! 음악중심 촬영일 MBC 본사 초대형 실내 전광판 리워드 광고 송출\n2️⃣ 쇼! 음악중심 촬영일 MBC 본사 옥외 전광판 리워드 광고 송출\n- 추천친구 혜택",
       "source": "공식 공개 데이터",
       "source_url": "https://www.muniverse.io/votes/d4dd9a70-d6a6-4cd2-a96a-0f263ff0ff83",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 상세 응답 확인 · 종료·결과 공개 시각 확인",
       "evidence": "📣 WEEKLY M PICK 글로벌 팬이 직접 뽑는 K-POP 주간 원 픽 🏆 1등 리워드 : K-POP의 본진, 쇼! 음악중심 촬영일 모든 MBC 전광판을 점령하라 1️⃣ 쇼! 음악중심 촬영일 MBC 본사 초대형 실내 전광판 리워드 광고 송출 *초대형 실내 전광판 광고 영상 👉 https://x.com/muniverse_io/status/2009097739112730712?s=20 2️⃣ 쇼! 음악중심 촬영일 MBC 본사 옥외 전광판 리워드 광고 송출 *옥외 전광판 영상(예시) ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿ 👉 https://x.com/i/status/1999705845844599210 📅 투표 기간 매주 금요일 10:00 ~ 그 다음 주 수요일 17:00 (KST) ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿ 🗳️ 투표 방식 프리루미 를 사용해 무제한 투표 가능 *프리루미(Free Lumy)란? 프리루미는 Muniverse의 다양한 이벤트 참여를 통해 무료로 획득할 수 있는 포인트입니다. 현재는 Muniverse 앱의 충전소에서 출석체크를 통해 하루 100개씩 획득할 수 있습니다. (Munivese APP > Store > 충전소) 🎫 투표 및 방청 응모 안내 투표 1표 = 방청 응모권 1장 WEEKLY M PICK에 투표할 때마다 <쇼! 음악중심> 방청 응모권이 1장씩 자동 적립됩니다. 적립된 응모권이 많을수록 <쇼! 음악중심> 방청 당첨 기회가 높아집니다. 📌 방청 응모 방식 변경 기존 SNS 투표 인증 이벤트가 종료되고, WEEKLY M PICK 투표를 통해 <쇼! 음악중심> 방청에 자동으로 응모됩니다. 별도의 SNS 인증이나 댓글 참여 없이 WEEKLY M PICK에 투표하면 방청 응모권이 자동 적립됩니다. Muniverse에서 친구에게 서비스를 소개하고 함께 프리루미를 받을 수 있는 추천친구 제도 를 운영합니다. - 추천친구 혜택 추천자와 추천받은 친구 양쪽 계정 모두 프리루미 300개가 지급됩니다. - 이용 방법 Muniverse 회원가입 시 추천인 아이디를 입력합니다. 추천인 아이디는 이메일 아이디 형식으로 입력할 수 있습니다. 추천인 아이디 입력은 선택 사항입니다. 추천받은 친구의 가입이 완료되면 추천자와 등록자에게 각각 프리루미 300개가 지급됩니다. - 이용 안내 추천은 계정당 최대 50명까지 가능합니다. 추천 횟수에 대한 일일 제한은 없습니다. 프리루미 지급 내역은 지급 내역에서 확인할 수 있습니다. 🗓️ 매주 돌아오는 M PICK! 당신의 원 픽에게 최고의 무대를 선물하세요 ✨",
       "provider_status": "CLOSED"
@@ -4793,7 +4793,7 @@
       "reward": "🎁 BIRTHDAY M PICK 리워드\n🥇 1위 아티스트",
       "source": "공식 공개 데이터",
       "source_url": "https://www.muniverse.io/votes/9c924291-95f0-47fc-a76e-aa0ae767e09b",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 상세 응답 확인 · 종료·결과 공개 시각 확인",
       "evidence": "🎂 BIRTHDAY M PICK 11월 투표 시작! 11월의 생일을 가장 특별하게 빛낼 주인공은 누구일까요? 👀🎉 11월에 생일을 맞이하는 아티스트 중 여러분의 최애에게 투표하고 특별한 생일을 선물해 주세요! 📅 투표 기간 2026년 10월 20일(화) 10:00 ~ 10월 27일(화) 16:00 (KST) 🗳️ 투표 방법 무료 투표 : 애드루미를 사용해 1일 최대 5표 투표 가능 추가 투표 : 골드루미를 사용해 추가 투표 가능 *애드루미(Ad Lumy)란? 애드루미(Ad Lumy)는 광고 시청 등을 통해 무료로 적립할 수 있는 포인트입니다. *골드루미(Gold Lumy)란? 골드루미는 Muniverse 내 유료 상품 및 디지털 서비스 이용 시 사용되는 충전형 포인트입니다. (Muniverse APP > Store > 골드루미) 🎁 BIRTHDAY M PICK 리워드 🥇 1위 아티스트 ① 11월 한 달 동안 매주 주말 MBC 미디어오션 대형 전광판에 생일 축하 광고 송출 📺✨ *초대형 실내 전광판 광고 영상 👉 https://x.com/muniverse_io/status/2009097739112730712?s=20 ② 생일 주간 주말, 미디어오션 앞 투썸플레이스에서 투표 인증서를 제시한 선착순 50명에게 음료 제공 ☕ ※ 정확한 제공 일정은 추후 안내됩니다. 11월의 생일을 특별하게 빛낼 나의 최애에게 투표해 주세요! 💝",
       "provider_status": "CLOSED"
@@ -4847,7 +4847,7 @@
       "reward": null,
       "source": "공식 공개 데이터",
       "source_url": "https://www.muniverse.io/votes/93d637ff-17a8-4a4e-bbe8-6175a89a7d35",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 상세 응답 확인 · 종료·결과 공개 시각 확인",
       "evidence": "🎶 it’s Live FANS PICK 생생한 밴드 사운드와 퍼포먼스로 K-POP 아티스트의 라이브를 만나는 it’s Live! it’s Live에서 듣고 싶은 노래를 직접 고르고, 녹화 현장 방청에 응모하세요! 🎤 행사하신 투표권 1표당 방청 응모권 1장이 자동으로 적립됩니다. 내 최애에게 투표하고 현장 방청의 기회도 놓치지 마세요! 🔥 빛나는 라이브를 선보이는 아티스트와 함께, 내가 고른 노래를 생생한 현장에서 직접 만나보세요! ✨ 🎬 it’s Live 공식 YouTube 채널에서 무대 보기 💝 FANS 아티스트 LNGSHOT 📅 투표 기간 2026.10.19 17:00 ~ 2026.10.26 10:00 (KST) 📢 방청 일시 2026.11.02 (월) 🎟️ 방청 당첨 인원 총 50명 ※ 집합 장소 및 시간 등 자세한 안내 사항은 당첨자에 한해 개별 안내드립니다. *방청 및 응모에 대한 자세한 내용은 아래 링크에서 확인해 주세요. https://www.muniverse.io/titles/a4d54e27-b2aa-4e28-b029-fab1243a511a 🗳️ 투표 방식 애드루미(Ad Lumy)를 사용하여 투표 💡 애드루미(Ad Lumy)란? 애드루미(Ad Lumy)는 광고 시청 등을 통해 무료로 적립할 수 있는 포인트입니다. 📱 애드루미(Ad Lumy) 적립 방법 1️⃣ 뮤니버스 앱 설치(iOS/android) 2️⃣ 뮤니버스 앱 접속 후 하단 탭에서 'Store' 이동 3️⃣ 상단의 '충전소'에서 영상 시청 등을 통해 애드루미(Ad Lumy) 받기! *애드루미(Ad Lumy)는 앱에서만 적립이 가능합니다. ※ 1회 투표 시 최대 100,000표까지 투표할 수 있습니다.",
       "provider_status": "CLOSED"
@@ -4889,7 +4889,7 @@
       "reward": null,
       "source": "공식 공개 데이터",
       "source_url": "https://www.muniverse.io/votes/bfea2e69-c870-477d-a2cd-0750ee52c315",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 상세 응답 확인 · 종료·결과 공개 시각 확인",
       "evidence": "📣  <Show! Music Core> APP live voting 📅 투표 기간 생방송 시작 후 앱 내 투표 오픈 시 참여 가능 🗳️ 투표 방식 애드루미(Ad Lumy) 또는 골드루미(Gold Lumy)를 사용하여 투표 (최대 5표) *생방송 투표는 방송 시간 중에만 진행되며, 결방 시에는 진행되지 않습니다. *생방송 딜레이 및 점수 집계 상황에 따라 방송 고지 이전에 투표가 조기 종료될 수 있습니다. *투표가 완료된 후 환불 및 취소가 불가능합니다 *자세한 내용은 공지사항, 자주 묻는 질문 그리고 <쇼! 음악중심> 공식 채널에서 확인 부탁드립니다. 💡 애드루미(Ad Lumy)란? 애드루미(Ad Lumy)는 광고 시청 등을 통해 무료로 적립할 수 있는 포인트입니다. 📱 애드루미(Ad Lumy) 적립 방법 1️⃣ 뮤니버스 앱 설치(iOS/android) 2️⃣ 뮤니버스 앱 접속 후 하단 탭에서 'Store' 이동 3️⃣ 상단의 '충전소'에서 광고 시청, 행운의 룰렛, 미션 참여 등을 통해 애드루미(Ad Lumy) 받기! *애드루미(Ad Lumy)는 앱에서만 적립이 가능합니다. 💡 골드루미(Gold Lumy)란? 골드루미는 Muniverse 내 유료 상품 및 디지털 서비스 이용 시 사용되는 충전형 포인트입니다. (Muniverse APP > Store > 골드루미) ※ 1회 투표 시 최대 100,000표까지 투표할 수 있습니다.",
       "provider_status": "CLOSED"
@@ -8493,7 +8493,7 @@
       "reward": null,
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/adsbirth",
-      "collected_at": "2026-10-29T15:01:34+09:00",
+      "collected_at": "2026-10-30T03:33:28+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
       "evidence": "11월 생일투표 09.28 ~ 10.19\n1 이찬원 4,557,313표\n2 하민 2,218,028표\n3 우지 (WOOZI) 1,567,309표\n4 박창근 656,272표\n5 디에잇 262,966표\n6 운학 72,021표\n7 신유 47,341표\n8 우영 45,022표\n9 홍중 20,534표\n10 영빈 20,383표\n11 세이타 13,377표\n12 허영생 8,856표\n13 사쿠야 8,508표\n14 쇼타로 7,778표\n15 제이크 7,215표\n16 리즈 2,424표\n17 천러 1,700표\n17 기현 1,700표\n19 민혁 1,650표\n20 홍은채 1,502표\n21 하음 1,050표\n22 준서 778표\n23 형준 675표\n24 희원 500표\n24 로렌스 500표\n26 소희 456표\n27 이민혁 (HUTA) 350표\n28 최태훈 300표\n28 은휘 300표\n30 미나미 200표\n30 김수찬 200표\n32 정연 102표\n33 큐 50표\n34 제나 25표\n35 모모 4표\n36 종섭 1표\n37 설린 0표\n37 노지선 0표\n37 서은광 0표\n37 조민규 (포레스텔라) 0표\n37 안나 0표\n37 유겸 0표\n37 영서 0표\n37 마유카 0표\n37 최유정 0표\n37 한로로 0표\n37 상연 0표"
     },
@@ -44983,8 +44983,8 @@
       "count": 77,
       "method": "공식 공개 웹 데이터",
       "message": "최근 90일 투표 77건 · 후보·득표·기간 확인",
-      "attempted_at": "2026-10-29T15:01:34+09:00",
-      "last_success": "2026-10-29T15:01:34+09:00",
+      "attempted_at": "2026-10-30T03:33:28+09:00",
+      "last_success": "2026-10-30T03:33:28+09:00",
       "errors": []
     },
     {
@@ -45082,12 +45082,12 @@
       "count": 9,
       "method": "공식 공개 웹 데이터",
       "message": "현재 투표 9개 부문 · 페이지 표시 후보·득표 확인 (전체 후보·과거 최종 결과 미확인)",
-      "attempted_at": "2026-10-29T15:01:34+09:00",
-      "last_success": "2026-10-29T15:01:34+09:00",
+      "attempted_at": "2026-10-30T03:33:28+09:00",
+      "last_success": "2026-10-30T03:33:28+09:00",
       "errors": [
-        "/rank/view/ethe: ValueError: Unknown period: 투표마감까지 D-13, 20:57"
+        "/rank/view/ethe: ValueError: Unknown period: 투표마감까지 D-13, 08:25"
       ]
     }
   ],
-  "updated_at": "2026-10-29T15:01:34+09:00"
+  "updated_at": "2026-10-30T03:33:28+09:00"
 }
