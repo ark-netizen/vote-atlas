@@ -9,9 +9,9 @@ if (!globalThis.crypto) Object.defineProperty(globalThis, 'crypto', {value: webc
 const cryptoTools = require('../dist/access-crypto.js');
 const read = p => fs.readFileSync(path.join(__dirname, '..', 'dist', p), 'utf8');
 
-test('New config is fail closed: no default password or shared secret', () => {
+test('Temporary preview mode disables the view lock without setting a password', () => {
   const config = JSON.parse(read('access-config.json'));
-  assert.equal(config.enabled, true);
+  assert.equal(config.enabled, false);
   assert.equal(config.version, 1);
   assert.equal(config.salt, '');
   assert.equal(config.verifier, '');
@@ -48,7 +48,8 @@ test('Lock setup page generates verifier locally and links to owner-only GitHub 
 });
 test('Dashboard gate validates configuration before considering browser session', () => {
   const gate = read('access-guard.js');
-  assert.ok(gate.indexOf('if (config.enabled !== true') < gate.indexOf('sessionStorage.getItem(sessionKey)'));
+  assert.ok(gate.indexOf('config.enabled === false') < gate.indexOf('sessionStorage.getItem(sessionKey)'));
+  assert.match(gate, /if \(config\.version === 1 && config\.enabled === false\) \{/);
   assert.match(gate, /!config\.salt \|\| !config\.verifier/);
   assert.match(gate, /window\.VoteAtlasLockCrypto\.derive/);
   assert.match(gate, /document\.body\.classList\.remove\('protected-view'\)/);
