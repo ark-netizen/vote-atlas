@@ -11,7 +11,7 @@ DATE_RANGE = re.compile(
     r"(20\d{2})[./-]\s*(\d{1,2})[./-]\s*(\d{1,2})\s*(?:~|부터|–|-)\s*"
     r"(?:(20\d{2})[./-]\s*)?(\d{1,2})[./-]\s*(\d{1,2})")
 DURATION = re.compile(r"(\d{1,3})\s*(?:일간|일\s*동안|days?\b)", re.I)
-ORDINAL = re.compile(r"(?:최종\s*)?([1-9])\s*(?:위|등)|([1-9])\ufe0f?\u20e3", re.I)
+ORDINAL = re.compile(r"(?:최종\s*)?([1-9])\s*(?:위|등)", re.I)
 PENDING = re.compile(r"추후\s*(?:공지|안내)|월\s*중\s*(?:예정|안내)|예정|별도\s*(?:공지|안내)", re.I)
 
 def normalized(text):
@@ -64,7 +64,10 @@ def extract_entries(lines, source_url, checked_at, source_kind="official_web"):
             continue
         kind, place = classify(line)
         rank = ORDINAL.search(line)
-        condition = f"{rank.group(1) or rank.group(2)}위" if rank else None
+        condition = f"{rank.group(1)}위" if rank else None
+        # The numbered 1️⃣/2️⃣ bullets list separate benefit items, not ranks.
+        if re.match(r"^[1-9]️⃣", line) and any(re.search(r"1\s*(?:등|위)\s*리워드", x) for x in lines):
+            condition = "1위"
         period_rule, start, end = parse_period(line)
         if "촬영일" in line and not period_rule:
             period_rule = "쇼! 음악중심 촬영일 (정확한 날짜 미확인)"
