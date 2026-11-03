@@ -48,6 +48,11 @@
     const response = await fetch('access-config.json?v=' + Date.now(), {cache: 'no-store'});
     if (!response.ok) throw new Error('잠금 설정을 읽지 못했습니다.');
     config = await response.json();
+    // Temporary public preview mode: retain the lock for future re-enablement.
+    if (config.version === 1 && config.enabled === false) {
+      unlock();
+      return;
+    }
     if (config.enabled !== true || config.version !== 1 ||
         !Number.isInteger(config.iterations) || config.iterations < 100000) {
       throw new Error('잠금 설정이 올바르지 않습니다.');
