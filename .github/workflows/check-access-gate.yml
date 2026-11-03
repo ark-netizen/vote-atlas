@@ -1,0 +1,40 @@
+name: Verify dashboard access gate
+on:
+  push:
+    branches: [feat/dashboard-passcode-gate-20261103]
+    paths:
+      - 'dist/access*'
+      - 'dist/index.html'
+      - 'dist/overview.html'
+      - 'dist/rewards.html'
+      - 'dist/lock-setup.html'
+      - 'tests/test_access_gate.cjs'
+      - '.github/workflows/check-access-gate.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'dist/access*'
+      - 'dist/index.html'
+      - 'dist/overview.html'
+      - 'dist/rewards.html'
+      - 'dist/lock-setup.html'
+      - 'tests/test_access_gate.cjs'
+      - '.github/workflows/check-access-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JavaScript syntax
+        run: |
+          node --check dist/access-crypto.js
+          node --check dist/access-guard.js
+          node --check dist/app.js
+          node --check dist/overview.js
+          node --check dist/rewards.js
+      - name: Run access gate and reward regression tests
+        run: node --test tests/test_access_gate.cjs tests/test_rewards_ui.cjs
