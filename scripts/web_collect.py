@@ -26,6 +26,28 @@ def moment(value):
 def clean(value):
     return BeautifulSoup(value or '', 'html.parser').get_text(' ', strip=True)
 
+REWARD_TERMS = re.compile(
+    r'리워드|우승\s*혜택|수상\s*혜택|혜택\s*안내|상품\s*제공|전광판|지하철\s*광고|옥외\s*광고|광고\s*송출|트로피|상패|특전|reward|prize|1위.{0,18}(수여|제공|증정|광고|송출|게재|노출)',
+    re.I,
+)
+
+def reward_lines_from_html(html):
+    """Only source-backed reward statements from each official vote description."""
+    soup = BeautifulSoup(html or '', 'html.parser')
+    for tag in soup(['script', 'style', 'noscript']):
+        tag.decompose()
+    lines = []
+    for node in soup.select('p, li, tr, h2, h3, h4'):
+        line = re.sub(r'\s+', ' ', node.get_text(' ', strip=True))
+        if 6 <= len(line) <= 340 and REWARD_TERMS.search(line) and line not in lines:
+            lines.append(line)
+    if not lines:
+        for line in soup.get_text('\n', strip=True).splitlines():
+            line = re.sub(r'\s+', ' ', line)
+            if 6 <= len(line) <= 240 and REWARD_TERMS.search(line) and line not in lines:
+                lines.append(line)
+    return lines[:12]
+
 def muniverse_event(detail):
     start, end = moment(detail['startTime']), moment(detail['endTime'])
     candidates = [{'rank': c.get('ranking'), 'name': c['name'], 'votes': c.get('voteCount'), 'id': c['candidateSeq']} for c in detail['candidates']]
@@ -33,17 +55,12 @@ def muniverse_event(detail):
     leader = ', '.join(top) or None
     result_at = detail.get('resultOpenTime')
     final = detail['status'] == 'CLOSED' and end <= NOW and bool(result_at) and moment(result_at) <= NOW
-    soup = BeautifulSoup(detail.get('content', ''), 'html.parser')
-    lines = [p.get_text(' ', strip=True) for p in soup.select('p')]
-    reward = []
-    for line in lines:
-        if ('1위' in line or '리워드' in line or '혜택' in line) and len(line) > 6:
-            reward.append(line)
+    reward = reward_lines_from_html(detail.get('content', ''))
     return {'id': 'muniverse-' + detail['voteCode'], 'app': 'muniverse', 'title': detail['voteName'],
             'start': start.date().isoformat(), 'end': end.date().isoformat(),
             'start_at': start.isoformat(), 'end_at': end.isoformat(), 'date_precision': 'minute', 'year_inferred': False,
             'leader': leader, 'winner': leader if final else None, 'result_status': 'published' if final else 'not_final',
-            'candidates': candidates, 'lineup_complete': True, 'reward': '\n'.join(reward) or None,
+            'candidates': candidates, 'lineup_complete': True, 'reward': '\n'.join(reward) or None, 'reward_lines': reward,
             'source': '공식 공개 데이터', 'source_url': 'https://www.muniverse.io/votes/' + detail['voteCode'],
             'collected_at': STAMP, 'verification': '공식 상세 응답 확인' + (' · 종료·결과 공개 시각 확인' if final else ''),
             'evidence': clean(detail.get('content', '')), 'provider_status': detail['status']}
@@ -108,7 +125,7 @@ def fanstar_event(html, url, name):
     top=[c['name'] for c in candidates if c['rank']==1 and c['votes']>0]
     return {'id':'fannstar-'+hashlib.sha256((url+start.isoformat()+end.isoformat()).encode()).hexdigest()[:16],
             'app':'fannstar','title':title,'start':start.isoformat(),'end':end.isoformat(),'date_precision':'day','year_inferred':True,
-            'leader':', '.join(top) or None,'winner':None,'candidates':candidates,'lineup_complete':False,'reward':None,
+            'leader':', '.join(top) or None,'winner':None,'candidates':candidates,'lineup_complete':False,'reward':None,'reward_lines':[],
             'source':'공식 웹페이지','source_url':url,'collected_at':STAMP,
             'verification':'공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인',
             'evidence':period+'\n'+'\n'.join(f"{c['rank']} {c['name']} {c['votes']:,}표" for c in candidates)}
