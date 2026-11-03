@@ -42,7 +42,7 @@ function refresh(){
  $('#countLineup').textContent=ev.filter(e=>(e.candidates||[]).length).length.toLocaleString('ko-KR');
  renderCalendar();renderVotes();renderArtists();renderSources();
 }
-function filtered(){
+function filtered(ignoreDay=false){
  const q=$('#query').value.trim().toLowerCase();
  const aid=$('#app').value,period=$('#period').value,reward=$('#reward').value;
  return records.events.filter(e=>{
@@ -53,7 +53,7 @@ function filtered(){
   if(aid!=='all'&&e.app!==aid)return false;
   if(period!=='all'&&state(e)!==period)return false;
   if(reward==='known'&&!rewardText(e)||reward==='missing'&&rewardText(e))return false;
-  if(chosenDay&&!(e.start<=chosenDay&&e.end>=chosenDay))return false;
+  if(!ignoreDay&&chosenDay&&!VoteAtlasCalendar.onDay(e,chosenDay))return false;
   if(q&&!([e.title,e.reward,e.leader,e.winner].concat((e.candidates||[]).map(c=>c.name)).join(' ').toLowerCase().includes(q)))return false;
   return true;
  }).sort((a,b)=>({active:0,upcoming:1,ended:2}[state(a)]-{active:0,upcoming:1,ended:2}[state(b)])||b.end.localeCompare(a.end));
@@ -89,12 +89,13 @@ function renderCalendar(){
  const start=new Date(monthStart);start.setUTCDate(1-monthStart.getUTCDay());
  const cells=Math.ceil((monthStart.getUTCDay()+new Date(Date.UTC(calYear,calMonth+1,0)).getUTCDate())/7)*7;
  const root=$('#miniCalendar');root.replaceChildren();
+ const calendarEvents=filtered(true);
  for(let i=0;i<cells;i++){
   const d=new Date(start);d.setUTCDate(start.getUTCDate()+i);
   const k=d.toISOString().slice(0,10);
-  const count=records.events.filter(e=>e.start===k||e.end===k).length;
+  const count=calendarEvents.filter(e=>VoteAtlasCalendar.onDay(e,k)).length;
   const cell=doc('button','mini-day'+(d.getUTCMonth()!==calMonth?' other':'')+(k===kst?' current':'')+(k===chosenDay?' selected':''));
-  cell.type='button';cell.title=k+' · 시작 또는 마감 투표 '+count+'건';
+  cell.type='button';cell.title=k+' · 해당 날짜 진행 투표 '+count+'건';
   cell.append(doc('span','daynum',d.getUTCDate()));
   if(count)cell.append(doc('span','day-count',count+'건'));
   cell.onclick=()=>{chosenDay=(chosenDay===k?null:k);$('#clearDay').hidden=!chosenDay;renderCalendar();renderVotes()};
@@ -189,12 +190,17 @@ function exportCsv(){
 for(const el of document.querySelectorAll('[data-summary]'))el.onclick=()=>{
   summary=el.dataset.summary;chosenDay=null;$('#clearDay').hidden=true;
   for(const id of ['app','period','reward'])$('#'+id).value='all';
-  $('#query').value='';renderVotes();
+  $('#query').value='';renderCalendar();renderVotes();
   document.querySelector('.vote-panel').scrollIntoView({behavior:'smooth',block:'start'});
 };
-$('#clearSummary').onclick=()=>{summary='all';renderVotes()};
+$('#clearSummary').onclick=()=>{summary='all';renderCalendar();renderVotes()};
 for(const id of ['artistQuery','artistApp','artistSort'])$('#'+id).addEventListener(id==='artistQuery'?'input':'change',()=>{$('#artistDetail').hidden=true;renderArtists()});
-for(const id of ['query','app','period','reward'])$('#'+id).addEventListener(id==='query'?'input':'change',renderVotes);
+for(const id of ['query','app','period','reward'])$('#'+id).addEventListener(id==='query'?'input':'change',()=>{renderCalendar();renderVotes()});
+$('#clearOverviewFilters').onclick=()=>{
+ summary='all';chosenDay=null;$('#clearDay').hidden=true;
+ $('#query').value='';for(const id of ['app','period','reward'])$('#'+id).value='all';
+ renderCalendar();renderVotes();
+};
 $('#csv').onclick=exportCsv;$('#reload').onclick=load;
 $('#prevMonth').onclick=()=>{if(--calMonth<0){calMonth=11;calYear--}renderCalendar()};
 $('#nextMonth').onclick=()=>{if(++calMonth>11){calMonth=0;calYear++}renderCalendar()};
