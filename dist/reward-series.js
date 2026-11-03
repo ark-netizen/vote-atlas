@@ -10,9 +10,10 @@ const VoteAtlasSeries = (() => {
       .replace(/\d{1,2}\s*월\s*\d{1,2}\s*주\s*차/g,'')
       .replace(/(?:제\s*)?\d{2,4}\s*회(?=\s*(?:\||·|STAGE|글로벌|생방송|$))/gi,'')
       .replace(/\b(?:20\d{2}[./-])?\d{1,2}[./-]\d{1,2}\b/g,'')
-      .replace(/\s*[|·\-/]\s*$/,'').replace(/^\s*[|·\-/]\s*/,'')
+      .replace(/\s*[|·\-/~～–]\s*$/,'').replace(/^\s*[|·\-/~～–]\s*/,'')
       .replace(/\s{2,}/g,' ').trim();
     // A year/month edition has never been evidence of a different contest type.
+    if(/^쇼!\s*음악중심\s*\|?\s*STAGE M PICK$/i.test(x)) x='쇼! 음악중심 | STAGE M PICK';
     if(!x) x=plain(title);
     return x;
   }
@@ -91,9 +92,9 @@ const VoteAtlasSeries = (() => {
       if(!row.rounds.some(v=>v.id===e.id))row.rounds.push(e);
       for(const entry of rewardGroups.extracted(e)){
         // The 1️⃣, 2️⃣ symbols enumerate benefits; they do not signify 1st/2nd-place prizes.
-        const sharedFirst=Array.isArray(e.reward_lines)&&e.reward_lines.some(x=>/1\s*(?:등|위)\s*리워드/.test(x));
-        const enumerated=/^[12]\ufe0f?\u20e3/.test(String(entry.text||'').trim());
-        const cleanEntry=(sharedFirst&&enumerated)?{...entry,condition:'1위'}:entry;
+        const sharedFirst=[...(Array.isArray(e.reward_lines)?e.reward_lines:[]),e.reward||''].some(x=>/1\s*(?:등|위)\s*리워드/.test(x));
+        const enumerated=/^[1-9]\ufe0f?\u20e3/.test(String(entry.text||'').trim());
+        const cleanEntry=enumerated?{...entry,condition:sharedFirst?'1위':null}:entry;
         benefit(row,cleanEntry,e);
       }
     }
