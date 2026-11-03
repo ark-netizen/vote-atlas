@@ -36,6 +36,10 @@ body {margin: 0; background:#f6f8f4; color:#263e31; font-family: 'Noto Sans KR',
 <button id="generate" type="submit">암호 검증값 생성</button>
 </form>
 <p id="status" role="status" aria-live="polite"></p>
+<p id="setupHelp" hidden>
+이 창에서 브라우저 암호화 기능을 사용할 수 없다면,
+<a href="https://ark-netizen.github.io/vote-atlas/lock-setup.html" target="_blank" rel="noopener noreferrer">공식 GitHub Pages 주소를 새 탭에서 직접 열어주세요.</a>
+</p>
 <section id="result" hidden>
 <h2>생성된 설정 JSON</h2>
 <p>아래 값은 비밀번호 자체가 아니지만, 생성 결과를 신뢰할 수 없는 곳에 별도로 공유하지 마세요.</p>
@@ -52,44 +56,110 @@ body {margin: 0; background:#f6f8f4; color:#263e31; font-family: 'Noto Sans KR',
 </section>
 <p><a href="overview.html">통합 대시보드로 돌아가기</a></p>
 </section></div>
-<script src="access-crypto.js"></script>
+<script src="access-crypto.js?v=passcode-fix-20261103"></script>
 <script>
 'use strict';
-const form = document.getElementById('setupForm');
-const status = document.getElementById('status');
-form.addEventListener('submit', async (event) => {
+const setupForm = document.getElementById('setupForm');
+const feedback = document.getElementById('status');
+const help = document.getElementById('setupHelp');
+const recoveryURL = 'https://ark-netizen.github.io/vote-atlas/lock-setup.html';
+
+function setupError(code, message) {
+  const error = new Error(message);
+  error.code = code;
+  return error;
+}
+function getCryptoTools() {
+  // Prefer the shared verifier, but fall back to exactly the same PBKDF2
+  // algorithm if access-crypto.js was not loaded (e.g. a stale CDN cache).
+  if (window.VoteAtlasLockCrypto &&
+      typeof window.VoteAtlasLockCrypto.newSalt === 'function' &&
+      typeof window.VoteAtlasLockCrypto.derive === 'function') {
+    return window.VoteAtlasLockCrypto;
+  }
+  return {
+    newSalt() {
+      const provider = window.crypto;
+      if (!provider || typeof provider.getRandomValues !== 'function') {
+        throw setupError('RANDOM_UNAVAILABLE', '난수 생성 기능을 사용할 수 없습니다.');
+      }
+      const salt = new Uint8Array(16);
+      provider.getRandomValues(salt);
+      return btoa(Array.from(salt, byte => String.fromCharCode(byte)).join(''));
+    },
+    async derive(password, saltBase64, iterations) {
+      const subtle = window.crypto && window.crypto.subtle;
+      if (!subtle || typeof subtle.importKey !== 'function') {
+        throw setupError('SUBTLE_UNAVAILABLE', '암호화 API를 사용할 수 없습니다.');
+      }
+      const bytes = Uint8Array.from(atob(saltBase64), ch => ch.charCodeAt(0));
+      if (bytes.length !== 16) throw setupError('SALT_INVALID', '검증값 초기화에 실패했습니다.');
+      const key = await subtle.importKey(
+        'raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits']
+      );
+      const bits = await subtle.deriveBits(
+        { name: 'PBKDF2', salt: bytes, iterations, hash: 'SHA-256' }, key, 256
+      );
+      return btoa(Array.from(new Uint8Array(bits), byte => String.fromCharCode(byte)).join(''));
+    }
+  };
+}
+function setupFailure(error) {
+  const code = error && error.code;
+  const unsecure = window.isSecureContext === false;
+  const noCrypto = !window.crypto || !window.crypto.subtle;
+  if (unsecure || noCrypto || [
+    'RANDOM_UNAVAILABLE', 'SUBTLE_UNAVAILABLE',
+    'CRYPTO_RANDOM_UNAVAILABLE', 'CRYPTO_SUBTLE_UNAVAILABLE'
+  ].includes(code)) {
+    help.hidden = false;
+    return unsecure
+      ? '현재 창은 보안 연결로 인식되지 않아 암호화 기능이 차단되었습니다. 아래 공식 GitHub Pages 주소를 새 탭에서 열어주세요.'
+      : '이 브라우저 환경에서 암호화 API를 사용할 수 없습니다. 아래 공식 GitHub Pages 주소를 새 탭에서 열거나 최신 Chrome/Edge를 이용해주세요.';
+  }
+  // Do not output the user-supplied password or full exception details.
+  const reason = error && (error.code || error.name);
+  return '암호 검증값 생성 실패 (' + (reason || 'UNKNOWN') +
+    '). 새로고침 후 다시 시도해주세요. 계속 실패하면 표시된 오류 유형을 알려주세요.';
+}
+setupForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   const first = document.getElementById('password');
   const second = document.getElementById('confirm');
   const button = document.getElementById('generate');
   document.getElementById('result').hidden = true;
-  if (first.value.length < 12) { status.textContent = '암호는 12자 이상으로 설정해주세요.'; return; }
-  if (first.value !== second.value) { status.textContent = '두 암호가 다릅니다.'; return; }
+  help.hidden = true;
+  if (first.value.length < 12) { feedback.textContent = '암호는 12자 이상으로 설정해주세요.'; return; }
+  if (first.value !== second.value) { feedback.textContent = '두 암호가 다릅니다.'; return; }
   button.disabled = true;
-  status.textContent = '검증값 생성 중입니다.';
+  feedback.textContent = '검증값 생성 중입니다.';
   try {
     const iterations = 200000;
-    const salt = VoteAtlasLockCrypto.newSalt();
-    const verifier = await VoteAtlasLockCrypto.derive(first.value, salt, iterations);
+    const verifierTool = getCryptoTools();
+    const salt = verifierTool.newSalt();
+    const verifier = await verifierTool.derive(first.value, salt, iterations);
+    if (!salt || !verifier || verifier.length < 40) {
+      throw setupError('INVALID_VERIFIER', '검증값 생성 결과가 올바르지 않습니다.');
+    }
     const json = JSON.stringify({version: 1, enabled: true, iterations, salt, verifier}, null, 2);
     document.getElementById('configOut').textContent = json;
     document.getElementById('result').hidden = false;
-    status.textContent = '생성 완료. 아래 설정 파일을 GitHub에 반영해야 모든 방문자에게 잠금이 적용됩니다.';
-  } catch (_error) {
-    status.textContent = '암호 검증값 생성 실패. HTTPS 연결을 확인해주세요.';
-  } finally {
+    feedback.textContent = '생성 완료. 아래 설정 파일을 GitHub에 반영해야 모든 방문자에게 잠금이 적용됩니다.';
     first.value = '';
     second.value = '';
+  } catch (error) {
+    feedback.textContent = setupFailure(error);
+  } finally {
     button.disabled = false;
   }
 });
 document.getElementById('copy').addEventListener('click', async () => {
-  const text = document.getElementById('configOut').textContent;
+  const configJSON = document.getElementById('configOut').textContent;
   try {
-    await navigator.clipboard.writeText(text);
-    status.textContent = '설정 JSON이 복사되었습니다. GitHub 파일에 붙여 넣어주세요.';
+    await navigator.clipboard.writeText(configJSON);
+    feedback.textContent = '설정 JSON이 복사되었습니다. GitHub 파일에 붙여 넣어주세요.';
   } catch (_error) {
-    status.textContent = '자동 복사가 허용되지 않았습니다. JSON을 직접 선택해 복사해주세요.';
+    feedback.textContent = '자동 복사가 허용되지 않았습니다. JSON을 직접 선택해 복사해주세요.';
   }
 });
 </script>

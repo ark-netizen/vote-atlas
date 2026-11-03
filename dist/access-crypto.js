@@ -10,23 +10,39 @@
     const chars = atob(value);
     return Uint8Array.from(chars, ch => ch.charCodeAt(0));
   }
+  function cryptoProvider() {
+    // Resolve the API at call time. In an embedded/opaque origin, subtle may
+    // be unavailable even though the parent page uses HTTPS.
+    const provider = typeof globalThis === 'undefined' ? null : globalThis.crypto;
+    if (!provider || typeof provider.getRandomValues !== 'function') {
+      const error = new Error('Secure random generator unavailable');
+      error.code = 'CRYPTO_RANDOM_UNAVAILABLE';
+      throw error;
+    }
+    return provider;
+  }
   function newSalt() {
     const salt = new Uint8Array(16);
-    crypto.getRandomValues(salt);
+    cryptoProvider().getRandomValues(salt);
     return b64(salt);
   }
   async function derive(password, saltBase64, iterations) {
-    if (!crypto || !crypto.subtle) throw new Error('HTTPS 환경이 필요합니다.');
+    const provider = cryptoProvider();
+    if (!provider.subtle || typeof provider.subtle.importKey !== 'function') {
+      const error = new Error('Web Crypto SubtleCrypto unavailable');
+      error.code = 'CRYPTO_SUBTLE_UNAVAILABLE';
+      throw error;
+    }
     if (!Number.isInteger(iterations) || iterations < 100000) {
       throw new Error('PBKDF2 반복 횟수가 적절하지 않습니다.');
     }
     if (typeof password !== 'string' || !password) throw new Error('암호가 없습니다.');
     const salt = fromB64(saltBase64);
     if (salt.length !== 16) throw new Error('잘못된 salt');
-    const key = await crypto.subtle.importKey(
+    const key = await provider.subtle.importKey(
       'raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits']
     );
-    return b64(new Uint8Array(await crypto.subtle.deriveBits(
+    return b64(new Uint8Array(await provider.subtle.deriveBits(
       { name: 'PBKDF2', salt, iterations, hash: 'SHA-256' }, key, 256
     )));
   }
