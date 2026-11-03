@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Vote Atlas 공식 투표 리워드 확인 현황">
+<title>Vote Atlas | 리워드</title>
+<link rel="stylesheet" href="overview.css">
+<link rel="stylesheet" href="rewards.css">
+</head>
+<body>
+<div class="shell">
+<aside class="rail">
+<a href="overview.html" class="brand"><span class="brandmark">V<span>·</span></span><span>vote atlas<small>FANDOM VOTING INTELLIGENCE</small></span></a>
+<div class="workspace">팬덤 투표 데이터베이스<small>공식 공개 정보 · 자동 수집</small></div>
+<div class="rail-title">WORKSPACE</div>
+<nav aria-label="서비스 메뉴">
+<a class="nav" href="overview.html">◈ &nbsp; 통합 대시보드</a>
+<a class="nav active" href="rewards.html" aria-current="page">◇ &nbsp; 리워드</a>
+<a class="nav" href="index.html">▦ &nbsp; 월간 투표 캘린더</a>
+<a class="nav" href="overview.html#sources">◎ &nbsp; 수집 현황</a>
+<a class="nav" href="https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml" target="_blank" rel="noopener noreferrer">↻ &nbsp; 자동 수집 내역</a>
+</nav>
+<div class="rail-bottom"><strong>확인된 리워드만<br>기본 목록에.</strong><p>원문에 없는 집행 조건이나 광고 장소·기간은 추측하지 않습니다.</p></div>
+</aside>
+<main class="main">
+<header class="top"><div class="crumb">VOTE ATLAS <span>/</span> REWARDS</div><div class="meta"><span id="updated">데이터 불러오는 중</span><button type="button" id="reload">새로고침 ↻</button></div></header>
+<div class="content">
+<div class="eyebrow"><span class="live-dot"></span> VERIFIED REWARD TEXT · KST</div>
+<h1>리워드만, 한눈에.</h1>
+<p class="lead">투표별 공식 설명에서 확인한 혜택을 모았습니다. 확인 시점의 안내이며 실제 지급이나 광고 집행을 보증하지 않습니다.</p>
+<section class="stats reward-stats" aria-label="리워드 통계">
+<div class="stat"><span>리워드 확인 투표</span><strong id="countKnown">—</strong><small>공식 설명 텍스트 기준</small></div>
+<div class="stat"><span>진행 중 리워드 투표</span><strong id="countActive">—</strong><small>한국시간 기준</small></div>
+<div class="stat"><span>7일 내 마감</span><strong id="countSoon">—</strong><small>마감일 확인 기준</small></div>
+<div class="stat"><span>리워드 미확인</span><strong id="countUnknown">—</strong><small>필터로 조회 가능</small></div>
+</section>
+<section class="panel reward-panel">
+<div class="panelhead"><div><span class="section-index">REWARD DIRECTORY</span><h2>투표 리워드 목록</h2></div><span id="resultsCount" class="caption" role="status" aria-live="polite">—</span></div>
+<div class="reward-filters">
+<label class="search reward-search"><span>⌕</span><input type="search" id="query" placeholder="투표명 · 리워드 · 후보 · 장소 검색" aria-label="리워드 검색"></label>
+<label class="filter-label"><span>앱</span><select id="app" aria-label="앱별 필터"><option value="all">모든 앱</option></select></label>
+<label class="filter-label"><span>리워드 종류</span><select id="type" aria-label="리워드 종류별 필터"><option value="all">전체 종류</option><option value="advertising">광고·홍보</option><option value="trophy">트로피·상패</option><option value="goods">굿즈·실물</option><option value="experience">초대·참여</option><option value="other">기타</option></select></label>
+<label class="filter-label"><span>진행 상태</span><select id="status" aria-label="투표 진행 상태별 필터"><option value="all">전체 상태</option><option value="active">진행 중</option><option value="upcoming">시작 예정</option><option value="ended">마감</option><option value="unknown">기간 미확인</option></select></label>
+<label class="filter-label"><span>리워드 확인</span><select id="known" aria-label="리워드 확인 여부 필터"><option value="known">확인된 항목만</option><option value="all">전체 (미확인 포함)</option><option value="missing">미확인만</option></select></label>
+<label class="filter-label"><span>정렬</span><select id="sort" aria-label="리워드 정렬"><option value="deadline">마감 임박순</option><option value="recent">최근 확인순</option><option value="app">앱 이름순</option></select></label>
+</div>
+<p class="reward-note">광고 장소·집행 기간은 투표 기간과 별도입니다. 공식 데이터에 없는 항목은 ‘미확인’으로 표시합니다. 후보·원문 확인은 행을 눌러주세요.</p>
+<div class="reward-table-wrap">
+<table class="reward-table">
+<thead><tr><th scope="col">앱 · 투표</th><th scope="col">리워드 내용 / 종류</th><th scope="col">제공 조건</th><th scope="col">투표 기간</th><th scope="col">광고 장소 · 집행 기간</th><th scope="col">마지막 확인</th><th scope="col">공식 출처</th></tr></thead>
+<tbody id="rewardRows"><tr><td colspan="7" class="reward-empty">수집 기록을 불러오고 있습니다.</td></tr></tbody>
+</table>
+</div>
+<p id="limitNotice" class="reward-note" hidden></p>
+</section>
+<footer>Vote Atlas · GitHub Pages + 저장소 JSON · 별도 DB 없음 · 모든 날짜는 한국시간 기준</footer>
+</div>
+</main>
+</div>
+<dialog id="rewardDetail" aria-labelledby="detailTitle">
+<button class="close" id="closeDetail" type="button" aria-label="상세 닫기">×</button>
+<div id="detailContent"></div>
+</dialog>
+<script src="rewards.js" defer></script>
+</body>
+</html>
