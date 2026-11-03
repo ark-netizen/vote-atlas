@@ -180,8 +180,8 @@ function safeCsv(s){
  return '"'+guarded.replace(/"/g,'""')+'"';
 }
 function exportCsv(){
- const rows=[['앱','투표명','시작','종료','리워드','후보','수집당시1위','최종1위','출처']];
- for(const e of filtered())rows.push([app(e.app).name,e.title,e.start,e.end,rewardText(e),(e.candidates||[]).map(c=>c.name).join(' / '),e.leader,e.winner,e.source_url]);
+ const rows=[['앱','투표명','시작','종료','리워드','후보','수집당시1위','1위 확인 시각(KST)','최종1위','출처']];
+ for(const e of filtered())rows.push([app(e.app).name,e.title,e.start,e.end,rewardText(e),(e.candidates||[]).map(c=>c.name).join(' / '),e.leader,e.leader?fullStamp(observedAt(e)):'',e.winner,e.source_url]);
  const content='\ufeff'+rows.map(row=>row.map(safeCsv).join(',')).join('\r\n');
  const url=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8'}));
  const a=doc('a','');a.href=url;a.download='vote-atlas-'+kst+'.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
