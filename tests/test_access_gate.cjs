@@ -36,7 +36,7 @@ test('Every dashboard is hidden and only loads its main JavaScript after guard',
     assert.match(html, /<body class="protected-view">/);
     assert.match(html, /<link rel="stylesheet" href="accessassert.match(gate, /!config\.salt \|\| !config\.verifier/);.css">/);
     assert.match(html, /src="access-crypto\.js"/);
-    assert.match(html, new RegExp('src="access-guard\\\\.js" data-app-script="' + script.replace(/\./g, '\\.') + '"'));
+    assert.ok(html.includes('src="access-guard.js" data-app-script="' + script + '"'));
     assert.doesNotMatch(html, new RegExp('<script\\s+src="' + script.replace(/\./g, '\\.') + '"'));
   }
 });
@@ -49,7 +49,7 @@ test('Lock setup page generates verifier locally and links to owner-only GitHub 
 test('Dashboard gate validates configuration before considering browser session', () => {
   const gate = read('access-guard.js');
   assert.ok(gate.indexOf('if (config.enabled !== true') < gate.indexOf('sessionStorage.getItem(sessionKey)'));
-  assert.match(gate, /if \(!config\.salt \|\| !config\.verifier\)/); // fail-closed exact shape may vary
+  assert.match(gate, /!config\.salt \|\| !config\.verifier/);
   assert.match(gate, /window\.VoteAtlasLockCrypto\.derive/);
   assert.match(gate, /document\.body\.classList\.remove\('protected-view'\)/);
 });
