@@ -27,28 +27,28 @@
 <header class="top"><div class="crumb">VOTE ATLAS <span>/</span> REWARDS</div><div class="meta"><span id="updated">데이터 불러오는 중</span><button type="button" id="reload">새로고침 ↻</button></div></header>
 <div class="content">
 <div class="eyebrow"><span class="live-dot"></span> VERIFIED REWARD TEXT · KST</div>
-<h1>앱별 리워드 유형을, 한눈에.</h1>
-<p class="lead">같은 앱에서 조건·장소·제공 기간 규칙이 같은 혜택은 하나로 묶습니다. 반복 투표와 집행 이력은 유형을 선택해 확인하실 수 있습니다.</p>
+<h1>투표별 규모와 리워드를, 한눈에.</h1>
+<p class="lead">월·주차·회차만 다른 투표는 하나의 시리즈로 묶고, 어떤 혜택이 제공되는지와 수집 시점의 평균 득표 규모를 비교합니다.</p>
 <section class="stats reward-stats" aria-label="리워드 통계">
-<div class="stat"><span>확인된 리워드 유형</span><strong id="countKnown">—</strong><small>공식 설명 텍스트 기준</small></div>
-<div class="stat"><span>진행 중 투표 연결 유형</span><strong id="countActive">—</strong><small>한국시간 기준</small></div>
-<div class="stat"><span>7일 내 마감 연결 유형</span><strong id="countSoon">—</strong><small>마감일 확인 기준</small></div>
+<div class="stat"><span>리워드 확인 시리즈</span><strong id="countKnown">—</strong><small>공식 설명 텍스트 기준</small></div>
+<div class="stat"><span>진행 중 투표 시리즈</span><strong id="countActive">—</strong><small>한국시간 기준</small></div>
+<div class="stat"><span>7일 내 마감 시리즈</span><strong id="countSoon">—</strong><small>마감일 확인 기준</small></div>
 <div class="stat"><span>리워드 미확인</span><strong id="countUnknown">—</strong><small>필터로 조회 가능</small></div>
 </section>
 <section class="panel reward-panel">
-<div class="panelhead"><div><span class="section-index">REWARD DIRECTORY</span><h2>리워드 유형 · 제공 조건</h2></div><span id="resultsCount" class="caption" role="status" aria-live="polite">—</span></div>
+<div class="panelhead"><div><span class="section-index">REWARD DIRECTORY</span><h2>투표 시리즈 · 리워드 · 투표 규모</h2></div><span id="resultsCount" class="caption" role="status" aria-live="polite">—</span></div>
 <div class="reward-filters">
-<label class="search reward-search"><span>⌕</span><input type="search" id="query" placeholder="앱 · 리워드 유형 · 장소 · 관련 투표 검색" aria-label="리워드 검색"></label>
+<label class="search reward-search"><span>⌕</span><input type="search" id="query" placeholder="투표 시리즈 · 혜택 · 장소 검색" aria-label="리워드 검색"></label>
 <label class="filter-label"><span>앱</span><select id="app" aria-label="앱별 필터"><option value="all">모든 앱</option></select></label>
 <label class="filter-label"><span>리워드 종류</span><select id="type" aria-label="리워드 종류별 필터"><option value="all">전체 종류</option><option value="advertising">광고·홍보</option><option value="trophy">트로피·상패</option><option value="goods">굿즈·실물</option><option value="experience">초대·참여</option><option value="other">기타</option></select></label>
 <label class="filter-label"><span>진행 상태</span><select id="status" aria-label="투표 진행 상태별 필터"><option value="all">전체 상태</option><option value="active">진행 중</option><option value="upcoming">시작 예정</option><option value="ended">마감</option><option value="unknown">기간 미확인</option></select></label>
 <label class="filter-label"><span>리워드 확인</span><select id="known" aria-label="리워드 확인 여부 필터"><option value="known">확인된 항목만</option><option value="all">전체 (미확인 포함)</option><option value="missing">미확인만</option></select></label>
 <label class="filter-label"><span>정렬</span><select id="sort" aria-label="리워드 정렬"><option value="deadline">진행 투표 마감순</option><option value="recent">최근 확인순</option><option value="app">앱 이름순</option></select></label>
 </div>
-<p class="reward-note">리워드 제공 기간 규칙과 실제 집행 시작·종료일을 구분합니다. 규칙이 같으면 회차의 날짜만 달라도 같은 유형으로 묶고, 장소·조건·기간 규칙이 다르면 분리합니다. 적용 회차와 공식 출처는 유형을 눌러 확인합니다.</p>
+<p class="reward-note">동일 투표의 다른 달·주차·회차는 한 줄로 묶습니다. 평균 득표는 공개된 전체 후보의 최근 수집값만 계산하며, 참여자 수와는 다릅니다. 촬영일 광고는 정확한 송출 일수가 공식적으로 확인되지 않으면 ‘일수 미확인’으로 표시합니다.</p>
 <div class="reward-table-wrap">
 <table class="reward-table">
-<thead><tr><th scope="col">앱 · 리워드 유형</th><th scope="col">혜택 내용 / 종류</th><th scope="col">제공 조건</th><th scope="col">제공 기간 규칙</th><th scope="col">제공 장소 · 집행 기록</th><th scope="col">최근 확인</th><th scope="col">공식 출처</th></tr></thead>
+<thead><tr><th scope="col">앱 · 투표 시리즈</th><th scope="col">수집 회차</th><th scope="col">리워드 종류</th><th scope="col">송출·제공 일수</th><th scope="col">장소 · 제공 조건</th><th scope="col">평균 득표 규모</th><th scope="col">세부 회차</th></tr></thead>
 <tbody id="rewardRows"><tr><td colspan="7" class="reward-empty">수집 기록을 불러오고 있습니다.</td></tr></tbody>
 </table>
 </div>
@@ -62,6 +62,6 @@
 <button class="close" id="closeDetail" type="button" aria-label="상세 닫기">×</button>
 <div id="detailContent"></div>
 </dialog>
-<script src="reward-groups.js"></script><script src="access-crypto.js"></script><script src="access-guard.js" data-app-script="rewards.js"></script>
+<script src="reward-groups.js"></script><script src="reward-series.js"></script><script src="access-crypto.js"></script><script src="access-guard.js" data-app-script="rewards.js"></script>
 </body>
 </html>

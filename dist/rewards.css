@@ -65,3 +65,26 @@
 #rewardDetail summary{font-weight:700;color:#476d51;font-size:12px;cursor:pointer}
 .reward-type-title,.reward-history-item{overflow-wrap:anywhere}
 .reward-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+
+/* Voting-program-level reward comparison */
+.reward-table{min-width:1120px}
+.reward-table th:nth-child(1){width:17%}
+.reward-table th:nth-child(2){width:10%}
+.reward-table th:nth-child(3){width:20%}
+.reward-table th:nth-child(4){width:18%}
+.reward-table th:nth-child(5){width:16%}
+.reward-table th:nth-child(6){width:13%}
+.reward-table th:nth-child(7){width:6%}
+.series-benefit,.series-duration,.series-place{margin-bottom:9px;padding-bottom:8px;border-bottom:1px solid #eef1eb;line-height:1.55}
+.series-benefit:last-child,.series-duration:last-child,.series-place:last-child{border-bottom:0;margin:0;padding:0}
+.series-benefit strong,.series-duration strong,.series-place strong{display:block;font-size:11px;color:#385d43;font-weight:700;overflow-wrap:anywhere}
+.series-benefit small,.series-duration span,.series-place small,.series-small{display:block;margin-top:5px;font-size:10px;line-height:1.65;color:#7d8d81}
+.series-duration span{font-weight:700;color:#9c7543}
+.series-votes{font-size:15px;font-variant-numeric:tabular-nums;color:#376448}
+.series-reward-detail{padding:16px;background:#f7faf4;border-radius:10px;border:1px solid #dfeade;margin-top:15px}
+.series-reward-detail h3{font-size:14px;margin:0 0 8px}
+.series-reward-detail .detail-grid{margin:12px 0}
+.series-reward-detail .source-anchor{display:inline-block;margin:5px 9px 5px 0}
+#rewardDetail{max-width:760px}
+#rewardDetail .detail-grid dd{overflow-wrap:anywhere}
