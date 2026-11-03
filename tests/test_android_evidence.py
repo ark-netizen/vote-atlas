@@ -26,6 +26,7 @@ class AndroidEvidenceTests(unittest.TestCase):
         self.assertEqual(row["rewards"][0]["ad_execution_start_date"], None)
         self.assertEqual(row["rewards"][0]["ad_execution_end_date"], None)
         self.assertIn("7일간", row["rewards"][0]["delivery_period_raw"])
+        self.assertEqual(row["rewards"][0]["ad_execution_period_raw"], "추후 공지")
 
     def test_ad_period_never_overwrites_vote_period(self):
         row = self.extract(
