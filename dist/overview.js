@@ -10,6 +10,10 @@ const app=(id)=>records.sources.find(s=>s.id===id)||{name:id,color:'#709678'};
 const dateText=(s)=>s?s.slice(0,10):'미확인';
 const rewardText=(e)=>String(e.reward||'').trim();
 const stamp=(s)=>s?new Date(s).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}):'없음';
+const fullStamp=(s)=>{if(!s||!Number.isFinite(Date.parse(s)))return '수집 일시 미확인';return new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date(s))+' KST'};
+const observedAt=e=>e.leader_observed_at||e.collected_at||null;
+const soonUntil=()=>{const d=new Date(kst+'T12:00:00Z');d.setUTCDate(d.getUTCDate()+7);return d.toISOString().slice(0,10)};
+let summary='all';
 const link=(url)=>{try{const u=new URL(url);return ['https:','http:'].includes(u.protocol)?u.href:'#'}catch{return '#'}};
 function showError(msg){$('#votes').replaceChildren(doc('p','empty',msg));$('#updated').textContent='데이터 연결 실패'}
 async function load(){
@@ -22,8 +26,10 @@ async function load(){
    $('#updated').textContent='최근 갱신 '+stamp(data.updated_at)+' KST';
    for(const s of data.sources){if(!selected.includes(s.id)){selected.push(s.id)}}
    $('#app').replaceChildren(doc('option','', '모든 앱'));
+   $('#artistApp').replaceChildren(doc('option','', '모든 앱'));
+   $('#artistApp').firstChild.value='all';
    $('#app').firstChild.value='all';
-   for(const s of data.sources){const o=doc('option','',s.name);o.value=s.id;$('#app').append(o)}
+   for(const s of data.sources){for(const selector of ['#app','#artistApp']){const o=doc('option','',s.name);o.value=s.id;$(selector).append(o)}}
    refresh();
   }catch(e){showError('수집 데이터를 불러오지 못했습니다. 저장소 상태를 확인해 주세요.')}
 }
@@ -31,24 +37,30 @@ function refresh(){
  const ev=records.events;
  $('#countAll').textContent=ev.length.toLocaleString('ko-KR');
  $('#countActive').textContent=ev.filter(e=>state(e)==='active').length.toLocaleString('ko-KR');
+ $('#countSoon').textContent=ev.filter(e=>e.end>=kst&&e.end<=soonUntil()).length.toLocaleString('ko-KR');
  $('#countReward').textContent=ev.filter(e=>rewardText(e)).length.toLocaleString('ko-KR');
  $('#countLineup').textContent=ev.filter(e=>(e.candidates||[]).length).length.toLocaleString('ko-KR');
- renderCalendar();renderVotes();renderSources();
+ renderCalendar();renderVotes();renderArtists();renderSources();
 }
-function filtered(){
+function filtered(ignoreDay=false){
  const q=$('#query').value.trim().toLowerCase();
  const aid=$('#app').value,period=$('#period').value,reward=$('#reward').value;
  return records.events.filter(e=>{
+  if(summary==='active'&&state(e)!=='active')return false;
+  if(summary==='soon'&&!(e.end>=kst&&e.end<=soonUntil()))return false;
+  if(summary==='reward'&&!rewardText(e))return false;
+  if(summary==='lineup'&&!(e.candidates||[]).length)return false;
   if(aid!=='all'&&e.app!==aid)return false;
   if(period!=='all'&&state(e)!==period)return false;
   if(reward==='known'&&!rewardText(e)||reward==='missing'&&rewardText(e))return false;
-  if(chosenDay&&!(e.start<=chosenDay&&e.end>=chosenDay))return false;
+  if(!ignoreDay&&chosenDay&&!VoteAtlasCalendar.onDay(e,chosenDay))return false;
   if(q&&!([e.title,e.reward,e.leader,e.winner].concat((e.candidates||[]).map(c=>c.name)).join(' ').toLowerCase().includes(q)))return false;
   return true;
  }).sort((a,b)=>({active:0,upcoming:1,ended:2}[state(a)]-{active:0,upcoming:1,ended:2}[state(b)])||b.end.localeCompare(a.end));
 }
 function renderVotes(){
  const list=filtered();$('#listCount').textContent=list.length.toLocaleString('ko-KR')+'건 표시';
+ $('#summarySelection').hidden=summary==='all';$('#summarySelectionLabel').textContent={active:'현재 진행 중 투표',soon:'7일 내 마감 투표',reward:'리워드 확인된 투표',lineup:'후보가 확보된 투표'}[summary]||'';
  const root=$('#votes');root.replaceChildren();
  if(!list.length){root.append(doc('p','empty','해당 조건에 맞는 투표가 없습니다. 필터를 변경해 주세요.'));return}
  for(const e of list.slice(0,500)){
@@ -66,7 +78,7 @@ function renderVotes(){
   if(!c.length)chips.append(doc('span','chip','후보 미확인'));
   card.append(chips);
   const foot=doc('div','vote-foot');
-  foot.append(doc('span','',e.winner?'최종 1위 '+e.winner:e.leader?'수집 당시 1위 '+e.leader:'1위 미확인'),doc('b','','상세 보기 ↗'));
+  foot.append(doc('span','',e.winner?'최종 1위 '+e.winner:e.leader?'수집 당시 1위 '+e.leader+' · '+fullStamp(observedAt(e)):'1위 미확인'),doc('b','','상세 보기 ↗'));
   card.append(foot);root.append(card);
  }
  if(list.length>500)root.append(doc('p','empty','한 번에 최대 500건을 표시합니다. 검색어로 범위를 좁혀 주세요.'));
@@ -77,18 +89,56 @@ function renderCalendar(){
  const start=new Date(monthStart);start.setUTCDate(1-monthStart.getUTCDay());
  const cells=Math.ceil((monthStart.getUTCDay()+new Date(Date.UTC(calYear,calMonth+1,0)).getUTCDate())/7)*7;
  const root=$('#miniCalendar');root.replaceChildren();
+ const calendarEvents=filtered(true);
  for(let i=0;i<cells;i++){
   const d=new Date(start);d.setUTCDate(start.getUTCDate()+i);
   const k=d.toISOString().slice(0,10);
-  const count=records.events.filter(e=>e.start===k||e.end===k).length;
+  const count=calendarEvents.filter(e=>VoteAtlasCalendar.onDay(e,k)).length;
   const cell=doc('button','mini-day'+(d.getUTCMonth()!==calMonth?' other':'')+(k===kst?' current':'')+(k===chosenDay?' selected':''));
-  cell.type='button';cell.title=k+' · 시작 또는 마감 투표 '+count+'건';
+  cell.type='button';cell.title=k+' · 해당 날짜 진행 투표 '+count+'건';
   cell.append(doc('span','daynum',d.getUTCDate()));
   if(count)cell.append(doc('span','day-count',count+'건'));
   cell.onclick=()=>{chosenDay=(chosenDay===k?null:k);$('#clearDay').hidden=!chosenDay;renderCalendar();renderVotes()};
   root.append(cell);
  }
 }
+
+function renderArtists(){
+ const appId=$('#artistApp').value || 'all';
+ const field=$('#artistSort').value;
+ const search=$('#artistQuery').value.trim().toLocaleLowerCase('ko-KR');
+ const list=VoteAtlasRankings.sort(VoteAtlasRankings.build(records.events,appId),field)
+   .filter(x=>!search||x.name.toLocaleLowerCase('ko-KR').includes(search));
+ $('#artistCount').textContent='아티스트 '+list.length.toLocaleString('ko-KR')+'명/팀';
+ const root=$('#artistRows');root.replaceChildren();
+ if(!list.length){root.append(doc('p','empty','조건에 맞는 후보가 없습니다.'));return}
+ for(const [idx,artist] of list.slice(0,120).entries()){
+   const row=doc('button','artist-row');row.type='button';
+   const name=doc('span','artist-name',(idx+1)+'. '+artist.name);
+   name.append(doc('small','',artist.voteCount+'개 투표 · 이름 표기 기준 집계'));
+   row.append(name,
+     doc('span','artist-value',artist.observedFirsts.toLocaleString('ko-KR')+'회'),
+     doc('span','artist-value',artist.finalWins.toLocaleString('ko-KR')+'회'),
+     doc('span','artist-value',artist.votesKnown?artist.snapshotVotes.toLocaleString('ko-KR')+'표':'미확인'));
+   row.onclick=()=>showArtist(artist);root.append(row);
+ }
+ if(list.length>120)root.append(doc('p','empty','상위 120개 아티스트만 표시합니다. 검색으로 다른 후보를 찾아보세요.'));
+}
+function showArtist(artist){
+ const root=$('#artistDetail');root.hidden=false;root.replaceChildren();
+ const close=doc('button','artist-close','닫기 ×');close.onclick=()=>{root.hidden=true};
+ root.append(close,doc('h3','',artist.name+' · 투표별 관측 기록'));
+ root.append(doc('p','','관측 1위 '+artist.observedFirsts+'회 · 공식 최종 확정 1위 '+artist.finalWins+'회 · 수집 시점 득표 합계 '+(artist.votesKnown?artist.snapshotVotes.toLocaleString('ko-KR')+'표':'미확인')+' ('+artist.votesKnown+'개 투표에서 공개). 동일한 투표를 시간별로 누적한 값은 아닙니다.'));
+ for(const entry of [...artist.entries].sort((a,b)=>String(b.end||'').localeCompare(String(a.end||''))).slice(0,80)){
+   const vote=records.events.find(e=>e.id===entry.eventId);if(!vote)continue;
+   const row=doc('button','artist-event');row.type='button';
+   row.append(doc('span','',app(entry.app).name+' · '+entry.title),
+     doc('small','',(entry.rank?entry.rank+'위 · ':'순위 미확인 · ')+(entry.votes===null?'득표 미확인':entry.votes.toLocaleString('ko-KR')+'표')+(entry.observedFirst?' · 1위 관측 '+fullStamp(entry.observedAt):'')+(entry.finalWin?' · 최종 확정':'')));
+   row.onclick=()=>openDetail(vote);root.append(row);
+ }
+ root.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
 function renderSources(){
  const root=$('#sourceCards');root.replaceChildren();
  for(const s of records.sources){
@@ -110,7 +160,7 @@ function openDetail(e){
  ['투표 기간',dateText(e.start)+' ~ '+dateText(e.end)+(e.end_at?' (마감 '+stamp(e.end_at)+' KST)':'')],
  ['진행 상태',stateName[state(e)]],['리워드 안내',rewardText(e)||'공식 상세에서 문구 미확인'],
  ['후보 범위',e.lineup_complete?'전체 후보 확인':'페이지 표시 후보 / 전체 확인 안 됨'],
- ['수집 당시 1위',e.leader||'미확인'],['최종 1위',e.winner||'공식 최종 결과 미확인'],
+ ['수집 당시 1위',e.leader?e.leader+' (확인 '+fullStamp(observedAt(e))+')':'미확인'],['최종 1위',e.winner||'공식 최종 결과 미확인'],
  ['검증 상태',e.verification||'확인 필요'],['수집 시각',stamp(e.collected_at)+' KST']];
  for(const [key,val] of items){dl.append(doc('dt','',key),doc('dd','',val))}
  root.append(dl,doc('h3','','확인된 후보 '+(e.candidates||[]).length+'명/팀'));
@@ -131,13 +181,26 @@ function safeCsv(s){
  return '"'+guarded.replace(/"/g,'""')+'"';
 }
 function exportCsv(){
- const rows=[['앱','투표명','시작','종료','리워드','후보','수집당시1위','최종1위','출처']];
- for(const e of filtered())rows.push([app(e.app).name,e.title,e.start,e.end,rewardText(e),(e.candidates||[]).map(c=>c.name).join(' / '),e.leader,e.winner,e.source_url]);
+ const rows=[['앱','투표명','시작','종료','리워드','후보','수집당시1위','1위 확인 시각(KST)','최종1위','출처']];
+ for(const e of filtered())rows.push([app(e.app).name,e.title,e.start,e.end,rewardText(e),(e.candidates||[]).map(c=>c.name).join(' / '),e.leader,e.leader?fullStamp(observedAt(e)):'',e.winner,e.source_url]);
  const content='\ufeff'+rows.map(row=>row.map(safeCsv).join(',')).join('\r\n');
  const url=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8'}));
  const a=doc('a','');a.href=url;a.download='vote-atlas-'+kst+'.csv';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
-for(const id of ['query','app','period','reward'])$('#'+id).addEventListener(id==='query'?'input':'change',renderVotes);
+for(const el of document.querySelectorAll('[data-summary]'))el.onclick=()=>{
+  summary=el.dataset.summary;chosenDay=null;$('#clearDay').hidden=true;
+  for(const id of ['app','period','reward'])$('#'+id).value='all';
+  $('#query').value='';renderCalendar();renderVotes();
+  document.querySelector('.vote-panel').scrollIntoView({behavior:'smooth',block:'start'});
+};
+$('#clearSummary').onclick=()=>{summary='all';renderCalendar();renderVotes()};
+for(const id of ['artistQuery','artistApp','artistSort'])$('#'+id).addEventListener(id==='artistQuery'?'input':'change',()=>{$('#artistDetail').hidden=true;renderArtists()});
+for(const id of ['query','app','period','reward'])$('#'+id).addEventListener(id==='query'?'input':'change',()=>{renderCalendar();renderVotes()});
+$('#clearOverviewFilters').onclick=()=>{
+ summary='all';chosenDay=null;$('#clearDay').hidden=true;
+ $('#query').value='';for(const id of ['app','period','reward'])$('#'+id).value='all';
+ renderCalendar();renderVotes();
+};
 $('#csv').onclick=exportCsv;$('#reload').onclick=load;
 $('#prevMonth').onclick=()=>{if(--calMonth<0){calMonth=11;calYear--}renderCalendar()};
 $('#nextMonth').onclick=()=>{if(++calMonth>11){calMonth=0;calYear++}renderCalendar()};

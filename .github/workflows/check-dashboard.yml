@@ -1,0 +1,29 @@
+name: Test Vote Atlas dashboard
+on:
+  pull_request:
+    paths:
+      - 'dist/*.js'
+      - 'dist/*.html'
+      - 'dist/*.css'
+      - 'tests/test_rankings.cjs'
+      - 'tests/test_calendar.cjs'
+      - '.github/workflows/check-dashboard.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check JavaScript syntax
+        run: |
+          node --check dist/app.js
+          node --check dist/overview.js
+          node --check dist/rankings.js
+          node --check dist/calendar-utils.js
+      - name: Test artist ranking logic
+        run: node --test tests/test_rankings.cjs tests/test_calendar.cjs
