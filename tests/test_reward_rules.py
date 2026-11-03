@@ -4,6 +4,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from reward_parse import extract_entries, parse_period
 from official_web_rules import verified_document, collect_official_rules
+from official_sns_collect import extract_official_posts
 
 class RewardRulesTests(unittest.TestCase):
     def test_distinct_ad_placements(self):
@@ -25,6 +26,11 @@ class RewardRulesTests(unittest.TestCase):
     def test_document_requires_textual_markers(self):
         with self.assertRaises(ValueError):
             verified_document('<html><body>Sign in to view the page</body></html>',('Audience Ticket Event',))
+    def test_social_posts_must_link_official_account(self):
+        html='<article><a href="/unofficial/status/1234567890">abc</a><p>Vote reward</p></article>'
+        self.assertEqual(extract_official_posts(html,'MubeatOfficial','2026-11-03T14:00:00+09:00'),[])
+        official='<article><a href="/MubeatOfficial/status/1234567890">vote</a><p>Ticket reward notice</p></article>'
+        self.assertEqual(len(extract_official_posts(official,'MubeatOfficial','2026-11-03T14:00:00+09:00')),1)
     def test_failure_preserves_prior_verified_document(self):
         prior=[{'id':'linc-spotlight-live','app':'linc','text':'previous rule','checked_at':'2026-11-01T14:00:00+09:00'}]
         policies,status=collect_official_rules(lambda url: '',prior,'2026-11-03T14:00:00+09:00')
