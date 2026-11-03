@@ -193,154 +193,175 @@ function labeledCell(label, content) {
   return td;
 }
 
-function visibleGroups() {
-  const f = readFilters();
-  const events=filtered();
-  const policies=(Array.isArray(dataset.reward_policies)?dataset.reward_policies:[]).filter(p=>{
-    if(f.status!=='all'||f.known==='missing')return false; // a generic rule has no verified vote state
-    if(f.app!=='all'&&p.app!==f.app)return false;
-    if(f.q&&![p.title,p.text,p.condition,p.place,p.period_rule,p.period_text].join(' ').toLocaleLowerCase().includes(f.q))return false;
-    return true;
-  });
-  let groups=VoteAtlasRewardGroups.group(events,policies);
-  if(f.known==='missing') {
-    const unknownEvents=events.filter(e=>!rewardText(e));
-    const byApp=new Map();
-    for(const event of unknownEvents){
-      if(!byApp.has(event.app))byApp.set(event.app,{
-        id:event.app+'|unknown',app:event.app,text:'리워드 미확인 (투표별 확인 필요)',
-        kind:'other',condition:UNKNOWN,place:UNKNOWN,period_rule:UNKNOWN,
-        history:[],policies:[],source_url:null,checked_at:null
-      });
-      byApp.get(event.app).history.push({
-        event_id:event.id,title:event.title,start:event.start,end:event.end,
-        source_url:event.source_url,checked_at:event.collected_at
-      });
-    }
-    groups=[...byApp.values()];
-  }
-  if(f.type!=='all')groups=groups.filter(g=>g.kind===f.type);
-  if(f.q)groups=groups.filter(g=>
-    [g.text,g.app,g.condition,g.place,g.period_rule,...g.history.map(h=>h.title)].join(' ').toLocaleLowerCase().includes(f.q));
-  const lastTime=g=>Date.parse(g.last_observed_at||g.checked_at||'')||0;
-  const nextEnd=g=>g.history.filter(h=>voteStatus({
-    start:h.start,end:h.end
-  })!=='ended').map(h=>h.end).sort()[0]||'9999-99-99';
-  groups.sort((x,y)=>
-    f.sort==='recent'?lastTime(y)-lastTime(x):
-    f.sort==='app'?appOf(x.app).name.localeCompare(appOf(y.app).name,'ko')||x.text.localeCompare(y.text,'ko'):
-    nextEnd(x).localeCompare(nextEnd(y))||x.app.localeCompare(y.app)||x.text.localeCompare(y.text,'ko')
-  );
-  return groups;
+
+function visibleSeries(){
+ const f=readFilters();
+ const matching=dataset.events.filter(e=>
+  (f.app==='all'||e.app===f.app)&&
+  (f.status==='all'||voteStatus(e)===f.status)
+ );
+ const policies=f.status==='all'&&f.known!=='missing'?
+   (dataset.reward_policies||[]).filter(p=>f.app==='all'||p.app===f.app):[];
+ const all=VoteAtlasSeries.build(matching,policies,VoteAtlasRewardGroups);
+ let filtered=all.filter(s=>{
+  if(f.known==='known'&&!s.benefits.length)return false;
+  if(f.known==='missing'&&s.benefits.length)return false;
+  if(f.type!=='all'&&!s.benefits.some(b=>b.kind===f.type))return false;
+  if(f.q&&![s.app,s.title,...s.rounds.map(e=>e.title),...s.benefits.flatMap(b=>[b.title,b.text,b.place,b.condition,b.period_rule])]
+    .join(' ').toLocaleLowerCase().includes(f.q))return false;
+  return true;
+ });
+ if(f.sort==='recent')filtered.sort((a,b)=>String(b.lastChecked||'').localeCompare(String(a.lastChecked||'')));
+ else if(f.sort==='app')filtered.sort((a,b)=>appOf(a.app).name.localeCompare(appOf(b.app).name,'ko')||a.title.localeCompare(b.title,'ko'));
+ else filtered.sort((a,b)=>{
+  const deadline=s=>s.rounds.filter(e=>voteStatus(e)!=='ended').map(e=>e.end||'').sort()[0]||'9999-99-99';
+  return deadline(a).localeCompare(deadline(b))||b.rounds.length-a.rounds.length;
+ });
+ return filtered;
 }
-function renderSummary() {
-  const known=dataset.events.filter(e=>Boolean(rewardText(e)));
-  const unique=VoteAtlasRewardGroups.group(dataset.events,dataset.reward_policies||[]);
-  $('#countKnown').textContent=unique.length.toLocaleString('ko-KR');
-  $('#countUnknown').textContent=(dataset.events.length-known.length).toLocaleString('ko-KR');
-  $('#countActive').textContent=unique.filter(g=>g.history.some(h=>voteStatus(h)==='active')).length.toLocaleString('ko-KR');
-  $('#countSoon').textContent=unique.filter(g=>g.history.some(h=>{
-    const days=daysUntilEnd(h);
-    return days>=0&&days<=7;
-  })).length.toLocaleString('ko-KR');
+function formatMetric(value,suffix=''){
+ return value===null||value===undefined?'미확인':Number(value).toLocaleString('ko-KR')+suffix;
+}
+function durationLabel(b){
+ // A named shooting day is NOT evidence of a 1-day or 7-day ad run.
+ const explicit=(b.period_rule||'').match(/(\d+)\s*일간/);
+ if(explicit)return explicit[1]+'일간 (공식 안내)';
+ if(/촬영일/.test(b.period_rule||''))return '송출 일수 미확인 · 촬영일만 명시';
+ return b.period_rule||'송출·제공 일수 미확인';
+}
+function renderSummary(){
+ const rows=VoteAtlasSeries.build(dataset.events,dataset.reward_policies||[],VoteAtlasRewardGroups);
+ $('#countKnown').textContent=rows.filter(s=>s.benefits.length).length.toLocaleString('ko-KR');
+ $('#countUnknown').textContent=rows.filter(s=>!s.benefits.length).length.toLocaleString('ko-KR');
+ $('#countActive').textContent=rows.filter(s=>s.rounds.some(e=>voteStatus(e)==='active')).length.toLocaleString('ko-KR');
+ $('#countSoon').textContent=rows.filter(s=>s.rounds.some(e=>{
+  const days=daysUntilEnd(e);return days>=0&&days<=7;
+ })).length.toLocaleString('ko-KR');
 }
 function renderRows(){
-  const groups=visibleGroups();
-  $('#resultsCount').textContent=groups.length.toLocaleString('ko-KR')+'개 리워드 유형';
-  const body=$('#rewardRows');
-  body.replaceChildren();
-  if(!groups.length){
-    const tr=element('tr','');
-    const td=element('td','reward-empty','조건에 맞는 리워드 유형이 없습니다.');
-    td.colSpan=7;tr.append(td);body.append(tr);
-    $('#limitNotice').hidden=true;
-    return;
+ const rows=visibleSeries(),body=$('#rewardRows');
+ body.replaceChildren();
+ $('#resultsCount').textContent=rows.length+'개 투표 시리즈';
+ if(!rows.length){
+  const tr=element('tr','');const td=element('td','reward-empty','조건에 맞는 투표 시리즈가 없습니다.');
+  td.colSpan=7;tr.append(td);body.append(tr);$('#limitNotice').hidden=true;return;
+ }
+ for(const series of rows.slice(0,250)){
+  const tr=element('tr','reward-record');tr.tabIndex=0;
+  tr.onclick=()=>openSeries(series);
+  tr.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openSeries(series)}};
+  const name=element('td','');
+  const app=element('span','app-name',appOf(series.app).name);
+  app.style.color=appOf(series.app).color||'#507b5e';
+  name.append(app,element('br'),element('strong','reward-type-title',series.title));
+  name.append(element('div','reward-occurrences',series.rounds.length+'개 회차 / 혜택 '+series.benefits.length+'종'));
+  tr.append(name);
+  const count=element('td','');
+  count.append(element('strong','',series.rounds.length+'개 회차'));
+  count.append(element('div','reward-occurrences',series.metrics.knownVoteRounds+'개 회차 전체 후보 득표 확인'));
+  tr.append(count);
+  const benefit=element('td','');
+  if(series.benefits.length){
+   for(const b of series.benefits){
+    const div=element('div','series-benefit');
+    div.append(element('strong','',b.title));
+    div.append(element('small','',b.condition||'제공 조건 미확인'));
+    benefit.append(div);
+   }
+  }else appendUnknown(benefit,UNKNOWN);
+  tr.append(benefit);
+  const duration=element('td','');
+  for(const b of series.benefits){
+   const row=element('div','series-duration');
+   row.append(element('strong','',b.title));
+   row.append(element('span','',durationLabel(b)));
+   duration.append(row);
   }
-  for(const g of groups.slice(0,300)){
-    const tr=element('tr','reward-record');
-    tr.tabIndex=0;
-    tr.onclick=()=>openGroup(g);
-    tr.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();openGroup(g)}};
-    const first=element('td','');
-    const app=element('span','app-name',appOf(g.app).name);
-    app.style.color=appOf(g.app).color||'#507b5e';
-    first.append(app,element('br'),element('strong','reward-type-title',g.text));
-    first.append(element('div','reward-occurrences',g.history.length+'개 투표 · 공식 규칙 '+g.policies.length+'개'));
-    tr.append(first);
-    const benefit=element('td','');
-    benefit.append(element('span','',g.text));
-    benefit.append(element('div','reward-types',TYPE_NAMES[g.kind]||'기타'));
-    tr.append(benefit);
-    tr.append(labeledCell('제공 조건',g.condition||UNKNOWN));
-    tr.append(labeledCell('제공 기간 규칙',g.period_rule||g.period_text||UNKNOWN));
-    const place=element('td','');
-    const placeInner=element('div','date-pair');
-    placeInner.append(element('span','',g.place||UNKNOWN));
-    const knownExecution=g.history.filter(h=>h.execution_start_at||h.execution_end_at);
-    placeInner.append(element('span','',knownExecution.length?'실제 집행 일자 기록 '+knownExecution.length+'건 (상세 확인)':'실제 집행일: 미확인'));
-    place.append(placeInner);tr.append(place);
-    tr.append(labeledCell('마지막 확인',dateTimeText(g.last_observed_at||g.checked_at,'')));
-    const srcCell=element('td','');
-    if(safeLink(g.source_url)){
-      const src=element('a','source-anchor','공식 원문 ↗');
-      src.href=safeLink(g.source_url);src.target='_blank';src.rel='noopener noreferrer';
-      src.onclick=e=>e.stopPropagation();srcCell.append(src);
-    }else appendUnknown(srcCell,UNKNOWN);
-    srcCell.append(element('div','reward-occurrences','회차·변경 이력 보기 ↗'));
-    tr.append(srcCell);
-    body.append(tr);
+  if(!series.benefits.length)appendUnknown(duration,UNKNOWN);
+  tr.append(duration);
+  const place=element('td','');
+  for(const b of series.benefits){
+   const box=element('div','series-place');
+   box.append(element('strong','',b.place||'장소 미확인'));
+   box.append(element('small','',b.condition||'조건 미확인'));
+   place.append(box);
   }
-  $('#limitNotice').hidden=groups.length<=300;
-  if(groups.length>300)$('#limitNotice').textContent='상위 300개 유형 표시 · 필터로 범위를 좁혀주세요.';
+  if(!series.benefits.length)appendUnknown(place,UNKNOWN);
+  tr.append(place);
+  const metrics=element('td','');
+  metrics.append(element('strong','series-votes',formatMetric(series.metrics.meanVotes,'표')));
+  metrics.append(element('small','series-small','회차별 수집 득표 평균 · 전체 후보 기준'));
+  if(series.metrics.partialVoteRounds){
+   metrics.append(element('small','series-small','부분 후보 공개 '+series.metrics.partialVoteRounds+'회차 · 평균 제외'));
+  }
+  metrics.append(element('small','series-small','실제 참여자: '+(series.metrics.meanParticipants===null?'집계 불가':formatMetric(series.metrics.meanParticipants,'명'))));
+  tr.append(metrics);
+  const end=element('td','');
+  end.append(element('strong','','회차·원문 열기 ↗'));
+  end.append(element('small','series-small',dateTimeText(series.lastChecked,'')));
+  tr.append(end);body.append(tr);
+ }
+ $('#limitNotice').hidden=rows.length<=250;
+ if(rows.length>250)$('#limitNotice').textContent='상위 250개 시리즈를 표시합니다.';
 }
-function openGroup(group) {
-  const root=$('#detailContent');root.replaceChildren();
-  root.append(element('span','tag',appOf(group.app).name));
-  const h2=element('h2','',group.text);h2.id='detailTitle';root.append(h2);
-  const dl=element('dl','detail-grid');
-  for(const [label,text] of [
-    ['리워드 유형',TYPE_NAMES[group.kind]||'기타'],
-    ['혜택 내용',group.text],
-    ['제공 조건',group.condition||UNKNOWN],
-    ['광고·제공 장소',group.place||UNKNOWN],
-    ['제공 기간 규칙',group.period_rule||UNKNOWN],
-    ['기간 원문',group.period_text||UNKNOWN],
-    ['최종 확인',dateTimeText(group.last_observed_at||group.checked_at,'')],
-    ['연결된 투표',group.history.length+'건'],
-    ['공식 규칙 문서',group.policies.length+'건']
-  ])addDetailRow(dl,label,text);
-  root.append(dl);
-  if(group.policies.length){
-    const rules=element('details','');rules.open=true;
-    rules.append(element('summary','','공식 리워드 규칙 · '+group.policies.length+'건'));
-    for(const p of group.policies){
-      const item=element('div','reward-history-item');
-      item.append(element('strong','',p.title||p.id),
-        element('p','',p.period_text||p.period_rule||UNKNOWN));
-      const link=safeLink(p.source_url);
-      if(link){const a=element('a','source-anchor','공식 규칙 원문 ↗');a.href=link;a.target='_blank';a.rel='noopener noreferrer';item.append(a)}
-      rules.append(item);
-    }
-    root.append(rules);
+function openSeries(series){
+ const root=$('#detailContent');root.replaceChildren();
+ root.append(element('span','tag',appOf(series.app).name));
+ const heading=element('h2','',series.title);heading.id='detailTitle';root.append(heading);
+ const dl=element('dl','detail-grid');
+ for(const [label,value] of [
+  ['투표 시리즈',series.title],['확인된 회차',series.rounds.length+'회'],
+  ['평균 득표 (수집 시점)',formatMetric(series.metrics.meanVotes,'표')],
+  ['득표 평균 산출 회차',series.metrics.knownVoteRounds+'회 / 전체 후보 득표 확인된 회차만'],
+  ['부분 후보 회차',series.metrics.partialVoteRounds+'회 · 평균 계산에서 제외'],
+  ['평균 실제 참여자 수',series.metrics.meanParticipants===null?'미확인 · 득표 수와 중복 참여자는 구분 불가':formatMetric(series.metrics.meanParticipants,'명')]
+ ])addDetailRow(dl,label,value);
+ root.append(dl);
+ root.append(element('p','detail-caution',series.metrics.scope));
+ root.append(element('h3','','이 투표의 리워드 · '+series.benefits.length+'종'));
+ if(!series.benefits.length)root.append(element('p','unknown','공식 원문에서 확인된 리워드가 없습니다.'));
+ for(const b of series.benefits){
+  const box=element('section','series-reward-detail');
+  box.append(element('h3','',b.title));
+  const sub=element('dl','detail-grid');
+  for(const [label,value] of [
+   ['공식 설명',b.text],['제공 조건',b.condition||UNKNOWN],
+   ['장소',b.place||UNKNOWN],['광고·제공 일수',durationLabel(b)],
+   ['제공 기간 원문',b.period_text||b.period_rule||UNKNOWN],
+   ['확정된 실제 송출일',b.execution.length?b.execution.map(x=>(x.start||'시작 미확인')+' ~ '+(x.end||'종료 미확인')).join(' / '):'미확인']
+  ])addDetailRow(sub,label,value);
+  box.append(sub);
+  if(b.examples.length){
+   const example=element('details','');example.append(element('summary','','적용 확인 회차 '+b.examples.length+'개'));
+   for(const e of b.examples){
+    const row=element('div','reward-history-item');row.append(element('strong','',e.title));
+    row.append(element('p','',e.period));
+    if(safeLink(e.source_url)){const link=element('a','source-anchor','원문 확인 ↗');link.href=safeLink(e.source_url);link.target='_blank';link.rel='noopener noreferrer';row.append(link)}
+    example.append(row);
+   }
+   box.append(example);
   }
-  const history=element('details','');history.open=true;
-  history.append(element('summary','','투표 회차 및 실제 집행 이력 · '+group.history.length+'건'));
-  if(!group.history.length)history.append(element('p','unknown','연결된 개별 투표가 없습니다. 공식 안내 규칙만 확인되었습니다.'));
-  for(const h of group.history){
-    const item=element('div','reward-history-item');
-    item.append(element('strong','',h.title||UNKNOWN));
-    item.append(element('p','', '투표: '+(h.start||UNKNOWN)+' ~ '+(h.end||UNKNOWN)));
-    item.append(element('p','', '제공 기간: '+(h.period_text||group.period_rule||UNKNOWN)));
-    item.append(element('p','', '실제 집행: '+(h.execution_start_at||'미확인')+' ~ '+(h.execution_end_at||'미확인')));
-    item.append(element('p','', '수집 확인: '+dateTimeText(h.checked_at,'')));
-    if(safeLink(h.source_url)){
-      const a=element('a','source-anchor','해당 회차 공식 원문 ↗');a.href=safeLink(h.source_url);a.target='_blank';a.rel='noopener noreferrer';item.append(a);
-    }
-    history.append(item);
+  for(const src of b.sources.slice(0,2)){
+   if(safeLink(src.url)){const link=element('a','source-anchor','공식 근거 ↗');link.href=safeLink(src.url);link.target='_blank';link.rel='noopener noreferrer';box.append(link)}
   }
-  root.append(history);
-  const note=element('p','detail-caution','실제 집행 확인은 공식 사후 공지에 명시된 경우에만 인정합니다. 유사한 명칭이더라도 장소·조건·기간이 다르면 별도 유형으로 구분합니다.');
-  root.append(note);$('#rewardDetail').showModal();
+  root.append(box);
+ }
+ const history=element('details','');history.open=true;
+ history.append(element('summary','','투표 회차별 득표·일정 · '+series.rounds.length+'회'));
+ if(!series.rounds.length)history.append(element('p','unknown','공식 안내에서 규칙만 확인되었으며 개별 투표 데이터는 아직 없습니다.'));
+ for(const e of series.rounds){
+  const m=VoteAtlasSeries.votesSnapshot(e);
+  const row=element('div','reward-history-item');
+  row.append(element('strong','',e.title),
+   element('p','', '투표 기간: '+(e.start||UNKNOWN)+' ~ '+(e.end||UNKNOWN)),
+   element('p','', '수집 시점 득표 합계: '+formatMetric(m.votes,'표')+(m.complete?' (전체 후보 확인)':m.partial?' (일부 후보만 확인 · 실제 총계 아님)':' (집계 불가)')),
+   element('p','', '수집 시각: '+dateTimeText(e.collected_at,'')));
+  if(safeLink(e.source_url)){const link=element('a','source-anchor','투표 원문 ↗');link.href=safeLink(e.source_url);link.target='_blank';link.rel='noopener noreferrer';row.append(link)}
+  history.append(row);
+ }
+ root.append(history);
+ root.append(element('p','detail-caution','쇼! 음악중심 촬영일은 제공 시점의 조건일 뿐 1일간 송출한다는 의미가 아닙니다. 광고 기간이 1일·7일 등으로 확인되지 않으면 미확인으로 표시합니다.'));
+ $('#rewardDetail').showModal();
 }
 function addDetailRow(dl, name, value) {
   dl.append(element('dt', '', name), element('dd', '', value || UNKNOWN));
