@@ -46,6 +46,11 @@ test('Lock setup page generates verifier locally and links to owner-only GitHub 
   assert.match(page, /\/edit\/main\/dist\/access-config\.json/);
   assert.match(page, /minlength="12"/);
 });
+test('Temporary bypass does not fetch config before unlocking', () => {
+  const gate = read('access-guard.js');
+  assert.ok(gate.includes('const SCREEN_LOCK_TEMPORARILY_OFF = true'));
+  assert.ok(gate.indexOf('if (SCREEN_LOCK_TEMPORARILY_OFF)') < gate.indexOf("fetch('access-config.json"));
+});
 test('Dashboard gate validates configuration before considering browser session', () => {
   const gate = read('access-guard.js');
   assert.ok(gate.indexOf('config.enabled === false') < gate.indexOf('sessionStorage.getItem(sessionKey)'));
