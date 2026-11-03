@@ -421,8 +421,15 @@ def main():
         },ensure_ascii=False),flush=True)
         if os.getenv("GITHUB_STEP_SUMMARY"):
             with open(os.environ["GITHUB_STEP_SUMMARY"],"a",encoding="utf-8") as f:
-                f.write("### IDOLCHAMP Android install / capture\n\n\`\`\`json\n" +
+                f.write("### IDOLCHAMP Android install / capture\n\n```json\n" +
                         json.dumps(report,ensure_ascii=False,indent=2)[:10000] +
-                        "\n\`\`\`\n\nData is staged only in artifact; not merged to shared JSON.\n")
+                        "\n```\n\nData is staged only in artifact; not merged to shared JSON.\n")
+    # A green workflow must never be mistaken for actual target installation.
+    # The artifact is uploaded even when installation or extraction is blocked.
+    if not report["apk_installed"]:
+        raise SystemExit("IDOLCHAMP_INSTALL_NOT_VERIFIED")
+    if not report["vote_extracted"]:
+        raise SystemExit("IDOLCHAMP_VOTE_NOT_EXTRACTED")
+
 if __name__ == "__main__":
     main()
