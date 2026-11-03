@@ -6,7 +6,7 @@ REWARD_PHRASE = re.compile(
     r"광고\s*(?:송출|게재|노출|제공)|전광판|영상\s*송출|트로피\s*수여|상패\s*수여|실물\s*트로피|"
     r"방청권|초대권|폴라로이드|포토카드|사인\s*앨범|싸인\s*앨범|"
     r"행사\s*초대|기념품|리워드\s*제공", re.I)
-DISCLAMER = re.compile(r"변경될\s*수|예시|유의\s*사항|추첨\s*방법|수상자\s*발표|다음\s*내용|참고해", re.I)
+DISCLAMER = re.compile(r"변경될\s*수|예시|유의\s*사항|추첨\s*방법|수상자\s*발표|다음\s*내용|참고해|선물해\s*주세요|팬들의\s*투표가|^\*.*영상", re.I)
 DATE_RANGE = re.compile(
     r"(20\d{2})[./-]\s*(\d{1,2})[./-]\s*(\d{1,2})\s*(?:~|부터|–|-)\s*"
     r"(?:(20\d{2})[./-]\s*)?(\d{1,2})[./-]\s*(\d{1,2})")
@@ -68,10 +68,15 @@ def extract_entries(lines, source_url, checked_at, source_kind="official_web"):
         period_rule, start, end = parse_period(line)
         if "촬영일" in line and not period_rule:
             period_rule = "쇼! 음악중심 촬영일 (정확한 날짜 미확인)"
-        if "트로피" in line and any(item["kind"]=="trophy" and item["condition"]==condition for item in items):
-            if len(line) > len(items[-1]["text"]):
-                items[-1]["text"] = line
-            continue
+        if "트로피" in line:
+            previous = next((i for i, item in enumerate(items) if item["kind"] == "trophy"), None)
+            if previous is not None:
+                first = items[previous]
+                if "BEST PICK" in line.upper() or (not "BEST PICK" in first["text"].upper() and len(line) > len(first["text"])):
+                    first["text"] = line
+                if not first["condition"] and condition:
+                    first["condition"] = condition
+                continue
         entry = {
             "id": hashlib.sha256((line+str(place)+str(condition)).encode()).hexdigest()[:16],
             "text": line, "kind": kind, "place": place, "condition": condition,
