@@ -79,13 +79,28 @@ def _lines(raw: str) -> list[str]:
 def _period_with_context(lines: list[str], *, exclude_reward: bool = False,
                          keyword: re.Pattern[str] | None = None) -> dict | None:
     for i, line in enumerate(lines):
-        # Prefer the shortest evidence span; do not absorb an adjacent reward
-        # period into a vote period or vice versa.
-        for span in (1, 2, 3):
+        # A reward time is accepted only when its own heading introduces the
+        # dates. Do not assign dates from a preceding vote/ad period.
+        if keyword:
+            if not keyword.search(line):
+                continue
+            match = _explicit_period(line)
+            if match:
+                return match
+            if i + 1 < len(lines) and not (
+                EXECUTION_MARKER.search(lines[i+1]) or
+                DELIVERY_MARKER.search(lines[i+1])
+            ):
+                match = _explicit_period(lines[i+1])
+                if match:
+                    return match
+            continue
+        # Vote periods may be described on a heading + following date line.
+        if exclude_reward and REWARD_MARKER.search(line):
+            continue
+        for span in (1, 2):
             blob = " ".join(lines[i:i+span])
             if exclude_reward and REWARD_MARKER.search(blob):
-                continue
-            if keyword and not keyword.search(blob):
                 continue
             match = _explicit_period(blob)
             if match:
