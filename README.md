@@ -1,14 +1,38 @@
 # Vote Atlas
 
-[캘린더 열기](https://vote-atlas-calendar.peppysky16.chatgpt.site) · [자동 수집 실행 내역](https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml)
+[기존 캘린더 열기](https://vote-atlas-calendar.peppysky16.chatgpt.site) · [통합 대시보드 소스](dist/overview.html) · [자동 수집 실행 내역](https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml)
 
-공식 공개 투표 데이터를 읽고 캘린더에 표시합니다. 휴대폰, 항상 켜 둔 PC, 유료 API가 필요하지 않습니다. 캘린더 링크는 현재 소유자 전용입니다.
+공식 공개 투표 데이터를 읽고 캘린더에 표시합니다. 휴대폰, 항상 켜 둔 PC, 유료 API가 필요하지 않습니다. 기존 캘린더 링크는 현재 소유자 전용입니다. 새로운 GitHub Pages 링크는 공개 배포용입니다.
 
 | 서비스 | 수집 범위 |
 |---|---|
 | 뮤니버스 | 최근 90일 공식 투표 목록·기간·전체 후보·득표·1위. 종료 및 결과 공개 시각 확인 후 최종 1위 표시 |
 | 팬앤스타 | 홈에서 연결되는 현재 투표 부문·기간·페이지에 표시된 후보·득표·현재 1위. 전체 후보와 과거 최종 결과는 미확인 |
 | 마이원픽·아이돌챔프·뮤빗·쿠궁 | 미연결. 실제 앱 설치 및 수집 검증 전 |
+
+## 통합 대시보드 (새 화면)
+
+`dist/overview.html`은 투표 일정, 후보·순위, 리워드, 수집 시각·근거 출처를 통합해 보여줍니다.
+앱/진행 상태/리워드 확인 여부/후보 검색과 CSV 내보내기를 지원합니다.
+`dist/data/events.json`이 업데이트되면 배포된 웹페이지에서도 데이터가 갱신됩니다.
+
+**배포 주의:** GitHub Pages는 공개 웹사이트입니다. 내부 전용 정보를 절대 기록하지 마세요.
+현재 저장소는 공개 투표 정보만 사용하며, 사내 Google 계정 전용 접근 제어는 아직 구현하지 않았습니다.
+
+### GitHub Pages 최초 설정 (저장소 관리자 1회)
+
+1. [Settings → Pages](https://github.com/ark-netizen/vote-atlas/settings/pages)에 들어가 Build and deployment의 Source를 **GitHub Actions**로 선택합니다.
+2. [Publish Vote Atlas dashboard](https://github.com/ark-netizen/vote-atlas/actions/workflows/deploy-pages.yml)에서 **Run workflow**를 실행합니다.
+3. 배포 성공 후 `https://ark-netizen.github.io/vote-atlas/overview.html`을 엽니다. URL은 배포 성공 전에는 사용 가능한 것으로 간주하지 마세요.
+
+배포가 완료된 뒤에는 데이터 변경을 포함한 `dist/**` 변경사항이 자동으로 게시됩니다.
+GitHub Actions 예약 수집과 GitHub Pages 배포는 별도 워크플로입니다.
+
+### 리워드 추출 범위
+
+- 뮤니버스: 개별 투표 공식 상세 설명의 혜택·광고·트로피 등 명시된 문구를 추출합니다. 문구가 없으면 리워드 미확인으로 남깁니다.
+- 팬앤스타: 현재 표시된 후보와 기간은 부분 수집하지만 리워드 추출은 미확인입니다.
+- 마이원픽·아이돌챔프·뮤빗·쿠궁: 앱 내부 수집은 아직 미검증입니다. 다른 앱의 공통 광고 혜택을 개별 투표 리워드로 채우지 않습니다.
 
 ## 자동 실행
 
