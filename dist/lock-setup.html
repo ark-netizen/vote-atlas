@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#f6f8f4">
+<title>Vote Atlas | 접근 암호 설정 도구</title>
+<link rel="stylesheet" href="access.css">
+<style>
+body {margin: 0; background:#f6f8f4; color:#263e31; font-family: 'Noto Sans KR',sans-serif;}
+.setup-wrapper{max-width:700px; padding:35px 18px 60px; margin:0 auto;}
+.setup-card{border:1px solid #e3eae0; background:#fff; padding:30px; border-radius:16px;}
+.setup-card h1{font-size:25px;margin:4px 0 14px}.setup-card h2{font-size:15px;margin:29px 0 12px}
+.setup-card p,.setup-card li{font-size:12px;line-height:1.9;color:#64786b}
+.setup-card input{width:100%;border:1px solid #bfcfbe;border-radius:7px;padding:11px 12px;font-size:14px;box-sizing:border-box}
+.setup-card label{display:block;font-size:12px;font-weight:700;margin:17px 0 7px}
+.setup-card button{cursor:pointer;border:0;border-radius:8px;color:#fff;background:#37674e;padding:13px;font-weight:700;width:100%;margin-top:16px}
+.setup-card button:disabled{opacity:.6}
+.setup-card pre{white-space:pre-wrap;word-break:break-all;background:#eff5ed;border-radius:7px;border:1px solid #dae8d9;padding:14px;line-height:1.6;font-size:11px;user-select:all}
+.setup-card ol{padding-left:22px}
+.setup-card a{color:#376d50;word-break:break-all}
+.setup-note{background:#f9f4e7;border:1px solid #eae0c6;padding:12px;border-radius:8px}
+#status{min-height:20px}
+</style>
+</head>
+<body>
+<div class="setup-wrapper"><section class="setup-card">
+<div class="access-mark">V·</div><p class="access-eyebrow">VOTE ATLAS · LOCAL PASSWORD SETUP</p>
+<h1>대시보드 접근 암호 설정</h1>
+<p>이 도구는 브라우저에서 암호를 처리하고 공개 저장소에는 암호 원문이 아닌 검증값만 저장하도록 돕습니다. 설정 파일을 수정할 수 있는 GitHub 저장소 관리자만 잠금을 활성화할 수 있습니다.</p>
+<p class="setup-note"><strong>보안상 중요한 제한:</strong> GitHub Pages 및 Public 저장소의 HTML·JSON은 공개입니다. 이 암호는 대시보드 화면을 열지 못하게 하는 간단한 잠금 기능이며, 원본 데이터에 대한 서버 측 접근 제어는 제공하지 않습니다.</p>
+<form id="setupForm">
+<label for="password">사용할 접근 암호 (12자 이상)</label>
+<input id="password" type="password" minlength="12" maxlength="128" autocomplete="new-password" required placeholder="암호를 입력하세요">
+<label for="confirm">접근 암호 확인</label>
+<input id="confirm" type="password" minlength="12" maxlength="128" autocomplete="new-password" required placeholder="같은 암호를 다시 입력하세요">
+<button id="generate" type="submit">암호 검증값 생성</button>
+</form>
+<p id="status" role="status" aria-live="polite"></p>
+<section id="result" hidden>
+<h2>생성된 설정 JSON</h2>
+<p>아래 값은 비밀번호 자체가 아니지만, 생성 결과를 신뢰할 수 없는 곳에 별도로 공유하지 마세요.</p>
+<pre id="configOut" aria-label="암호 검증 설정 JSON"></pre>
+<button id="copy" type="button">설정 JSON 복사</button>
+<h2>설치 절차</h2>
+<ol>
+<li>설정 JSON을 복사합니다.</li>
+<li><a href="https://github.com/ark-netizen/vote-atlas/edit/main/dist/access-config.json" target="_blank" rel="noopener noreferrer">GitHub의 dist/access-config.json 수정 페이지</a>를 엽니다 (저장소 관리자 GitHub 로그인 필요).</li>
+<li>기존 내용을 생성된 JSON으로 통째로 교체하고 <strong>Commit changes</strong>로 <code>main</code>에 저장합니다.</li>
+<li><a href="https://github.com/ark-netizen/vote-atlas/actions/workflows/deploy-pages.yml" target="_blank" rel="noopener noreferrer">GitHub Pages 배포 작업</a>이 성공했는지 확인합니다.</li>
+<li>대시보드로 돌아가 설정한 암호로 잠금을 해제합니다. 같은 브라우저 탭에서는 세션 동안 다시 물어보지 않습니다.</li>
+</ol>
+</section>
+<p><a href="overview.html">통합 대시보드로 돌아가기</a></p>
+</section></div>
+<script src="access-crypto.js"></script>
+<script>
+'use strict';
+const form = document.getElementById('setupForm');
+const status = document.getElementById('status');
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const first = document.getElementById('password');
+  const second = document.getElementById('confirm');
+  const button = document.getElementById('generate');
+  document.getElementById('result').hidden = true;
+  if (first.value.length < 12) { status.textContent = '암호는 12자 이상으로 설정해주세요.'; return; }
+  if (first.value !== second.value) { status.textContent = '두 암호가 다릅니다.'; return; }
+  button.disabled = true;
+  status.textContent = '검증값 생성 중입니다.';
+  try {
+    const iterations = 200000;
+    const salt = VoteAtlasLockCrypto.newSalt();
+    const verifier = await VoteAtlasLockCrypto.derive(first.value, salt, iterations);
+    const json = JSON.stringify({version: 1, enabled: true, iterations, salt, verifier}, null, 2);
+    document.getElementById('configOut').textContent = json;
+    document.getElementById('result').hidden = false;
+    status.textContent = '생성 완료. 아래 설정 파일을 GitHub에 반영해야 모든 방문자에게 잠금이 적용됩니다.';
+  } catch (_error) {
+    status.textContent = '암호 검증값 생성 실패. HTTPS 연결을 확인해주세요.';
+  } finally {
+    first.value = '';
+    second.value = '';
+    button.disabled = false;
+  }
+});
+document.getElementById('copy').addEventListener('click', async () => {
+  const text = document.getElementById('configOut').textContent;
+  try {
+    await navigator.clipboard.writeText(text);
+    status.textContent = '설정 JSON이 복사되었습니다. GitHub 파일에 붙여 넣어주세요.';
+  } catch (_error) {
+    status.textContent = '자동 복사가 허용되지 않았습니다. JSON을 직접 선택해 복사해주세요.';
+  }
+});
+</script>
+</body>
+</html>
