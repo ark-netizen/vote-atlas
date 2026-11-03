@@ -21,7 +21,7 @@ const VoteAtlasRankings = (() => {
         const artist = artists.get(key);
         const rank = Number(candidate.rank);
         const observedFirst = rank === 1 && validVotes(candidate.votes) && Number(candidate.votes) > 0;
-        const finalWin = observedFirst && Boolean(event.winner) && event.result_status === 'published';
+        const finalWin = observedFirst && event.result_status === 'published' && String(event.winner || '').split(/\s*,\s*/).map(normalizeName).includes(key);
         const votes = validVotes(candidate.votes) ? Number(candidate.votes) : null;
         artist.voteCount++;
         if (votes !== null) {
