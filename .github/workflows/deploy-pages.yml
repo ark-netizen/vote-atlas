@@ -27,7 +27,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Check dashboard JavaScript
-        run: node --check dist/overview.js && node --check dist/app.js
+        run: node --check dist/overview.js && node --check dist/app.js && node --check dist/rankings.js && node --test tests/test_rankings.cjs
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload dashboard
