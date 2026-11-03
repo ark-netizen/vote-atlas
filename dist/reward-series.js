@@ -8,7 +8,7 @@ const VoteAtlasSeries = (() => {
     // Retain rounds like prelim/final, channel and named artist editions. Remove ONLY dates/episodes.
     x=x.replace(/20\d{2}\s*년\s*\d{1,2}\s*월\s*(?:\d{1,2}\s*주\s*차)?/g,'')
       .replace(/\d{1,2}\s*월\s*\d{1,2}\s*주\s*차/g,'')
-      .replace(/(?:\d{1,3}\s*회|제\s*\d{1,3}\s*회)(?=\s*(?:\||·|$))/g,'')
+      .replace(/(?:제\s*)?\d{2,4}\s*회(?=\s*(?:\||·|STAGE|글로벌|생방송|$))/gi,'')
       .replace(/\b(?:20\d{2}[./-])?\d{1,2}[./-]\d{1,2}\b/g,'')
       .replace(/\s*[|·\-/]\s*$/,'').replace(/^\s*[|·\-/]\s*/,'')
       .replace(/\s{2,}/g,' ').trim();
@@ -89,7 +89,13 @@ const VoteAtlasSeries = (() => {
       if(!e?.app || !e?.title || !e?.id)continue;
       const row=ensure(e.app,e.title);
       if(!row.rounds.some(v=>v.id===e.id))row.rounds.push(e);
-      for(const entry of rewardGroups.extracted(e))benefit(row,entry,e);
+      for(const entry of rewardGroups.extracted(e)){
+        // The 1️⃣, 2️⃣ symbols enumerate benefits; they do not signify 1st/2nd-place prizes.
+        const sharedFirst=Array.isArray(e.reward_lines)&&e.reward_lines.some(x=>/1\s*(?:등|위)\s*리워드/.test(x));
+        const enumerated=/^[12]\ufe0f?\u20e3/.test(String(entry.text||'').trim());
+        const cleanEntry=(sharedFirst&&enumerated)?{...entry,condition:'1위'}:entry;
+        benefit(row,cleanEntry,e);
+      }
     }
     for(const p of policies||[]){
       if(p.unconfirmed_reward||!p.app||!p.text)continue;
