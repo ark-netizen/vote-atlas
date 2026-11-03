@@ -13,6 +13,9 @@ import json
 import os
 import re
 import subprocess
+import shutil
+import tempfile
+import zipfile
 import sys
 import time
 import urllib.request
@@ -26,6 +29,10 @@ OUT.mkdir(parents=True, exist_ok=True)
 APP = "com.nwz.ichampclient"
 STORE = "com.aurora.store"
 AURORA_URL = "https://f-droid.org/repo/com.aurora.store_76.apk"
+MIRROR_XAPK_URL = "https://d.apkpure.com/b/XAPK/com.nwz.ichampclient?version=latest"
+# Published APK signing SHA-1 (not archive SHA-1). Verify using apksigner before
+# installing any Android code downloaded from a third-party APK mirror.
+IDOLCHAMP_SIGNER_SHA1 = "be9fa7b3daed0af57c9ee089b935e77e3bd0e05c"
 report = {
     "app": "idolchamp", "package": APP, "timestamp_utc": datetime.now(timezone.utc).isoformat(),
     "booted": False, "aurora_installed": False, "apk_installed": False,
@@ -180,6 +187,9 @@ def aurora_attempt():
         for i in range(10):
             nodes = screen("02-aurora-%02d" % i)
             if installed(APP): break
+            if any(re.search(r"access denied|vpn or tor|too many requests|접근이 거부", n["text"], re.I) for n in nodes):
+                note("aurora_auth", "BLOCKED", "Anonymous authentication service denied runner IP")
+                break
             if any("Anonymous" in n["text"] or "익명" in n["text"] for n in nodes):
                 if tap(nodes, ["Anonymous", "Anonymous login", "익명", "익명 로그인"]):
                     time.sleep(6)
@@ -236,6 +246,94 @@ def direct_apk_attempt():
         return False
     finally:
         apk.unlink(missing_ok=True)
+
+
+def apksigner_path():
+    available = shutil.which("apksigner")
+    if available: return available
+    sdk = Path(os.getenv("ANDROID_SDK_ROOT") or os.getenv("ANDROID_HOME") or "/opt/android-sdk")
+    paths = sorted((sdk/"build-tools").glob("*/apksigner"), reverse=True)
+    if paths: return str(paths[0])
+    raise RuntimeError("APK_SIGNER_TOOL_MISSING")
+
+def signer_sha1(apk_path):
+    output = run(apksigner_path(), "verify", "--print-certs", str(apk_path), timeout=70)
+    match = re.search(r"Signer #1 certificate SHA-1 digest:\s*([a-fA-F0-9:]{40,60})", output)
+    if not match:
+        raise RuntimeError("APK_SIGNATURE_NOT_VERIFIED: " + output[-250:])
+    return match.group(1).replace(":", "").lower()
+
+def try_xapk_mirror():
+    """Try real IDOLCHAMP APK installation from an HTTPS mirror, with pinned signer.
+
+    The mirror is not the official store; no integrity claim is made unless the
+    app's embedded signing cert matches an independently recorded fingerprint.
+    Nothing from an unsigned or mismatched archive is ever installed.
+    """
+    note("signed_mirror", "STARTED", "APKPure XAPK HTTPS (third-party, signer-checked)")
+    path = OUT/"idolchamp-download.xapk"
+    try:
+        download = fetch_apk(MIRROR_XAPK_URL, path, max_bytes=245*1024*1024)
+        note("signed_mirror_download", "OK", download["sha256"][:24])
+        if not zipfile.is_zipfile(path):
+            raise RuntimeError("MIRROR_NOT_A_ZIP_APK: received HTML or unrecognized content")
+        with zipfile.ZipFile(path) as archive, tempfile.TemporaryDirectory() as temp:
+            members = [x for x in archive.infolist()
+                       if x.filename.lower().endswith(".apk") and not x.is_dir()]
+            if not members:
+                raise RuntimeError("NO_APK_MEMBERS")
+            if sum(x.file_size for x in members) > 260*1024*1024:
+                raise RuntimeError("APK_ARCHIVE_TOO_LARGE")
+            if len(members) > 45:
+                raise RuntimeError("TOO_MANY_APK_MEMBERS")
+            destination = Path(temp)
+            extracted = []
+            for idx, member in enumerate(members):
+                target = destination/("%02d-" % idx + Path(member.filename).name)
+                if member.file_size > 230*1024*1024:
+                    raise RuntimeError("APK_MEMBER_TOO_LARGE")
+                with archive.open(member) as original, target.open("wb") as output:
+                    shutil.copyfileobj(original, output)
+                if signer_sha1(target) != IDOLCHAMP_SIGNER_SHA1:
+                    raise RuntimeError("IDOLCHAMP_SIGNER_MISMATCH")
+                extracted.append((Path(member.filename).name, target))
+            base = next(((name, file) for name,file in extracted
+                         if name in ("com.nwz.ichampclient.apk", "base.apk")), None)
+            if base is None:
+                raise RuntimeError("BASE_APK_MISSING")
+            aapt = shutil.which("aapt")
+            if aapt:
+                info = run(aapt, "dump", "badging", str(base[1]), timeout=35)
+                if not re.search(r"package: name='com\.nwz\.ichampclient'", info):
+                    raise RuntimeError("APK_PACKAGE_NAME_MISMATCH")
+            abis = adb("shell", "getprop", "ro.product.cpu.abilist").strip()
+            note("emulator_abi", "OBSERVED", abis)
+            # Prefer locale/density splits, then a matching native split. Some
+            # x86_64 Google images implement arm translation; install is the test.
+            split = [(name,file) for name,file in extracted if (name,file)!=base]
+            locale = [(name,file) for name,file in split
+                      if re.search(r"(?:config\.|split_config\.)(en|ko|mdpi|hdpi|xhdpi|xxhdpi)(?:\.|$)",name,re.I)]
+            native = [(name,file) for name,file in split
+                      if any(x in name for x in ("arm64_v8a","armeabi_v7a","x86_64","x86"))]
+            selected = [base[1]] + [file for _,file in locale] + [file for _,file in native]
+            selected = list(dict.fromkeys(selected))
+            note("signed_mirror_install", "STARTED",
+                 "signed packages=" + str(len(selected)) +
+                 " splits=" + ",".join(name for name,_ in extracted)[:140])
+            outcome = adb("install-multiple", "-r", *[str(file) for file in selected],
+                          timeout=250)
+            if "Success" not in outcome or not installed(APP):
+                raise RuntimeError("INSTALL_MULTIPLE_FAILED: " + outcome[-450:])
+            report["source_method"] = "signed_unofficial_apk_mirror"
+            report["apk_installed"] = True
+            note("signed_mirror_install", "OK", "signer SHA1 matched")
+            return True
+    except Exception as exc:
+        report["errors"].append("SIGNED_MIRROR:" + str(exc)[:350])
+        note("signed_mirror", "BLOCKED", str(exc))
+        return False
+    finally:
+        path.unlink(missing_ok=True)
 
 def extract_one():
     # Standalone call. Do NOT call android_collect.run(), which writes the shared JSON.
@@ -297,7 +395,9 @@ def main():
         note("emulator_boot", "OK" if report["booted"] else "FAILED")
         if not report["booted"]: return
         if not direct_apk_attempt():
-            if not playstore_attempt(): aurora_attempt()
+            if not playstore_attempt():
+                if not aurora_attempt():
+                    try_xapk_mirror()
         if report["apk_installed"] or installed(APP):
             report["apk_installed"] = True
             extract_one()
