@@ -252,23 +252,42 @@ def extract_one():
     note("idolchamp_launch", "OK" if report["app_launched"] else "NOT_VERIFIED",
          "foreground activity verified" if report["app_launched"] else "target not in focused/resumed activity")
     if not report["app_launched"]: return
+    observations = []
+    parsed_events = []
     try:
-        result = android_collect.collect(app, max_pages=3, max_details=1)
-        # Counts are real screen extraction only, never merged into dist/data/events.json.
-        out = {"app": "idolchamp", "source": "android_screen",
-               "collected_at": datetime.now(timezone.utc).isoformat(),
-               "lineup_complete": False,
-               "source_compared": False, "events": result}
-        (OUT/"events.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+        parsed_events = android_collect.collect(
+            app, max_pages=3, max_details=1,
+            detail_callback=observations.append
+        )
         report["vote_list_opened"] = True
-        report["vote_extracted"] = bool(result)
-        report["extracted_count"] = len(result)
-        note("vote_one_detail", "EXTRACTED", str(len(result)) + " candidate screen records; original comparison pending")
+        report["vote_extracted"] = bool(parsed_events)
+        report["extracted_count"] = len(parsed_events)
+        note("vote_one_detail", "EXTRACTED",
+             str(len(parsed_events)) + " screen events; original comparison pending")
     except Exception as exc:
         # May be login gate, app version mismatch, invalid title/dates or layout.
         report["errors"].append("APP_UI:" + str(exc)[:300])
         note("vote_one_detail", "BLOCKED", exc)
     finally:
+        # Keep all observed evidence, even if the conservative parser rejects it.
+        # Do not write the shared dist/data/events.json from Android probes.
+        from android_evidence import enrich_android_observation
+        enriched = [enrich_android_observation(
+            record, screenshot_file="verification/android/idolchamp/04-idolchamp-after-collection.png"
+        ) for record in observations]
+        out = {
+            "app": "idolchamp", "source": "android_screen",
+            "collected_at": datetime.now(timezone.utc).isoformat(),
+            "lineup_complete": False, "source_compared": False,
+            "events": parsed_events, "structured_events": enriched
+        }
+        (OUT/"events.json").write_text(
+            json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        if observations:
+            (OUT/"raw_observations.json").write_text(
+                json.dumps(observations, ensure_ascii=False, indent=2), encoding="utf-8"
+            )
         try: screen("04-idolchamp-after-collection")
         except Exception: pass
 
