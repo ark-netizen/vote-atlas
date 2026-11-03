@@ -9,6 +9,7 @@ on:
       - 'dist/rewards.html'
       - 'dist/lock-setup.html'
       - 'tests/test_access_gate.cjs'
+      - 'tests/test_access_setup.cjs'
       - '.github/workflows/check-access-gate.yml'
   pull_request:
     branches: [main]
@@ -19,6 +20,7 @@ on:
       - 'dist/rewards.html'
       - 'dist/lock-setup.html'
       - 'tests/test_access_gate.cjs'
+      - 'tests/test_access_setup.cjs'
       - '.github/workflows/check-access-gate.yml'
   workflow_dispatch:
 permissions:
@@ -37,4 +39,4 @@ jobs:
           node --check dist/overview.js
           node --check dist/rewards.js
       - name: Run access gate and reward regression tests
-        run: node --test tests/test_access_gate.cjs tests/test_rewards_ui.cjs
+        run: node --test tests/test_access_gate.cjs tests/test_access_setup.cjs tests/test_rewards_ui.cjs
