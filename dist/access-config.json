@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "enabled": true,
+  "enabled": false,
   "iterations": 200000,
   "salt": "",
   "verifier": ""
