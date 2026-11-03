@@ -10,6 +10,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 from reward_parse import extract_entries
 from official_web_rules import collect_official_rules
+from official_sns_collect import collect_official_sns
 
 ROOT = Path(__file__).resolve().parents[1]
 KST = dt.timezone(dt.timedelta(hours=9))
@@ -177,8 +178,13 @@ def main():
                               message=f"공식 공개 리워드 규칙 {status['count']}개 확인; 개별 투표·후보 수집 미검증")
             if status['state'] == 'blocked':
                 source['message'] += ' · 공식 웹 규칙 조회 실패 (상세 상태 참조)'
+    social_posts, social_checks = collect_official_sns(get, old.get('official_posts', []), STAMP)
+    for source in sources:
+        if source['id'] in social_checks:
+            source['official_sns_status'] = social_checks[source['id']]
     output={'events':sorted(previous.values(),key=lambda e:(e['end'],e['id']),reverse=True),
             'sources':sources,'reward_policies':policies,'policy_source_status':policy_checks,
+            'official_posts':social_posts,'official_sns_status':social_checks,
             'updated_at':STAMP}
     path.parent.mkdir(parents=True,exist_ok=True)
     temp=path.with_suffix('.tmp');temp.write_text(json.dumps(output,ensure_ascii=False,indent=2));temp.replace(path)
