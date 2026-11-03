@@ -5,6 +5,9 @@ on:
     paths:
       - 'dist/**'
       - '.github/workflows/deploy-pages.yml'
+  workflow_run:
+    workflows: ['Collect official voting data']
+    types: [completed]
   workflow_dispatch:
 permissions:
   contents: read
@@ -15,6 +18,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   deploy:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -22,6 +26,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Check dashboard JavaScript
+        run: node --check dist/overview.js && node --check dist/app.js
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload dashboard
