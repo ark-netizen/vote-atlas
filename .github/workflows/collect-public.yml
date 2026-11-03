@@ -4,6 +4,11 @@ on:
     branches: [main]
     paths:
       - 'scripts/web_collect.py'
+      - 'scripts/official_web_rules.py'
+      - 'scripts/reward_parse.py'
+      - 'scripts/official_sns_collect.py'
+      - 'config/apps.json'
+      - 'tests/test_reward_rules.py'
       - 'tests/test_web_collect.py'
       - 'tests/test_rewards.py'
       - 'requirements.txt'

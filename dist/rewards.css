@@ -50,3 +50,18 @@
 #rewardDetail .detail-caution{margin:15px 0 0;font-size:10px;color:#889987;line-height:1.8}
 @media (max-width:1100px){.reward-filters{gap:8px}.filter-label{flex-basis:160px}}
 @media (max-width:740px){.reward-panel{padding:15px}.reward-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.reward-search{flex-basis:100%}.filter-label{flex-basis:calc(50% - 6px);min-width:125px}#rewardDetail{padding:20px}#rewardDetail .detail-grid{grid-template-columns:92px 1fr}}
+
+
+/* Deduplicated reward-type directory and linked round histories */
+.reward-type-title{font-size:12px;line-height:1.6;display:inline-block;margin:6px 0;color:#314c39;font-weight:700}
+.reward-occurrences{margin:8px 0 0;color:#799480;font-size:10px;line-height:1.6}
+.reward-record{cursor:pointer}
+.reward-record:focus-visible{outline:2px solid #9fbda4;outline-offset:-2px}
+.reward-history-item{border:1px solid #e2e9dd;border-radius:8px;background:#fbfdf9;padding:13px 15px;margin:9px 0}
+.reward-history-item strong{display:block;font-size:11px;color:#38533c;line-height:1.6}
+.reward-history-item p{margin:7px 0;font-size:11px;line-height:1.7;color:#718472}
+.reward-history-item .source-anchor{display:inline-block;margin-top:5px}
+#rewardDetail details{margin:18px 0}
+#rewardDetail summary{font-weight:700;color:#476d51;font-size:12px;cursor:pointer}
+.reward-type-title,.reward-history-item{overflow-wrap:anywhere}
+.reward-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
