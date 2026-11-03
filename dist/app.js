@@ -42,16 +42,58 @@ function render(){
  renderCalendar();renderDay();renderList();renderSources();
 }
 function renderCalendar(){
- $('#monthTitle').textContent=`${year}년 ${month+1}월`;const events=filtered();const first=new Date(Date.UTC(year,month,1));const start=new Date(first);start.setUTCDate(1-first.getUTCDay());
- const days=new Date(Date.UTC(year,month+1,0)).getUTCDate();const cells=Math.ceil((first.getUTCDay()+days)/7)*7;let html='';
- for(let i=0;i<cells;i++){
- const d=new Date(start);d.setUTCDate(start.getUTCDate()+i);const key=dateKey(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate());const dayEvents=events.filter(e=>VoteAtlasCalendar.onDay(e,key,mode));
- html+=`<div class="day ${d.getUTCMonth()!==month?'other':''} ${key===today?'current':''} ${key===selected?'selected':''}" role="button" tabindex="0" data-date="${key}" aria-label="${key}, 투표 ${dayEvents.length}건"><span class="day-number">${d.getUTCDate()}</span>${dayEvents.slice(0,2).map(e=>`<button class="event-chip ${mode==='range'?(e.start===key&&e.end===key?'range-single':e.start===key?'range-start':e.end===key?'range-end':'range-middle'):''}" style="--c:${appOf(e.app).color}" data-id="${esc(e.id)}" title="${esc(e.title)}">${esc(e.title)}</button>`).join('')}${dayEvents.length>2?`<span class="more">+${dayEvents.length-2}개 더보기</span>`:''}</div>`;
+ $('#monthTitle').textContent=year+'년 '+(month+1)+'월';
+ const events=filtered();
+ const first=new Date(Date.UTC(year,month,1));
+ const start=new Date(first);
+ start.setUTCDate(1-first.getUTCDay());
+ const days=new Date(Date.UTC(year,month+1,0)).getUTCDate();
+ const cells=Math.ceil((first.getUTCDay()+days)/7)*7;
+ let html='';
+ for(let week=0;week<cells/7;week++){
+  const keys=Array.from({length:7},(_,index)=>{
+   const d=new Date(start);d.setUTCDate(start.getUTCDate()+week*7+index);
+   return dateKey(d.getUTCFullYear(),d.getUTCMonth(),d.getUTCDate());
+  });
+  const slots=Array.from({length:7},()=>new Set());
+  const items=[];
+  const overlap=events.filter(e=>
+   (mode==='range'&&e.start<=keys[6]&&e.end>=keys[0])||
+   (mode==='start'&&e.start>=keys[0]&&e.start<=keys[6])||
+   (mode==='end'&&e.end>=keys[0]&&e.end<=keys[6])
+  ).sort((x,y)=>String(x.start).localeCompare(String(y.start))||String(y.end).localeCompare(String(x.end))||String(x.id).localeCompare(String(y.id)));
+  for(const e of overlap){
+   const covered=keys.map((k,i)=>VoteAtlasCalendar.onDay(e,k,mode)?i:-1).filter(i=>i>=0);
+   if(!covered.length)continue;
+   let lane=-1;
+   for(let candidate=0;candidate<2;candidate++){
+    if(covered.every(i=>!slots[i].has(candidate))){lane=candidate;break}
+   }
+   if(lane<0)continue;
+   for(const dayIndex of covered)slots[dayIndex].add(lane);
+   items.push({event:e,lane,first:covered[0],last:covered[covered.length-1]});
+  }
+  for(let index=0;index<7;index++){
+   const key=keys[index],date=new Date(key+'T12:00:00Z');
+   const all=events.filter(e=>VoteAtlasCalendar.onDay(e,key,mode));
+   const current=items.filter(x=>index>=x.first&&index<=x.last).sort((a,b)=>a.lane-b.lane);
+   const chips=current.map(({event:e,lane,first,last})=>{
+    const isFirst=index===first, isLast=index===last;
+    const cssClass=mode!=='range'?'range-single':isFirst&&isLast?'range-single':isFirst?'range-start':isLast?'range-end':'range-middle';
+    const label=isFirst?e.title:'';
+    return '<button class="event-chip vote-range-segment '+cssClass+'" style="--c:'+appOf(e.app).color+';--lane:'+lane+'" data-id="'+esc(e.id)+'" title="'+esc(e.title)+' | '+esc(e.start)+' ~ '+esc(e.end)+'" aria-label="'+esc(e.title)+' '+esc(e.start)+'부터 '+esc(e.end)+'까지">'+(label?esc(label):'&nbsp;')+'</button>';
+   }).join('');
+   html+='<div class="day '+(date.getUTCMonth()!==month?'other':'')+' '+(key===today?'current':'')+' '+(key===selected?'selected':'')+'" role="button" tabindex="0" data-date="'+key+'" aria-label="'+key+', 진행되는 투표 '+all.length+'건"><span class="day-number">'+date.getUTCDate()+'</span>'+chips+(all.length>current.length?'<span class="more range-more">+'+(all.length-current.length)+'개</span>':'')+'</div>';
+  }
  }
  $('#calendarGrid').innerHTML=html;
- $('#calendarGrid').querySelectorAll('.day').forEach(el=>{const select=()=>{selected=el.dataset.date;renderCalendar();renderDay()};el.onclick=e=>{if(!e.target.closest('.event-chip'))select()};el.onkeydown=e=>{if(e.target!==el)return;if(e.key==='Enter'||e.key===' '){e.preventDefault();select()}}});
- $('#calendarGrid').querySelectorAll('.event-chip').forEach(b=>b.onclick=()=>openEvent(b.dataset.id));
- $('#monthCount').textContent=`이달 기간에 걸친 투표 ${events.filter(e=>VoteAtlasCalendar.overlapsMonth(e,year,month,mode)).length}건`;
+ $('#calendarGrid').querySelectorAll('.day').forEach(el=>{
+  const select=()=>{selected=el.dataset.date;renderCalendar();renderDay()};
+  el.onclick=e=>{if(!e.target.closest('.event-chip'))select()};
+  el.onkeydown=e=>{if(e.target!==el)return;if(e.key==='Enter'||e.key===' '){e.preventDefault();select()}};
+ });
+ $('#calendarGrid').querySelectorAll('.event-chip').forEach(button=>button.onclick=()=>openEvent(button.dataset.id));
+ $('#monthCount').textContent='이달 기간에 걸친 투표 '+events.filter(e=>VoteAtlasCalendar.overlapsMonth(e,year,month,mode)).length+'건';
 }
 function rows(events){return events.map(e=>`<button class="event-row" data-id="${esc(e.id)}"><span class="event-date">${esc(e.start)}<br><span class="date-arrow">~ ${esc(e.end)}</span></span><div><h3>${esc(e.title)}</h3><p>${esc(onePlace(e))} · ${esc(e.verification||'확인 필요')}</p></div><span class="app-tag" style="--c:${appOf(e.app).color}">${esc(appOf(e.app).name)}</span></button>`).join('')}
 function bindRows(parent){$(parent).querySelectorAll('.event-row').forEach(b=>b.onclick=()=>openEvent(b.dataset.id))}
