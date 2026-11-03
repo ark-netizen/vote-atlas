@@ -39,8 +39,8 @@ jobs:
       - name: Boot emulator, try real app install, collect one screen
         uses: reactivecircus/android-emulator-runner@v2
         env:
-          IDOLCHAMP_APK_URL: \${{ inputs.idolchamp_apk_url || '' }}
-          IDOLCHAMP_APK_SHA256: \${{ inputs.idolchamp_apk_sha256 || '' }}
+          IDOLCHAMP_APK_URL: ${{ inputs.idolchamp_apk_url || '' }}
+          IDOLCHAMP_APK_SHA256: ${{ inputs.idolchamp_apk_sha256 || '' }}
         with:
           api-level: 30
           target: google_apis
