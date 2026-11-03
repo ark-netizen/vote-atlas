@@ -3,7 +3,7 @@
 const VoteAtlasRewardGroups=(()=>{
  const normal=s=>String(s||'').normalize('NFKC').toLocaleLowerCase('ko-KR').replace(/\s+/g,' ').trim();
  const unknown=s=>!s||/^(?:미확인|없음|unknown|n\/a|-|\s*)$/i.test(String(s).trim());
- const decorative=/^(?:1\s*위\s*)?(?:혜택|리워드|특전)(?:\s*안내)?$|변경될\s*수|영상\(?예시\)?|다음\s*내용/i;
+ const decorative=/^(?:1\s*위\s*)?(?:혜택|리워드|특전)(?:\s*안내)?$|변경될\s*수|영상\(?예시\)?|다음\s*내용|선물해\s*주세요|팬들의\s*투표가|^\*.*(?:영상|예시)/i;
  const benefit=/전광판|옥외|실내|광고|트로피|상패|포토카드|폴라로이드|방청권|초대권|기념품|굿즈|앨범\s*증정|송출|노출|홍보\s*영상/i;
  const kind=s=>/전광판|광고|옥외|실내|영상\s*송출|홍보/.test(s)?'advertising':/트로피|상패|메달/.test(s)?'trophy':/포토카드|폴라로이드|앨범|굿즈|기념품/.test(s)?'goods':/방청권|초대권|팬미팅|티켓/.test(s)?'experience':'other';
  const spot=s=>/초대형\s*실내\s*전광판/.test(s)?'MBC 본사 초대형 실내 전광판':/옥외\s*전광판/.test(s)?'MBC 본사 옥외 전광판':null;
@@ -41,8 +41,14 @@ const VoteAtlasRewardGroups=(()=>{
   const items=raw.map(x=>String(x||'').replace(/\s+/g,' ').trim())
     .filter(x=>x.length>6&&!decorative.test(x)&&benefit.test(x));
   // When a generic combined heading is followed by concrete benefits, omit the heading.
-  return items.filter(x=>!/1\s*(?:위|등)\s*리워드\s*:/.test(x)||items.length===1)
-    .map(text=>readableEntry({text},e));
+  const concrete=items.filter(x=>!/1\s*(?:위|등)\s*리워드\s*:/.test(x)||items.length===1);
+  const trophies=concrete.filter(x=>/트로피\s*수여/i.test(x));
+  if(trophies.length>1){
+   const preferred=trophies.find(x=>/best\s*pick/i.test(x))||[...trophies].sort((a,b)=>b.length-a.length)[0];
+   return concrete.filter(x=>!/트로피\s*수여/i.test(x)||x===preferred)
+    .map(text=>readableEntry({text,condition:cond(trophies.join(' '))},e));
+  }
+  return concrete.map(text=>readableEntry({text},e));
  }
  function group(events,policies=[]){
   const map=new Map();
