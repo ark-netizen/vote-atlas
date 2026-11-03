@@ -79,15 +79,17 @@ def _lines(raw: str) -> list[str]:
 def _period_with_context(lines: list[str], *, exclude_reward: bool = False,
                          keyword: re.Pattern[str] | None = None) -> dict | None:
     for i, line in enumerate(lines):
-        # Include one or two lines for a heading followed by dates.
-        blob = " ".join(lines[i:i+3])
-        if exclude_reward and REWARD_MARKER.search(blob):
-            continue
-        if keyword and not keyword.search(blob):
-            continue
-        match = _explicit_period(blob)
-        if match:
-            return match
+        # Prefer the shortest evidence span; do not absorb an adjacent reward
+        # period into a vote period or vice versa.
+        for span in (1, 2, 3):
+            blob = " ".join(lines[i:i+span])
+            if exclude_reward and REWARD_MARKER.search(blob):
+                continue
+            if keyword and not keyword.search(blob):
+                continue
+            match = _explicit_period(blob)
+            if match:
+                return match
     return None
 
 
@@ -102,7 +104,7 @@ def _reward_records(lines: list[str], evidence_file: str) -> list[dict]:
         # Segregate named reward blocks. Do not combine multiple awards.
         text_block = [line]
         for following in lines[i+1:i+5]:
-            if REWARD_MARKER.search(following):
+            if REWARD_MARKER.search(following) and ACTUAL_BENEFIT.search(following):
                 break
             text_block.append(following)
         block = " ".join(text_block)
