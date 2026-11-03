@@ -257,11 +257,36 @@ def apksigner_path():
     raise RuntimeError("APK_SIGNER_TOOL_MISSING")
 
 def signer_sha1(apk_path):
-    output = run(apksigner_path(), "verify", "--print-certs", str(apk_path), timeout=70)
-    match = re.search(r"Signer #1 certificate SHA-1 digest:\s*([a-fA-F0-9:]{40,60})", output)
-    if not match:
-        raise RuntimeError("APK_SIGNATURE_NOT_VERIFIED: " + output[-250:])
-    return match.group(1).replace(":", "").lower()
+    # Build-tools output varies: newer apksigner sometimes prints only
+    # signer SHA-256, and SourceStamp SHA-256. Never mistake SourceStamp
+    # for the developer's signer. Hash the actual X.509 signer PEM instead.
+    import base64
+    process = subprocess.run(
+        [apksigner_path(), "verify", "--print-certs-pem", str(apk_path)],
+        cwd=ROOT, capture_output=True, text=True, timeout=70
+    )
+    if process.returncode != 0:
+        raise RuntimeError("APK_SIGNATURE_INVALID: " + process.stderr[-240:])
+    certificates = re.findall(
+        r"-----BEGIN CERTIFICATE-----\s*([A-Za-z0-9+/=\s]+?)"
+        r"-----END CERTIFICATE-----", process.stdout, re.S
+    )
+    if not certificates:
+        # Legacy apksigner output fallback when the PEM flag is unsupported.
+        digest = re.search(
+            r"(?m)^Signer(?: #\d+| \([^\n]+\)) certificate SHA-1 digest:\s*"
+            r"([a-fA-F0-9:]{40,60})", process.stdout
+        )
+        if digest:
+            return digest.group(1).replace(":", "").lower()
+        raise RuntimeError("APK_SIGNER_CERT_NOT_AVAILABLE: no signed certificate PEM")
+    digests = []
+    for cert in certificates:
+        der = base64.b64decode(re.sub(r"\s+", "", cert))
+        digests.append(hashlib.sha1(der).hexdigest())
+    if IDOLCHAMP_SIGNER_SHA1 not in digests:
+        raise RuntimeError("APK_SIGNER_MISMATCH: " + ",".join(digests)[:130])
+    return IDOLCHAMP_SIGNER_SHA1
 
 def try_xapk_mirror():
     """Try real IDOLCHAMP APK installation from an HTTPS mirror, with pinned signer.
