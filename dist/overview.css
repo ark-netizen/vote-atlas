@@ -30,3 +30,13 @@
 .artist-close{float:right;border:0;background:none;color:#638569;text-decoration:underline}
 @media(max-width:1150px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:780px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.top{height:auto;min-height:53px;gap:8px;padding:10px 16px}.meta{flex-wrap:wrap;justify-content:flex-end}.collect-link{font-size:9px;padding:7px}.artist-table-head,.artist-row{grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(48px,.7fr));gap:5px;padding:11px 5px}.artist-name,.artist-value{font-size:10px}.artist-table-head{font-size:9px}.artist-name small{font-size:8px}}
+
+
+.filter-panel{margin-bottom:18px;background:#fbfdf9}
+.filter-panel .panelhead{margin-bottom:13px}
+.filter-panel .filters{margin-bottom:0}
+.clear-overview-filters{background:white;border:1px solid var(--border);border-radius:7px;padding:9px 12px;color:#55775d;font-size:10px}
+.mini-day:has(.day-count){background:#f8fbf5}
+.mini-day:has(.day-count):hover{background:#edf6e6}
+.mini-day.selected{background:#eaf3e2!important}
+@media(max-width:780px){.filter-panel .filters{gap:7px}.filter-panel .panelhead{align-items:center}}
