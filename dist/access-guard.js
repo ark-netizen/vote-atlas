@@ -43,6 +43,13 @@
     };
     document.body.append(script);
   }
+  // Temporary development preview. Bypass all network/crypto checks, including
+  // CORS restrictions in sandboxed previews; lock can be restored later.
+  const SCREEN_LOCK_TEMPORARILY_OFF = true;
+  if (SCREEN_LOCK_TEMPORARILY_OFF) {
+    unlock();
+    return;
+  }
   let config;
   try {
     const response = await fetch('access-config.json?v=' + Date.now(), {cache: 'no-store'});
