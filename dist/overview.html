@@ -25,15 +25,16 @@
 <button type="button" class="stat" data-summary="reward"><span>리워드 내용 확인</span><strong id="countReward">—</strong><small>설명 텍스트 추출 ↗</small></button>
 <button type="button" class="stat" data-summary="lineup"><span>후보 목록 확보</span><strong id="countLineup">—</strong><small>부분 후보 포함 ↗</small></button>
 </section>
-<section class="panel calendar"><div class="panelhead"><div><span class="section-index">01 · SCHEDULE</span><h2>투표 일정</h2></div><div class="calendar-controls"><button id="prevMonth" aria-label="이전 달">‹</button><strong id="monthLabel"></strong><button id="nextMonth" aria-label="다음 달">›</button><button id="todayBtn">이번 달</button><a href="index.html" class="outline-link">전체 캘린더 ↗</a></div></div>
-<div class="weekday"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div id="miniCalendar" class="mini-calendar"></div><div class="calendarlegend">각 날짜에 시작하거나 마감되는 투표 수를 표시합니다. 날짜를 누르면 아래 목록이 필터링됩니다. <button id="clearDay" hidden>날짜 선택 해제 ×</button></div></section>
-<section class="panel vote-panel"><div class="panelhead"><div><span class="section-index">02 · REWARDS & CANDIDATES</span><h2>투표 · 리워드 · 후보 현황</h2></div><span id="listCount" class="caption">—</span></div>
-<div class="filters"><label class="search"><span>⌕</span><input type="search" id="query" placeholder="투표명 · 리워드 · 후보 검색" aria-label="통합 검색"></label>
+<section class="panel filter-panel" aria-label="캘린더 투표 필터"><div class="panelhead"><div><span class="section-index">FILTERS · CALENDAR & LIST</span><h2>캘린더 표시 조건</h2></div><button type="button" id="clearOverviewFilters" class="clear-overview-filters">전체 초기화</button></div><div class="filters"><label class="search"><span>⌕</span><input type="search" id="query" placeholder="투표명 · 리워드 · 후보 검색" aria-label="통합 검색"></label>
 <select id="app" aria-label="앱 선택"><option value="all">모든 앱</option></select>
 <select id="period" aria-label="진행 상태"><option value="all">전체 일정</option><option value="active">진행 중</option><option value="upcoming">시작 예정</option><option value="ended">마감됨</option></select>
 <select id="reward" aria-label="리워드 상태"><option value="all">리워드 전체</option><option value="known">리워드 확인</option><option value="missing">리워드 미확인</option></select>
-<button id="csv" class="export">CSV 내보내기</button></div>
-<div class="notice">리워드 ‘확인’은 공식 설명에서 문구를 추출했다는 의미입니다. 실제 광고 집행 여부나 혜택 지급을 검증한 것은 아닙니다. 전체 후보가 공개되지 않은 투표는 ‘부분 확인’으로 표시합니다.</div>
+<button id="csv" class="export">CSV 내보내기</button></div></section>
+<section class="panel calendar"><div class="panelhead"><div><span class="section-index">01 · SCHEDULE</span><h2>투표 일정</h2></div><div class="calendar-controls"><button id="prevMonth" aria-label="이전 달">‹</button><strong id="monthLabel"></strong><button id="nextMonth" aria-label="다음 달">›</button><button id="todayBtn">이번 달</button><a href="index.html" class="outline-link">전체 캘린더 ↗</a></div></div>
+<div class="weekday"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div id="miniCalendar" class="mini-calendar"></div><div class="calendarlegend">각 날짜에 시작하거나 마감되는 투표 수를 표시합니다. 날짜를 누르면 아래 목록이 필터링됩니다. <button id="clearDay" hidden>날짜 선택 해제 ×</button></div></section>
+<section class="panel vote-panel"><div class="panelhead"><div><span class="section-index">02 · REWARDS & CANDIDATES</span><h2>투표 · 리워드 · 후보 현황</h2></div><span id="listCount" class="caption">—</span></div>
+
+
 <div id="summarySelection" class="summary-selection" hidden><span id="summarySelectionLabel"></span><button id="clearSummary">필터 해제 ×</button></div>
 <div id="votes" class="votes" aria-live="polite"><p class="empty">수집 기록을 불러오고 있습니다.</p></div>
 </section>
@@ -50,4 +51,4 @@
 <footer>Vote Atlas · 공식 공개 정보 기반 · 수집 시점과 출처를 확인해 주세요.</footer>
 </div></main></div>
 <dialog id="detail"><button id="closeDetail" aria-label="상세 닫기" class="close">×</button><div id="detailContent"></div></dialog>
-<script src="rankings.js"></script><script src="overview.js"></script></body></html>
+<script src="calendar-utils.js"></script><script src="rankings.js"></script><script src="overview.js"></script></body></html>
