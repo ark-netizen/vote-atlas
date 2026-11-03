@@ -5,6 +5,9 @@ on:
       - feat/android-idolchamp-real-install-20261103
     paths:
       - 'scripts/probe_idolchamp_android.py'
+      - 'scripts/android_collect.py'
+      - 'scripts/android_evidence.py'
+      - 'tests/test_android_evidence.py'
       - '.github/workflows/idolchamp-android-probe.yml'
   workflow_dispatch:
     inputs:
@@ -30,7 +33,8 @@ jobs:
       - name: Check Python syntax
         run: |
           python3 -m py_compile scripts/probe_idolchamp_android.py
-          python3 -m py_compile scripts/android_collect.py scripts/core.py
+          python3 -m py_compile scripts/android_collect.py scripts/core.py scripts/android_evidence.py
+          python3 -m unittest discover -s tests -p 'test_android_evidence.py' -v
       - name: Enable KVM
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
