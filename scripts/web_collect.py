@@ -8,6 +8,8 @@ import re
 import time
 import urllib.request
 from bs4 import BeautifulSoup
+from reward_parse import extract_entries
+from official_web_rules import collect_official_rules
 
 ROOT = Path(__file__).resolve().parents[1]
 KST = dt.timezone(dt.timedelta(hours=9))
@@ -61,6 +63,7 @@ def muniverse_event(detail):
             'start_at': start.isoformat(), 'end_at': end.isoformat(), 'date_precision': 'minute', 'year_inferred': False,
             'leader': leader, 'winner': leader if final else None, 'result_status': 'published' if final else 'not_final',
             'candidates': candidates, 'lineup_complete': True, 'reward': '\n'.join(reward) or None, 'reward_lines': reward,
+            'reward_entries': extract_entries(reward, 'https://www.muniverse.io/votes/' + detail['voteCode'], STAMP),
             'source': '공식 공개 데이터', 'source_url': 'https://www.muniverse.io/votes/' + detail['voteCode'],
             'collected_at': STAMP, 'verification': '공식 상세 응답 확인' + (' · 종료·결과 공개 시각 확인' if final else ''),
             'evidence': clean(detail.get('content', '')), 'provider_status': detail['status']}
@@ -125,7 +128,7 @@ def fanstar_event(html, url, name):
     top=[c['name'] for c in candidates if c['rank']==1 and c['votes']>0]
     return {'id':'fannstar-'+hashlib.sha256((url+start.isoformat()+end.isoformat()).encode()).hexdigest()[:16],
             'app':'fannstar','title':title,'start':start.isoformat(),'end':end.isoformat(),'date_precision':'day','year_inferred':True,
-            'leader':', '.join(top) or None,'winner':None,'candidates':candidates,'lineup_complete':False,'reward':None,'reward_lines':[],
+            'leader':', '.join(top) or None,'winner':None,'candidates':candidates,'lineup_complete':False,'reward':None,'reward_lines':[],'reward_entries':[],
             'source':'공식 웹페이지','source_url':url,'collected_at':STAMP,
             'verification':'공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인',
             'evidence':period+'\n'+'\n'.join(f"{c['rank']} {c['name']} {c['votes']:,}표" for c in candidates)}
@@ -162,7 +165,21 @@ def main():
                 source.update(state='error',message=f'수집 실패 · 이전 데이터 유지: {type(exc).__name__}: {exc}',last_success=prior_sources.get(app['id'],{}).get('last_success'))
         sources.append(source)
         print(app['name'],source['state'],source['count'],flush=True)
-    output={'events':sorted(previous.values(),key=lambda e:(e['end'],e['id']),reverse=True),'sources':sources,'updated_at':STAMP}
+    policies, policy_checks = collect_official_rules(get, old.get('reward_policies', []), STAMP)
+    for source in sources:
+        status = policy_checks.get(source['id'])
+        if status:
+            source['official_reward_rule_status'] = status
+            if status['state'] == 'verified_rules' and source['state'] == 'blocked':
+                # Verified official RULES are not an app-vote-list connection.
+                source.update(state='partial', verified=False,
+                              method='공식 웹 공지 (투표 목록 미연결)',
+                              message=f"공식 공개 리워드 규칙 {status['count']}개 확인; 개별 투표·후보 수집 미검증")
+            if status['state'] == 'blocked':
+                source['message'] += ' · 공식 웹 규칙 조회 실패 (상세 상태 참조)'
+    output={'events':sorted(previous.values(),key=lambda e:(e['end'],e['id']),reverse=True),
+            'sources':sources,'reward_policies':policies,'policy_source_status':policy_checks,
+            'updated_at':STAMP}
     path.parent.mkdir(parents=True,exist_ok=True)
     temp=path.with_suffix('.tmp');temp.write_text(json.dumps(output,ensure_ascii=False,indent=2));temp.replace(path)
     if os.getenv('GITHUB_STEP_SUMMARY'):
