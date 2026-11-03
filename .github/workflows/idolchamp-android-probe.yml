@@ -1,0 +1,62 @@
+name: Android IdolChamp real app acquisition and screen probe
+on:
+  push:
+    branches:
+      - feat/android-idolchamp-real-install-20261103
+    paths:
+      - 'scripts/probe_idolchamp_android.py'
+      - '.github/workflows/idolchamp-android-probe.yml'
+  workflow_dispatch:
+    inputs:
+      idolchamp_apk_url:
+        description: 'Optional verified direct HTTPS APK URL; absent = try Play Store / Aurora'
+        required: false
+        type: string
+      idolchamp_apk_sha256:
+        description: 'Required SHA256 if direct APK URL was provided'
+        required: false
+        type: string
+permissions:
+  contents: read
+jobs:
+  idolchamp:
+    runs-on: ubuntu-latest
+    timeout-minutes: 29
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check Python syntax
+        run: |
+          python3 -m py_compile scripts/probe_idolchamp_android.py
+          python3 -m py_compile scripts/android_collect.py scripts/core.py
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Boot emulator, try real app install, collect one screen
+        uses: reactivecircus/android-emulator-runner@v2
+        env:
+          IDOLCHAMP_APK_URL: \${{ inputs.idolchamp_apk_url || '' }}
+          IDOLCHAMP_APK_SHA256: \${{ inputs.idolchamp_apk_sha256 || '' }}
+        with:
+          api-level: 30
+          target: google_apis
+          arch: x86_64
+          profile: pixel_2
+          disable-animations: true
+          emulator-options: '-no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim'
+          script: |
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq tesseract-ocr-eng tesseract-ocr-kor
+            python3 scripts/probe_idolchamp_android.py
+      - name: Archive actual screen evidence and separate app records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: idolchamp-android-screen-evidence
+          path: verification/android/idolchamp/
+          retention-days: 7
+          if-no-files-found: warn
