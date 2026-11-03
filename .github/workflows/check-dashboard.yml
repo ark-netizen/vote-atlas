@@ -7,6 +7,8 @@ on:
       - 'dist/*.css'
       - 'tests/test_rankings.cjs'
       - 'tests/test_calendar.cjs'
+      - 'tests/test_reward_groups.cjs'
+      - 'dist/reward-groups.js'
       - '.github/workflows/check-dashboard.yml'
   workflow_dispatch:
 permissions:
@@ -25,5 +27,7 @@ jobs:
           node --check dist/overview.js
           node --check dist/rankings.js
           node --check dist/calendar-utils.js
+          node --check dist/rewards.js
+          node --check dist/reward-groups.js
       - name: Test artist ranking logic
-        run: node --test tests/test_rankings.cjs tests/test_calendar.cjs
+        run: node --test tests/test_rankings.cjs tests/test_calendar.cjs tests/test_rewards_ui.cjs tests/test_reward_groups.cjs
