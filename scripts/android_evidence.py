@@ -133,7 +133,16 @@ def _reward_records(lines: list[str], evidence_file: str) -> list[dict]:
         )
         delivery = _period_with_context(text_block, keyword=DELIVERY_MARKER)
         # A reward may be described as 'for 7 days'; preserve text without inventing dates.
-        relative = RELATIVE_DATE.search(block)
+        # Bind each relative period to its own heading. An advertising
+        # '추후 공지' must never replace reward delivery '7일간'.
+        ad_relative = next((RELATIVE_DATE.search(line).group(0) for line in text_block
+                            if EXECUTION_MARKER.search(line) and RELATIVE_DATE.search(line)), None)
+        delivery_relative = next((RELATIVE_DATE.search(line).group(0) for line in text_block
+                                  if DELIVERY_MARKER.search(line) and RELATIVE_DATE.search(line)), None)
+        if not delivery_relative:
+            delivery_relative = next((RELATIVE_DATE.search(line).group(0) for line in text_block
+                                      if not EXECUTION_MARKER.search(line) and
+                                      not AD_CONTEXT.search(line) and RELATIVE_DATE.search(line)), None)
         condition = CONDITION_MARKER.search(block)
         location_match = re.search(
             r"(?:광고\s*(?:장소|위치)|집행\s*장소|게재\s*장소)\s*[:：]?\s*"
@@ -144,11 +153,11 @@ def _reward_records(lines: list[str], evidence_file: str) -> list[dict]:
             "condition_raw": condition.group(0) if condition else None,
             "location_raw": location_match.group(1).strip() if location_match else None,
             "delivery_period_raw": (
-                delivery["raw"] if delivery else relative.group(0) if relative else None
+                delivery["raw"] if delivery else delivery_relative
             ),
             "delivery_start_date": delivery["start_date"] if delivery else None,
             "delivery_end_date": delivery["end_date"] if delivery else None,
-            "ad_execution_period_raw": explicit_execution["raw"] if explicit_execution else None,
+            "ad_execution_period_raw": explicit_execution["raw"] if explicit_execution else ad_relative,
             "ad_execution_start_date": explicit_execution["start_date"] if explicit_execution else None,
             "ad_execution_end_date": explicit_execution["end_date"] if explicit_execution else None,
             "evidence_file": evidence_file,
