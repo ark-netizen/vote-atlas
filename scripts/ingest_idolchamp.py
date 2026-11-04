@@ -43,12 +43,12 @@ def accepted(row):
     return {
         "id": row["id"], "app": "idolchamp", "title": row["title"],
         "start": row["start"], "end": row["end"], "date_precision": "date",
-        "year_inferred": False, "candidates": candidates, "lineup_complete": False,
+        "year_inferred": bool(row.get("year_inferred", False)), "candidates": candidates, "lineup_complete": False,
         "leader": next((c["name"] for c in candidates if c["rank"] == 1), None),
         "winner": None, "reward": " / ".join(rewards) or None, "reward_lines": rewards,
         "reward_entries": [], "source": "실제 Android 기기 공개 투표 화면",
         "source_url": "https://www.idolchamp.co.kr/", "collected_at": row["collected_at"],
-        "verification": "실제 기기 접근성 화면 · 전체 후보/리워드/최종 결과 미검증",
+        "verification": "실제 기기 접근성+OCR 화면 · 전체 후보/리워드/최종 결과 미검증" + (" · 연도 추정" if row.get("year_inferred") else ""),
     }
 
 def ingest(doc, incoming, history):
