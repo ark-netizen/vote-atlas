@@ -9,7 +9,7 @@ import time
 import urllib.request
 from bs4 import BeautifulSoup
 from reward_parse import extract_entries
-from vote_cost import muniverse_listing_costs
+from vote_cost import muniverse_api_cost
 from vote_cost_rules import collect_app_cost_rules, match_event_rule
 from official_web_rules import collect_official_rules
 from official_sns_collect import collect_official_sns
@@ -61,7 +61,7 @@ def muniverse_event(detail):
     result_at = detail.get('resultOpenTime')
     final = detail['status'] == 'CLOSED' and end <= NOW and bool(result_at) and moment(result_at) <= NOW
     reward = reward_lines_from_html(detail.get('content', ''))
-    return {'id': 'muniverse-' + detail['voteCode'], 'app': 'muniverse', 'title': detail['voteName'],
+    event={'id': 'muniverse-' + detail['voteCode'], 'app': 'muniverse', 'title': detail['voteName'],
             'start': start.date().isoformat(), 'end': end.date().isoformat(),
             'start_at': start.isoformat(), 'end_at': end.isoformat(), 'date_precision': 'minute', 'year_inferred': False,
             'leader': leader, 'winner': leader if final else None, 'result_status': 'published' if final else 'not_final',
@@ -70,6 +70,9 @@ def muniverse_event(detail):
             'source': '공식 공개 데이터', 'source_url': 'https://www.muniverse.io/votes/' + detail['voteCode'],
             'collected_at': STAMP, 'verification': '공식 상세 응답 확인' + (' · 종료·결과 공개 시각 확인' if final else ''),
             'evidence': clean(detail.get('content', '')), 'provider_status': detail['status']}
+    cost=muniverse_api_cost(detail, STAMP)
+    if cost:event['vote_cost']=cost
+    return event
 
 def collect_muniverse(previous):
     events, errors, seen = [], [], set()
@@ -93,7 +96,7 @@ def collect_muniverse(previous):
                 event = muniverse_event(detail)
                 # Cost is independently verified on the official listing page
                 # after collecting each vote; no one-size-fits-all Lumi rule.
-                if old and old.get('vote_cost'):
+                if old and old.get('vote_cost') and not event.get('vote_cost'):
                     event['vote_cost'] = old['vote_cost']
                 events.append(event)
             except Exception as exc:
@@ -103,14 +106,7 @@ def collect_muniverse(previous):
             break
     if not events:
         raise ValueError('No verified vote details')
-    try:
-        listing_page=get('https://www.muniverse.io/votes')
-        costs=muniverse_listing_costs(listing_page,events,STAMP)
-        for event in events:
-            if event['id'] in costs:event['vote_cost']=costs[event['id']]
-        print(f'muniverse verified per-vote costs {len(costs)} / {len(events)}',flush=True)
-    except Exception as exc:
-        print(f'muniverse official cost-list check failed (past records retained): {type(exc).__name__}: {str(exc)[:130]}',flush=True)
+    print(f'muniverse vote-detail costs verified {sum(bool(e.get("vote_cost")) for e in events)} / {len(events)}',flush=True)
     if not listing_complete:
         errors.append('Pagination limit reached')
     return events, errors, f'최근 90일 투표 {len(events)}건 · 후보·득표·기간 확인'
