@@ -28,6 +28,10 @@ final class PollParser {
     private PollParser() {}
 
     static JSONObject parse(List<String> lines) {
+        return parse(lines, "");
+    }
+
+    static JSONObject parse(List<String> lines, String explicitTitle) {
         try {
             if (lines.isEmpty() || lines.size() > 300) return null;
             for (String line : lines) if (EXCLUDE.matcher(line).find() && (line.contains("비밀번호") || line.contains("결제하기"))) return null;
@@ -53,8 +57,10 @@ final class PollParser {
                     titles.add(s);
                 }
             }
-            if (titles.isEmpty()) return null;
-            String title = titles.get(0);
+            String chosenTitle = explicitTitle == null ? "" : explicitTitle.trim();
+            if (chosenTitle.isEmpty() && titles.isEmpty()) return null;
+            String title = chosenTitle.isEmpty() ? titles.get(0) : chosenTitle;
+            if (title.length() < 5 || title.length() > 160) return null;
             // Do not upload a screen if the candidate title looks like user-specific content.
             if (title.matches(".*(내 계정|아이디|닉네임|프로필|이메일).*")) return null;
             String stamp = OffsetDateTime.now(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
@@ -68,10 +74,10 @@ final class PollParser {
             record.put("date_precision", "date");
             record.put("year_inferred", false);
             record.put("collected_at", stamp);
-            record.put("source", "실제 Android 기기 공개 투표 화면");
+            record.put("source", "사용자 선택 공식 앱 공개 투표 화면 캡처");
             record.put("source_url", "https://www.idolchamp.co.kr/");
             record.put("lineup_complete", false);
-            record.put("verification", "접근성 텍스트 추출 · 전체 후보 및 최종 결과 미검증");
+            record.put("verification", "사용자 확인 스크린샷 한글 인식 · 전체 후보 및 최종 결과 미검증");
             JSONArray candidates = new JSONArray();
             String leader = "";
             for (String line : lines) {
