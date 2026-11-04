@@ -89,7 +89,7 @@ body.urban-interface.modern-interface>main{
 .modern-interface .nav-label,.modern-interface .rail-title{
   margin:0 15px 10px;
   color:#a1a9b9;
-  font:700 10px/1.4 inherit;
+  font-size:10px;font-weight:700;line-height:1.4;
   letter-spacing:.7px;
 }
 .modern-interface .sidebar nav,.modern-interface .rail nav{
@@ -370,7 +370,7 @@ body.urban-interface.modern-interface>main{
 .modern-interface .stats>.stat span,.modern-interface .stats>.stat small,
 .modern-interface .metrics>div>span,.modern-interface .metrics>.metric-card>span{
   color:#8490a1!important;
-  font:600 10px/1.45 inherit;
+  font-size:10px;font-weight:600;line-height:1.45;
   letter-spacing:0;
 }
 .modern-interface .stats>.stat strong,.modern-interface .metrics strong{
@@ -426,7 +426,7 @@ body.urban-interface.modern-interface>main{
 .modern-interface .section-index{display:none}
 .modern-interface .panelhead .caption,.modern-interface .section-title>span{
   color:#929cab;
-  font:500 10px/1.4 inherit;
+  font-size:10px;font-weight:500;line-height:1.4;
   letter-spacing:0;
 }
 .modern-interface .filters,.modern-interface .award-filters,.modern-interface .reward-filters{
@@ -698,4 +698,66 @@ body.urban-interface.modern-interface>main{
 }
 @media(prefers-reduced-motion:reduce){
   .modern-interface .nav,.modern-interface .nav-button{transition:none}
+}
+
+
+/* Shared fixed WORKSPACE menu: preserve the same link sizes on all pages. */
+body.urban-interface.modern-interface .workspace-menu .workspace-menu-item{
+  display:flex;
+  flex:0 0 40px;
+  width:100%;height:40px;min-height:40px;max-height:40px;
+  padding:0 11px;
+  background:transparent;
+  border:1px solid transparent;
+  border-radius:9px;
+  color:#728095;
+  font-size:12px;
+  line-height:1.35;
+  font-weight:550;
+  gap:10px;
+  box-shadow:none;
+}
+body.urban-interface.modern-interface .workspace-menu .workspace-menu-item:hover{
+  background:#f3f6fb;color:#53659a;
+}
+body.urban-interface.modern-interface .workspace-menu .workspace-menu-item.active{
+  background:#edf1fd;border:1px solid #e5eafc;color:#435ca9;font-weight:700;
+}
+body.urban-interface.modern-interface .workspace-menu .nav-glyph{
+  flex:0 0 7px;width:7px;height:7px;
+  border:0;border-radius:2px;margin:0;background:#afb9ca;
+}
+body.urban-interface.modern-interface .workspace-menu .workspace-menu-item.active .nav-glyph{
+  background:#6079c4;
+}
+body.urban-interface.modern-interface .workspace-menu .workspace-menu-text{
+  min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.45;
+}
+body.urban-interface.modern-interface .dashboard-primary .stats{
+  grid-template-columns:repeat(5,minmax(0,1fr));
+}
+@media(max-width:1450px) and (min-width:1131px){
+  body.urban-interface.modern-interface .dashboard-primary .stats{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+@media(max-width:1130px) and (min-width:981px){
+  body.urban-interface.modern-interface .dashboard-primary .stats{
+    grid-template-columns:repeat(5,minmax(0,1fr));
+  }
+}
+@media(max-width:980px) and (min-width:761px){
+  body.urban-interface.modern-interface .dashboard-primary .stats{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+@media(max-width:760px){
+  body.urban-interface.modern-interface .dashboard-primary .stats{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  body.urban-interface.modern-interface .workspace-menu .workspace-menu-item{
+    flex:0 0 auto;width:auto;min-width:max-content;
+    height:36px;min-height:36px;max-height:36px;
+    padding:0 10px;font-size:10px;
+  }
 }
