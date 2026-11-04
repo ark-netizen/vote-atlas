@@ -8,12 +8,12 @@
 <link rel="stylesheet" href="overview.css">
 <link rel="stylesheet" href="rewards.css">
 <link rel="stylesheet" href="urban.css">
-<meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="workspace-nav.css"><link rel="stylesheet" href="access.css"><style>body.protected-view > :not(#accessScreen):not(script){display:none!important}</style></head>
-<body class="protected-view urban-interface">
+<meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="workspace-nav.css"><link rel="stylesheet" href="dashboard-modern.css"><link rel="stylesheet" href="access.css"><style>body.protected-view > :not(#accessScreen):not(script){display:none!important}</style></head>
+<body class="protected-view urban-interface modern-interface">
 <div class="shell">
 <aside class="rail">
-<a href="overview.html" class="brand" aria-label="Vote Atlas 통합 대시보드"><span class="brandmark logo">V<span>·</span></span><span>vote atlas<small>FANDOM VOTING INTELLIGENCE</small></span></a>
-<div class="workspace">팬덤 투표 데이터베이스<small>공식 공개 정보 · 자동 수집</small></div>
+<a href="overview.html" class="brand" aria-label="Vote Atlas 통합 대시보드"><span class="brandmark logo">V<span>·</span></span><span>vote atlas</span></a>
+
 <div class="rail-title nav-label">WORKSPACE</div>
 <nav class="workspace-menu" aria-label="서비스 메뉴">
 <a class="nav nav-button workspace-menu-item" data-nav-key="overview" href="overview.html"><span class="nav-glyph" aria-hidden="true"></span><span class="workspace-menu-text">통합 대시보드</span></a>
@@ -27,23 +27,23 @@
 <a class="nav nav-button workspace-menu-item" data-nav-key="collect" href="https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml" target="_blank" rel="noopener noreferrer"><span class="nav-glyph" aria-hidden="true"></span><span class="workspace-menu-text">자동 수집 내역</span></a>
 </nav>
 
-<div class="rail-bottom sidebar-bottom"><strong>VOTE ATLAS</strong><p>공식 공개 정보 · 일별 수집 기록</p></div>
+
 </aside>
 <main class="main">
-<header class="top"><div class="crumb">VOTE ATLAS <span>/</span> REWARDS</div><div class="meta"><span id="updated">데이터 불러오는 중</span><button type="button" id="reload">새로고침 ↻</button></div></header>
+<header class="top"><div class="meta"><span id="updated">데이터 불러오는 중</span><button type="button" id="reload">새로고침 ↻</button></div></header>
 <div class="content">
-<div class="urban-utility"><strong>02 / REWARD DIRECTORY</strong><span>VOTE ATLAS — BENEFITS &amp; SCALE</span></div>
-<div class="eyebrow"><span class="live-dot"></span> VERIFIED REWARD TEXT · KST</div>
-<h1>투표별 규모와 리워드를, 한눈에.</h1>
-<p class="lead">월·주차·회차만 다른 투표는 하나의 시리즈로 묶고, 어떤 혜택이 제공되는지와 수집 시점의 평균 득표 규모를 비교합니다.</p>
+
+
+<h1>리워드</h1>
+
 <section class="stats reward-stats" aria-label="리워드 통계">
-<div class="stat"><span>리워드 확인 시리즈</span><strong id="countKnown">—</strong><small>공식 설명 텍스트 기준</small></div>
-<div class="stat"><span>진행 중 투표 시리즈</span><strong id="countActive">—</strong><small>한국시간 기준</small></div>
-<div class="stat"><span>7일 내 마감 시리즈</span><strong id="countSoon">—</strong><small>마감일 확인 기준</small></div>
-<div class="stat"><span>리워드 미확인</span><strong id="countUnknown">—</strong><small>필터로 조회 가능</small></div>
+<div class="stat"><span>리워드 확인 시리즈</span><strong id="countKnown">—</strong></div>
+<div class="stat"><span>진행 중 투표 시리즈</span><strong id="countActive">—</strong></div>
+<div class="stat"><span>7일 내 마감 시리즈</span><strong id="countSoon">—</strong></div>
+<div class="stat"><span>리워드 미확인</span><strong id="countUnknown">—</strong></div>
 </section>
 <section class="panel reward-panel">
-<div class="panelhead"><div><span class="section-index">REWARD DIRECTORY</span><h2>투표 시리즈 · 리워드 · 투표 규모</h2></div><span id="resultsCount" class="caption" role="status" aria-live="polite">—</span></div>
+<div class="panelhead"><div><h2>투표별 리워드</h2></div><span id="resultsCount" class="caption" role="status" aria-live="polite">—</span></div>
 <div class="reward-filters">
 <label class="search reward-search"><span>⌕</span><input type="search" id="query" placeholder="투표 시리즈 · 혜택 · 장소 검색" aria-label="리워드 검색"></label>
 <label class="filter-label"><span>앱</span><select id="app" aria-label="앱별 필터"><option value="all">모든 앱</option></select></label>
@@ -52,7 +52,7 @@
 <label class="filter-label"><span>리워드 확인</span><select id="known" aria-label="리워드 확인 여부 필터"><option value="known">확인된 항목만</option><option value="all">전체 (미확인 포함)</option><option value="missing">미확인만</option></select></label>
 <label class="filter-label"><span>정렬</span><select id="sort" aria-label="리워드 정렬"><option value="deadline">진행 투표 마감순</option><option value="recent">최근 확인순</option><option value="app">앱 이름순</option></select></label>
 </div>
-<p class="reward-note">동일 투표의 다른 달·주차·회차는 한 줄로 묶습니다. 평균 득표는 공개된 전체 후보의 최근 수집값만 계산하며, 참여자 수와는 다릅니다. 촬영일 광고는 정확한 송출 일수가 공식적으로 확인되지 않으면 ‘일수 미확인’으로 표시합니다.</p>
+<details class="method-disclosure"><summary>집계 기준</summary><p>동일 투표의 다른 달·주차·회차는 한 줄로 묶습니다. 평균 득표는 공개된 전체 후보의 최근 수집값만 계산하며, 참여자 수와는 다릅니다. 촬영일 광고는 정확한 송출 일수가 공식적으로 확인되지 않으면 ‘일수 미확인’으로 표시합니다.</p></details>
 <div class="reward-table-wrap">
 <table class="reward-table">
 <thead><tr><th scope="col">앱 · 투표 시리즈</th><th scope="col">수집 회차</th><th scope="col">리워드 종류</th><th scope="col">송출·제공 일수</th><th scope="col">장소 · 제공 조건</th><th scope="col">평균 득표 규모</th><th scope="col">세부 회차</th></tr></thead>
@@ -61,7 +61,7 @@
 </div>
 <p id="limitNotice" class="reward-note" hidden></p>
 </section>
-<footer>Vote Atlas · GitHub Pages + 저장소 JSON · 별도 DB 없음 · 모든 날짜는 한국시간 기준</footer>
+
 </div>
 </main>
 </div>
