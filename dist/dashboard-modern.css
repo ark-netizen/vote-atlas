@@ -1096,7 +1096,7 @@ body.urban-interface.modern-interface .main-content,
 }
 
 
-/* TODAY / 2026-11-04: A visible whole-day boundary, not just a small date badge.
+/* TODAY HIGHLIGHT: A visible whole-day boundary, not just a small date badge.
    Works on both the voting calendar and the awards range-bar calendar. */
 .modern-interface .calendar-grid .day.current {
   position:relative;
