@@ -1,5 +1,6 @@
 """Isolated, credential-free Android collection probe; never writes shared data."""
 import argparse
+import base64
 import hashlib
 import json
 import os
@@ -80,8 +81,9 @@ def acquire(app, report):
         parts = []
         certs = set()
         for file in files:
-            cert = run(str(signer), 'verify', '--print-certs', str(file))
-            digests = re.findall(r'^Signer #\d+ certificate SHA-256 digest: (\w+)', cert, re.M)
+            cert = run(str(signer), 'verify', '--print-certs-pem', str(file))
+            certificates = re.findall(r'-----BEGIN CERTIFICATE-----\\s*([A-Za-z0-9+/=\\s]+?)-----END CERTIFICATE-----', cert, re.S)
+            digests = [hashlib.sha256(base64.b64decode(re.sub(r'\\s+', '', pem))).hexdigest() for pem in certificates]
             if not digests:
                 raise ValueError('Signing certificate not found')
             certs.add(tuple(sorted(digests)))
