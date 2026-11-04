@@ -1,0 +1,36 @@
+name: Audit Vote Atlas responsive text overflow
+on:
+  pull_request:
+    paths:
+      - 'dist/*.css'
+      - 'dist/*.html'
+      - 'dist/*.js'
+      - 'scripts/audit_dashboard_layout.py'
+      - '.github/workflows/audit-dashboard-layout.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  overflow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install headless browser driver
+        run: |
+          python3 -m pip install --quiet --disable-pip-version-check playwright
+          command -v google-chrome || command -v chromium
+      - name: Render all pages at 320, 375, 768, 1024, 1366 and 1600 px
+        env:
+          LAYOUT_STRICT: "1"
+        run: python3 scripts/audit_dashboard_layout.py
+      - name: Upload responsive screenshots and overflow report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: vote-atlas-responsive-overflow-qa
+          path: verification/layout/
+          retention-days: 7
+          if-no-files-found: warn

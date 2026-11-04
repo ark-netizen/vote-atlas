@@ -874,3 +874,223 @@ body.urban-interface.modern-interface .dashboard-primary .stats{
  .modern-interface .filter-panel{margin-bottom:12px}
  .modern-interface .reward-table td:first-child{position:static;box-shadow:none}
 }
+
+
+/* Responsive text containment: fix intrinsic-width overflow without hiding it
+   at the document level. Intentional tables, calendars and menu scrollers
+   remain horizontally scrollable within their own containers. */
+body.urban-interface.modern-interface .content,
+body.urban-interface.modern-interface .main-content,
+.modern-interface .dashboard-layout,
+.modern-interface .dashboard-primary,
+.modern-interface .dashboard-activity,
+.modern-interface .dashboard-bottom-grid,
+.modern-interface .dashboard-bottom-grid > *,
+.modern-interface .panel,
+.modern-interface .calendar-panel,
+.modern-interface .calendar-filter-bar,
+.modern-interface .list-panel,
+.modern-interface .activity-panel,
+.modern-interface .award-card,
+.modern-interface .trend-per-app,
+.modern-interface .trend-compact-app,
+.modern-interface .award-schedule-entry,
+.modern-interface .trend-chart-card{
+  min-width:0;
+  max-width:100%;
+}
+.modern-interface .stats > .stat,
+.modern-interface .metrics > *,
+.modern-interface .trend-quick-stats > *,
+.modern-interface .trend-detail-stats > *,
+.modern-interface .activity-entry,
+.modern-interface .panelhead > *,
+.modern-interface .section-title > *,
+.modern-interface .filter-bar-title > *,
+.modern-interface .award-calendar-toolbar > *,
+.modern-interface .calendar-toolbar > *{
+  min-width:0;
+}
+.modern-interface .stats > .stat strong,
+.modern-interface .metrics strong,
+.modern-interface .trend-detail-stats strong,
+.modern-interface .trend-kpis strong,
+.modern-interface .trend-quick-stats strong {
+  max-width:100%;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  line-height:1.22;
+}
+.modern-interface .stats > .stat strong,
+.modern-interface .metrics strong{
+  font-size:clamp(18px,2.05vw,31px);
+}
+.modern-interface .panelhead h2,
+.modern-interface .section-title h2,
+.modern-interface .page-heading h1,
+.modern-interface .content > h1,
+.modern-interface .activity-head h2,
+.modern-interface .vote h3,
+.modern-interface .trend-per-app-head h3,
+.modern-interface .award-card h3,
+.modern-interface .award-schedule-entry strong,
+.modern-interface .artist-name,
+.modern-interface .activity-title{
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+.modern-interface .activity-entry .activity-info,
+.modern-interface .activity-entry .activity-meta,
+.modern-interface .activity-view-all,
+.modern-interface .award-card .pill,
+.modern-interface .reward-table .event-title,
+.modern-interface .reward-table td,
+.modern-interface .reward-table th,
+.modern-interface .vote .reward-text,
+.modern-interface .vote-foot,
+.modern-interface .artist-row > *{
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+.modern-interface .filters,
+.modern-interface .reward-filters,
+.modern-interface .award-filters,
+.modern-interface .filter-fields,
+.modern-interface .trend-filter-row,
+.modern-interface .top-actions,
+.modern-interface .meta,
+.modern-interface .award-calendar-toolbar,
+.modern-interface .calendar-toolbar,
+.modern-interface .calendar-controls {
+  min-width:0;
+  max-width:100%;
+}
+.modern-interface .filters > *,
+.modern-interface .reward-filters > *,
+.modern-interface .award-filters > *,
+.modern-interface .filter-fields > *,
+.modern-interface .trend-filter-row > *,
+.modern-interface .calendar-controls > *{
+  min-width:0;
+}
+.modern-interface input,
+.modern-interface select,
+.modern-interface textarea {
+  max-width:100%;
+}
+.modern-interface .trend-chart-controls,
+.modern-interface .award-calendar-toolbar,
+.modern-interface .award-calendar-month,
+.modern-interface .calendar-controls,
+.modern-interface .filter-bar-title,
+.modern-interface .meta,
+.modern-interface .top-actions{
+  flex-wrap:wrap;
+}
+.modern-interface .award-calendar-month {
+  min-width:0;
+  max-width:100%;
+}
+.modern-interface .award-calendar-month strong{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+.modern-interface .reward-table-wrap,
+.modern-interface .award-calendar-scroll,
+.modern-interface .trend-detail-table-wrap{
+  min-width:0;
+  max-width:100%;
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+}
+.modern-interface .trend-app-charts > *,
+.modern-interface .trend-app-plot,
+.modern-interface .trend-app-plot svg,
+.modern-interface .trend-chart-card svg{
+  min-width:0;
+  max-width:100%;
+}
+.modern-interface dialog,
+.modern-interface #rewardDetail{
+  max-width:calc(100vw - 24px);
+  overflow-x:auto;
+}
+.modern-interface dialog :is(h2,h3,p,pre,dd,dt,a),
+.modern-interface #rewardDetail :is(h2,h3,p,pre,dd,dt,a){
+  overflow-wrap:anywhere;
+}
+@media(max-width:760px){
+  .modern-interface .stats > .stat,
+  .modern-interface .metrics > .metric-card,
+  .modern-interface .metrics > div{
+    min-height:0;
+  }
+  .modern-interface .stats > .stat strong,
+  .modern-interface .metrics strong{
+    font-size:clamp(17px,5vw,25px);
+  }
+  .modern-interface .reward-filters .reward-search,
+  .modern-interface .award-filters .search,
+  .modern-interface .reward-filters > .filter-label,
+  .modern-interface .award-filters > *,
+  .modern-interface .filter-fields > *,
+  .modern-interface .trend-chart-controls > label,
+  .modern-interface .calendar-kind{
+    min-width:0;
+    max-width:100%;
+    flex:1 1 100%;
+  }
+  .modern-interface .reward-filters :is(input,select),
+  .modern-interface .award-filters :is(input,select),
+  .modern-interface .filter-fields :is(input,select),
+  .modern-interface .trend-chart-controls select,
+  .modern-interface .calendar-kind select{
+    min-width:0;
+    width:100%;
+    max-width:100%;
+  }
+  .modern-interface .panelhead,
+  .modern-interface .section-title,
+  .modern-interface .calendar-toolbar{
+    flex-wrap:wrap;
+    align-items:flex-start;
+  }
+  .modern-interface .award-calendar-toolbar .calendar-kind{
+    flex:1 1 100%;
+    align-items:flex-start;
+  }
+  .modern-interface .award-calendar-month{
+    flex-wrap:wrap;
+    gap:5px;
+  }
+  .modern-interface .award-calendar-month strong{
+    flex:1 1 115px;
+    text-align:center;
+  }
+  .modern-interface .award-card .pill{
+    white-space:normal;
+    display:inline-flex;
+  }
+}
+@media(max-width:375px){
+  .modern-interface .content,
+  .modern-interface .main-content{
+    padding-left:11px;
+    padding-right:11px;
+  }
+  .modern-interface .panel,
+  .modern-interface .trend-panel,
+  .modern-interface .calendar-filter-bar{
+    padding:13px 11px;
+  }
+  .modern-interface .stats > .stat,
+  .modern-interface .metrics > *{
+    padding:11px 9px;
+  }
+  .modern-interface .activity-panel{
+    padding:14px 11px;
+  }
+}
