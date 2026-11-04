@@ -137,3 +137,23 @@ test('subculture exclusion is available in both calendar and award directory',()
  assert.match(js,/\['exclude-subculture','서브컬처 제외'\]/);
  assert.ok((js.match(/matchesAwardGroup\(/g)||[]).length>=3);
 });
+
+
+test('today column remains visible above connected vote bars with click-through overlay',()=>{
+ const fs=require('node:fs'),path=require('node:path');
+ const css=fs.readFileSync(path.join(__dirname,'../dist/dashboard-modern.css'),'utf8');
+ const js=fs.readFileSync(path.join(__dirname,'../dist/awards.js'),'utf8');
+ const index=css.lastIndexOf('/* Current-day column overlay in the awards calendar.');
+ assert.ok(index>=0,'Awards today overlay styles must exist');
+ const rule=css.slice(index);
+ assert.match(rule,/\.award-date-cell\.today::before/);
+ assert.match(rule,/z-index:5/);
+ assert.match(rule,/pointer-events:none/);
+ assert.match(rule,/border:2px solid #304f95/);
+ assert.match(rule,/\.award-date-cell\.today \.cal-day-num/);
+ assert.match(rule,/z-index:7/);
+ assert.match(rule,/\.award-date-button::after/);
+ assert.match(rule,/@media\(max-width:760px\)[\s\S]*display:block/);
+ assert.match(js,/row\.style\.gridTemplateRows='46px repeat\('/);
+ assert.match(js,/day===calendarToday\?' today'/);
+});
