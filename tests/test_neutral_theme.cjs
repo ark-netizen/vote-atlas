@@ -37,7 +37,8 @@ test('Each workspace menu draws a small CSS square instead of an emoji glyph', (
     assert.doesNotMatch(nav, /[◈◇♧▦♛◎↻✳☷]/, file);
     assert.match(nav, /aria-hidden="true"/, file);
   }
-  assert.match(read('index.html'), /class="workspace-icon" aria-hidden="true"/);
+  // The unified sidebar no longer renders the redundant workspace card icon.
+  assert.doesNotMatch(read('index.html'), /class="workspace-icon"/);
   assert.match(read('style.css'), /\.nav-button>span\.nav-glyph/);
   assert.match(read('overview.css'), /\.rail nav \.nav-glyph/);
 });
