@@ -88,7 +88,8 @@ function renderAwardsCalendar(){
  for(const week of weeks){
   const row=textNode('div','award-calendar-week');
   row.setAttribute('role','row');
-  row.style.gridTemplateRows='34px repeat('+Math.max(week.laneCount,1)+', 28px)';
+  // Reserve a dedicated header row so the first continuous vote bar never crowds the date badge.
+  row.style.gridTemplateRows='46px repeat('+Math.max(week.laneCount,1)+', 28px)';
   for(const [index,day] of week.dates.entries()){
    const inMonth=day.slice(0,7)===visibleMonth;
    const count=inMonth?schedules.filter(x=>awardsCalendar.onDay(x,day)).length:0;
