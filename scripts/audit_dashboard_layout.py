@@ -228,6 +228,9 @@ def run():
                                 scroll:window.scrollY,
                                 statsWidth:document.querySelector('.reward-stats')
                                   .getBoundingClientRect().width,
+                                mainRight:document.querySelector('main.main')
+                                  .getBoundingClientRect().right,
+                                docked:document.body.classList.contains('calc-drawer-open'),
                                 pageWidth:document.documentElement.scrollWidth
                               };
                             }""")
@@ -240,8 +243,19 @@ def run():
                                 failures.append("drawer exceeds viewport width")
                             if abs(after["scroll"]-before["scroll"]) > 2:
                                 failures.append("opening drawer jumped underlying page")
-                            if abs(after["statsWidth"]-before["statsWidth"]) > 2:
-                                failures.append("opening drawer resized KPI area")
+                            if not after["docked"]:
+                                failures.append("calculator dock state not activated")
+                            if width > 760:
+                                # Main has genuinely moved left. The drawer must
+                                # not sit over any accessible reward content.
+                                if after["statsWidth"] >= before["statsWidth"]-30:
+                                    failures.append("desktop rewards content did not shrink")
+                                if after["mainRight"] > after["left"]+2:
+                                    failures.append("drawer overlaps reward content")
+                            else:
+                                # On phones it is a distinct fullscreen calculator view.
+                                if abs(after["left"])>2 or abs(after["right"]-width)>2:
+                                    failures.append("mobile calculator is not full width")
                             if after["pageWidth"] > width+2:
                                 failures.append("drawer causes full-page horizontal scroll")
                             if width in (375,1366):
@@ -253,6 +267,12 @@ def run():
                             page.keyboard.press("Escape")
                             if not page.locator("#voteCalcPanel").is_hidden():
                                 failures.append("Escape did not close drawer")
+                            if page.evaluate("document.body.classList.contains('calc-drawer-open')"):
+                                failures.append("Escape did not restore original page width")
+                            restored = page.evaluate("""() => document.querySelector('.reward-stats')
+                                .getBoundingClientRect().width""")
+                            if abs(restored-before["statsWidth"])>2:
+                                failures.append("closing calculator did not restore KPI width")
                             page.locator("#openVoteCalc").click(timeout=6000)
                             page.locator("#closeVoteCalc").click(timeout=6000)
                             if not page.locator("#voteCalcPanel").is_hidden():

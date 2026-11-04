@@ -66,7 +66,26 @@ test('The row-level currency apply button updates values and opens the drawer, n
 test('Panel is contained on mobile and does not cover desktop sidebar by default',()=>{
  assert.match(css,/width:min\(420px,calc\(100vw - 32px\)\)/);
  assert.match(css,/\.vote-calc-backdrop:not\(\[hidden\]\)/);
- assert.match(css,/\.vote-calc-panel\{width:min\(420px,100vw\)\}/);
+ assert.match(css,/\.vote-calc-panel\{width:100vw;max-width:100vw\}/);
  assert.match(css,/\.reward-stats\{grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
  assert.match(css,/\.reward-stats\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
+});
+
+
+test('Opening the right dock reserves width for the reward table rather than covering records',()=>{
+ assert.match(css,/--vote-calc-dock-width:clamp\(280px,30vw,390px\)/);
+ assert.match(css,/@media\(min-width:761px\)/);
+ assert.match(css,/body\.urban-interface\.modern-interface\.calc-drawer-open \.main\s*\{/);
+ assert.match(css,/margin-right:var\(--vote-calc-dock-width\)/);
+ assert.match(css,/\.vote-calc-panel\s*\{\s*width:var\(--vote-calc-dock-width\)/);
+ assert.match(script,/document\.body\.classList\.add\('calc-drawer-open'\)/);
+ assert.match(script,/document\.body\.classList\.remove\('calc-drawer-open'\)/);
+ assert.match(css,/\.calc-drawer-open \.reward-stats/);
+});
+
+test('On mobile calculator occupies its own full screen with an explicit close button',()=>{
+ assert.match(css,/@media\(max-width:760px\)/);
+ assert.match(css,/\.calc-drawer-open\{overflow:hidden\}/);
+ assert.match(css,/\.vote-calc-panel\{width:100vw;max-width:100vw\}/);
+ assert.match(html,/id="closeVoteCalc" aria-label="계산기 닫기"/);
 });
