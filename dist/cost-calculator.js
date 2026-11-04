@@ -2,7 +2,8 @@
 /* Client-side purchase-equivalent value only. This is never a revenue estimate. */
 const VoteAtlasCost = (() => {
  const asNumber=(value,max=1e12)=>{
-   const n=typeof value==='number'?value:Number(String(value??'').replace(/,/g,'').trim());
+   if(value===null||value===undefined||String(value).trim()==='')return null;
+   const n=typeof value==='number'?value:Number(String(value).replace(/,/g,'').trim());
    return Number.isFinite(n)&&n>=0&&n<=max?n:null;
  };
  function calculate({votes,unitsPerVote,bundleUnits,bundlePrice,paidShare}){
