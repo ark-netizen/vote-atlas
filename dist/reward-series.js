@@ -37,10 +37,23 @@ const VoteAtlasSeries = (() => {
     const partial=events.map(votesSnapshot).filter(s=>s.partial);
     const knownParticipants=events.map(votesSnapshot).filter(s=>s.participantCount!==null);
     const mean=samples=>samples.length?Math.round(samples.reduce((sum,s)=>sum+s,0)/samples.length):null;
+    // The same eligible rounds feed both statistics; no partial-candidate vote totals are inferred.
+    // For an even sample count, the median is the arithmetic mean of the two middle values.
+    const median=samples=>{
+      if(!samples.length)return null;
+      const sorted=[...samples].sort((a,b)=>a-b);
+      const middle=Math.floor(sorted.length/2);
+      return sorted.length%2?sorted[middle]:(sorted[middle-1]+sorted[middle])/2;
+    };
+    const completeVotes=complete.map(s=>s.votes);
+    const partialVotes=partial.map(s=>s.votes);
+    const participants=knownParticipants.map(s=>s.participantCount);
     return {
-      meanVotes:mean(complete.map(s=>s.votes)), knownVoteRounds:complete.length,
-      partialVoteRounds:partial.length, avgPartialMinimum:mean(partial.map(s=>s.votes)),
-      meanParticipants:mean(knownParticipants.map(s=>s.participantCount)),
+      meanVotes:mean(completeVotes), medianVotes:median(completeVotes),
+      knownVoteRounds:complete.length,
+      partialVoteRounds:partial.length, avgPartialMinimum:mean(partialVotes),
+      medianPartialMinimum:median(partialVotes),
+      meanParticipants:mean(participants), medianParticipants:median(participants),
       knownParticipantRounds:knownParticipants.length,
       scope:'후보별 공개 득표의 마지막 수집값. 전체 후보 확인된 회차만 평균에 포함하며 확정 최종 득표가 아닐 수 있습니다.',
     };

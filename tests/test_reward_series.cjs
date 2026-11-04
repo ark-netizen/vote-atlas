@@ -80,3 +80,79 @@ test('same program but truly changed benefit or duration stays separate',()=>{
  assert.ok(result.every(row=>row.rewardVariantLabel));
  assert.ok(result.some(row=>row.benefits[0].period_rule==='7일간'));
 });
+
+test('median resists a single high-volume round and uses all confirmed rounds',()=>{
+ const values=[100,120,130,140,150,160,170,180,190,200,210,220,20000];
+ const events=values.map((votes,i)=>({id:'outlier-'+i,
+   candidates:[{name:'A',rank:1,votes}],lineup_complete:true}));
+ const m=series.metric(events);
+ assert.equal(m.knownVoteRounds,13);
+ assert.equal(m.medianVotes,170);
+ assert.equal(m.meanVotes,1690);
+});
+test('even-sized samples use the arithmetic midpoint of two middle values',()=>{
+ const m=series.metric([1,2,3,4].map((votes,i)=>({
+   id:'middle-'+i,candidates:[{name:'A',votes}],lineup_complete:true,
+ })));
+ assert.equal(m.meanVotes,3); // rounded 2.5, legacy mean rounding retained
+ assert.equal(m.medianVotes,2.5); // exact median of [1,2,3,4]
+});
+test('missing and partial votes are excluded from both central tendency estimates',()=>{
+ const complete=votes=>({candidates:[{name:'A',votes}],lineup_complete:true});
+ const partial=votes=>({candidates:[{name:'A',votes}],lineup_complete:false});
+ const m=series.metric([complete(100),complete(300),partial(100000),{candidates:[],lineup_complete:true}]);
+ assert.equal(m.knownVoteRounds,2);
+ assert.equal(m.partialVoteRounds,1);
+ assert.equal(m.meanVotes,200);
+ assert.equal(m.medianVotes,200);
+ assert.equal(m.avgPartialMinimum,100000);
+ assert.equal(m.medianPartialMinimum,100000);
+ const missing=series.metric([{candidates:[],lineup_complete:false}]);
+ assert.equal(missing.meanVotes,null);
+ assert.equal(missing.medianVotes,null);
+ assert.equal(missing.meanParticipants,null);
+ assert.equal(missing.medianParticipants,null);
+});
+test('participant medians use the same known participant observations and never substitute vote totals',()=>{
+ const m=series.metric([
+   {participant_count:20,candidates:[]},
+   {participant_count:50,candidates:[]},
+   {participant_count:500,candidates:[]},
+   {candidates:[{name:'A',votes:600}],lineup_complete:true},
+ ]);
+ assert.equal(m.knownParticipantRounds,3);
+ assert.equal(m.meanParticipants,190);
+ assert.equal(m.medianParticipants,50);
+ assert.equal(m.knownVoteRounds,1);
+ assert.equal(m.medianVotes,600);
+});
+test('separately aggregated prelim/final stages each have their own vote medians',()=>{
+ const rounds=[
+   {id:'pre1',app:'muniverse',title:'[예선투표] it’s Live BEST PICK - 1st',start:'2026-01-01',
+     end:'2026-01-02',reward:'최종 1위 아티스트에게 트로피 수여',
+     candidates:[{name:'A',votes:100}],lineup_complete:true},
+   {id:'pre2',app:'muniverse',title:'[예선투표] it’s Live BEST PICK - 2nd',start:'2026-01-03',
+     end:'2026-01-04',reward:'최종 1위 아티스트에게 트로피 수여',
+     candidates:[{name:'A',votes:1000}],lineup_complete:true},
+   {id:'fin1',app:'muniverse',title:'[결선투표] it’s Live BEST PICK - 1st',start:'2026-01-05',
+     end:'2026-01-06',reward:'최종 1위 아티스트에게 트로피 수여',
+     candidates:[{name:'A',votes:700}],lineup_complete:true},
+ ];
+ const row=series.build(rounds,[],rewards)[0];
+ const stages=Object.fromEntries(row.stageMetrics.map(s=>[s.name,s.metrics]));
+ assert.equal(stages['예선'].medianVotes,550);
+ assert.equal(stages['예선'].meanVotes,550);
+ assert.equal(stages['결선'].medianVotes,700);
+ assert.equal(row.metrics.medianVotes,700);
+});
+test('reward list and detail show median alongside every average indicator',()=>{
+ const fs=require('node:fs');
+ const js=fs.readFileSync('dist/rewards.js','utf8');
+ const html=fs.readFileSync('dist/rewards.html','utf8');
+ assert.match(html,/평균·중앙값 득표 규모/);
+ assert.match(js,/medianVotes/);
+ assert.match(js,/medianParticipants/);
+ assert.match(js,/중앙값 득표 \(수집 시점\)/);
+ assert.match(js,/중앙값 실제 참여자 수/);
+ assert.match(js,/중앙값 득표'/);
+});

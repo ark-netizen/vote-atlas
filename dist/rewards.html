@@ -52,10 +52,10 @@
 <label class="filter-label"><span>리워드 확인</span><select id="known" aria-label="리워드 확인 여부 필터"><option value="known">확인된 항목만</option><option value="all">전체 (미확인 포함)</option><option value="missing">미확인만</option></select></label>
 <label class="filter-label"><span>정렬</span><select id="sort" aria-label="리워드 정렬"><option value="deadline">진행 투표 마감순</option><option value="recent">최근 확인순</option><option value="app">앱 이름순</option></select></label>
 </div>
-<details class="method-disclosure"><summary>집계 기준</summary><p>동일 투표의 다른 달·주차·회차는 한 줄로 묶습니다. 평균 득표는 공개된 전체 후보의 최근 수집값만 계산하며, 참여자 수와는 다릅니다. 촬영일 광고는 정확한 송출 일수가 공식적으로 확인되지 않으면 ‘일수 미확인’으로 표시합니다.</p></details>
+<details class="method-disclosure"><summary>집계 기준</summary><p>동일 투표의 다른 달·주차·회차는 한 줄로 묶습니다. 평균과 중앙값은 모두 전체 후보 득표가 확인된 회차의 마지막 수집값으로만 계산하며, 참여자 수와는 다릅니다. 중앙값은 회차별 득표를 정렬했을 때 가운데 값입니다(회차가 짝수면 가운데 두 값의 평균). 극단적인 고득표 회차로 평균이 흔들릴 때 함께 비교할 수 있습니다. 촬영일 광고는 정확한 송출 일수가 공식적으로 확인되지 않으면 ‘일수 미확인’으로 표시합니다.</p></details>
 <div class="reward-table-wrap">
 <table class="reward-table">
-<thead><tr><th scope="col">앱 · 투표 시리즈</th><th scope="col">수집 회차</th><th scope="col">리워드 종류</th><th scope="col">송출·제공 일수</th><th scope="col">장소 · 제공 조건</th><th scope="col">평균 득표 규모</th><th scope="col">세부 회차</th></tr></thead>
+<thead><tr><th scope="col">앱 · 투표 시리즈</th><th scope="col">수집 회차</th><th scope="col">리워드 종류</th><th scope="col">송출·제공 일수</th><th scope="col">장소 · 제공 조건</th><th scope="col">평균·중앙값 득표 규모</th><th scope="col">세부 회차</th></tr></thead>
 <tbody id="rewardRows"><tr><td colspan="7" class="reward-empty">수집 기록을 불러오고 있습니다.</td></tr></tbody>
 </table>
 </div>

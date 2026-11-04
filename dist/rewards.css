@@ -91,3 +91,5 @@
 
 
 .reward-table .app-name,#rewardDetail .tag{color:#565656!important}
+
+.series-median{display:block;margin-top:4px;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;color:#737373}
