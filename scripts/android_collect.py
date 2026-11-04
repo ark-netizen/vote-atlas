@@ -82,7 +82,7 @@ def ocr_cards(ns):
         out.append({'title':previous['text'],'bounds':previous['bounds'],'text':previous['text']+'\n'+n['text']})
     return out
 
-def collect(app,max_pages=6,max_details=20):
+def collect(app,max_pages=6,max_details=20,detail_callback=None):
     enter_votes(app);events=[];visited=set();detail_count=0
     # Tabs are read only when visibly present. No blind coordinates.
     sections=[None]+app.get('tabs',[])
@@ -117,6 +117,10 @@ def collect(app,max_pages=6,max_details=20):
                     if text in detail_seen: break
                     detail_seen.add(text);chunks.append(text);swipe()
                 event=event_from_screen(app,card['title'],card['text']+'\n'+'\n'.join(chunks))
+                if detail_callback:
+                    detail_callback({'app':app['id'],'title':card['title'],'list_text':card['text'],
+                                     'detail_text':'\n'.join(chunks),'parsed':event,
+                                     'seen_at':now(),'page':page})
                 if event: events.append(event)
                 adb('shell','input','keyevent','4');time.sleep(1.5)
             if detail_count>=max_details: break
