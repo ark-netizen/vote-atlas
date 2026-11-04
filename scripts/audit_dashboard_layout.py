@@ -162,6 +162,45 @@ def run():
                         if "?view=" in path: slug += "-"+path.split("?view=")[-1]
                         page.screenshot(path=str(OUT/f"{slug}-{width}.png"),
                             animations="disabled",timeout=15000)
+                    # Controlled long-label stress test after the normal
+                    # screenshot. These values are synthetic QA fixtures and
+                    # are never written into real data or used for site metrics.
+                    mutated = page.evaluate("""() => {
+                      const longLabel =
+                        '장기간진행되는투표이벤트ABCDEFGHIJKLMNOPQRSTUVWXYZ' +
+                        'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMN';
+                      const examples = [
+                        ['.stat strong', '1,234,567,890,123'],
+                        ['.metric-card strong','1,234,567,890,123'],
+                        ['.panelhead h2',longLabel],
+                        ['.vote h3',longLabel],
+                        ['.activity-entry .activity-title',longLabel],
+                        ['.award-card h3',longLabel],
+                        ['.trend-per-app-head h3',longLabel],
+                        ['.reward-table .event-title',longLabel],
+                        ['.award-calendar-month strong','2026년 12월 / DECEMBER'],
+                      ];
+                      let count=0;
+                      for (const [selector,label] of examples) {
+                        const el=document.querySelector(selector);
+                        if (el && el.getBoundingClientRect().width>0) {
+                          el.textContent=label;
+                          count++;
+                        }
+                      }
+                      return count;
+                    }""")
+                    if mutated:
+                        stress = page.evaluate(AUDIT)
+                        stress["page"] = path
+                        stress["stress"] = True
+                        rows.append(stress)
+                        print(f"LAYOUT_STRESS {path:23s} {width:4d}px "
+                              f"fixtures={mutated:2d} "
+                              f"overflow={len(stress['issues']):2d}",flush=True)
+                        for issue in stress["issues"][:9]:
+                            print("  STRESS_ISSUE "+
+                                  json.dumps(issue,ensure_ascii=False),flush=True)
                     print(f"LAYOUT {path:30s} {width:4d}px "
                           f"cards={result['checkedCards']:3d} "
                           f"overflow={len(result['issues']):2d}",
