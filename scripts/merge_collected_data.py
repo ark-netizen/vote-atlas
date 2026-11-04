@@ -14,7 +14,7 @@ DATA=ROOT/"dist"/"data"
 
 def time_of(value):
     try:
-        if not value:return datetime.min.timestamp()
+        if not value:return 0
         return datetime.fromisoformat(str(value).replace("Z","+00:00")).timestamp()
     except (TypeError,ValueError,OverflowError):
         return 0
