@@ -1,30 +1,30 @@
 .award-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
 .award-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
 .award-filters .search{flex:2;min-width:210px}
-.award-filters select{border:1px solid var(--border);border-radius:7px;background:#fff;padding:10px 9px;min-width:135px;color:#466451;max-width:195px;font-size:11px}
-.award-method{color:#748a79;background:#f4f8f2;font-size:11px;line-height:1.8;padding:12px 14px;border-radius:7px;margin:6px 0 16px}
+.award-filters select{border:1px solid var(--border);border-radius:7px;background:#ffffff;padding:10px 9px;min-width:135px;color:#595959;max-width:195px;font-size:11px}
+.award-method{color:#818181;background:#f6f6f6;font-size:11px;line-height:1.8;padding:12px 14px;border-radius:7px;margin:6px 0 16px}
 .awards-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.award-card{border:1px solid var(--border);border-radius:10px;padding:17px;min-width:0;background:#fff}
-.award-card header{display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:#819282;font-size:10px}
-.award-card h3{font-size:16px;color:#244934;margin:10px 0;line-height:1.5}
-.award-card .pill{display:inline-block;background:#eaf2e8;color:#42664c;border-radius:5px;padding:5px 7px;font-size:10px}
-.award-card .pill.unknown{background:#f6f3eb;color:#997b4a}
-.award-card .award-date{color:#90a090;font-size:10px;margin-bottom:12px}
+.award-card{border:1px solid var(--border);border-radius:10px;padding:17px;min-width:0;background:#ffffff}
+.award-card header{display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:#8b8b8b;font-size:10px}
+.award-card h3{font-size:16px;color:#3c3c3c;margin:10px 0;line-height:1.5}
+.award-card .pill{display:inline-block;background:#eeeeee;color:#585858;border-radius:5px;padding:5px 7px;font-size:10px}
+.award-card .pill.unknown{background:#f3f3f3;color:#7e7e7e}
+.award-card .award-date{color:#999999;font-size:10px;margin-bottom:12px}
 .platform-grid{display:flex;flex-wrap:wrap;gap:8px;margin:11px 0}
-.platform-unit{background:#f7faf5;border:1px solid #e3ede0;border-radius:8px;padding:10px;flex:1 1 140px;min-width:0}
-.platform-name{display:block;color:#2d6440;font-size:13px;font-weight:700;overflow-wrap:anywhere}
-.platform-role{font-size:11px;color:#688474;line-height:1.6;margin-top:7px}
-.award-note{color:#718374;line-height:1.8;font-size:11px;margin:12px 0}
+.platform-unit{background:#f9f9f9;border:1px solid #e9e9e9;border-radius:8px;padding:10px;flex:1 1 140px;min-width:0}
+.platform-name{display:block;color:#4f4f4f;font-size:13px;font-weight:700;overflow-wrap:anywhere}
+.platform-role{font-size:11px;color:#7a7a7a;line-height:1.6;margin-top:7px}
+.award-note{color:#7c7c7c;line-height:1.8;font-size:11px;margin:12px 0}
 .award-evidence{display:flex;flex-wrap:wrap;gap:10px;border-top:1px solid var(--border);padding-top:12px}
-.award-evidence a{font-size:10px;color:#487558;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
-.award-empty,.discover-empty{padding:24px;background:#f7faf6;color:#809186;border-radius:8px;font-size:11px;grid-column:1/-1}
-.discovery-status{color:#607866;font-size:11px;padding:12px 0;line-height:1.7}
-.subheading{font-size:13px;color:#3d6048;margin:24px 0 12px}
+.award-evidence a{font-size:10px;color:#646464;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.award-empty,.discover-empty{padding:24px;background:#f9f9f9;color:#8b8b8b;border-radius:8px;font-size:11px;grid-column:1/-1}
+.discovery-status{color:#6f6f6f;font-size:11px;padding:12px 0;line-height:1.7}
+.subheading{font-size:13px;color:#535353;margin:24px 0 12px}
 .discover-list{display:grid;gap:8px}
 .discover-card{border:1px solid var(--border);border-radius:8px;padding:13px 15px;display:flex;gap:13px;align-items:flex-start;justify-content:space-between}
 .discover-card strong{font-size:12px;line-height:1.6;display:block}
-.discover-card p{font-size:10px;line-height:1.6;color:#7a8b7f;margin:4px 0}
-.discover-card a{color:#4f7b56;text-decoration:underline;white-space:nowrap;font-size:10px}
+.discover-card p{font-size:10px;line-height:1.6;color:#858585;margin:4px 0}
+.discover-card a{color:#6a6a6a;text-decoration:underline;white-space:nowrap;font-size:10px}
 @media(max-width:1080px){.awards-list{grid-template-columns:1fr}.award-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.rail{position:relative;width:auto;min-width:0;height:auto}.shell{display:block}.rail-bottom{display:none}.content{padding:24px 15px}.top{padding:0 16px}.award-filters>*{flex:1 1 160px}.award-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.discover-card{display:block}.discover-card a{white-space:normal}}
 
@@ -33,51 +33,52 @@
 .award-calendar-panel{overflow:hidden}
 .award-calendar-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:13px}
 .award-calendar-month{display:flex;align-items:center;gap:7px}
-.award-calendar-month strong{font-size:17px;min-width:128px;text-align:center;font-weight:750;color:#2c513b}
-.award-calendar-month button{background:#fff;border:1px solid var(--border);border-radius:7px;padding:8px 13px;font-size:14px;min-height:34px}
-.award-calendar-month button:last-child{font-size:11px;color:#52745d;margin-left:7px}
-.calendar-kind{display:flex;align-items:center;gap:8px;font-size:11px;color:#799085}
-.calendar-kind select{border:1px solid var(--border);background:#fff;border-radius:7px;padding:9px 10px;color:#355842;font-size:11px}
-.award-calendar-legend{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#718777;font-size:10px;margin:0 0 13px}
+.award-calendar-month strong{font-size:17px;min-width:128px;text-align:center;font-weight:750;color:#434343}
+.award-calendar-month button{background:#ffffff;border:1px solid var(--border);border-radius:7px;padding:8px 13px;font-size:14px;min-height:34px}
+.award-calendar-month button:last-child{font-size:11px;color:#676767;margin-left:7px}
+.calendar-kind{display:flex;align-items:center;gap:8px;font-size:11px;color:#888888}
+.calendar-kind select{border:1px solid var(--border);background:#ffffff;border-radius:7px;padding:9px 10px;color:#4b4b4b;font-size:11px}
+.award-calendar-legend{display:flex;align-items:center;gap:8px;flex-wrap:wrap;color:#7f7f7f;font-size:10px;margin:0 0 13px}
 .cal-indicator{display:inline-block;width:8px;height:8px;border-radius:3px}
-.cal-indicator.ceremony{background:#345f4b}.cal-indicator.vote{background:#6e84b2}.cal-indicator.milestone{background:#b3894b}
+.cal-indicator.ceremony{background:#505050}.cal-indicator.vote{background:#838383}.cal-indicator.milestone{background:#8e8e8e}
 .award-calendar-scroll{width:100%;overflow-x:auto}
 .award-weekdays,.award-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
-.award-weekdays{background:#f4f7f2;border:1px solid var(--border);border-bottom:0;border-radius:9px 9px 0 0}
-.award-weekdays span{padding:11px 0;color:#829486;font-size:10px;text-align:center}
-.award-weekdays span:first-child{color:#b37e78}.award-weekdays span:last-child{color:#6e83ad}
+.award-weekdays{background:#f6f6f6;border:1px solid var(--border);border-bottom:0;border-radius:9px 9px 0 0}
+.award-weekdays span{padding:11px 0;color:#8d8d8d;font-size:10px;text-align:center}
+.award-weekdays span:first-child{color:#8d8d8d}.award-weekdays span:last-child{color:#828282}
 .award-calendar-grid{border-left:1px solid var(--border);border-top:1px solid var(--border)}
 .award-date-cell{min-width:0;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
-.award-date-button{padding:9px 6px;display:flex;align-items:flex-start;flex-direction:column;gap:4px;min-height:112px;height:100%;width:100%;border:0;text-align:left;background:#fff;cursor:pointer;color:#49604d}
-.award-date-button:hover{background:#f4f8f2}.award-date-button:focus-visible{outline:3px solid #87aa8d;outline-offset:-3px}
-.award-date-cell.out-month .award-date-button{background:#fafbf9;color:#bbc7ba}
-.award-date-cell.selected .award-date-button{background:#eaf3e8;box-shadow:inset 0 0 0 2px #83aa86}
-.award-date-cell.today .cal-day-num{color:#fff;background:#416c52;border-radius:50%}
+.award-date-button{padding:9px 6px;display:flex;align-items:flex-start;flex-direction:column;gap:4px;min-height:112px;height:100%;width:100%;border:0;text-align:left;background:#ffffff;cursor:pointer;color:#575757}
+.award-date-button:hover{background:#f6f6f6}.award-date-button:focus-visible{outline:3px solid #9c9c9c;outline-offset:-3px}
+.award-date-cell.out-month .award-date-button{background:#fafafa;color:#c2c2c2}
+.award-date-cell.selected .award-date-button{background:#efefef;box-shadow:inset 0 0 0 2px #9a9a9a}
+.award-date-cell.today .cal-day-num{color:#ffffff;background:#5c5c5c;border-radius:50%}
 .cal-day-num{display:grid;place-items:center;min-width:23px;height:23px;border-radius:50%;font-size:11px;font-weight:650}
 .cal-mini-event{width:100%;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-radius:4px;padding:4px 5px;line-height:1.4;font-size:9px;font-weight:600}
-.cal-mini-event.ceremony{background:#e5f0e6;color:#2c6846}
-.cal-mini-event.vote{background:#edf1f9;color:#4d699b}
-.cal-mini-event.milestone{background:#fbf0df;color:#95703d}
-.cal-more{color:#8a9c8d;font-size:9px;padding:3px}
+.cal-mini-event.ceremony{background:#ececec;color:#525252}
+.cal-mini-event.vote{background:#f1f1f1;color:#666666}
+.cal-mini-event.milestone{background:#f1f1f1;color:#757575}
+.cal-more{color:#959595;font-size:9px;padding:3px}
 .award-calendar-details{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:17px;margin-top:17px}
-.award-calendar-details h3{font-size:13px;margin:0 0 12px;color:#355c42}
+.award-calendar-details h3{font-size:13px;margin:0 0 12px;color:#4d4d4d}
 .award-month-details{border-left:1px solid var(--border);padding-left:16px}
-.award-month-details h3 span{font-size:10px;color:#8a9e8c;font-weight:500;margin-left:6px}
+.award-month-details h3 span{font-size:10px;color:#969696;font-weight:500;margin-left:6px}
 .award-day-agenda,.award-month-agenda{display:grid;gap:7px;max-height:360px;overflow-y:auto}
-.award-schedule-entry{border:1px solid #e7ece5;background:#fcfefb;border-radius:8px;padding:11px 12px;min-width:0}
-.award-schedule-entry .schedule-tag{display:inline-block;padding:3px 6px;border-radius:4px;background:#e5f0e6;color:#3a6b49;font-size:9px;font-weight:700}
-.award-schedule-entry.vote .schedule-tag{background:#edf1f9;color:#506a9a}
-.award-schedule-entry.milestone .schedule-tag{background:#fbf0df;color:#95703d}
-.award-schedule-entry strong{display:block;margin:7px 0 5px;color:#2c4d39;font-size:12px;line-height:1.55}
-.award-schedule-entry p{font-size:10px;line-height:1.6;color:#799181;margin:5px 0}
-.award-schedule-entry a{font-size:10px;color:#416b4f;text-decoration:underline;text-underline-offset:2px}
-.award-month-item{width:100%;border:1px solid #e6ede3;border-radius:7px;background:#fff;padding:10px;display:flex;justify-content:space-between;text-align:left;gap:8px;align-items:center;color:#365440}
-.award-month-item:hover{background:#f5f9f4}
+.award-schedule-entry{border:1px solid #eaeaea;background:#fdfdfd;border-radius:8px;padding:11px 12px;min-width:0}
+.award-schedule-entry .schedule-tag{display:inline-block;padding:3px 6px;border-radius:4px;background:#ececec;color:#585858;font-size:9px;font-weight:700}
+.award-schedule-entry.vote .schedule-tag{background:#f1f1f1;color:#686868}
+.award-schedule-entry.milestone .schedule-tag{background:#f1f1f1;color:#757575}
+.award-schedule-entry strong{display:block;margin:7px 0 5px;color:#414141;font-size:12px;line-height:1.55}
+.award-schedule-entry p{font-size:10px;line-height:1.6;color:#888888;margin:5px 0}
+.award-schedule-entry a{font-size:10px;color:#5b5b5b;text-decoration:underline;text-underline-offset:2px}
+.award-month-item{width:100%;border:1px solid #eaeaea;border-radius:7px;background:#ffffff;padding:10px;display:flex;justify-content:space-between;text-align:left;gap:8px;align-items:center;color:#494949}
+.award-month-item:hover{background:#f7f7f7}
 .award-month-item .month-item-main{display:grid;gap:4px;min-width:0;overflow:hidden}
 .award-month-item strong{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.award-month-item small{font-size:10px;color:#83968a}
-.award-month-item .month-item-date{flex:0 0 auto;font-size:10px;color:#577b62}
-.award-month-item.vote .month-item-date{color:#697eae}
-.award-calendar-notice{margin:15px 0 0;background:#f6f9f3;padding:11px 12px;border-radius:7px;font-size:10px;color:#79907d;line-height:1.7}
+.award-month-item small{font-size:10px;color:#8f8f8f}
+.award-month-item .month-item-date{flex:0 0 auto;font-size:10px;color:#6d6d6d}
+.award-month-item.vote .month-item-date{color:#7d7d7d}
+.award-calendar-notice{margin:15px 0 0;background:#f7f7f7;padding:11px 12px;border-radius:7px;font-size:10px;color:#878787;line-height:1.7}
 @media(max-width:1050px){.award-calendar-details{grid-template-columns:1fr}.award-month-details{padding:0;border:0;border-top:1px solid var(--border);padding-top:16px}}
 @media(max-width:700px){.award-weekdays,.award-calendar-grid{min-width:670px}.award-calendar-month strong{min-width:108px;font-size:14px}.award-date-button{min-height:96px}.award-calendar-panel{padding:16px}.award-calendar-toolbar{align-items:flex-start}}
+

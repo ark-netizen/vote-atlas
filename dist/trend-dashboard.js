@@ -4,7 +4,7 @@ const VoteAtlasTrendDashboard=(()=>{
  const $=s=>document.querySelector(s);
  const el=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=String(txt);return n;};
  const svgEl=(tag,attrs={},tooltip=null)=>{const n=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,String(v));if(tooltip){const t=document.createElementNS('http://www.w3.org/2000/svg','title');t.textContent=tooltip;n.append(t);}return n;};
- const colors=['#467b57','#8b6fb4','#cf8b48','#3d91a3','#ca7188','#7a9f49','#ae8e62','#63778e'];
+ const colors=['#343434','#626262','#898989','#b0b0b0','#4a4a4a','#777777','#9d9d9d','#565656'];
  const fmt=n=>Number(n).toLocaleString('ko-KR');
  const compact=n=>new Intl.NumberFormat('ko-KR',{notation:'compact',maximumFractionDigits:1}).format(Number(n));
  const today=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
@@ -38,13 +38,13 @@ const VoteAtlasTrendDashboard=(()=>{
    const py=value=>T+innerH*(1-value/max);
    for(let i=0;i<=4;i++){
      const y=T+i*innerH/4;
-     svg.append(svgEl('line',{x1:L,x2:W-R,y1:y,y2:y,stroke:'#e4ede4','stroke-width':1}));
-     const label=svgEl('text',{x:L-8,y:y+3,'text-anchor':'end',fill:'#829385','font-size':11});
+     svg.append(svgEl('line',{x1:L,x2:W-R,y1:y,y2:y,stroke:'#e9e9e9','stroke-width':1}));
+     const label=svgEl('text',{x:L-8,y:y+3,'text-anchor':'end',fill:'#8c8c8c','font-size':11});
      label.textContent=compact(Math.round(max*(1-i/4)));svg.append(label);
    }
    const step=days===7?1:Math.max(1,Math.ceil(days/6));
    for(let i=0;i<days;i+=step){
-     const label=svgEl('text',{x:L+i*innerW/Math.max(1,days-1),y:H-12,'text-anchor':'middle',fill:'#839687','font-size':10});
+     const label=svgEl('text',{x:L+i*innerW/Math.max(1,days-1),y:H-12,'text-anchor':'middle',fill:'#8f8f8f','font-size':10});
      label.textContent=VoteAtlasTrends.dateAgo(anchor,days-1-i).slice(5);svg.append(label);
    }
    return {svg,px,py,innerW,innerH,L,T,first,anchor};
@@ -68,7 +68,7 @@ const VoteAtlasTrendDashboard=(()=>{
        if(segment.length&&VoteAtlasTrends.differenceDays(segment.at(-1).date,p.date)>1)stroke();
        segment.push(p);
      }stroke();
-     for(const p of s.points)svg.append(svgEl('circle',{cx:px(p.date),cy:py(p.total_votes),r:3.6,fill:color,stroke:'#fff','stroke-width':1.2},
+     for(const p of s.points)svg.append(svgEl('circle',{cx:px(p.date),cy:py(p.total_votes),r:3.6,fill:color,stroke:'#ffffff','stroke-width':1.2},
        appName(p.app)+' · '+s.title+'\n'+p.date+' '+fmt(p.total_votes)+'표\n'+(p.scope==='visible_candidates'?'부분 후보 합계':'전체 후보 합계')+'\n'+p.observed_at));
      const label=el('span','trend-legend-item'),dot=el('span','trend-dot');dot.style.background=color;
      label.append(dot,el('span','',appName(s.points[0].app)+' · '+s.title+(s.scope==='visible_candidates'?' (부분)':'')));
@@ -88,14 +88,14 @@ const VoteAtlasTrendDashboard=(()=>{
      if(!record)continue; // No observation is not a zero vote count.
      const width=Math.min(innerW/days*.7,24),h=record.delta/max*innerH;
      svg.append(svgEl('rect',{x:L+(i+.5)*innerW/days-width/2,y:T+innerH-h,
-       width,height:Math.max(1,h),rx:2,fill:'#74a081'},
+       width,height:Math.max(1,h),rx:2,fill:'#8f8f8f'},
        date+' · +'+fmt(record.delta)+'표 · '+record.count+'개 회차'));
    }root.append(svg);
  }
  function alertsView(input){
    const host=$('#trendAlerts');host.replaceChildren();
    const all=VoteAtlasTrends.changes(input).filter(x=>x.delta>0)
-     .sort((a,b)=>b.delta-a.delta||b.date.localeCompare(a.date)).slice(0,14);
+     .sort((a,b)=>Number(b.spike)-Number(a.spike)||b.delta-a.delta||b.date.localeCompare(a.date)).slice(0,14);
    if(!all.length){host.append(el('p','trend-chart-empty','아직 비교 가능한 연속 일자의 증가 기록이 없습니다.'));return}
    for(const p of all){
      const button=el('button','trend-alert');button.type='button';
