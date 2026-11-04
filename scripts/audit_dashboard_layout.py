@@ -25,7 +25,8 @@ OUT.mkdir(parents=True, exist_ok=True)
 PAGES = [
     "overview.html", "rewards.html", "awards.html",
     "index.html", "index.html?view=list", "index.html?view=sources",
-    "trend-detail.html"
+    "trend-detail.html", "trend-detail.html?app=muniverse",
+    "trend-detail.html?app=fannstar"
 ]
 WIDTHS = [320, 375, 768, 1024, 1366, 1600]
 
@@ -160,6 +161,7 @@ def run():
                     if width in (375,1366):
                         slug = path.split("?")[0].replace(".html","")
                         if "?view=" in path: slug += "-"+path.split("?view=")[-1]
+                        if "?app=" in path: slug += "-"+path.split("?app=")[-1]
                         page.screenshot(path=str(OUT/f"{slug}-{width}.png"),
                             animations="disabled",timeout=15000)
                     # Controlled long-label stress test after the normal
