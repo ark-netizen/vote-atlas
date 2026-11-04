@@ -7,6 +7,8 @@ on:
       - 'scripts/vote_cost.py'
       - 'scripts/vote_cost_rules.py'
       - 'tests/test_vote_cost.py'
+      - 'scripts/merge_collected_data.py'
+      - 'tests/test_merge_collected_data.py'
       - 'scripts/vote_history.py'
       - 'tests/test_vote_history.py'
       - 'scripts/official_web_rules.py'
@@ -42,17 +44,33 @@ jobs:
       - run: python scripts/web_collect.py
       - name: Preserve daily vote history from verified observations
         run: python scripts/vote_history.py --backfill-git
-      - name: Save collection and source status
+      - name: Merge and save collection without overwriting concurrent updates
         if: always()
+        shell: bash
         run: |
+          set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add dist/data/events.json dist/data/vote_history.json
-          if ! git diff --cached --quiet; then
+          cp dist/data/events.json "$RUNNER_TEMP/collected_events.json"
+          cp dist/data/vote_history.json "$RUNNER_TEMP/collected_history.json"
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            python scripts/merge_collected_data.py "$RUNNER_TEMP/collected_events.json" "$RUNNER_TEMP/collected_history.json"
+            git add dist/data/events.json dist/data/vote_history.json
+            if git diff --cached --quiet; then
+              echo 'No new verified data to publish'
+              exit 0
+            fi
             git commit -m 'Update official voting data'
-            git pull --rebase origin main
-            git push
-          fi
+            if git push origin HEAD:main; then
+              echo 'Data saved safely'
+              exit 0
+            fi
+            echo "Main changed during push; merging again (attempt $attempt)"
+          done
+          echo 'Failed to publish after four conflict-safe merge attempts'
+          exit 1
       - uses: actions/upload-artifact@v4
         if: always()
         with:
