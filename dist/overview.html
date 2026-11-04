@@ -9,7 +9,7 @@
 <a href="overview.html" class="brand"><span class="brandmark">V<span>·</span></span><span>vote atlas<small>FANDOM VOTING INTELLIGENCE</small></span></a>
 <div class="workspace">팬덤 투표 데이터베이스<small>공식 공개 정보 · 자동 수집</small></div>
 <div class="rail-title">WORKSPACE</div>
-<nav aria-label="서비스 메뉴"><a class="nav active" href="overview.html">◈ &nbsp; 통합 대시보드</a><a class="nav" href="rewards.html">◇ &nbsp; 리워드</a><a class="nav" href="index.html">▦ &nbsp; 월간 투표 캘린더</a><a class="nav" href="#artists">♛ &nbsp; 아티스트 순위</a><a class="nav" href="#sources">◎ &nbsp; 수집 현황</a><a class="nav" href="https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml" target="_blank" rel="noopener">↻ &nbsp; 자동 수집 내역</a></nav>
+<nav aria-label="서비스 메뉴"><a class="nav active" href="overview.html">◈ &nbsp; 통합 대시보드</a><a class="nav" href="rewards.html">◇ &nbsp; 리워드</a><a class="nav" href="index.html">▦ &nbsp; 월간 투표 캘린더</a><a class="nav" href="#voteTrends">↗ &nbsp; 득표 추이</a><a class="nav" href="#artists">♛ &nbsp; 아티스트 순위</a><a class="nav" href="#sources">◎ &nbsp; 수집 현황</a><a class="nav" href="https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml" target="_blank" rel="noopener">↻ &nbsp; 자동 수집 내역</a></nav>
 <div class="rail-bottom"><strong>확인되지 않은 것은<br>확인되지 않았다고.</strong><p>리워드와 후보는 공식 원문 기준으로 수집하며, 부분 수집 여부를 구분합니다.</p></div>
 </aside>
 <main class="main">
@@ -25,20 +25,38 @@
 <button type="button" class="stat" data-summary="reward"><span>리워드 내용 확인</span><strong id="countReward">—</strong><small>설명 텍스트 추출 ↗</small></button>
 <button type="button" class="stat" data-summary="lineup"><span>후보 목록 확보</span><strong id="countLineup">—</strong><small>부분 후보 포함 ↗</small></button>
 </section>
+<section class="panel trend-panel" id="voteTrends" aria-label="앱별 투표 득표 추이">
+<div class="panelhead"><div><span class="section-index">01 · DAILY VOTE INTELLIGENCE</span><h2>앱별 · 투표 주제별 득표 추이</h2></div><span class="caption" id="trendUpdated">일별 관측 데이터 준비 중</span></div>
+<p class="trend-explainer">각 회차의 <b>후보별 공개 득표 합계</b>를 수집한 날짜로 표시합니다. 같은 투표의 <b>연속된 두 날짜</b>를 비교해 일별 증가량과 급증 후보를 계산합니다. 새 회차 시작이나 후보 구성 변경은 증가량에서 제외합니다.</p>
+<div class="trend-quick-stats"><div><span>관측된 앱</span><strong id="trendAppCount">—</strong></div><div><span>투표 주제</span><strong id="trendTopicCount">—</strong></div><div><span>전일 대비 비교 가능</span><strong id="trendChangeCount">—</strong></div><div><span>급증 후보</span><strong id="trendSpikeCount">—</strong></div></div>
+<div class="trend-filter-row">
+<label>앱 <select id="trendApp" aria-label="분석할 앱"><option value="all">전체 앱</option></select></label>
+<label>투표 주제 <select id="trendTopic" aria-label="분석할 투표 주제"><option value="all">전체 주제</option></select></label>
+<label>관측 기간 <select id="trendRange" aria-label="관측 기간"><option value="7">최근 7일</option><option value="14" selected>최근 14일</option><option value="30">최근 30일</option><option value="90">최근 90일</option></select></label>
+<label>득표 범위 <select id="trendScope" aria-label="공개 후보 범위"><option value="all">전체 · 부분 구분</option><option value="all_candidates">전체 후보 확인</option><option value="visible_candidates">부분 후보만 확인</option></select></label>
+</div>
+<div id="trendNotice" class="trend-status" role="status">수집된 날짜별 득표 이력을 불러오고 있습니다.</div>
+<div class="trend-visual-grid">
+<div class="trend-chart-card"><div class="trend-chart-heading"><h3>날짜별 수집 득표</h3><span>회차별 누적 득표 · 표</span></div><div id="trendLineChart" class="trend-chart" role="region" aria-label="투표 회차별 득표 추이 그래프"></div><div id="trendLegend" class="trend-legend"></div></div>
+<div class="trend-chart-card"><div class="trend-chart-heading"><h3>일별 증가량</h3><span>동일 회차 · 연속 일자만 비교</span></div><div id="trendDeltaChart" class="trend-chart" role="region" aria-label="일별 득표 증가량 막대 그래프"></div><p class="trend-explainer small">후보 명단이 바뀌거나 수집이 누락된 날짜는 증가량을 계산하지 않습니다.</p></div>
+</div>
+<div class="trend-alert-head"><h3>득표 급증 · 상승 순위</h3><span>증가량 순 · ‘급증 후보’는 규모·비율 기준의 참고 표시</span></div>
+<div id="trendAlerts" class="trend-alerts" aria-live="polite"></div>
+</section>
 <section class="panel filter-panel" aria-label="캘린더 투표 필터"><div class="panelhead"><div><span class="section-index">FILTERS · CALENDAR & LIST</span><h2>캘린더 표시 조건</h2></div><button type="button" id="clearOverviewFilters" class="clear-overview-filters">전체 초기화</button></div><div class="filters"><label class="search"><span>⌕</span><input type="search" id="query" placeholder="투표명 · 리워드 · 후보 검색" aria-label="통합 검색"></label>
 <select id="app" aria-label="앱 선택"><option value="all">모든 앱</option></select>
 <select id="period" aria-label="진행 상태"><option value="all">전체 일정</option><option value="active">진행 중</option><option value="upcoming">시작 예정</option><option value="ended">마감됨</option></select>
 <select id="reward" aria-label="리워드 상태"><option value="all">리워드 전체</option><option value="known">리워드 확인</option><option value="missing">리워드 미확인</option></select>
 <button id="csv" class="export">CSV 내보내기</button></div></section>
-<section class="panel calendar"><div class="panelhead"><div><span class="section-index">01 · SCHEDULE</span><h2>투표 일정</h2></div><div class="calendar-controls"><button id="prevMonth" aria-label="이전 달">‹</button><strong id="monthLabel"></strong><button id="nextMonth" aria-label="다음 달">›</button><button id="todayBtn">이번 달</button><a href="index.html" class="outline-link">전체 캘린더 ↗</a></div></div>
+<section class="panel calendar"><div class="panelhead"><div><span class="section-index">02 · SCHEDULE</span><h2>투표 일정</h2></div><div class="calendar-controls"><button id="prevMonth" aria-label="이전 달">‹</button><strong id="monthLabel"></strong><button id="nextMonth" aria-label="다음 달">›</button><button id="todayBtn">이번 달</button><a href="index.html" class="outline-link">전체 캘린더 ↗</a></div></div>
 <div class="weekday"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div id="miniCalendar" class="mini-calendar"></div><div class="calendarlegend">투표 시작일부터 마감일까지 매일 해당 투표를 표시합니다. 날짜를 누르면 아래 목록을 확인할 수 있습니다. <button id="clearDay" hidden>날짜 선택 해제 ×</button></div></section>
-<section class="panel vote-panel"><div class="panelhead"><div><span class="section-index">02 · REWARDS & CANDIDATES</span><h2>투표 · 리워드 · 후보 현황</h2></div><span id="listCount" class="caption">—</span></div>
+<section class="panel vote-panel"><div class="panelhead"><div><span class="section-index">03 · REWARDS & CANDIDATES</span><h2>투표 · 리워드 · 후보 현황</h2></div><span id="listCount" class="caption">—</span></div>
 
 
 <div id="summarySelection" class="summary-selection" hidden><span id="summarySelectionLabel"></span><button id="clearSummary">필터 해제 ×</button></div>
 <div id="votes" class="votes" aria-live="polite"><p class="empty">수집 기록을 불러오고 있습니다.</p></div>
 </section>
-<section class="panel" id="artists"><div class="panelhead"><div><span class="section-index">03 · ARTIST RANKINGS</span><h2>아티스트별 1위·득표 분석</h2></div><span id="artistCount" class="caption">—</span></div>
+<section class="panel" id="artists"><div class="panelhead"><div><span class="section-index">04 · ARTIST RANKINGS</span><h2>아티스트별 1위·득표 분석</h2></div><span id="artistCount" class="caption">—</span></div>
 <p class="artist-desc">각 투표의 <b>최근 저장된 후보 순위·득표</b>만 집계합니다. 서로 다른 투표의 1위 기록 수와 득표 관측값이며, 시간별 득표를 누적한 값이 아닙니다. 아티스트명은 정확히 일치하는 표기를 기준으로 묶으며 동명이인·활동명은 자동 통합하지 않습니다.</p>
 <div class="filters artist-filters"><label class="search"><span>⌕</span><input type="search" id="artistQuery" placeholder="아티스트 검색" aria-label="아티스트 검색"></label>
 <select id="artistApp" aria-label="집계 앱"><option value="all">모든 앱</option></select>
@@ -47,8 +65,8 @@
 <div id="artistRows" class="artist-rows"></div>
 <div id="artistDetail" class="artist-detail" hidden></div>
 </section>
-<section class="panel sources" id="sources"><div class="panelhead"><div><span class="section-index">04 · COLLECTOR STATUS</span><h2>앱별 수집 연결 상태</h2></div><a href="https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml" target="_blank" rel="noopener" class="outline-link">자동 수집 실행 기록 ↗</a></div><div id="sourceCards" class="source-grid"></div></section>
+<section class="panel sources" id="sources"><div class="panelhead"><div><span class="section-index">05 · COLLECTOR STATUS</span><h2>앱별 수집 연결 상태</h2></div><a href="https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml" target="_blank" rel="noopener" class="outline-link">자동 수집 실행 기록 ↗</a></div><div id="sourceCards" class="source-grid"></div></section>
 <footer>Vote Atlas · 공식 공개 정보 기반 · 수집 시점과 출처를 확인해 주세요.</footer>
 </div></main></div>
 <dialog id="detail"><button id="closeDetail" aria-label="상세 닫기" class="close">×</button><div id="detailContent"></div></dialog>
-<script src="calendar-utils.js"></script><script src="rankings.js"></script><script src="access-crypto.js"></script><script src="access-guard.js" data-app-script="overview.js"></script></body></html>
+<script src="calendar-utils.js"></script><script src="rankings.js"></script><script src="reward-series.js"></script><script src="vote-trends.js"></script><script src="trend-dashboard.js"></script><script src="access-crypto.js"></script><script src="access-guard.js" data-app-script="overview.js"></script></body></html>
