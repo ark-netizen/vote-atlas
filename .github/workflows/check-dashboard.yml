@@ -9,6 +9,8 @@ on:
       - 'tests/test_calendar.cjs'
       - 'tests/test_reward_groups.cjs'
       - 'dist/reward-groups.js'
+      - 'tests/test_awards.py'
+      - 'scripts/discover_awards.py'
       - '.github/workflows/check-dashboard.yml'
   workflow_dispatch:
 permissions:
@@ -29,5 +31,7 @@ jobs:
           node --check dist/calendar-utils.js
           node --check dist/rewards.js
           node --check dist/reward-groups.js
+          node --check dist/awards.js
+          python3 -m unittest discover -s tests -p 'test_awards.py' -v
       - name: Test artist ranking logic
         run: node --test tests/test_rankings.cjs tests/test_calendar.cjs tests/test_rewards_ui.cjs tests/test_reward_groups.cjs

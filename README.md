@@ -1,6 +1,6 @@
 # Vote Atlas
 
-[기존 캘린더 열기](https://vote-atlas-calendar.peppysky16.chatgpt.site) · [통합 대시보드 소스](dist/overview.html) · [자동 수집 실행 내역](https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml)
+[기존 캘린더 열기](https://vote-atlas-calendar.peppysky16.chatgpt.site) · [통합 대시보드 소스](dist/overview.html) · [자동 수집 실행 내역](https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml) · [어워즈·시상식](dist/awards.html)
 
 공식 공개 투표 데이터를 읽고 캘린더에 표시합니다. 휴대폰, 항상 켜 둔 PC, 유료 API가 필요하지 않습니다. 기존 캘린더 링크는 현재 소유자 전용입니다. 새로운 GitHub Pages 링크는 공개 배포용입니다.
 
@@ -61,3 +61,14 @@ python3 -m http.server 8000 --directory dist
 ```
 
 `web_collect.py`는 실제 연결된 공식 웹 수집기입니다. `android_collect.py`는 앱별 검증 전인 Android UI/OCR 초안입니다. 두 경로의 검증 상태는 별개입니다.
+
+## 어워즈·시상식 투표처 (신규)
+
+- [어워즈 전용 화면](https://ark-netizen.github.io/vote-atlas/awards.html) · [원본 데이터](dist/data/awards.json) · [매일 검색 Actions](.github/workflows/discover-awards.yml)
+- 2026년 국내 K-POP·드라마·영화·방송·예능·브랜드/소비자 참여 행사 38개를 조사 목록으로 등록했습니다. 투표처를 근거와 함께 확인한 21개와 추가 검증이 필요한 17개를 구분합니다.
+- 각 행사에 플랫폼을 **복수 등록**할 수 있으며, 운영 단계(예선·결선), 부문, 공동/단독 여부, 연도, 확인 출처를 기록합니다. 브랜드 소비자 조사는 팬덤 앱과 구분합니다.
+- **하루 1회 한국시간 09:40**, GitHub Actions가 Google News 공개 RSS 6개 검색식을 검사하고 `dist/data/awards.json`의 `discovered`(새 행사 후보) 및 `latest_news`(기존 시상식 관련 새 기사)를 갱신합니다.
+- **오보 방지**: 기사 제목만 보고 행사 실재 여부나 투표처 계약을 확정하지 않습니다. 신규 발견은 '검토 필요'에만 등록되며 `awards[].platforms`는 자동으로 바뀌지 않습니다. 플랫폼 확정은 공식 주최/앱 공지 또는 신뢰 가능한 보도를 확인해 직접 반영합니다.
+- **비용**: 별도 유료 API/서버 없이 공개 GitHub Actions 예약 작업으로 동작합니다. 다만 공개 뉴스 RSS 제공자의 응답·차단 및 GitHub Actions 예약 실행 상태에 좌우되며, 실패 시 기존 데이터를 유지하고 작업을 실패 처리합니다.
+- **실행**: Actions → Discover awards and voting platforms → Run workflow. 또는 `python scripts/discover_awards.py` 로 수집하고 `python -m unittest discover -s tests -p 'test_awards.py' -v` 로 분류기를 점검하세요.
+- 검색은 모든 인터넷 정보에 대한 완전한 보장이 아니며, 미발표·비공개 행사나 뉴스에 색인되지 않은 플랫폼은 자동 탐지하지 못합니다.

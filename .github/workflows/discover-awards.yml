@@ -1,0 +1,34 @@
+name: Discover awards and voting platforms
+on:
+  workflow_dispatch:
+  schedule:
+    # 09:40 KST = 00:40 UTC (GitHub may delay scheduled jobs).
+    - cron: '40 0 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: award-discovery-daily
+  cancel-in-progress: false
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test award discovery classification
+        run: python -m unittest discover -s tests -p 'test_awards.py' -v
+      - name: Search public news feeds
+        run: python scripts/discover_awards.py
+      - name: Save discovered awards (not confirmed platform claims)
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dist/data/awards.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update daily awards monitoring'
+            git pull --rebase origin main
+            git push origin main
+          fi
