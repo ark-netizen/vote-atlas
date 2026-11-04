@@ -234,6 +234,7 @@ function openVoteCalc(trigger) {
  const drawer=$('#voteCalcPanel'),button=$('#openVoteCalc'),backdrop=$('#voteCalcBackdrop');
  if(drawer.hidden)voteCalcLastFocus=trigger||document.activeElement||button;
  drawer.hidden=false;
+ document.body.classList.add('calc-drawer-open');
  backdrop.hidden=false;
  button.setAttribute('aria-expanded','true');
  drawer.scrollTop=0;
@@ -244,6 +245,7 @@ function closeVoteCalc() {
  const drawer=$('#voteCalcPanel');
  if(drawer.hidden)return;
  drawer.hidden=true;
+ document.body.classList.remove('calc-drawer-open');
  $('#voteCalcBackdrop').hidden=true;
  $('#openVoteCalc').setAttribute('aria-expanded','false');
  const focusTarget=voteCalcLastFocus?.isConnected?voteCalcLastFocus:$('#openVoteCalc');
