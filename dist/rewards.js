@@ -229,6 +229,81 @@ function durationLabel(b){
  if(/촬영일/.test(b.period_rule||''))return '송출 일수 미확인 · 촬영일만 명시';
  return b.period_rule||'송출·제공 일수 미확인';
 }
+function runCurrencyCalculator(){
+ const fields={votes:$('#calcVotes').value,unitsPerVote:$('#calcUnits').value,
+   bundleUnits:$('#calcBundleUnits').value,bundlePrice:$('#calcBundlePrice').value,
+   paidShare:$('#calcPaidShare').value};
+ const amount=VoteAtlasCost.calculate(fields),currency=$('#calcCurrency').value.trim()||'재화';
+ if(!amount){
+   $('#calcTotalUnits').textContent='입력값 확인 필요';
+   $('#calcUnitPrice').textContent='가격 정보 미확인';
+   $('#calcValue').textContent='—';
+   $('#calcPaidValue').textContent='—';
+   return;
+ }
+ $('#calcTotalUnits').textContent=VoteAtlasCost.amount(amount.totalUnits)+' '+currency;
+ $('#calcUnitPrice').textContent=VoteAtlasCost.amount(amount.unitPrice)+'원 / '+currency;
+ $('#calcValue').textContent=VoteAtlasCost.amount(Math.round(amount.equivalent))+'원';
+ $('#calcPaidValue').textContent=VoteAtlasCost.amount(Math.round(amount.adjusted))+'원';
+}
+function selectCostForCalc(series,option,context){
+ if(!option)return;
+ if(series.metrics.meanVotes!==null)$('#calcVotes').value=String(series.metrics.meanVotes);
+ $('#calcCurrency').value=option.currency;
+ $('#calcUnits').value=String(option.units_per_vote);
+ // 100 Lumy = 1100 KRW is a USER-SUPPLIED SCENARIO, not a verified app store price.
+ // Never apply the Lumy purchase rate to a different or unidentified currency.
+ if(option.currency==='루미'){
+   $('#calcBundleUnits').value='100';$('#calcBundlePrice').value='1100';
+ }else{
+   $('#calcBundleUnits').value='';
+   $('#calcBundlePrice').value='';
+ }
+ $('#calcContext').textContent=appOf(series.app).name+' · '+series.title;
+ $('#calcCostStatus').textContent='1표당 재화: '+VoteAtlasCost.display({options:[option]})+
+    ' · '+context+' · 유료 상품 단가 별도 확인 필요. 무료·유료 재화 구성과 실제 매출은 미확인입니다.';
+ runCurrencyCalculator();
+ document.querySelector('.vote-calc-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function renderCostRuleTable(){
+ const body=$('#costRuleRows');body.replaceChildren();
+ const rules=(dataset.vote_cost_rules||[]).filter(x=>x.verified);
+ $('#costRuleCount').textContent='공식 문서 '+rules.length+'개 검증';
+ for(const app of dataset.sources){
+   const docRules=rules.filter(r=>r.app===app.id);
+   const voteObserved=dataset.events.filter(e=>e.app===app.id&&
+      VoteAtlasCost.normalizeOptions(e.vote_cost).length);
+   if(!docRules.length&&!voteObserved.length){
+     const tr=element('tr','');
+     tr.append(element('td','',app.name),
+       element('td','','개별 투표별 확인 필요'),
+       element('td','','미확인'),
+       element('td','','공식 공개 정보에서 확인되지 않음'));
+     body.append(tr);
+   }
+   for(const rule of docRules){
+     const tr=element('tr','');
+     tr.append(element('td','',app.name),element('td','',rule.program));
+     const info=element('td','');
+     info.append(element('strong','',VoteAtlasCost.display(rule)));
+     if(rule.scope_note)info.append(element('small','',rule.scope_note));
+     else if(rule.exchange)info.append(element('small','',rule.exchange.from_currency+' '+
+       rule.exchange.from_units+'개 = '+rule.exchange.to_currency+' '+rule.exchange.to_units+'개 교환'));
+     tr.append(info);
+     const src=element('td','');
+     src.append(element('small','','확인: '+dateTimeText(rule.checked_at,'')));
+     const href=safeLink(rule.url);
+     if(href){const a=element('a','','공식 안내 ↗');a.href=href;a.target='_blank';a.rel='noopener noreferrer';src.append(a)}
+     tr.append(src);body.append(tr);
+   }
+   if(voteObserved.length){
+     const tr=element('tr','');
+     tr.append(element('td','',app.name),element('td','','수집된 개별 투표'));
+     tr.append(element('td','',voteObserved.length+'건에 1표당 필요 재화 기록'));
+     const src=element('td','', '위 투표 시리즈 표에서 회차별 확인');tr.append(src);body.append(tr);
+   }
+ }
+}
 function renderSummary(){
  const rows=VoteAtlasSeries.build(dataset.events,dataset.reward_policies||[],VoteAtlasRewardGroups);
  $('#countKnown').textContent=rows.filter(s=>s.benefits.length).length.toLocaleString('ko-KR');
@@ -244,7 +319,7 @@ function renderRows(){
  $('#resultsCount').textContent=rows.length+'개 투표 시리즈';
  if(!rows.length){
   const tr=element('tr','');const td=element('td','reward-empty','조건에 맞는 투표 시리즈가 없습니다.');
-  td.colSpan=7;tr.append(td);body.append(tr);$('#limitNotice').hidden=true;return;
+  td.colSpan=8;tr.append(td);body.append(tr);$('#limitNotice').hidden=true;return;
  }
  for(const series of rows.slice(0,250)){
   const tr=element('tr','reward-record');tr.tabIndex=0;
@@ -305,6 +380,47 @@ function renderRows(){
   }
   metrics.append(element('small','series-small','실제 참여자: '+(series.metrics.meanParticipants===null?'집계 불가':'평균 '+formatMetric(series.metrics.meanParticipants,'명')+' · 중앙값 '+formatMetric(series.metrics.medianParticipants,'명'))));
   tr.append(metrics);
+  const costs=VoteAtlasCost.summarizeSeries(series);
+  const costTd=element('td','');
+  if(!costs.variants.length){
+    costTd.append(element('span','unknown','미확인'));
+  }else{
+    const select=element('select','vote-cost-select');
+    select.setAttribute('aria-label',series.title+' 1표당 재화 선택');
+    const defaultOption=element('option','','재화 선택');defaultOption.value='';select.append(defaultOption);
+    const options=[];
+    for(const row of costs.variants){
+      for(const option of row.options){
+        const key=option.currency+'|'+option.units_per_vote;
+        if(options.some(x=>x.key===key))continue;
+        options.push({key,option,checked_at:row.checked_at,source_url:row.source_url,scope:row.scope});
+        const opt=element('option','',VoteAtlasCost.display({options:[option]}));
+        opt.value=String(options.length-1);
+        select.append(opt);
+      }
+    }
+    costTd.append(element('span','vote-cost-label',
+      options.length===1?VoteAtlasCost.display({options:[options[0].option]}):
+      options.length+'가지 재화 기준'));
+    costTd.append(element('small','vote-cost-meta',
+      costs.observed+' / '+costs.total+'회차에 소모량 확인'));
+    if(options.length===1)select.value='0';
+    else costTd.append(select);
+    const button=element('button','vote-cost-apply','환산');
+    button.type='button';
+    button.onclick=event=>{
+      event.stopPropagation();
+      const selected=options[Number(select.value)];
+      if(!selected){
+        $('#calcCostStatus').textContent='표당 소모 재화가 여러 종류이므로 이 표에서 재화 종류를 선택해 주세요.';
+        select.focus();return;
+      }
+      selectCostForCalc(series,selected.option,selected.scope==='program'?'투표 유형 공식 안내':'해당 투표 공개 페이지');
+    };
+    select.onclick=event=>event.stopPropagation();
+    costTd.append(button);
+  }
+  tr.append(costTd);
   const end=element('td','');
   end.append(element('strong','','회차·원문 열기 ↗'));
   end.append(element('small','series-small',dateTimeText(series.lastChecked,'')));
@@ -326,6 +442,7 @@ function openSeries(series){
   ['부분 후보 회차',series.metrics.partialVoteRounds+'회 · 평균·중앙값 계산에서 제외'],
   ['평균 실제 참여자 수',series.metrics.meanParticipants===null?'미확인 · 득표 수와 중복 참여자는 구분 불가':formatMetric(series.metrics.meanParticipants,'명')],
   ['중앙값 실제 참여자 수',series.metrics.medianParticipants===null?'미확인 · 득표 수와 중복 참여자는 구분 불가':formatMetric(series.metrics.medianParticipants,'명')],
+  ['1표당 필요 재화',VoteAtlasCost.summarizeSeries(series).variants.map(v=>VoteAtlasCost.display({options:v.options})).join(' / ')||'미확인'],
   ...(series.stageMetrics?.length>1?series.stageMetrics.flatMap(s=>[
    [s.name+' 평균 득표',formatMetric(s.metrics.meanVotes,'표')+' · '+s.rounds+'회차 (유효 득표 '+s.metrics.knownVoteRounds+'회차)'],
    [s.name+' 중앙값 득표',formatMetric(s.metrics.medianVotes,'표')+' · '+s.rounds+'회차 (유효 득표 '+s.metrics.knownVoteRounds+'회차)']
@@ -371,6 +488,11 @@ function openSeries(series){
    element('p','', '투표 기간: '+(e.start||UNKNOWN)+' ~ '+(e.end||UNKNOWN)),
    element('p','', '수집 시점 득표 합계: '+formatMetric(m.votes,'표')+(m.complete?' (전체 후보 확인)':m.partial?' (일부 후보만 확인 · 실제 총계 아님)':' (집계 불가)')),
    element('p','', '수집 시각: '+dateTimeText(e.collected_at,'')));
+  row.append(element('p','', '1표당 필요 재화: '+VoteAtlasCost.display(e.vote_cost)));
+  if(safeLink(e.vote_cost?.source_url)){
+    const costSource=element('a','source-anchor','재화 소모량 공식 근거 ↗');costSource.href=safeLink(e.vote_cost.source_url);
+    costSource.target='_blank';costSource.rel='noopener noreferrer';row.append(costSource);
+  }
   if(safeLink(e.source_url)){const link=element('a','source-anchor','투표 원문 ↗');link.href=safeLink(e.source_url);link.target='_blank';link.rel='noopener noreferrer';row.append(link)}
   history.append(row);
  }
@@ -461,18 +583,26 @@ async function load() {
     });
     if (Array.from(select.options).some(option => option.value === previous)) select.value = previous;
     render();
+    renderCostRuleTable();
   } catch (err) {
     $('#updated').textContent = '수집 데이터 연결 실패';
     const body = $('#rewardRows');body.replaceChildren();
     const tr = element('tr', '');
     const td = element('td', 'reward-empty',
       '데이터를 불러오지 못했습니다. GitHub Pages 배포 및 JSON 파일 상태를 확인해 주세요.');
-    td.colSpan = 7;tr.append(td);body.append(tr);
+    td.colSpan = 8;tr.append(td);body.append(tr);
   }
 }
 ['query', 'app', 'type', 'status', 'known', 'sort'].forEach(id => {
   $('#' + id).addEventListener(id === 'query' ? 'input' : 'change', renderRows);
 });
+for(const id of ['calcVotes','calcCurrency','calcUnits','calcBundleUnits','calcBundlePrice','calcPaidShare']){
+ $('#'+id).addEventListener('input',()=>{
+  $('#calcCostStatus').textContent='사용자 입력 기준 추정 환산입니다. 실제 유료 구매·사용 내역은 확인되지 않았습니다.';
+  runCurrencyCalculator();
+ });
+}
+runCurrencyCalculator();
 $('#reload').onclick = load;
 $('#closeDetail').onclick = () => $('#rewardDetail').close();
 $('#rewardDetail').addEventListener('click', event => {

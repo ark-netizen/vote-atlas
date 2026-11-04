@@ -9,6 +9,8 @@ import time
 import urllib.request
 from bs4 import BeautifulSoup
 from reward_parse import extract_entries
+from vote_cost import muniverse_listing_costs
+from vote_cost_rules import collect_app_cost_rules, match_event_rule
 from official_web_rules import collect_official_rules
 from official_sns_collect import collect_official_sns
 
@@ -83,12 +85,17 @@ def collect_muniverse(previous):
             seen.add(code)
             old = previous.get('muniverse-' + code)
             # Refresh recent results for corrections; older published results remain archived.
-            if old and old.get('winner') and moment(item['endTime']) < NOW - dt.timedelta(days=7):
+            if old and old.get('winner') and moment(item['endTime']) < NOW - dt.timedelta(days=7) and old.get('vote_cost'):
                 events.append(old)
                 continue
             try:
                 detail = json.loads(get('https://api.muniverse.io/api/v2/votes/' + code))
-                events.append(muniverse_event(detail))
+                event = muniverse_event(detail)
+                # Cost is independently verified on the official listing page
+                # after collecting each vote; no one-size-fits-all Lumi rule.
+                if old and old.get('vote_cost'):
+                    event['vote_cost'] = old['vote_cost']
+                events.append(event)
             except Exception as exc:
                 errors.append(f'{code}: {type(exc).__name__}: {exc}')
         if not listing.get('next'):
@@ -96,6 +103,14 @@ def collect_muniverse(previous):
             break
     if not events:
         raise ValueError('No verified vote details')
+    try:
+        listing_page=get('https://www.muniverse.io/votes')
+        costs=muniverse_listing_costs(listing_page,events,STAMP)
+        for event in events:
+            if event['id'] in costs:event['vote_cost']=costs[event['id']]
+        print(f'muniverse verified per-vote costs {len(costs)} / {len(events)}',flush=True)
+    except Exception as exc:
+        print(f'muniverse official cost-list check failed (past records retained): {type(exc).__name__}: {str(exc)[:130]}',flush=True)
     if not listing_complete:
         errors.append('Pagination limit reached')
     return events, errors, f'최근 90일 투표 {len(events)}건 · 후보·득표·기간 확인'
@@ -189,9 +204,21 @@ def main():
     for source in sources:
         if source['id'] in social_checks:
             source['official_sns_status'] = social_checks[source['id']]
+    cost_rules,cost_checks=collect_app_cost_rules(get,old.get('vote_cost_rules',[]),STAMP)
+    for event in previous.values():
+        # A verified explicit vote-page cost outranks program-level information.
+        if not event.get('vote_cost'):
+            found=match_event_rule(event,cost_rules)
+            if found:event['vote_cost']=found
+    for source in sources:
+        matching=[c for c in cost_checks.values() if c['app']==source['id']]
+        if matching:
+            source['cost_rules_verified']=sum(x['state']=='verified' for x in matching)
+            source['cost_rules_blocked']=sum(x['state']=='blocked' for x in matching)
     output={'events':sorted(previous.values(),key=lambda e:(e['end'],e['id']),reverse=True),
             'sources':sources,'reward_policies':policies,'policy_source_status':policy_checks,
             'official_posts':social_posts,'official_sns_status':social_checks,
+            'vote_cost_rules':cost_rules,'vote_cost_source_status':cost_checks,
             'updated_at':STAMP}
     path.parent.mkdir(parents=True,exist_ok=True)
     temp=path.with_suffix('.tmp');temp.write_text(json.dumps(output,ensure_ascii=False,indent=2));temp.replace(path)
