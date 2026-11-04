@@ -124,3 +124,51 @@ def muniverse_listing_costs(html, events, stamp):
             "note":"표시된 재화 아이콘의 종류는 텍스트만으로 확인되지 않음" if len(numbers)>1 else "공식 투표 목록에서 1표당 수량 확인",
         }
     return out
+
+
+def muniverse_api_cost(detail, stamp):
+    """Exact per-vote source values from the official public vote-detail API.
+
+    Muniverse documents Gold Lumy (purchase), Free Lumy (attendance/referral)
+    and Ad Lumy (ad/missions) as distinct currencies. The official vote
+    endpoint exposes costPaid, costFree and costAd plus enabled flags.
+    Never replace one cost by a site-wide default.
+    """
+    if not isinstance(detail, dict) or not detail.get("voteCode"):
+        return None
+    currencies=(
+        ("costPaidEnabled","costPaid","골드루미"),
+        ("costFreeEnabled","costFree","프리루미"),
+        ("costAdEnabled","costAd","애드루미"),
+    )
+    options=[]
+    for enable_field,cost_field,label in currencies:
+        cost=detail.get(cost_field)
+        if detail.get(enable_field) is not True:
+            continue
+        if isinstance(cost,bool) or not isinstance(cost,int) or not (1<=cost<=1000000):
+            continue
+        options.append({
+            "currency":label,
+            "units_per_vote":cost,
+            "source_field":cost_field,
+        })
+    if not options:
+        return None
+    url="https://api.muniverse.io/api/v2/votes/"+detail["voteCode"]
+    return {
+        "status":"verified_vote_api","verified":True,
+        "scope":"vote","app":"muniverse",
+        "currency":"루미",
+        "options":options,
+        "cost_options":[item["units_per_vote"] for item in options],
+        "units_per_vote":options[0]["units_per_vote"] if len(options)==1 else None,
+        "source_kind":"official_api","source_url":url,
+        "currency_definition_url":"https://www.muniverse.io/notices/45",
+        "checked_at":stamp,
+        "evidence":" / ".join(
+            item["source_field"]+"="+str(item["units_per_vote"]) for item in options
+        ),
+        "free_vote_available":detail.get("freeVoteFlag") is True,
+        "note":"골드·프리·애드루미는 공식 API에서 사용 가능 여부와 투표당 수량이 각각 확인됨",
+    }
