@@ -54,6 +54,6 @@ const VoteAtlasCost = (() => {
      : x.currency+' '+x.units_per_vote+'개/표').join(' 또는 ');
  }
  const amount=value=>new Intl.NumberFormat('ko-KR',{maximumFractionDigits:2}).format(value);
- return {calculate,summarizeSeries,amount};
+ return {calculate,summarizeSeries,normalizeOptions,display,amount};
 })();
 if(typeof module!=='undefined'&&module.exports)module.exports=VoteAtlasCost;
