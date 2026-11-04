@@ -57,7 +57,7 @@ test('1st, incorrect 2st, 3rd, 4th share one program if the reward remains the s
  ];
  const events=titles.map((title,i)=>({
   id:String(i),app:'muniverse',title,start:'2026-08-01',end:'2026-08-06',
-  reward:i===6?'→ it’s Live BEST PICK 실물 트로피 수여':'최종 1위 아티스트에게 트로피 수여',
+  reward:i===6?'최종 1위 아티스트에게 트로피 수여\n→ it’s Live BEST PICK 실물 트로피 수여':'최종 1위 아티스트에게 트로피 수여',
   candidates:[{name:'가수',rank:1,votes:i+1}],
   lineup_complete:true,source_url:'https://www.muniverse.io/votes/test'+i
  }));
