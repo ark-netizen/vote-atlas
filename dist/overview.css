@@ -96,7 +96,7 @@
 .trend-app-charts{display:flex;flex-direction:column;gap:16px;margin-top:14px}
 .trend-per-app{border:1px solid #dedede;border-radius:10px;background:#fff;padding:19px 21px}
 .trend-per-app-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:13px}
-.trend-per-app-head h3{font-size:17px;font-weight:750;color:#343d39;margin:0}
+.trend-per-app-head h3{font-size:17px;font-weight:750;color:#383838;margin:0}
 .trend-per-app-meta{font-size:10px;color:#777777}
 .trend-app-filter{margin:0 0 9px}
 .trend-app-filter label{display:flex;align-items:center;gap:9px;font-size:10px;font-weight:600;color:#757575}
@@ -108,7 +108,7 @@
 .trend-per-app .trend-legend-item{font-size:10px;color:#626262;display:flex;gap:6px;align-items:center}
 .trend-per-app .trend-legend-item span:last-child{max-width:250px}
 .trend-app-note{font-size:10px;color:#848484;margin:14px 0 0;line-height:1.75}
-.trend-no-data-apps{font-size:10px;line-height:1.8;color:#919191;padding:15px;background:#f6f7f5;border-radius:8px}
+.trend-no-data-apps{font-size:10px;line-height:1.8;color:#919191;padding:15px;background:#f6f6f6;border-radius:8px}
 @media(max-width:780px){
 .trend-chart-controls{grid-template-columns:1fr 1fr;max-width:none}
 .trend-per-app{padding:14px 12px}
