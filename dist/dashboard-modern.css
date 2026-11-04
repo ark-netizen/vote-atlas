@@ -761,3 +761,116 @@ body.urban-interface.modern-interface .dashboard-primary .stats{
     padding:0 10px;font-size:10px;
   }
 }
+
+
+/* UX density pass: compact summaries and promote actual content. */
+.modern-interface .crumb,.modern-interface .breadcrumb{display:none}
+.modern-interface .top,.modern-interface .topbar{justify-content:flex-end;min-height:54px;padding-block:8px}
+.modern-interface .content,.modern-interface .main-content{padding-top:20px}
+.modern-interface .content>h1,.modern-interface .page-heading h1{margin-bottom:15px}
+.modern-interface .panel{padding:18px 19px}
+.modern-interface .trend-panel{padding:19px}
+.modern-interface .trend-panel .panelhead{margin-bottom:10px}
+.modern-interface .trend-kpis{
+ display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+ margin:0 0 11px;color:#748298;font-size:10px;
+}
+.modern-interface .trend-kpis>span:not([hidden]){
+ display:inline-flex;align-items:center;gap:7px;
+ border-radius:7px;padding:6px 9px;background:#f4f7fb;border:1px solid #e7ecf4;
+}
+.modern-interface .trend-kpis strong{color:#415273;font-size:12px;font-weight:750}
+.modern-interface .trend-kpis [hidden]{display:none!important}
+.modern-interface .trend-filter-row{margin:8px 0;gap:9px}
+.modern-interface .trend-highlight-key{margin:7px 0;font-size:10px}
+.modern-interface .trend-status{margin:8px 0}
+.modern-interface .filter-panel{
+ background:transparent;border:0;box-shadow:none;
+ padding:0 0 2px;margin-bottom:15px;
+}
+.modern-interface .filter-panel .panelhead{margin:0 0 9px;padding:0 2px}
+.modern-interface .filter-panel .filters{margin-bottom:0;align-items:center}
+.modern-interface .filter-panel .search{background:#fff}
+.modern-interface .calendar .panelhead{margin-bottom:13px}
+.modern-interface .dashboard-bottom-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.modern-interface .dashboard-bottom-grid>.panel{min-width:0}
+.modern-interface .dashboard-bottom-grid .votes{grid-template-columns:repeat(2,minmax(0,1fr))}
+.modern-interface .dashboard-bottom-grid .vote{padding:14px 15px}
+.modern-interface .vote h3{font-size:12px;margin:8px 0 6px;line-height:1.5}
+.modern-interface .vote h4{margin:12px 0 4px}
+.modern-interface .vote .reward-text{
+ display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+ overflow:hidden;max-height:3.4em;
+}
+.modern-interface .vote .chips{max-height:65px;overflow:hidden}
+.modern-interface .vote .vote-foot{margin-top:12px;padding-top:9px}
+.modern-interface .vote .vote-foot b{display:none}
+.modern-interface .vote-load-more{
+ grid-column:1/-1;width:100%;padding:12px 16px;
+ border:1px solid #dbe3ef;border-radius:9px;
+ background:#f8faff;color:#4a63a0;font-size:11px;font-weight:700;cursor:pointer;
+}
+.modern-interface .vote-load-more:hover{background:#edf2ff;border-color:#b9c9e8}
+.modern-interface .vote-load-more:focus-visible{outline:2px solid #6b85c3;outline-offset:2px}
+.modern-interface .sources-disclosure{
+ margin:0 0 18px;border:1px solid #e6ebf2;border-radius:12px;
+ background:#fff;color:#667691;box-shadow:var(--dash-shadow);
+}
+.modern-interface .sources-disclosure>summary{
+ padding:13px 16px;cursor:pointer;font-size:11px;font-weight:650;
+}
+.modern-interface .sources-disclosure[open]>summary{border-bottom:1px solid #edf0f5}
+.modern-interface .source-disclosure-body{padding:14px 16px 17px}
+.modern-interface .source-actions{text-align:right;margin:0 0 12px;font-size:10px}
+.modern-interface .source-actions a{color:#5067aa;text-decoration:none}
+.modern-interface .source-actions a:hover{text-decoration:underline}
+.modern-interface .activity-panel{max-height:calc(100dvh - 89px);padding:16px 15px}
+.modern-interface .activity-entry{padding:10px 1px}
+.modern-interface .activity-view-all{
+ display:block;margin-top:8px;padding:12px 2px 0;
+ border-top:1px solid #edf0f5;font-size:10px;font-weight:650;
+ text-decoration:none;color:#536db3;
+}
+.modern-interface .activity-view-all:hover{text-decoration:underline}
+.modern-interface .award-calendar-details{display:block;margin-top:13px}
+.modern-interface .award-day-agenda{max-height:300px}
+.modern-interface .award-month-details{
+ display:block;margin:12px 0 0;padding:0;border:1px solid #e6ebf2;
+ border-radius:9px;background:#fafbfe;
+}
+.modern-interface .award-month-details>summary{
+ display:list-item;cursor:pointer;font-size:11px;
+ font-weight:650;padding:12px 15px;list-style-position:inside;color:#66758f;
+}
+.modern-interface .award-month-details>summary span{font-weight:500;color:#97a0af;margin-left:8px}
+.modern-interface .award-month-details[open]>summary{border-bottom:1px solid #e6ebf2}
+.modern-interface .award-month-agenda{max-height:270px;padding:9px 13px 12px}
+.modern-interface .reward-table-wrap{max-width:100%;overflow-x:auto;scrollbar-width:thin}
+.modern-interface .reward-table th{position:sticky;top:0;z-index:2;background:#f7f9fc}
+.modern-interface .reward-table td:first-child{
+ position:sticky;left:0;background:#fff;z-index:1;box-shadow:1px 0 0 #e6ebf2;
+}
+.modern-interface .reward-table tr.reward-record:hover td:first-child{background:#f8faff}
+.modern-interface .calendar-controls{flex-wrap:wrap;justify-content:flex-end;gap:4px}
+.modern-interface .calendar-controls .outline-link{margin-left:3px}
+@media(min-width:1550px){
+ .modern-interface .dashboard-bottom-grid{
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:14px;align-items:start;
+ }
+ .modern-interface .dashboard-bottom-grid .votes{grid-template-columns:minmax(0,1fr)}
+ .modern-interface .dashboard-bottom-grid .mini-day{min-height:56px;padding:6px 7px}
+ .modern-interface .dashboard-bottom-grid .panel.vote-panel .votes{
+  max-height:560px;overflow-y:auto;scrollbar-width:thin;padding-right:3px;
+ }
+}
+@media(max-width:760px){
+ .modern-interface .top,.modern-interface .topbar{min-height:48px}
+ .modern-interface .content,.modern-interface .main-content{padding-top:15px}
+ .modern-interface .trend-kpis{gap:6px}
+ .modern-interface .dashboard-bottom-grid{gap:0}
+ .modern-interface .dashboard-bottom-grid .votes{grid-template-columns:minmax(0,1fr)}
+ .modern-interface .dashboard-bottom-grid .mini-day{min-height:48px;padding:5px 4px}
+ .modern-interface .dashboard-bottom-grid .mini-day .day-count{font-size:8px;padding:2px 3px}
+ .modern-interface .filter-panel{margin-bottom:12px}
+ .modern-interface .reward-table td:first-child{position:static;box-shadow:none}
+}

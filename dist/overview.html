@@ -42,7 +42,7 @@
 <section class="panel trend-panel" id="voteTrends" aria-label="앱별 투표 득표 추이">
 <div class="panelhead"><div><h2>앱별 득표 추이</h2></div><span class="caption" id="trendUpdated">일별 관측 데이터 준비 중</span></div>
 
-<div class="trend-quick-stats"><div><span>관측된 앱</span><strong id="trendAppCount">—</strong></div><div><span>투표 주제</span><strong id="trendTopicCount">—</strong></div><div><span>전일 대비 비교 가능</span><strong id="trendChangeCount">—</strong></div><div><span>급증 후보</span><strong id="trendSpikeCount">—</strong></div></div>
+<div class="trend-kpis" aria-label="득표 추이 요약"><span>관측 앱 <strong id="trendAppCount">—</strong></span><span>급증 구간 <strong id="trendSpikeCount">—</strong></span><span hidden id="trendTopicCount">—</span><span hidden id="trendChangeCount">—</span></div>
 <div class="trend-filter-row trend-chart-controls">
 <label>관측 기간 <select id="trendRange" aria-label="전체 앱 그래프 관측 기간"><option value="7">최근 7일</option><option value="14" selected>최근 14일</option><option value="30">최근 30일</option><option value="90">최근 90일</option></select></label>
 <label>득표 집계 범위 <select id="trendScope" aria-label="투표 후보 공개 범위"><option value="all">전체 후보 · 부분 후보 모두</option><option value="all_candidates">전체 후보 확인</option><option value="visible_candidates">부분 후보만 확인</option></select></label>
@@ -52,19 +52,19 @@
 <div id="trendAppCharts" class="trend-app-charts" aria-live="polite"></div>
 <div id="trendAppMissing" class="trend-app-missing"></div>
 </section>
-<section class="panel filter-panel" aria-label="캘린더 투표 필터"><div class="panelhead"><div><h2>필터</h2></div><button type="button" id="clearOverviewFilters" class="clear-overview-filters">전체 초기화</button></div><div class="filters"><label class="search"><span>⌕</span><input type="search" id="query" placeholder="투표명 · 리워드 · 후보 검색" aria-label="통합 검색"></label>
+<section class="panel filter-panel" aria-label="캘린더 투표 필터"><div class="panelhead"><div><h2>투표 검색</h2></div><button type="button" id="clearOverviewFilters" class="clear-overview-filters">전체 초기화</button></div><div class="filters"><label class="search"><span>⌕</span><input type="search" id="query" placeholder="투표명 · 리워드 · 후보 검색" aria-label="통합 검색"></label>
 <select id="app" aria-label="앱 선택"><option value="all">모든 앱</option></select>
 <select id="period" aria-label="진행 상태"><option value="all">전체 일정</option><option value="active">진행 중</option><option value="upcoming">시작 예정</option><option value="ended">마감됨</option></select>
 <select id="reward" aria-label="리워드 상태"><option value="all">리워드 전체</option><option value="known">리워드 확인</option><option value="missing">리워드 미확인</option></select>
 <button id="csv" class="export">CSV 내보내기</button></div></section>
-<section class="panel calendar"><div class="panelhead"><div><h2>투표 일정</h2></div><div class="calendar-controls"><button id="prevMonth" aria-label="이전 달">‹</button><strong id="monthLabel"></strong><button id="nextMonth" aria-label="다음 달">›</button><button id="todayBtn">이번 달</button><a href="index.html" class="outline-link">전체 캘린더 ↗</a></div></div>
+<div class="dashboard-bottom-grid"><section class="panel calendar"><div class="panelhead"><div><h2>투표 일정</h2></div><div class="calendar-controls"><button id="prevMonth" aria-label="이전 달">‹</button><strong id="monthLabel"></strong><button id="nextMonth" aria-label="다음 달">›</button><button id="todayBtn">이번 달</button><a href="index.html" class="outline-link">전체 캘린더 ↗</a></div></div>
 <div class="weekday"><span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span></div><div id="miniCalendar" class="mini-calendar"></div><div class="calendarlegend">투표 기간 표시 · 날짜 선택 시 필터 <button id="clearDay" hidden>날짜 선택 해제 ×</button></div></section>
 <section class="panel vote-panel"><div class="panelhead"><div><h2>투표 목록</h2></div><span id="listCount" class="caption">—</span></div>
 
 
 <div id="summarySelection" class="summary-selection" hidden><span id="summarySelectionLabel"></span><button id="clearSummary">필터 해제 ×</button></div>
 <div id="votes" class="votes" aria-live="polite"><p class="empty">수집 기록을 불러오고 있습니다.</p></div>
-</section>
+</section></div>
 <section class="panel" id="artists"><div class="panelhead"><div><h2>아티스트 순위</h2></div><span id="artistCount" class="caption">—</span></div>
 <details class="method-disclosure"><summary>집계 기준</summary><p>각 투표의 <b>최근 저장된 후보 순위·득표</b>만 집계합니다. 서로 다른 투표의 1위 기록 수와 득표 관측값이며, 시간별 득표를 누적한 값이 아닙니다. 아티스트명은 정확히 일치하는 표기를 기준으로 묶으며 동명이인·활동명은 자동 통합하지 않습니다.</p></details>
 <div class="filters artist-filters"><label class="search"><span>⌕</span><input type="search" id="artistQuery" placeholder="아티스트 검색" aria-label="아티스트 검색"></label>
@@ -74,14 +74,14 @@
 <div id="artistRows" class="artist-rows"></div>
 <div id="artistDetail" class="artist-detail" hidden></div>
 </section>
-<section class="panel sources" id="sources"><div class="panelhead"><div><h2>수집 현황</h2></div><a href="https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml" target="_blank" rel="noopener" class="outline-link">자동 수집 실행 기록 ↗</a></div><div id="sourceCards" class="source-grid"></div></section>
+<details class="sources-disclosure" id="sources"><summary>앱별 수집 상세</summary><div class="source-disclosure-body"><div class="source-actions"><a href="https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml" target="_blank" rel="noopener noreferrer">수집 실행 기록 ↗</a></div><div id="sourceCards" class="source-grid"></div></div></details>
 
 </div>
 <aside class="dashboard-activity" aria-label="최근 수집 현황">
 <section class="activity-panel">
 <div class="activity-head"><h2>최근 수집</h2><span class="activity-count" id="recentCount">—</span></div>
 <div class="activity-list" id="recentActivityList" aria-live="polite"><p class="activity-empty">불러오는 중</p></div>
-<div class="activity-source-head">앱 연결</div><div class="activity-source-list" id="recentSourcesList"></div>
+<a href="index.html?view=list" class="activity-view-all">전체 투표 보기 <span aria-hidden="true">↗</span></a>
 </section></aside></div>
 </div></main></div>
 <dialog id="detail"><button id="closeDetail" aria-label="상세 닫기" class="close">×</button><div id="detailContent"></div></dialog>

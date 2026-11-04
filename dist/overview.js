@@ -59,12 +59,15 @@ function filtered(ignoreDay=false){
   return true;
  }).sort((a,b)=>({active:0,upcoming:1,ended:2}[state(a)]-{active:0,upcoming:1,ended:2}[state(b)])||b.end.localeCompare(a.end));
 }
+let visibleVoteLimit=12, lastVoteFilterKey='';
 function renderVotes(){
+ const key=[summary,chosenDay||'',$('#query').value,$('#app').value,$('#period').value,$('#reward').value].join('|');
+ if(key!==lastVoteFilterKey){visibleVoteLimit=12;lastVoteFilterKey=key;}
  const list=filtered();$('#listCount').textContent=list.length.toLocaleString('ko-KR')+'건 표시';
  $('#summarySelection').hidden=summary==='all';$('#summarySelectionLabel').textContent={active:'현재 진행 중 투표',soon:'7일 내 마감 투표',reward:'리워드 확인된 투표',lineup:'후보가 확보된 투표'}[summary]||'';
  const root=$('#votes');root.replaceChildren();
  if(!list.length){root.append(doc('p','empty','해당 조건에 맞는 투표가 없습니다. 필터를 변경해 주세요.'));return}
- for(const e of list.slice(0,500)){
+ for(const e of list.slice(0,visibleVoteLimit)){
   const a=app(e.app), card=doc('button','vote');
   card.type='button';card.onclick=()=>openDetail(e);
   const top=doc('div','vote-top');
@@ -82,7 +85,13 @@ function renderVotes(){
   foot.append(doc('span','',e.winner?'최종 1위 '+e.winner:e.leader?'수집 당시 1위 '+e.leader+' · '+fullStamp(observedAt(e)):'1위 미확인'),doc('b','','상세 보기 ↗'));
   card.append(foot);root.append(card);
  }
- if(list.length>500)root.append(doc('p','empty','한 번에 최대 500건을 표시합니다. 검색어로 범위를 좁혀 주세요.'));
+ if(list.length>visibleVoteLimit){
+  const remaining=list.length-visibleVoteLimit;
+  const more=doc('button','vote-load-more','더 보기 · '+remaining.toLocaleString('ko-KR')+'건 남음');
+  more.type='button';
+  more.onclick=()=>{visibleVoteLimit+=12;renderVotes()};
+  root.append(more);
+ }
 }
 function renderCalendar(){
  $('#monthLabel').textContent=calYear+'년 '+(calMonth+1)+'월';
@@ -153,48 +162,45 @@ function renderSources(){
  }
 }
 function renderActivity(){
- const timeline=$('#recentActivityList'),sourcesRoot=$('#recentSourcesList');
- if(!timeline||!sourcesRoot)return;
- timeline.replaceChildren();sourcesRoot.replaceChildren();
+ const timeline=$('#recentActivityList');
+ if(!timeline)return;
+ timeline.replaceChildren();
  const asTime=value=>{
   const time=Date.parse(value||'');
   return Number.isFinite(time)?time:0;
  };
+ const seen=new Set();
  const recent=(records.events||[])
    .filter(e=>e&&typeof e.title==='string'&&e.title.trim())
    .sort((a,b)=>asTime(b.collected_at)-asTime(a.collected_at)||
      String(b.end||'').localeCompare(String(a.end||'')))
-   .slice(0,8);
+   .filter(e=>{
+    const key=String(e.id||[e.app,e.title,e.start,e.end].join('|'));
+    if(seen.has(key))return false;
+    seen.add(key);return true;
+   })
+   .slice(0,6);
  $('#recentCount').textContent=recent.length+'건';
  if(!recent.length){
   timeline.append(doc('p','activity-empty','수집 기록이 없습니다.'));
- }else{
-  for(const vote of recent){
-   const source=app(vote.app),row=doc('button','activity-entry');
-   row.type='button';
-   row.setAttribute('aria-label',source.name+' · '+vote.title+' 상세 보기');
-   const current=(vote.start&&vote.end)?state(vote):'unknown';
-   const mark=doc('span','activity-icon'+(current==='active'?' is-active':current==='ended'?' is-ended':''),source.name.slice(0,1));
-   mark.setAttribute('aria-hidden','true');
-   const info=doc('span','activity-info');
-   info.append(doc('span','activity-title',vote.title),
-     doc('span','activity-meta',source.name+' · '+(asTime(vote.collected_at)?stamp(vote.collected_at):'수집 시각 미확인')));
-   row.append(mark,info);
-   row.onclick=()=>openDetail(vote);
-   timeline.append(row);
-  }
+  return;
  }
- const labels={ok:'완료',partial:'부분',error:'실패'};
- for(const source of records.sources||[]){
-  const item=doc('div','activity-source');
-  const name=doc('span','');
-  const dot=doc('i','activity-status-dot'+(['ok','partial'].includes(source.state)?' is-ok':source.state==='error'?' is-error':''));
-  dot.setAttribute('aria-hidden','true');
-  name.append(dot,document.createTextNode(source.name));
-  item.append(name,doc('b','',labels[source.state]||'대기'));
-  sourcesRoot.append(item);
+ for(const vote of recent){
+  const source=app(vote.app),row=doc('button','activity-entry');
+  row.type='button';
+  row.setAttribute('aria-label',source.name+' · '+vote.title+' 상세 보기');
+  const current=(vote.start&&vote.end)?state(vote):'unknown';
+  const mark=doc('span','activity-icon'+(current==='active'?' is-active':current==='ended'?' is-ended':''),source.name.slice(0,1));
+  mark.setAttribute('aria-hidden','true');
+  const info=doc('span','activity-info');
+  info.append(doc('span','activity-title',vote.title),
+    doc('span','activity-meta',source.name+' · '+(asTime(vote.collected_at)?stamp(vote.collected_at):'수집 시각 미확인')));
+  row.append(mark,info);
+  row.onclick=()=>openDetail(vote);
+  timeline.append(row);
  }
 }
+
 function openDetail(e){
  const root=$('#detailContent');root.replaceChildren();
  const a=app(e.app);

@@ -25,7 +25,7 @@ test('Dashboard uses real KPI elements, per-app trends, real activity list and s
   'countAll','countActive','countSoon','countReward','countLineup',
   'voteTrends','trendAppCharts','trendAppCount','trendTopicCount','trendChangeCount',
   'trendSpikeCount','query','miniCalendar','votes','artistRows','sourceCards',
-  'recentCount','recentActivityList','recentSourcesList'
+  'recentCount','recentActivityList'
  ])assert.ok(html.includes('id="'+id+'"'),'missing functional element '+id);
  assert.match(html,/class="dashboard-layout"/);
  assert.match(html,/class="dashboard-primary"/);
@@ -33,7 +33,7 @@ test('Dashboard uses real KPI elements, per-app trends, real activity list and s
  assert.match(script,/renderSources\(\);renderActivity\(\)/);
  assert.match(script,/function renderActivity\(\)/);
  assert.match(script,/records\.events\|\|\[\]/);
- assert.match(script,/records\.sources\|\|\[\]/);
+ assert.doesNotMatch(html,/id="recentSourcesList"/);
  assert.match(script,/Date\.parse\(value\|\|''\)/);
  assert.match(script,/row\.onclick=\(\)=>openDetail\(vote\)/);
  assert.match(script,/timeline\.replaceChildren\(\)/);
@@ -64,7 +64,7 @@ test('Dashboard copy is replaced by functional headings and optional methodology
  assert.match(overview,/<h1>통합 대시보드<\/h1>/);
  assert.match(overview,/<h2>앱별 득표 추이<\/h2>/);
  assert.match(overview,/<h2>투표 목록<\/h2>/);
- assert.match(overview,/<h2>수집 현황<\/h2>/);
+ assert.match(overview,/<summary>앱별 수집 상세<\/summary>/);
  assert.match(overview,/<details class="method-disclosure"><summary>집계 기준<\/summary>/);
  assert.match(read('awards.html'),/<details class="method-disclosure"><summary>확인 기준<\/summary>/);
  assert.match(read('rewards.html'),/<details class="method-disclosure"><summary>집계 기준<\/summary>/);
