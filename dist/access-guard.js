@@ -4,7 +4,7 @@
 (async function () {
   const current = document.currentScript;
   const appScript = current && current.dataset.appScript;
-  const ALLOWED_APPS = new Set(['app.js', 'overview.js', 'rewards.js']);
+  const ALLOWED_APPS = new Set(['app.js', 'overview.js', 'rewards.js', 'awards.js']);
   const mount = document.createElement('div');
   mount.id = 'accessScreen';
   document.body.append(mount);
