@@ -8,6 +8,8 @@ cannot be compared as an unambiguous vote increase.
 import datetime as dt
 import hashlib
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -96,10 +98,49 @@ def update_history(events_document, history_document):
         "observations": rows,
     }, added, changed
 
+def backfill_from_git(previous, max_commits=120):
+    """Recover factual historical snapshots from past committed JSON versions.
+
+    No estimated dates or votes: each recovered point must have been freshly
+    recorded in the original collector run. Best-effort, one-time bootstrap.
+    """
+    cmd = ["git", "log", "--format=%H", "-n", str(max_commits),
+           "--", "dist/data/events.json"]
+    result = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True,
+                            timeout=30, check=True)
+    commits = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+    if not commits:
+        raise ValueError("No historical vote data commits in checkout")
+    total = 0
+    merged = previous
+    for sha in reversed(commits):
+        try:
+            version = subprocess.run(
+                ["git", "show", sha + ":dist/data/events.json"],
+                cwd=ROOT, capture_output=True, timeout=14, check=True
+            )
+            document = json.loads(version.stdout)
+            merged, added, _changed = update_history(document, merged)
+            total += added
+        except (subprocess.SubprocessError, ValueError, json.JSONDecodeError, KeyError):
+            continue
+    merged["git_backfill_done"] = True
+    merged["git_commits_checked"] = len(commits)
+    print(f"Verified history backfill: {total} actual daily records from {len(commits)} committed versions", flush=True)
+    return merged
+
 def main():
     events = json.loads((DATA / "events.json").read_text(encoding="utf-8"))
     prior = json.loads(HISTORY_PATH.read_text(encoding="utf-8")) if HISTORY_PATH.exists() else {}
+    if "--backfill-git" in sys.argv and not prior.get("git_backfill_done"):
+        try:
+            prior = backfill_from_git(prior)
+        except (subprocess.SubprocessError, ValueError) as exc:
+            print("Historical backfill unavailable; retain only observed new data:", str(exc)[:150], flush=True)
     updated, added, changed = update_history(events, prior)
+    for meta in ("git_backfill_done", "git_commits_checked"):
+        if meta in prior:
+            updated[meta] = prior[meta]
     HISTORY_PATH.parent.mkdir(parents=True, exist_ok=True)
     tmp = HISTORY_PATH.with_suffix(".tmp")
     tmp.write_text(json.dumps(updated, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
