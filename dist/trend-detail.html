@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vote Atlas | 앱별 득표 추이 상세</title><meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="overview.css"><link rel="stylesheet" href="access.css">
+<style>body.protected-view > :not(#accessScreen):not(script){display:none!important}</style></head>
+<body class="protected-view trend-detail-view"><div class="shell">
+<aside class="rail">
+<a href="overview.html" class="brand"><span class="brandmark">V<span>·</span></span><span>vote atlas<small>FANDOM VOTING INTELLIGENCE</small></span></a>
+<div class="workspace">팬덤 투표 데이터베이스<small>공식 공개 정보 · 자동 수집</small></div>
+<div class="rail-title">WORKSPACE</div>
+<nav aria-label="서비스 메뉴"><a class="nav" href="overview.html"><span class="nav-glyph" aria-hidden="true"></span> 통합 대시보드</a><a class="nav" href="rewards.html"><span class="nav-glyph" aria-hidden="true"></span> 리워드</a><a class="nav" href="awards.html"><span class="nav-glyph" aria-hidden="true"></span> 어워즈·시상식</a><a class="nav" href="index.html"><span class="nav-glyph" aria-hidden="true"></span> 월간 투표 캘린더</a><a class="nav active" href="overview.html#voteTrends"><span class="nav-glyph" aria-hidden="true"></span> 득표 추이</a><a class="nav" href="overview.html#artists"><span class="nav-glyph" aria-hidden="true"></span> 아티스트 순위</a><a class="nav" href="overview.html#sources"><span class="nav-glyph" aria-hidden="true"></span> 수집 현황</a><a class="nav" href="https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml" target="_blank" rel="noopener"><span class="nav-glyph" aria-hidden="true"></span> 자동 수집 내역</a></nav>
+<div class="rail-bottom"><strong>확인되지 않은 것은<br>확인되지 않았다고.</strong><p>리워드와 후보는 공식 원문 기준으로 수집하며, 부분 수집 여부를 구분합니다.</p></div>
+</aside>
+<main class="main">
+<header class="top"><div class="crumb">VOTE ATLAS <span>/</span> VOTE TRENDS <span>/</span> APP DETAIL</div><div class="meta"><a class="outline-link" href="overview.html#voteTrends">전체 그래프로 돌아가기 ↗</a></div></header>
+<div class="content">
+<a class="trend-detail-back" href="overview.html#voteTrends">‹ 앱별 그래프 목록으로 돌아가기</a>
+<div class="eyebrow">DAILY VOTE INTELLIGENCE · APP DETAIL</div>
+<h1 id="detailAppTitle">앱별 득표 상세</h1>
+<p class="trend-detail-intro">같은 앱에서 진행한 투표들을 개별 선으로 비교합니다. <b>노란색 영역은 전일 대비 급증 구간</b>입니다. 실제 수집된 날짜만 표시하며 서로 다른 투표 회차를 하나로 연결하지 않습니다.</p>
+<section class="trend-detail-stats" aria-label="앱별 득표 집계">
+<div><span>기록된 투표</span><strong id="appDetailVotes">—</strong></div>
+<div><span>관측 기록</span><strong id="appDetailObservations">—</strong></div>
+<div><span>비교 가능한 증가</span><strong id="appDetailChanges">—</strong></div>
+<div><span>급증 구간</span><strong id="appDetailSpikes">—</strong></div>
+</section>
+<section class="panel trend-panel" aria-label="앱별 득표 그래프">
+<div class="panelhead"><div><span class="section-index">01 · DETAILED CHART</span><h2>투표별 득표 선그래프</h2></div><span id="trendUpdated" class="caption">데이터 확인 중</span></div>
+<div class="trend-filter-row trend-chart-controls">
+<label>관측 기간 <select id="trendRange" aria-label="조회 기간"><option value="7">최근 7일</option><option value="14" selected>최근 14일</option><option value="30">최근 30일</option><option value="90">최근 90일</option></select></label>
+<label>집계 범위 <select id="trendScope" aria-label="후보 공개 범위"><option value="all">전체 · 부분 후보</option><option value="all_candidates">전체 후보 확인</option><option value="visible_candidates">부분 후보</option></select></label>
+</div>
+<p class="trend-highlight-key"><span class="trend-yellow-key" aria-hidden="true"></span> 노란색 배경은 해당 투표의 전일 대비 급증 구간입니다. 투표 주제 필터로 개별 투표를 좁혀 볼 수 있습니다.</p>
+<p id="trendNotice" class="trend-status" role="status">수집 기록을 읽는 중입니다.</p>
+<div id="trendAppCharts" class="trend-app-charts"></div><div id="trendAppMissing"></div>
+</section>
+<section class="panel">
+<div class="panelhead"><div><span class="section-index">02 · OBSERVED VOTES</span><h2>투표별 관측 기록 · 증가량</h2></div><span id="detailRowsCount" class="caption">—</span></div>
+<div class="trend-detail-table-wrap"><table class="trend-detail-table"><thead><tr>
+<th>관측일</th><th>투표 / 회차</th><th>수집 득표</th><th>전일 대비</th><th>후보 범위</th><th>수집 시각 / 공식 원문</th></tr></thead><tbody id="detailRows"></tbody></table></div>
+<p class="trend-details-note">전일 대비는 동일한 투표 회차에서 연속된 날에 같은 후보 명단이 수집된 경우에만 계산합니다. 공개 득표수는 고유 참여자 수가 아닙니다. 일별 합계가 없거나 투표가 바뀐 날은 차이를 임의로 계산하지 않습니다.</p>
+</section>
+<div hidden><span id="trendAppCount"></span><span id="trendTopicCount"></span><span id="trendChangeCount"></span><span id="trendSpikeCount"></span></div>
+<footer>Vote Atlas · 실제 공개 투표 수집 기록 기준</footer>
+</div></main></div>
+<script src="reward-series.js"></script><script src="vote-trends.js"></script><script src="trend-dashboard.js"></script>
+<script src="access-crypto.js"></script><script src="access-guard.js" data-app-script="trend-detail.js"></script>
+</body></html>
