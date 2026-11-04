@@ -75,7 +75,10 @@ function renderAwardsCalendar(){
   return;
  }
  const kind=$('#calendarKind').value;
- const schedules=awardsCalendar.filteredItems(awardsCalendar.buildSchedule(records.awards),kind);
+ const subcultureOnly=$('#calendarGroup').value==='subculture';
+ const allowedIds=new Set(records.awards.filter(a=>a.group==='서브컬처').map(a=>a.id));
+ const schedules=awardsCalendar.filteredItems(awardsCalendar.buildSchedule(records.awards),kind)
+   .filter(item=>!subcultureOnly||allowedIds.has(item.award_id));
  const monthItems=schedules.filter(x=>awardsCalendar.overlapsMonth(x,awardCalYear,awardCalMonth));
  $('#awardMonth').textContent=awardCalYear+'년 '+(awardCalMonth+1)+'월';
  $('#calendarTotal').textContent='이달 '+monthItems.length+'건 · 개최/투표 일정을 각각 집계';
@@ -137,8 +140,10 @@ function moveAwardMonth(direction){
  awardCalYear=date.getUTCFullYear();
  awardCalMonth=date.getUTCMonth();
  const start=awardsCalendar.monthKey(awardCalYear,awardCalMonth,1);
+ const subcultureOnly=$('#calendarGroup').value==='subculture';
+ const allowedIds=new Set(records.awards.filter(a=>a.group==='서브컬처').map(a=>a.id));
  const next=awardsCalendar.filteredItems(awardsCalendar.buildSchedule(records.awards),$('#calendarKind').value)
-   .filter(x=>awardsCalendar.overlapsMonth(x,awardCalYear,awardCalMonth));
+   .filter(x=>awardsCalendar.overlapsMonth(x,awardCalYear,awardCalMonth)&&(!subcultureOnly||allowedIds.has(x.award_id)));
  awardSelectedDate=next.length?(next[0].start_date<start?start:next[0].start_date):start;
  awardSelectedEventId=null;
  renderAwardsCalendar();
@@ -237,4 +242,5 @@ $('#todayAwardMonth').addEventListener('click',()=>{
  renderAwardsCalendar();
 });
 $('#calendarKind').addEventListener('change',renderAwardsCalendar);
+$('#calendarGroup').addEventListener('change',()=>{awardSelectedEventId=null;renderAwardsCalendar()});
 load();
