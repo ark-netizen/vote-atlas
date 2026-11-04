@@ -96,15 +96,15 @@
  box-sizing:border-box;overflow:hidden;white-space:nowrap
 }
 .award-range-text{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.award-range-bar.ceremony{background:#44484c;border-color:#44484c;color:#fff}
-.award-range-bar.vote{background:#e8eaec;border-color:#c6cbcf;color:#353b42}
+.award-range-bar.ceremony{background:#444444;border-color:#444444;color:#fff}
+.award-range-bar.vote{background:#e8e8e8;border-color:#c6c6c6;color:#353535}
 .award-range-bar.milestone{background:#f3f3f3;border-color:#c6c6c6;color:#595959}
 .award-range-bar.continues-before{margin-left:0;border-top-left-radius:0;border-bottom-left-radius:0}
 .award-range-bar.continues-after{margin-right:0;border-top-right-radius:0;border-bottom-right-radius:0}
 .award-range-bar:hover{filter:brightness(.94)}
-.award-range-bar.selected-event{outline:2px solid #73777b;outline-offset:-2px;box-shadow:0 0 0 1px #fff}
-.award-range-bar:focus-visible{outline:3px solid #70757a;outline-offset:-2px}
-.award-schedule-entry.selected-event{border-color:#a5a8ab;background:#f6f6f6}
+.award-range-bar.selected-event{outline:2px solid #777777;outline-offset:-2px;box-shadow:0 0 0 1px #fff}
+.award-range-bar:focus-visible{outline:3px solid #707070;outline-offset:-2px}
+.award-schedule-entry.selected-event{border-color:#a5a5a5;background:#f6f6f6}
 @media(max-width:700px){
  .award-calendar-week{min-width:670px}
  .award-date-button{min-height:0}
@@ -112,6 +112,6 @@
 }
 
 
-.award-calendar-legend .cal-indicator.ceremony{background:#44484c}
-.award-calendar-legend .cal-indicator.vote{background:#a5acb4}
+.award-calendar-legend .cal-indicator.ceremony{background:#444444}
+.award-calendar-legend .cal-indicator.vote{background:#aaaaaa}
 .award-calendar-legend .cal-indicator.milestone{background:#c6c6c6}
