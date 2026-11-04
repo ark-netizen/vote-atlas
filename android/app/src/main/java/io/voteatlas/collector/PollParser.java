@@ -22,6 +22,7 @@ final class PollParser {
     private static final Pattern VOTE = Pattern.compile("투표|VOTE|vote|랭킹|rank", Pattern.CASE_INSENSITIVE);
     private static final Pattern EXCLUDE = Pattern.compile("로그인|비밀번호|내 정보|마이페이지|충전|결제|구매|개인정보|회원가입|광고보기|설정|알림|투표하기|투표권", Pattern.CASE_INSENSITIVE);
     private static final Pattern CANDIDATE = Pattern.compile("^(\\d{1,3})\\s*(?:위|등|[.)])\\s*(.{1,65}?)\\s+([\\d,]+)\\s*(?:표|votes?)$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern SENSITIVE = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}|\\b0\\d{1,2}[- ]?\\d{3,4}[- ]?\\d{4}\\b", Pattern.CASE_INSENSITIVE);
     private static final Pattern RANK_ONLY = Pattern.compile("^(\\d{1,3})\\s*(?:위|등|[.)])?$");
     private static final Pattern VOTES_ONLY = Pattern.compile("^([\\d,]+)\\s*(?:표|votes?)(?:\\s*[(]?[\\d.]+%[)]?)?$", Pattern.CASE_INSENSITIVE);
     private static final Pattern RANK_NAME = Pattern.compile("^(\\d{1,3})\\s*(?:위|등|[.)])\\s*(.{1,65})$");
@@ -87,6 +88,7 @@ final class PollParser {
             if (title.length() < 5 || title.length() > 160) return null;
             // Do not upload a screen if the candidate title looks like user-specific content.
             if (title.matches(".*(내 계정|아이디|닉네임|프로필|이메일).*")) return null;
+            if (SENSITIVE.matcher(title).find()) return null;
             String stamp = OffsetDateTime.now(ZoneId.of("Asia/Seoul")).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
             JSONObject record = new JSONObject();
             String id = hash("idolchamp|" + title + "|" + start + "|" + end);
@@ -133,7 +135,7 @@ final class PollParser {
                     }
                 }
                 if (rank < 1 || rank > 100 || name == null || name.isEmpty() || name.length() > 65 ||
-                        EXCLUDE.matcher(name).find() || !unique.add(rank + "|" + name)) continue;
+                        EXCLUDE.matcher(name).find() || SENSITIVE.matcher(name).find() || !unique.add(rank + "|" + name)) continue;
                 long votes;
                 try { votes = Long.parseLong(count.replace(",", "")); }
                 catch (NumberFormatException ex) { continue; }
@@ -151,7 +153,7 @@ final class PollParser {
             JSONArray rewardLines = new JSONArray();
             for (String line : lines) {
                 String clean = line.trim();
-                if (clean.length() >= 8 && clean.length() < 200 && REWARD.matcher(clean).find() && !EXCLUDE.matcher(clean).find()) {
+                if (clean.length() >= 8 && clean.length() < 200 && REWARD.matcher(clean).find() && !EXCLUDE.matcher(clean).find() && !SENSITIVE.matcher(clean).find()) {
                     rewardLines.put(clean);
                     if (rewardLines.length() >= 8) break;
                 }
