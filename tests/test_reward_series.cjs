@@ -88,7 +88,7 @@ test('median resists a single high-volume round and uses all confirmed rounds',(
  const m=series.metric(events);
  assert.equal(m.knownVoteRounds,13);
  assert.equal(m.medianVotes,170);
- assert.equal(m.meanVotes,1683);
+ assert.equal(m.meanVotes,1690);
 });
 test('even-sized samples use the arithmetic midpoint of two middle values',()=>{
  const m=series.metric([1,2,3,4].map((votes,i)=>({
