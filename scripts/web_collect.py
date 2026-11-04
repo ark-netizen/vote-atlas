@@ -164,6 +164,13 @@ def main():
                 successes+=1
             except Exception as exc:
                 source.update(state='error',message=f'수집 실패 · 이전 데이터 유지: {type(exc).__name__}: {exc}',last_success=prior_sources.get(app['id'],{}).get('last_success'))
+        elif app['id'] == 'idolchamp' and prior_sources.get('idolchamp', {}).get('verified'):
+            # The Android collector is a separate verified source; do not reset
+            # it to "blocked" when the daily website-only collector runs.
+            phone = prior_sources['idolchamp']
+            for key in ('verified', 'state', 'count', 'method', 'last_success', 'message'):
+                if key in phone:
+                    source[key] = phone[key]
         sources.append(source)
         print(app['name'],source['state'],source['count'],flush=True)
     policies, policy_checks = collect_official_rules(get, old.get('reward_policies', []), STAMP)
