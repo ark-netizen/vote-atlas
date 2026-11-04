@@ -11,6 +11,8 @@ on:
       - 'tests/test_modern_dashboard.cjs'
       - 'tests/test_ux_density.cjs'
       - 'tests/test_calendar.cjs'
+      - 'tests/test_data_loader.cjs'
+      - 'dist/data-loader.js'
       - 'tests/test_reward_groups.cjs'
       - 'tests/test_rewards_drawer.cjs'
       - 'dist/reward-groups.js'
@@ -33,6 +35,8 @@ jobs:
       - name: Check JavaScript syntax
         run: |
           node --check dist/app.js
+          node --check dist/data-loader.js
+          node --test tests/test_data_loader.cjs
           node --check dist/overview.js
           node --check dist/rankings.js
           node --check dist/calendar-utils.js
