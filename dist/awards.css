@@ -81,3 +81,32 @@
 .award-calendar-notice{margin:15px 0 0;background:#f6f9f3;padding:11px 12px;border-radius:7px;font-size:10px;color:#79907d;line-height:1.7}
 @media(max-width:1050px){.award-calendar-details{grid-template-columns:1fr}.award-month-details{padding:0;border:0;border-top:1px solid var(--border);padding-top:16px}}
 @media(max-width:700px){.award-weekdays,.award-calendar-grid{min-width:670px}.award-calendar-month strong{min-width:108px;font-size:14px}.award-date-button{min-height:96px}.award-calendar-panel{padding:16px}.award-calendar-toolbar{align-items:flex-start}}
+
+
+/* Continuous award schedule bars: a single item spans every covered date in a week. */
+.award-calendar-grid{display:block;border-top:0}
+.award-calendar-week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid var(--border);position:relative;isolation:isolate}
+.award-date-cell{min-width:0;grid-row:1/-1;border-bottom:0}
+.award-date-button{min-height:0;height:100%;padding:7px 6px;align-items:flex-start}
+.award-range-bar{
+ z-index:2;display:flex;align-items:center;min-width:0;min-height:24px;
+ margin:2px 1px;padding:3px 8px;border:1px solid transparent;
+ border-radius:5px;cursor:pointer;text-align:left;
+ font:650 10px/1.45 'DM Sans','Noto Sans KR',sans-serif;
+ box-sizing:border-box;overflow:hidden;white-space:nowrap
+}
+.award-range-text{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.award-range-bar.ceremony{background:#4e6358;border-color:#4e6358;color:#fff}
+.award-range-bar.vote{background:#dfe8f3;border-color:#b4c8dd;color:#355676}
+.award-range-bar.milestone{background:#f6ead3;border-color:#e2cba4;color:#805c2b}
+.award-range-bar.continues-before{margin-left:0;border-top-left-radius:0;border-bottom-left-radius:0}
+.award-range-bar.continues-after{margin-right:0;border-top-right-radius:0;border-bottom-right-radius:0}
+.award-range-bar:hover{filter:brightness(.94)}
+.award-range-bar.selected-event{outline:2px solid #b49a48;outline-offset:-2px;box-shadow:0 0 0 1px #fff}
+.award-range-bar:focus-visible{outline:3px solid #a49b76;outline-offset:-2px}
+.award-schedule-entry.selected-event{border-color:#bdaf73;background:#fffaf0}
+@media(max-width:700px){
+ .award-calendar-week{min-width:670px}
+ .award-date-button{min-height:0}
+ .award-range-bar{font-size:10px}
+}
