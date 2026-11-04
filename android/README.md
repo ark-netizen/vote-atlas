@@ -1,22 +1,26 @@
-# Vote Atlas Android collector – Galaxy S10e
+# Vote Atlas IdolChamp screen capture collector – Android v0.3
 
-## What this build actually does
-- When enabled, the app schedules a **best-effort** collection each day at **09:30 Asia/Seoul**.
-- An Android accessibility service bound to `com.nwz.ichampclient` attempts to launch IdolChamp, select the explicitly labelled vote tab, scroll public voting listings, enter explicitly dated poll cards, and parse visible candidate/reward text. It will **never** automatically press vote, advertising, login or purchase buttons.
-- Verified structured observations are queued locally and submitted to the `incoming/idolchamp/` folder of the public vote-atlas repository. The ingestion workflow updates dashboard data.
-- Fails closed when a locked/off screen, missing Wi-Fi, missing accessibility service, missing IdolChamp installation or unrecognized UI blocks access. Retries are capped.
+This is the **non-accessibility** version, designed to reduce the Google Play Protect installation warning associated with sensitive permissions on internet-sideloaded apps. It does **not** circumvent Play Protect. The previous fully automatic navigator has been removed from the shipped APK.
 
-## First-time setup (phone only)
-1. Download the generated APK from [Build Vote Atlas Android collector](https://github.com/ark-netizen/vote-atlas/actions/workflows/build-android-collector.yml) / latest successful run / artifact. Install it on S10e. The user must approve the installation; remote installation is not possible from ChatGPT.
-2. Install or update the official **아이돌챔프** app; complete login if the official app requires it. Our collector never submits credentials.
-3. Settings → 접근성 → 설치된 앱 → **아이돌챔프 화면 읽기** → 사용. Allow accessibility for this collector after reviewing its purpose.
-4. Create a **fine-grained** GitHub token at GitHub Settings → Developer settings → Personal access tokens → Fine-grained tokens, select ONLY `ark-netizen/vote-atlas` with Contents permission **Read and write**. Paste it into the collector, then tap **① 토큰 저장**. NEVER send tokens in chat or commit them to the repository.
-5. Tap **③ 매일 자동 수집 켜기**, then **바로 자동 탐색 테스트** and check result / dashboard.
-6. For best results, plug in the phone, leave Wi-Fi on, keep the screen on and unlocked, turn off battery optimization for the collector, and do not activate power saving. Samsung: Settings → 디스플레이 → 화면 자동 꺼짐 시간; 개발자 옵션 → 충전 중 화면 켜짐 (if available); Settings → 애플리케이션 → Vote Atlas 수집기 → 배터리 → 제한 없음 (names vary with One UI version).
+## What works
+- The user opens IdolChamp and takes a screenshot of a PUBLIC vote listing or detail.
+- In Vote Atlas, tap **스크린샷 선택 · 한글 자동 인식**, select an image from Android's file picker (no photo-library permission).
+- Offline bundled ML Kit Korean OCR recognizes text on-device. The user can review and correct the title, voting dates and recognized text.
+- When a recognized voting period has an explicit year, the user confirms a short structured preview. Only parsed public vote fields are added to a local upload queue.
+- The queue uploads with GitHub API over HTTPS using a fine-grained **Contents Read and write** token limited to `ark-netizen/vote-atlas`. Token is encrypted with Android Keystore, never stored in source code.
+- The app can schedule daily Wi-Fi retries of **already imported** data. It does **not** automatically launch IdolChamp or discover new polls.
 
-## Important limits
-- Simply disabling the background/battery lock does **not** unlock Android's screen or bypass background activity launch restrictions. The collector cannot silently install itself or guarantee that it can open IdolChamp while locked. You must **install once manually** and allow Android accessibility access. Screen-on + unlocked is the intended deployment mode.
-- The navigator is unverified on an actual Galaxy S10e/IdolChamp UI. System may deny background activity starts. Unknown card layouts, dynamic content rendered as images/WebViews and dates without a year are intentionally not guessed. Thus **full daily vote coverage is not guaranteed**.
-- Unrecognized/unsafe screens are skipped. No password fields, personal data, payment activity or screenshots are deliberately transmitted. The public repository is not private.
-- Token is encrypted in Android Keystore AES-GCM. It has write access to the selected repository. Delete it from this app and revoke it in GitHub if lost.
-- GitHub Actions compile + unit tests verify source correctness but are **not proof of full end-to-end performance on the real phone**.
+## Does not work
+- Unattended daily collection of all IdolChamp votes: requires accessibility to automate a third-party app, which triggers Play Protect sideload blocking in some markets. No accessibility service is registered and no accessibility permission is requested.
+- OCR is not guaranteed correct. Missing dates, ranks, candidates or reward information are not inferred. Screenshots are not uploaded.
+- Installing on a real Galaxy S10e, Play Protect's verdict and IdolChamp screenshot readability must be verified on-device; GitHub unit tests/compilation are not proof of those results.
+
+## Setup
+1. Download APK from `https://ark-netizen.github.io/vote-atlas/install.html`; install using standard Android installation prompts. **Do not disable Play Protect.** If still blocked, stop and share the exact warning.
+2. Create a fine-grained GitHub personal access token with only `ark-netizen/vote-atlas` and repository Contents Read and write; put it in the app. Never paste tokens in chat.
+3. Open the official IdolChamp app, take a screenshot of a publicly visible vote detail showing the vote name and start/end dates.
+4. Switch to Vote Atlas, choose screenshot, review/edit recognized content, and confirm the item for GitHub upload.
+5. Optional: turn on 09:30 daily retry of any queued uploads. Wi-Fi is required.
+
+## Security
+The APK manifest requests only INTERNET, ACCESS_NETWORK_STATE and RECEIVE_BOOT_COMPLETED. There is no accessibility service, screenshot capture permission, SMS permission or notification listener. Screenshot selection requires an explicit action. Only validated structured data is publicly published; never choose a screenshot containing personal information. Upload is to a **public repository**.
