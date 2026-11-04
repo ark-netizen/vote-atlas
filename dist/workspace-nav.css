@@ -1,0 +1,15 @@
+/* Shared one-line WORKSPACE menu: identical geometry across every page. */
+.urban-interface .workspace{min-height:79px;height:79px;display:flex;flex-direction:column;justify-content:center;white-space:nowrap;overflow:hidden}
+.urban-interface .workspace small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.urban-interface .workspace-menu{display:flex;flex-direction:column;flex-wrap:nowrap;gap:3px;width:100%;padding:0;margin:0}
+.urban-interface .workspace-menu .workspace-menu-item{box-sizing:border-box;display:flex;align-items:center;justify-content:flex-start;flex:0 0 40px;width:100%;min-width:0;height:40px;min-height:40px;max-height:40px;gap:10px;padding:0 12px;margin:0;overflow:hidden;border-radius:0;border-left-width:2px;white-space:nowrap;text-decoration:none;font-size:11px;line-height:1;font-weight:500}
+.urban-interface .workspace-menu .workspace-menu-item.active{font-weight:600}
+.urban-interface .workspace-menu .workspace-menu-text{display:block;min-width:0;flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.4}
+.urban-interface .workspace-menu .nav-glyph{display:block;flex:0 0 7px;width:7px;min-width:7px;height:7px;margin:0;font-size:0;line-height:0}
+.urban-interface .rail-bottom.sidebar-bottom{flex:0 0 auto;min-height:85px;padding:13px 10px}
+.urban-interface .rail-bottom.sidebar-bottom strong{display:block;font-size:12px}
+.urban-interface .rail-bottom.sidebar-bottom p{font-size:10px;margin-top:5px}
+@media(max-width:1150px) and (min-width:761px){.urban-interface .workspace-menu .workspace-menu-item{padding:0 8px;font-size:10px;gap:8px}}
+@media(max-width:760px){.urban-interface .workspace-menu{display:flex;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;gap:4px;width:100%;margin:12px 0 0;padding:0 0 4px;scroll-snap-type:x proximity}
+.urban-interface .workspace-menu .workspace-menu-item{flex:0 0 auto;width:auto;max-width:none;min-width:max-content;height:36px;min-height:36px;max-height:36px;padding:0 9px;font-size:10px;scroll-snap-align:start}
+.urban-interface .workspace-menu .workspace-menu-text{flex:0 0 auto;overflow:visible;text-overflow:clip}}
