@@ -1,10 +1,14 @@
 import unittest
+from datetime import datetime, timedelta, timezone
 from scripts.ingest_idolchamp import accepted, ingest
 
 class IngestTests(unittest.TestCase):
     def event(self):
+        now = datetime.now(timezone(timedelta(hours=9)))
+        start = now.date().replace(day=1)
         return dict(id="idolchamp-" + "a" * 20, app="idolchamp", title="11월 팬 투표",
-                    start="2026-11-01", end="2026-11-30", collected_at="2026-11-04T10:00:00+09:00",
+                    start=start.isoformat(), end=(start + timedelta(days=35)).isoformat(),
+                    collected_at=now.isoformat(timespec="seconds"),
                     candidates=[{"rank": 1, "name": "후보A", "votes": 400}],
                     reward_lines=["1위 서울 전광판 광고 송출"])
 
