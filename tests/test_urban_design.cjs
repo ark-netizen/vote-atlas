@@ -12,15 +12,16 @@ const pages = [
  ['trend-detail.html','overview.css','01 / VOTE TREND DETAIL']
 ];
 
-test('Every workspace page opts into the editorial design and use an information masthead',()=>{
- for(const [name,source,label] of pages){
+test('Every workspace page preserves its existing base layout and loads the cleaner dashboard style',()=>{
+ for(const [name,source] of pages){
   const html=read(name);
-  assert.match(html, /class="protected-view urban-interface(?:\s+[^"]+)?"/,name);
-  assert.match(html, /class="urban-utility"/,name);
-  assert.ok(html.includes(label),name+' missing desk label');
+  assert.match(html, /class="protected-view urban-interface modern-interface(?:\s+[^"]+)?"/,name);
+  assert.doesNotMatch(html, /class="urban-utility"/,name);
   const sourcePosition=html.indexOf('href="'+source+'"');
   const urbanPosition=html.indexOf('href="urban.css"');
-  assert.ok(urbanPosition>sourcePosition,name+' layout overrides must load last');
+  const modernPosition=html.indexOf('href="dashboard-modern.css"');
+  assert.ok(urbanPosition>sourcePosition,name+' urban base must load after page stylesheet');
+  assert.ok(modernPosition>urbanPosition,name+' compact design must load last');
   assert.ok(html.includes('src="access-guard.js"'),name+' gate must remain wired');
  }
 });

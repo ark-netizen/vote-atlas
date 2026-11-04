@@ -41,7 +41,7 @@ function refresh(){
  $('#countSoon').textContent=ev.filter(e=>e.end>=kst&&e.end<=soonUntil()).length.toLocaleString('ko-KR');
  $('#countReward').textContent=ev.filter(e=>rewardText(e)).length.toLocaleString('ko-KR');
  $('#countLineup').textContent=ev.filter(e=>(e.candidates||[]).length).length.toLocaleString('ko-KR');
- renderCalendar();renderVotes();renderArtists();renderSources();
+ renderCalendar();renderVotes();renderArtists();renderSources();renderActivity();
 }
 function filtered(ignoreDay=false){
  const q=$('#query').value.trim().toLowerCase();
@@ -150,6 +150,49 @@ function renderSources(){
   block.append(doc('p','',s.message||'수집 방법 미검증'));
   block.append(doc('small','', '최근 성공 '+stamp(s.last_success)+' KST'));
   root.append(block);
+ }
+}
+function renderActivity(){
+ const timeline=$('#recentActivityList'),sourcesRoot=$('#recentSourcesList');
+ if(!timeline||!sourcesRoot)return;
+ timeline.replaceChildren();sourcesRoot.replaceChildren();
+ const asTime=value=>{
+  const time=Date.parse(value||'');
+  return Number.isFinite(time)?time:0;
+ };
+ const recent=(records.events||[])
+   .filter(e=>e&&typeof e.title==='string'&&e.title.trim())
+   .sort((a,b)=>asTime(b.collected_at)-asTime(a.collected_at)||
+     String(b.end||'').localeCompare(String(a.end||'')))
+   .slice(0,8);
+ $('#recentCount').textContent=recent.length+'건';
+ if(!recent.length){
+  timeline.append(doc('p','activity-empty','수집 기록이 없습니다.'));
+ }else{
+  for(const vote of recent){
+   const source=app(vote.app),row=doc('button','activity-entry');
+   row.type='button';
+   row.setAttribute('aria-label',source.name+' · '+vote.title+' 상세 보기');
+   const current=(vote.start&&vote.end)?state(vote):'unknown';
+   const mark=doc('span','activity-icon'+(current==='active'?' is-active':current==='ended'?' is-ended':''),source.name.slice(0,1));
+   mark.setAttribute('aria-hidden','true');
+   const info=doc('span','activity-info');
+   info.append(doc('span','activity-title',vote.title),
+     doc('span','activity-meta',source.name+' · '+(asTime(vote.collected_at)?stamp(vote.collected_at):'수집 시각 미확인')));
+   row.append(mark,info);
+   row.onclick=()=>openDetail(vote);
+   timeline.append(row);
+  }
+ }
+ const labels={ok:'완료',partial:'부분',error:'실패'};
+ for(const source of records.sources||[]){
+  const item=doc('div','activity-source');
+  const name=doc('span','');
+  const dot=doc('i','activity-status-dot'+(['ok','partial'].includes(source.state)?' is-ok':source.state==='error'?' is-error':''));
+  dot.setAttribute('aria-hidden','true');
+  name.append(dot,document.createTextNode(source.name));
+  item.append(name,doc('b','',labels[source.state]||'대기'));
+  sourcesRoot.append(item);
  }
 }
 function openDetail(e){
