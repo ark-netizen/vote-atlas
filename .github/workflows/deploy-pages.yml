@@ -6,7 +6,7 @@ on:
       - 'dist/**'
       - '.github/workflows/deploy-pages.yml'
   workflow_run:
-    workflows: ['Collect official voting data']
+    workflows: ['Collect official voting data', 'Publish IdolChamp APK for direct phone installation']
     types: [completed]
   workflow_dispatch:
 permissions:
