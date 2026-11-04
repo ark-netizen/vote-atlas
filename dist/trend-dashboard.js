@@ -11,7 +11,7 @@ const VoteAtlasTrendDashboard=(()=>{
  const short=n=>new Intl.NumberFormat('ko-KR',{notation:'compact',maximumFractionDigits:1}).format(Number(n));
  const colors=['#323232','#737373','#999999','#505050','#adadad','#626262','#878787','#3f3f3f','#b7b7b7','#5b5b5b','#929292','#464646','#a5a5a5','#6b6b6b'];
  const kst=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
- let dataset={sources:[]},history=[],initialized=false,ready=false;
+ let dataset={sources:[]},history=[],initialized=false,ready=false,detailAppId=null;
  const topicFilter=new Map();
  function active(){
    const days=Number($('#trendRange').value)||14;
@@ -21,14 +21,15 @@ const VoteAtlasTrendDashboard=(()=>{
  function addOption(select,value,label){
    const n=el('option','',label);n.value=value;select.append(n);
  }
- function drawAppChart(app,observations,days){
-   const shell=el('section','trend-per-app');
+ function drawAppChart(app,observations,days,compact=false){
+   const shell=el('section','trend-per-app'+(compact?' trend-compact-app':''));
    const head=el('div','trend-per-app-head');
    const h3=el('h3','',app.name);
    const spikes=VoteAtlasTrends.changes(observations).filter(c=>c.spike);
    const stats=el('span','trend-per-app-meta',
      new Set(observations.map(x=>x.event_id)).size+'개 투표 · '+observations.length+'개 날짜별 기록 · 급증 '+spikes.length+'건');
    head.append(h3,stats);
+   if(compact){const more=el('span','trend-open-hint','상세 분석 ↗');head.append(more)}
    shell.append(head);
 
    const optionRow=el('div','trend-app-filter');
@@ -42,7 +43,7 @@ const VoteAtlasTrendDashboard=(()=>{
    select.onchange=()=>{topicFilter.set(app.id,select.value);render()};
    label.append(select);
    optionRow.append(label);
-   shell.append(optionRow);
+   if(!compact)shell.append(optionRow);
 
    const plotRows=observations.filter(x=>select.value==='all'||x.topic===select.value);
    const series=VoteAtlasTrends.eventSeries(plotRows,Infinity);
@@ -115,7 +116,13 @@ const VoteAtlasTrendDashboard=(()=>{
        ));
      }
    });
-   const plot=el('div','trend-app-plot');plot.append(graph);shell.append(plot);
+   const plot=compact?el('a','trend-app-plot trend-click-area'):el('div','trend-app-plot');
+   if(compact){
+     plot.href='trend-detail.html?app='+encodeURIComponent(app.id);
+     plot.setAttribute('aria-label',app.name+' 득표 추이 상세 분석 페이지 열기');
+     plot.title=app.name+' 득표 이력·급증 상세 보기';
+   }
+   plot.append(graph);shell.append(plot);
    const key=el('div','trend-legend');
    series.forEach((s,i)=>{
      const item=el('span','trend-legend-item');
@@ -123,9 +130,9 @@ const VoteAtlasTrendDashboard=(()=>{
      item.append(line,el('span','',s.title+(s.scope==='visible_candidates'?' (부분 후보)':'')));
      item.title=s.title;key.append(item);
    });
-   shell.append(key);
+   if(!compact)shell.append(key);
    const bottom=el('p','trend-app-note','노란색 배경: '+totalSpikes+'개 급증 구간 · 마우스를 올리면 개별 투표명과 득표수를 확인할 수 있습니다.');
-   shell.append(bottom);
+   if(!compact)shell.append(bottom);
    return shell;
  }
  function render(){
@@ -141,20 +148,21 @@ const VoteAtlasTrendDashboard=(()=>{
      '선택한 기간에 날짜별 득표 기록이 없습니다. 수집되지 않은 날짜는 임의로 연결하지 않습니다.';
    const root=$('#trendAppCharts'),missing=$('#trendAppMissing');root.replaceChildren();missing.replaceChildren();
    const sources=dataset.sources||[];
-   const appIds=[...new Set(rows.map(x=>x.app))];
+   const appIds=detailAppId?[detailAppId]:[...new Set(rows.map(x=>x.app))];
    const ordered=appIds.map(id=>sources.find(s=>s.id===id)||{id,name:id});
    const days=Number($('#trendRange').value)||14;
    for(const app of ordered){
      const filtered=rows.filter(x=>x.app===app.id);
-     root.append(drawAppChart(app,filtered,days));
+     root.append(drawAppChart(app,filtered,days,!detailAppId));
    }
    if(!ordered.length)root.append(el('p','trend-chart-empty','아직 그래프로 표시할 앱의 투표 기록이 없습니다.'));
-   const emptyApps=sources.filter(a=>!appIds.includes(a.id));
+   const emptyApps=detailAppId?[]:sources.filter(a=>!appIds.includes(a.id));
    if(emptyApps.length)missing.append(el('p','trend-no-data-apps',
      '기록이 아직 없는 앱: '+emptyApps.map(a=>a.name).join(' · ')+' — 자동 수집으로 날짜별 득표가 확인되면 앱별 그래프가 추가됩니다.'));
  }
- async function load(data){
+ async function load(data,options={}){
    dataset=data||dataset;
+   detailAppId=options.appId||null;
    const ids=['trendRange','trendScope'];
    if(!initialized){
      for(const id of ids)$('#'+id).addEventListener('change',render);
@@ -170,7 +178,7 @@ const VoteAtlasTrendDashboard=(()=>{
      history=[];
      $('#trendNotice').textContent='수집 이력 파일을 읽지 못했습니다. GitHub Actions 수집 상태를 확인해 주세요.';
    }
-   ready=true;render();
+   ready=true;render();return history;
  }
  return {load,render};
 })();
