@@ -1,6 +1,6 @@
 {
-  "schema_version": 1,
-  "updated_at": "2026-11-04T01:25:38.775Z",
+  "schema_version": 2,
+  "updated_at": "2026-11-04T11:00:00+09:00",
   "description": "공식자료/신뢰 가능한 보도에 근거한 회차별 플랫폼 이력. 추정 플랫폼은 확정 목록에 넣지 않음.",
   "awards": [
     {
@@ -33,7 +33,19 @@
           "url": "https://www.topstarnews.net/news/articleView.html?idxno=16266696"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_milestones": [
+        {
+          "title": "인기상 예선 투표 시작 (종료일 미확인)",
+          "platform": "유픽",
+          "date": "2026-11-06",
+          "source_url": "https://www.topstarnews.net/news/articleView.html?idxno=16266696",
+          "detail": ""
+        }
+      ],
+      "event_end_date": "2026-12-23",
+      "event_source_url": "https://www.topstarnews.net/news/articleView.html?idxno=16266696",
+      "voting_periods": []
     },
     {
       "id": "korea-drama",
@@ -73,7 +85,11 @@
           "url": "https://news.nate.com/view/20260803n15384?mid=n0107"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "event_end_date": "2026-10-10",
+      "event_source_url": "https://v.daum.net/v/20260828024107328",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "aaa",
@@ -105,7 +121,36 @@
           "url": "https://www.asiaartistawards.com/notice/162"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "event_end_date": "2026-12-06",
+      "event_source_url": "https://www.starnewskorea.com/star/2026/09/04/2026090414043351811",
+      "voting_periods": [
+        {
+          "title": "인기상 사전투표",
+          "platform": "스타폴",
+          "start_date": "2026-09-04",
+          "end_date": "2026-09-11",
+          "source_url": "https://www.asiaartistawards.com/notice/162",
+          "detail": "9/4 15:01~9/11 15:00"
+        },
+        {
+          "title": "인기상 예선",
+          "platform": "아이돌챔프",
+          "start_date": "2026-09-16",
+          "end_date": "2026-10-06",
+          "source_url": "https://www.asiaartistawards.com/notice/162",
+          "detail": "9/16 10:00~10/6 23:59"
+        },
+        {
+          "title": "인기상 결선",
+          "platform": "아이돌챔프",
+          "start_date": "2026-10-08",
+          "end_date": "2026-11-04",
+          "source_url": "https://www.asiaartistawards.com/notice/162",
+          "detail": "10/8 10:00~11/4 23:59"
+        }
+      ],
+      "voting_milestones": []
     },
     {
       "id": "kgma",
@@ -137,7 +182,11 @@
           "url": "https://kgma-is.com/locales/ko/vote.html"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "event_end_date": "2026-11-08",
+      "event_source_url": "https://kgma-is.com/locales/ko/index.html",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "hma",
@@ -174,7 +223,11 @@
           "url": "https://www.etnews.com/20260103000027"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "event_end_date": "2026-02-15",
+      "event_source_url": "https://www.etnews.com/20260103000027",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "k-world-dream",
@@ -201,7 +254,9 @@
           "url": "https://m.stoo.com/article_amp.php?aid=107830347169"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "baeksang",
@@ -228,7 +283,11 @@
           "url": "https://www.newspim.com/news/view/20260424001160"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "event_end_date": "2026-05-08",
+      "event_source_url": "https://www.newspim.com/news/view/20260424001160",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "seoul-drama",
@@ -255,7 +314,20 @@
           "url": "https://seouldrama.co.kr/bbs/board.php?bo_table=press&page=11&wr_id=1048"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [
+        {
+          "title": "아시아스타상·K-드라마 OST 팬 투표",
+          "platform": "아이돌챔프",
+          "start_date": "2026-06-15",
+          "end_date": "2026-07-14",
+          "source_url": "https://seouldrama.co.kr/bbs/board.php?bo_table=press&page=11&wr_id=1048",
+          "detail": ""
+        }
+      ],
+      "event_end_date": "2026-10-08",
+      "event_source_url": "https://seouldrama.co.kr/bbs/board.php?bo_table=press&page=11&wr_id=1048",
+      "voting_milestones": []
     },
     {
       "id": "seoul-music",
@@ -282,7 +354,20 @@
           "url": "https://www.etnews.com/20260320000093"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [
+        {
+          "title": "인기상·본상 등 단계별 투표 (세부 단계 미분리)",
+          "platform": "아이돌챔프",
+          "start_date": "2026-03-20",
+          "end_date": "2026-05-28",
+          "source_url": "https://www.etnews.com/20260320000093",
+          "detail": ""
+        }
+      ],
+      "event_end_date": "2026-06-20",
+      "event_source_url": "https://www.etnews.com/20260320000093",
+      "voting_milestones": []
     },
     {
       "id": "tma",
@@ -313,7 +398,11 @@
           "url": "https://www.fannstar.com/rank/guide"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "event_end_date": "2026-09-19",
+      "event_source_url": "https://www.tfmusicawards.com/?lang=ko",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "mma",
@@ -349,7 +438,28 @@
           "url": "https://kakaoent.com/pr/detail/621"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "event_end_date": "2026-11-15",
+      "event_source_url": "https://www.melon.com/mma/2026/info",
+      "voting_periods": [
+        {
+          "title": "TOP10 투표",
+          "platform": "멜론",
+          "start_date": "2026-10-15",
+          "end_date": "2026-10-29",
+          "source_url": "https://www.melon.com/mma/2026/info",
+          "detail": ""
+        },
+        {
+          "title": "부문별 투표",
+          "platform": "멜론",
+          "start_date": "2026-10-30",
+          "end_date": "2026-11-13",
+          "source_url": "https://www.melon.com/mma/2026/info",
+          "detail": ""
+        }
+      ],
+      "voting_milestones": []
     },
     {
       "id": "mama",
@@ -380,7 +490,11 @@
           "url": "https://idolcal.com/"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "event_end_date": "2026-11-21",
+      "event_source_url": "https://mnetjp.com/mama/2026/",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "blue-dragon-film",
@@ -407,7 +521,28 @@
           "url": "https://www.chosun.com/entertainments/movie/2026/11/02/GJRDKNRTMY4TAZTGGMYTQNBQMQ/"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [
+        {
+          "title": "기술부문 등 6개 상 투표",
+          "platform": "셀럽챔프",
+          "start_date": "2026-11-02",
+          "end_date": "2026-11-12",
+          "source_url": "https://www.topstarnews.net/news/articleView.html?idxno=16266045",
+          "detail": ""
+        },
+        {
+          "title": "주요상·청정원 인기스타상 투표",
+          "platform": "셀럽챔프",
+          "start_date": "2026-11-02",
+          "end_date": "2026-11-24",
+          "source_url": "https://www.topstarnews.net/news/articleView.html?idxno=16266045",
+          "detail": ""
+        }
+      ],
+      "event_end_date": "2026-11-25",
+      "event_source_url": "https://www.chosun.com/entertainments/movie/2026/11/02/GJRDKNRTMY4TAZTGGMYTQNBQMQ/",
+      "voting_milestones": []
     },
     {
       "id": "blue-dragon-series",
@@ -434,7 +569,20 @@
           "url": "https://www.sportschosun.com/entertainment/2026-07-02/202607020100010340000393"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [
+        {
+          "title": "14개 부문 팬 투표",
+          "platform": "셀럽챔프",
+          "start_date": "2026-07-02",
+          "end_date": "2026-07-30",
+          "source_url": "https://www.sportschosun.com/entertainment/2026-07-02/202607020100010340000393",
+          "detail": ""
+        }
+      ],
+      "event_end_date": "2026-07-31",
+      "event_source_url": "https://www.sportschosun.com/entertainment/2026-07-02/202607020100010340000393",
+      "voting_milestones": []
     },
     {
       "id": "fundex",
@@ -466,7 +614,28 @@
           "url": "https://enews.imbc.com/News/RetrieveNewsInfo/521055"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [
+        {
+          "title": "글로벌 네티즌 인기 스타상 예선",
+          "platform": "아이돌챔프·셀럽챔프",
+          "start_date": "2026-10-13",
+          "end_date": "2026-10-26",
+          "source_url": "https://enews.imbc.com/News/RetrieveNewsInfo/521055",
+          "detail": ""
+        },
+        {
+          "title": "글로벌 네티즌 인기 스타상 본선",
+          "platform": "아이돌챔프·셀럽챔프",
+          "start_date": "2026-10-27",
+          "end_date": "2026-11-09",
+          "source_url": "https://www.presswaveon.com/bbs/board.php?bo_table=culture&wr_id=716",
+          "detail": ""
+        }
+      ],
+      "event_end_date": "2026-12-16",
+      "event_source_url": "https://enews.imbc.com/News/RetrieveNewsInfo/521055",
+      "voting_milestones": []
     },
     {
       "id": "d-awards",
@@ -493,7 +662,9 @@
           "url": "https://www.etnews.com/20251205000254"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "jupiter",
@@ -520,7 +691,11 @@
           "url": "https://www.asiatribune.kr/news/view.php?no=7126"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "event_end_date": "2026-11-04",
+      "event_source_url": "https://www.asiatribune.kr/news/view.php?no=7126",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "km-chart",
@@ -547,7 +722,11 @@
           "url": "https://www.mediadale.com/news/articleView.html?idxno=286152"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "event_end_date": "2026-06-25",
+      "event_source_url": "https://www.mediadale.com/news/articleView.html?idxno=286152",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "golden-disc",
@@ -574,7 +753,20 @@
           "url": "https://www.mk.co.kr/news/hot-issues/11504545"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [
+        {
+          "title": "업비트 인기상 투표",
+          "platform": "프리즘",
+          "start_date": "2025-12-22",
+          "end_date": "2026-01-05",
+          "source_url": "https://www.mk.co.kr/news/hot-issues/11504545",
+          "detail": ""
+        }
+      ],
+      "event_end_date": "2026-01-10",
+      "event_source_url": "https://www.mk.co.kr/news/hot-issues/11504545",
+      "voting_milestones": []
     },
     {
       "id": "first-brand",
@@ -600,7 +792,18 @@
           "url": "https://fba.kcforum.co.kr/2026/index.php"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [
+        {
+          "title": "2026 퍼스트브랜드 소비자 조사",
+          "platform": "한국소비자포럼 공식 조사",
+          "start_date": "2025-11-03",
+          "end_date": "2025-11-16",
+          "source_url": "https://fba.kcforum.co.kr/2026/index.php",
+          "detail": ""
+        }
+      ],
+      "voting_milestones": []
     },
     {
       "id": "brand-year",
@@ -626,7 +829,18 @@
           "url": "https://www.hankyung.com/article/2026062948341"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [
+        {
+          "title": "2026 올해의 브랜드 대상 소비자 투표",
+          "platform": "한국소비자포럼 공식 투표",
+          "start_date": "2026-06-29",
+          "end_date": "2026-07-12",
+          "source_url": "https://www.hankyung.com/article/2026062948341",
+          "detail": ""
+        }
+      ],
+      "voting_milestones": []
     },
     {
       "id": "asian-model",
@@ -646,7 +860,11 @@
           "url": "https://amfoc.org/asiamodelawards-2026/"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "event_end_date": "2026-11-22",
+      "event_source_url": "https://amfoc.org/asiamodelawards-2026/",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "face-asia",
@@ -666,7 +884,11 @@
           "url": "https://amfoc.org/faceofasia-2026/"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "event_end_date": "2026-11-20",
+      "event_source_url": "https://amfoc.org/faceofasia-2026/",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "sbs-drama",
@@ -679,7 +901,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "mbc-drama",
@@ -692,7 +916,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "kbs-drama",
@@ -705,7 +931,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "sbs-ent",
@@ -718,7 +946,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "mbc-ent",
@@ -731,7 +961,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "kbs-ent",
@@ -744,7 +976,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "sbs-gayo",
@@ -757,7 +991,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "kbs-song",
@@ -770,7 +1006,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "mbc-song",
@@ -783,7 +1021,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "circle",
@@ -796,7 +1036,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "korean-music",
@@ -809,7 +1051,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "grand-bell",
@@ -822,7 +1066,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "buil-film",
@@ -835,7 +1081,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "korea-musical",
@@ -848,7 +1096,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     },
     {
       "id": "consumer-loyalty",
@@ -861,7 +1111,9 @@
       "aliases": [],
       "event_date": "",
       "sources": [],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "voting_periods": [],
+      "voting_milestones": []
     }
   ],
   "discovered": [],
@@ -872,5 +1124,6 @@
     "feeds_checked": 0,
     "items_scanned": 0,
     "new_candidates": 0
-  }
+  },
+  "schedule_notes": "공식 개최기간 및 출처 확인된 투표기간만 달력에 표시. 시작일만 확인된 경우 단일 마일스톤 표시; 정보 미확인 행사 일정은 추정하지 않음. 기간은 양 끝 날짜 포함/KST."
 }

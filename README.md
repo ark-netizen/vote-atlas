@@ -72,3 +72,10 @@ python3 -m http.server 8000 --directory dist
 - **비용**: 별도 유료 API/서버 없이 공개 GitHub Actions 예약 작업으로 동작합니다. 다만 공개 뉴스 RSS 제공자의 응답·차단 및 GitHub Actions 예약 실행 상태에 좌우되며, 실패 시 기존 데이터를 유지하고 작업을 실패 처리합니다.
 - **실행**: Actions → Discover awards and voting platforms → Run workflow. 또는 `python scripts/discover_awards.py` 로 수집하고 `python -m unittest discover -s tests -p 'test_awards.py' -v` 로 분류기를 점검하세요.
 - 검색은 모든 인터넷 정보에 대한 완전한 보장이 아니며, 미발표·비공개 행사나 뉴스에 색인되지 않은 플랫폼은 자동 탐지하지 못합니다.
+
+### 어워즈 일정 달력
+
+- [어워즈 달력](https://ark-netizen.github.io/vote-atlas/awards.html#awardCalendar)은 월별 시상식 개최일(여러 날 열리는 경우 기간 전체 표시), 근거가 확인된 팬 투표 시작~마감 기간, 종료일이 미확인인 투표 시작일을 각각 구분합니다.
+- 날짜를 누르면 해당 행사명·투표처·투표 단계·출처 원문이 표시되고, 월간 일정 목록에서 특정 일정을 선택할 수 있습니다. 개최/투표 유형 필터와 이전 달/다음 달 이동도 가능합니다.
+- 근거가 없는 행사 날짜는 자동 추정하지 않습니다. 새로운 공식 일정이 검증되면 `dist/data/awards.json`의 `event_date`, `event_end_date`, `voting_periods`, `voting_milestones`를 갱신하면 달력에 자동 반영됩니다. 일일 RSS 신규 기사 후보는 검토 전에는 표시하지 않습니다.
+- 테스트: `node --test tests/test_awards_calendar.cjs` 및 `node --check dist/awards.js`
