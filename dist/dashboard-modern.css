@@ -1094,3 +1094,79 @@ body.urban-interface.modern-interface .main-content,
     padding:14px 11px;
   }
 }
+
+
+/* TODAY / 2026-11-04: A visible whole-day boundary, not just a small date badge.
+   Works on both the voting calendar and the awards range-bar calendar. */
+.modern-interface .calendar-grid .day.current {
+  position:relative;
+  background:#edf3fe !important;
+  box-shadow:inset 0 0 0 2px #4263a4, inset 0 0 0 4px #ffffff !important;
+}
+.modern-interface .calendar-grid .day.current .day-number,
+.modern-interface .award-calendar-week .award-date-cell.today .cal-day-num {
+  position:relative;
+  z-index:1;
+  display:grid;
+  place-items:center;
+  box-sizing:border-box;
+  min-width:29px;
+  width:29px;
+  height:29px;
+  padding:0;
+  font-size:13px;
+  font-weight:800;
+  line-height:1;
+  border-radius:7px;
+  background:#304f95 !important;
+  color:#ffffff !important;
+  box-shadow:0 0 0 2px #ffffff, 0 0 0 3px #5875b5;
+}
+.modern-interface .calendar-grid .day.current::after {
+  content:"오늘";
+  position:absolute;
+  top:13px;
+  right:10px;
+  font-size:10px;
+  font-weight:800;
+  color:#304f95;
+  line-height:1.25;
+  letter-spacing:0;
+  pointer-events:none;
+}
+.modern-interface .award-calendar-week .award-date-cell.today .award-date-button {
+  position:relative;
+  background:#edf3fe !important;
+  box-shadow:inset 0 0 0 2px #4263a4, inset 0 0 0 4px #ffffff !important;
+}
+.modern-interface .award-calendar-week .award-date-cell.today .award-date-button::after {
+  content:"오늘";
+  position:absolute;
+  top:13px;
+  right:9px;
+  font-size:10px;
+  font-weight:800;
+  line-height:1.25;
+  color:#304f95;
+  pointer-events:none;
+}
+/* Keep current-day emphasis even when the user has selected today's date. */
+.modern-interface .calendar-grid .day.current.selected,
+.modern-interface .award-calendar-week .award-date-cell.today.selected .award-date-button {
+  background:#e6effe !important;
+  box-shadow:inset 0 0 0 2px #304f95, inset 0 0 0 4px #ffffff !important;
+}
+@media(max-width:760px){
+  /* Day columns can be very narrow on mobile; retain the border and badge. */
+  .modern-interface .calendar-grid .day.current::after,
+  .modern-interface .award-calendar-week .award-date-cell.today .award-date-button::after {
+    display:none;
+  }
+  .modern-interface .calendar-grid .day.current .day-number,
+  .modern-interface .award-calendar-week .award-date-cell.today .cal-day-num {
+    min-width:27px;
+    width:27px;
+    height:27px;
+    font-size:12px;
+  }
+}
