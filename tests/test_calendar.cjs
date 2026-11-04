@@ -37,3 +37,24 @@ test('status relative to Seoul calendar day',()=>{
   assert.equal(cal.state(vote,'2026-10-29'),'upcoming');
   assert.equal(cal.state(vote,'2026-11-06'),'ended');
 });
+
+
+test('Today is highlighted at full-cell level on both vote and awards calendars',()=>{
+ const fs=require('node:fs'),path=require('node:path');
+ const style=fs.readFileSync(path.join(__dirname,'../dist/dashboard-modern.css'),'utf8');
+ const vote=fs.readFileSync(path.join(__dirname,'../dist/app.js'),'utf8');
+ const award=fs.readFileSync(path.join(__dirname,'../dist/awards.js'),'utf8');
+ const start=style.indexOf('/* TODAY / 2026-11-04');
+ assert.ok(start>0,'today-specific styles must exist after the dashboard base rules');
+ const highlight=style.slice(start);
+ assert.match(highlight,/\.calendar-grid \.day\.current \{/);
+ assert.match(highlight,/\.award-calendar-week \.award-date-cell\.today \.award-date-button \{/);
+ assert.match(highlight,/\.calendar-grid \.day\.current\.selected/);
+ assert.match(highlight,/\.award-date-cell\.today\.selected \.award-date-button/);
+ assert.match(highlight,/box-shadow:inset 0 0 0 2px/);
+ assert.match(highlight,/min-width:29px/);
+ assert.match(highlight,/content:"오늘"/);
+ assert.match(highlight,/@media\(max-width:760px\)/);
+ assert.match(vote,/key===today\?'current'/);
+ assert.match(award,/day===calendarToday\?' today'/);
+});
