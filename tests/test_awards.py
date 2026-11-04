@@ -40,5 +40,25 @@ class AwardDiscoveryTests(unittest.TestCase):
         self.assertEqual(len(again["discovered"]),1)
         self.assertEqual(again["discovery_status"]["new_candidates"],0)
 
+
+    def test_subculture_game_awards_news_is_retained(self):
+        rows=mod.parse_feed(self.sample('2026 대한민국 게임대상 인기게임상 대국민 투표 - 게임전문지'),self.now)
+        self.assertEqual(len(rows),1)
+
+    def test_webtoon_awards_alias_recognition(self):
+        found=mod.recognize_award('2026 월드 웹툰 어워즈 독자인기상 투표 시작',[
+            {"id":"world-webtoon","name":"월드 웹툰 어워즈","aliases":["World Webtoon Awards"]}
+        ])
+        self.assertIsNotNone(found)
+        self.assertEqual(found["id"],"world-webtoon")
+
+    def test_subculture_platform_is_not_inferred(self):
+        base={"awards":[{"id":"game","name":"대한민국 게임대상","aliases":[],"platforms":[],"voting":"unknown"}],
+              "discovered":[],"latest_news":[]}
+        news=mod.parse_feed(self.sample("2026 대한민국 게임대상 인기게임상 투표 앱 출시"),self.now)
+        updated=mod.merge_results(base,news,self.now,len(mod.SEARCHES),[])
+        self.assertEqual(updated["awards"][0]["voting"],"unknown")
+        self.assertEqual(updated["awards"][0]["platforms"],[])
+
 if __name__=="__main__":
     unittest.main()

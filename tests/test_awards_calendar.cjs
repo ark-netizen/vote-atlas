@@ -102,3 +102,17 @@ test('a one-day award stays a single-slot bar, and filtering removes unwanted ty
  const vote=calendar.layoutMonthBars(calendar.filteredItems(schedules,'vote'),2026,10);
  assert.equal(vote.flatMap(w=>w.segments).some(s=>s.item.id==='ceremony'),false);
 });
+
+
+test('awards legend markers have isolated classes and a fixed 8px size', () => {
+ const fs=require('node:fs'),path=require('node:path');
+ const html=fs.readFileSync(path.join(__dirname,'../dist/awards.html'),'utf8');
+ const css=fs.readFileSync(path.join(__dirname,'../dist/awards.css'),'utf8');
+ assert.match(html,/class="award-legend-dot legend-vote"/);
+ assert.match(html,/class="award-legend-dot legend-ceremony"/);
+ assert.match(html,/class="award-legend-dot legend-milestone"/);
+ assert.doesNotMatch(html,/class="cal-indicator vote"/);
+ assert.match(css,/\.award-calendar-legend \.award-legend-dot\{/);
+ assert.match(css,/width:8px!important/);
+ assert.match(css,/height:8px!important/);
+});

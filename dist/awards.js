@@ -75,7 +75,10 @@ function renderAwardsCalendar(){
   return;
  }
  const kind=$('#calendarKind').value;
- const schedules=awardsCalendar.filteredItems(awardsCalendar.buildSchedule(records.awards),kind);
+ const subcultureOnly=$('#calendarGroup').value==='subculture';
+ const allowedIds=new Set(records.awards.filter(a=>a.group==='서브컬처').map(a=>a.id));
+ const schedules=awardsCalendar.filteredItems(awardsCalendar.buildSchedule(records.awards),kind)
+   .filter(item=>!subcultureOnly||allowedIds.has(item.award_id));
  const monthItems=schedules.filter(x=>awardsCalendar.overlapsMonth(x,awardCalYear,awardCalMonth));
  $('#awardMonth').textContent=awardCalYear+'년 '+(awardCalMonth+1)+'월';
  $('#calendarTotal').textContent='이달 '+monthItems.length+'건 · 개최/투표 일정을 각각 집계';
@@ -137,8 +140,10 @@ function moveAwardMonth(direction){
  awardCalYear=date.getUTCFullYear();
  awardCalMonth=date.getUTCMonth();
  const start=awardsCalendar.monthKey(awardCalYear,awardCalMonth,1);
+ const subcultureOnly=$('#calendarGroup').value==='subculture';
+ const allowedIds=new Set(records.awards.filter(a=>a.group==='서브컬처').map(a=>a.id));
  const next=awardsCalendar.filteredItems(awardsCalendar.buildSchedule(records.awards),$('#calendarKind').value)
-   .filter(x=>awardsCalendar.overlapsMonth(x,awardCalYear,awardCalMonth));
+   .filter(x=>awardsCalendar.overlapsMonth(x,awardCalYear,awardCalMonth)&&(!subcultureOnly||allowedIds.has(x.award_id)));
  awardSelectedDate=next.length?(next[0].start_date<start?start:next[0].start_date):start;
  awardSelectedEventId=null;
  renderAwardsCalendar();
@@ -147,7 +152,8 @@ function moveAwardMonth(direction){
 function renderAwards(){
  const q=$('#query').value.trim().toLocaleLowerCase('ko-KR'), cat=$('#category').value, platform=$('#platform').value, verified=$('#verification').value;
  const filtered=records.awards.filter(a=>{
-  if(cat!=='all'&&a.category!==cat)return false;
+  if(cat==='subculture'&&a.group!=='서브컬처')return false;
+  if(cat!=='all'&&cat!=='subculture'&&a.category!==cat)return false;
   if(verified!=='all'&&a.voting!==verified)return false;
   if(platform!=='all'&&!(a.platforms||[]).some(p=>p.name===platform))return false;
   return !q||[a.name,a.category,a.note,...(a.aliases||[]),...(a.platforms||[]).flatMap(p=>[p.name,p.role])].join(' ').toLocaleLowerCase('ko-KR').includes(q);
@@ -204,8 +210,9 @@ function render(){
  const platforms=[...new Set(records.awards.flatMap(x=>(x.platforms||[]).map(p=>p.name)))].sort((a,b)=>a.localeCompare(b,'ko'));
  for(const [id,options,all] of [['#category',categories,'전체 장르'],['#platform',platforms,'모든 플랫폼']]){
   const el=$(id),prior=el.value;el.replaceChildren();const start=textNode('option','',all);start.value='all';el.append(start);
+  if(id==='#category'){const sc=textNode('option','','서브컬처 전체');sc.value='subculture';el.append(sc)}
   for(const value of options){const opt=textNode('option','',value);opt.value=value;el.append(opt)}
-  el.value=options.includes(prior)?prior:'all';
+  el.value=(options.includes(prior)||(id==='#category'&&prior==='subculture'))?prior:'all';
  }
  const status=records.discovery_status||{},t=status.last_checked_at?'마지막 검색: '+fmt(status.last_checked_at):'일일 자동 검색 실행 전';
  $('#discoveryStatus').textContent=t+' · '+(status.feed_status||'상태 미확인')+' · 검사 기사 '+(status.items_scanned||0)+'건 · 이번 실행 신규 후보 '+(status.new_candidates||0)+'건';
@@ -235,4 +242,5 @@ $('#todayAwardMonth').addEventListener('click',()=>{
  renderAwardsCalendar();
 });
 $('#calendarKind').addEventListener('change',renderAwardsCalendar);
+$('#calendarGroup').addEventListener('change',()=>{awardSelectedEventId=null;renderAwardsCalendar()});
 load();
