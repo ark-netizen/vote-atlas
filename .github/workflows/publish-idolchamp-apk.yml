@@ -44,6 +44,30 @@ jobs:
           APK_SIGNER="$(find /usr/local/lib/android/sdk/build-tools -type f -name apksigner | sort -V | tail -n 1)"
           test -n "$APK_SIGNER"
           "$APK_SIGNER" verify "$APK"
+          # Fail publication if the compiled APK adds undeclared dangerous permissions.
+          AAPT="$(find /usr/local/lib/android/sdk/build-tools -type f -name aapt | sort -V | tail -n 1)"
+          test -n "$AAPT"
+          "$AAPT" dump permissions "$APK" | tee "$RUNNER_TEMP/apk-permissions.txt"
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          content=Path(__import__('os').environ['RUNNER_TEMP'],'apk-permissions.txt').read_text()
+          requested=set(re.findall(r"uses-permission:\s+name='([^']+)'",content))
+          allowed={'android.permission.INTERNET','android.permission.ACCESS_NETWORK_STATE'}
+          print('Requested permissions:',sorted(requested))
+          if requested-allowed or not {'android.permission.INTERNET'}.issubset(requested):
+              raise SystemExit('Unexpected compiled Android permissions: '+repr(sorted(requested-allowed)))
+          java=Path('android/app/src/main/java/io/voteatlas/collector/IdolChampService.java').read_text()
+          if 'requestScheduledRun' in java or 'userCapture' in java or 'com.nwz.ichampclient' not in java:
+              raise SystemExit('Unexpected accessibility background reader or package scope')
+          manifest=Path('android/app/src/main/AndroidManifest.xml').read_text()
+          if 'RECEIVE_BOOT_COMPLETED' in manifest or 'android.intent.action.SEND' in manifest:
+              raise SystemExit('Unexpected boot or sharing capability')
+          upload=Path('android/app/src/main/java/io/voteatlas/collector/UploadClient.java').read_text()
+          if 'https://api.github.com/repos/ark-netizen/vote-atlas/contents/' not in upload:
+              raise SystemExit('GitHub destination is not pinned')
+          print('Static security checks passed')
+          PY
           mkdir -p dist/downloads
           cp "$APK" dist/downloads/vote-atlas-idolchamp-s10e.apk
           python3 - <<'PY'
