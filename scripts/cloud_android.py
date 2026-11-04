@@ -27,7 +27,7 @@ def run(*args, timeout=90):
 
 
 def download(url, target):
-    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    req = urllib.request.Request(url, headers={'User-Agent': 'VoteAtlas-Android-Probe/1.0'})
     with urllib.request.urlopen(req, timeout=60) as response, target.open('wb') as f:
         if not response.url.startswith('https://'):
             raise ValueError('Non-HTTPS redirect')
@@ -52,7 +52,16 @@ def acquire(app, report):
     with tempfile.TemporaryDirectory() as td:
         folder = Path(td)
         archive = folder / 'download.zip'
-        report['download_sha256'] = download(url, archive)
+        report['download_attempts'] = []
+        for candidate in [url, url.replace('/XAPK/', '/APK/')]:
+            try:
+                report['download_sha256'] = download(candidate, archive)
+                report['apk_source'] = candidate
+                break
+            except Exception as exc:
+                report['download_attempts'].append({'url': candidate, 'error': str(exc)[:200]})
+        else:
+            raise RuntimeError('APK_DOWNLOAD_BLOCKED: ' + json.dumps(report['download_attempts']))
         with zipfile.ZipFile(archive) as z:
             members = [m for m in z.infolist() if m.filename.endswith('.apk')]
             if not members:
@@ -124,7 +133,7 @@ def main():
             raise RuntimeError('EMULATOR_BLOCKED')
         events = android_collect.collect(app, max_pages=6, max_details=20)
         for event in events:
-            event['reward_entries'] = extract_entries(event.get('reward', '').splitlines(), app['url'], now())
+            event['reward_entries'] = extract_entries(event.get('reward', '').splitlines(), app['url'], now(), source_kind='android_screen')
         report['extracted_count'] = len(events)
         report['status'] = 'SOURCE_COMPARISON_REQUIRED'
         snapshot(out, 'after')
