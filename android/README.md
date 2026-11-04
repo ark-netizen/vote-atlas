@@ -1,10 +1,10 @@
-# Vote Atlas IdolChamp screen capture collector – Android v0.3
+# Vote Atlas IdolChamp screen capture collector – Android v0.4
 
 This is the **non-accessibility** version, designed to reduce the Google Play Protect installation warning associated with sensitive permissions on internet-sideloaded apps. It does **not** circumvent Play Protect. The previous fully automatic navigator has been removed from the shipped APK.
 
 ## What works
 - The user opens IdolChamp and takes a screenshot of a PUBLIC vote listing or detail.
-- In Vote Atlas, tap **스크린샷 선택 · 한글 자동 인식**, select an image from Android's file picker (no photo-library permission).
+- In Vote Atlas, tap **스크린샷 선택 · 한글 자동 인식**, select an image from Android's file picker (no photo-library permission). Alternatively share a screenshot from Gallery to **Vote Atlas 캡처 수집기**.
 - Offline bundled ML Kit Korean OCR recognizes text on-device. The user can review and correct the title, voting dates and recognized text.
 - When a recognized voting period has an explicit year, the user confirms a short structured preview. Only parsed public vote fields are added to a local upload queue.
 - The queue uploads with GitHub API over HTTPS using a fine-grained **Contents Read and write** token limited to `ark-netizen/vote-atlas`. Token is encrypted with Android Keystore, never stored in source code.

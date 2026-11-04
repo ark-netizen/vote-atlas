@@ -45,7 +45,7 @@ public final class MainActivity extends Activity {
 
         TextView header = label("Vote Atlas · 아이돌챔프", 24);
         content.addView(header);
-        content.addView(label("\n보안 강화판 · 버전 0.3\n\n아이돌챔프 투표 화면을 캡처한 다음, 여기서 사진을 선택하면 휴대전화에서 한글을 인식합니다. 내용을 확인하고 저장하면 GitHub에 전송합니다.\n\n접근성 권한은 요청하지 않습니다. 매일 자동으로 아이돌챔프를 탐색하는 기능은 지원하지 않으며, 예약된 작업은 저장한 자료의 재전송만 합니다.\n", 14));
+        content.addView(label("\n보안 강화판 · 버전 0.4\n\n아이돌챔프 투표 화면을 캡처한 다음, 여기서 사진을 선택하면 휴대전화에서 한글을 인식합니다. 내용을 확인하고 저장하면 GitHub에 전송합니다.\n\n접근성 권한은 요청하지 않습니다. 매일 자동으로 아이돌챔프를 탐색하는 기능은 지원하지 않으며, 예약된 작업은 저장한 자료의 재전송만 합니다.\n", 14));
 
         content.addView(label("1. GitHub 연결 (최초 한 번)", 17));
         tokenBox = new EditText(this);
@@ -65,6 +65,14 @@ public final class MainActivity extends Activity {
         });
 
         content.addView(label("\n2. 아이돌챔프 투표 화면 가져오기", 17));
+        button(content, "아이돌챔프 앱 열기", v -> {
+            Intent launch = getPackageManager().getLaunchIntentForPackage("com.nwz.ichampclient");
+            if (launch != null) startActivity(launch);
+            else new AlertDialog.Builder(this)
+                    .setTitle("아이돌챔프 앱이 없습니다")
+                    .setMessage("아이돌챔프를 먼저 Google Play에서 설치해 주세요.")
+                    .setPositiveButton("확인", null).show();
+        });
         button(content, "스크린샷 선택 · 한글 자동 인식", v -> chooseScreenshot());
         recognitionStatus = label("선택된 사진 없음", 13);
         content.addView(recognitionStatus);
@@ -110,6 +118,22 @@ public final class MainActivity extends Activity {
         content.addView(status);
         setContentView(scroll);
         refresh();
+        Intent incoming = getIntent();
+        if (incoming != null && Intent.ACTION_SEND.equals(incoming.getAction())
+                && incoming.getType() != null && incoming.getType().startsWith("image/")) {
+            Uri sharedImage = incoming.getParcelableExtra(Intent.EXTRA_STREAM);
+            if (sharedImage != null) readScreenshot(sharedImage);
+        }
+    }
+
+    @Override protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        if (intent != null && Intent.ACTION_SEND.equals(intent.getAction())
+                && intent.getType() != null && intent.getType().startsWith("image/")) {
+            Uri sharedImage = intent.getParcelableExtra(Intent.EXTRA_STREAM);
+            if (sharedImage != null) readScreenshot(sharedImage);
+        }
     }
 
     private TextView label(String text, int size) {
@@ -138,6 +162,10 @@ public final class MainActivity extends Activity {
         super.onActivityResult(request, result, data);
         if (request != PICK_IMAGE || result != RESULT_OK || data == null || data.getData() == null) return;
         Uri uri = data.getData();
+        readScreenshot(uri);
+    }
+
+    private void readScreenshot(Uri uri) {
         recognitionStatus.setText("선택한 이미지를 휴대전화 내부에서 분석하고 있습니다.");
         try {
             InputImage image = InputImage.fromFilePath(this, uri);
