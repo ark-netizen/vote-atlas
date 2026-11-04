@@ -1,0 +1,72 @@
+name: Publish IdolChamp APK for direct phone installation
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'android/**'
+      - '.github/workflows/publish-idolchamp-apk.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: publish-idolchamp-apk
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Prepare Android SDK
+        run: |
+          SDK_MANAGER="$(find /usr/local/lib/android/sdk/cmdline-tools -type f -name sdkmanager | head -n 1)"
+          test -n "$SDK_MANAGER"
+          yes | "$SDK_MANAGER" --licenses >/dev/null || true
+          "$SDK_MANAGER" "platforms;android-35" "build-tools;35.0.0"
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Verify and build APK
+        working-directory: android
+        run: gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
+      - name: Check signed APK and write public download
+        run: |
+          set -euo pipefail
+          APK="android/app/build/outputs/apk/debug/app-debug.apk"
+          test -s "$APK"
+          unzip -t "$APK" | tail -n 2
+          APK_SIGNER="$(find /usr/local/lib/android/sdk/build-tools -type f -name apksigner | sort -V | tail -n 1)"
+          test -n "$APK_SIGNER"
+          "$APK_SIGNER" verify "$APK"
+          mkdir -p dist/downloads
+          cp "$APK" dist/downloads/vote-atlas-idolchamp-s10e.apk
+          python3 - <<'PY'
+          import datetime,hashlib,json,pathlib
+          f=pathlib.Path('dist/downloads/vote-atlas-idolchamp-s10e.apk')
+          meta={
+            'file':f.name, 'bytes':f.stat().st_size,
+            'sha256':hashlib.sha256(f.read_bytes()).hexdigest(),
+            'built_at':datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='seconds'),
+            'qa':{'android_unit_tests':'passed','apk_zip_integrity':'passed','apk_signature':'verified'},
+          }
+          pathlib.Path('dist/downloads/version.json').write_text(
+            json.dumps(meta,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('published APK',meta)
+          PY
+      - name: Commit verified installable file
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dist/downloads/vote-atlas-idolchamp-s10e.apk dist/downloads/version.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Publish QA-checked IdolChamp APK to public downloads'
+            git pull --rebase origin main
+            git push origin main
+          fi

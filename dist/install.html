@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f9">
+  <meta name="description" content="Vote Atlas 아이돌챔프 수집기: 갤럭시 휴대전화에서 APK 다운로드 및 설치">
+  <title>Vote Atlas · 아이돌챔프 수집기 설치</title>
+  <style>
+    :root{color-scheme:light;--bg:#f4f6f8;--paper:#fff;--ink:#17202b;--muted:#586678;--line:#e0e4e9;--accent:#17202b}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Noto Sans KR","Malgun Gothic",sans-serif;font-size:15px;line-height:1.6}
+    main{max-width:550px;margin:0 auto;padding:44px 18px 70px}
+    header{display:flex;align-items:center;gap:12px;margin-bottom:46px}
+    .logo{width:36px;height:36px;display:grid;place-items:center;border:1px solid #cfd5dd;border-radius:10px;background:#fff;font-weight:800;letter-spacing:-.6px}
+    .brand{font-weight:750;letter-spacing:-.4px;font-size:17px}
+    .eyebrow{text-transform:uppercase;font-size:12px;letter-spacing:1.2px;color:#6a7584;font-weight:700}
+    h1{font-size:29px;letter-spacing:-1.2px;line-height:1.32;margin:10px 0 14px}
+    .lead{color:var(--muted);font-size:15px;margin:0 0 28px}
+    .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:25px 23px;box-shadow:0 9px 24px rgba(29,43,65,.035)}
+    .file{display:flex;align-items:center;gap:13px;margin-bottom:20px}
+    .file-icon{flex:0 0 51px;width:51px;height:51px;border-radius:13px;background:#f1f3f5;display:grid;place-items:center;font-size:27px}
+    .file strong{font-size:16px;display:block;letter-spacing:-.3px}
+    .file small{color:var(--muted);font-size:12px}
+    a.download{display:block;text-align:center;text-decoration:none;background:#171e29;color:#fff;border-radius:11px;padding:16px 14px;font-size:16px;font-weight:700;letter-spacing:-.3px}
+    a.download:focus-visible{outline:3px solid #7e9dd0;outline-offset:2px}
+    a.download:hover{background:#303a48}
+    .meta{margin-top:11px;text-align:center;color:var(--muted);font-size:12px;overflow-wrap:anywhere}
+    h2{font-size:17px;letter-spacing:-.45px;margin:34px 0 15px}
+    ol{list-style:none;padding:0;margin:0}
+    li{display:flex;gap:12px;margin:0 0 16px;color:#394655;line-height:1.55}
+    .number{flex:0 0 27px;width:27px;height:27px;display:grid;place-items:center;border:1px solid #d2d8de;border-radius:8px;color:#475362;font-weight:700;font-size:12px;background:#fff}
+    .note{border-top:1px solid #dfe4e9;padding-top:19px;color:#667282;font-size:13px}
+    .sub{font-size:13px;color:#617082;margin-top:22px}
+    .sub a,.note a{color:#394f69}
+    code{word-break:break-all;font-size:12px}
+  </style>
+</head>
+<body>
+<main>
+  <header><div class="logo" aria-hidden="true">VA</div><div class="brand">Vote Atlas</div></header>
+  <div class="eyebrow">Android / Galaxy S10e</div>
+  <h1>아이돌챔프 자동 수집기<br>휴대전화에 설치하기</h1>
+  <p class="lead">PC 연결 없이 설치 파일을 바로 받을 수 있습니다. 아래 버튼을 <strong>갤럭시 S10e에서</strong> 눌러 주세요.</p>
+  <section class="card" aria-label="앱 다운로드">
+    <div class="file"><div class="file-icon" aria-hidden="true">▣</div><div><strong>Vote Atlas 수집기</strong><small>Android APK · 설치 파일</small></div></div>
+    <a class="download" href="./downloads/vote-atlas-idolchamp-s10e.apk" download="vote-atlas-idolchamp-s10e.apk">APK 다운로드</a>
+    <div class="meta" id="build-state">설치 파일 버전 확인 중</div>
+  </section>
+  <h2>설치 순서</h2>
+  <ol>
+    <li><span class="number">1</span><span>위 <strong>APK 다운로드</strong> 버튼을 누릅니다.</span></li>
+    <li><span class="number">2</span><span>휴대전화의 <strong>내 파일 → 다운로드</strong>에서 APK 파일을 찾아 누릅니다.</span></li>
+    <li><span class="number">3</span><span>설치 차단 안내가 나타나면 <strong>설정 → 이 출처 허용</strong>을 선택한 뒤 설치합니다.</span></li>
+    <li><span class="number">4</span><span>설치 후 <strong>Vote Atlas 수집기</strong>를 열고 안내된 접근성 권한과 GitHub 연결을 설정합니다.</span></li>
+  </ol>
+  <p class="note">안내: 이 앱은 현재 시험용 앱입니다. 아이돌챔프의 모든 투표를 실제 기기에서 자동 수집한다는 검증은 아직 완료되지 않았습니다. 화면이 켜져 있고 잠금 해제된 상태에서 수집을 시도하며, 오류가 발생하면 상태를 확인해야 합니다. 설치 과정에서 Android 보안 경고가 나타날 수 있습니다.</p>
+  <p class="sub">파일이 열리지 않으면 <a href="https://github.com/ark-netizen/vote-atlas/actions/workflows/build-android-collector.yml">GitHub의 최신 APK 빌드 기록</a>을 확인해 주세요.<br><a href="./overview.html">Vote Atlas 대시보드로 이동</a></p>
+</main>
+<script>
+  (async () => {
+    try {
+      const res = await fetch('./downloads/version.json', {cache: 'no-store'});
+      if (!res.ok) return;
+      const data = await res.json();
+      const size = (Number(data.bytes) / 1024).toFixed(1);
+      const stamp = String(data.built_at || '').replace('T', ' ').slice(0, 16);
+      document.getElementById('build-state').textContent =
+        '빌드 확인: ' + stamp + ' UTC · ' + size + 'KB · 기본 테스트 완료';
+    } catch {}
+  })();
+</script>
+</body>
+</html>
