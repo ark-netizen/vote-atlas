@@ -1,160 +1,176 @@
 'use strict';
-/* Accessible SVG: actual collected samples only, gaps never interpolated. */
+/* One independent line graph per app. Each actual vote round is a separate line.
+ * Yellow background bands identify abrupt, verified same-round daily increases.
+ * No extrapolation through missing dates and no joining independent rounds.
+ */
 const VoteAtlasTrendDashboard=(()=>{
- const $=s=>document.querySelector(s);
- const el=(tag,cls,txt)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(txt!==undefined)n.textContent=String(txt);return n;};
- const svgEl=(tag,attrs={},tooltip=null)=>{const n=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,String(v));if(tooltip){const t=document.createElementNS('http://www.w3.org/2000/svg','title');t.textContent=tooltip;n.append(t);}return n;};
- const colors=['#467b57','#8b6fb4','#cf8b48','#3d91a3','#ca7188','#7a9f49','#ae8e62','#63778e'];
+ const $=q=>document.querySelector(q);
+ const el=(tag,cls,value)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(value!==undefined)n.textContent=String(value);return n};
+ const svg=(name,attrs={},label)=>{const n=document.createElementNS('http://www.w3.org/2000/svg',name);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,String(v));if(label){const t=document.createElementNS('http://www.w3.org/2000/svg','title');t.textContent=label;n.append(t)}return n};
  const fmt=n=>Number(n).toLocaleString('ko-KR');
- const compact=n=>new Intl.NumberFormat('ko-KR',{notation:'compact',maximumFractionDigits:1}).format(Number(n));
- const today=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
- let source={events:[],sources:[]},rows=[],ready=false,bound=false,initialized=false;
- const set=(id,value)=>{$(id).textContent=String(value)};
- const appName=id=>source.sources.find(s=>s.id===id)?.name||id;
- function options(selector,items,previous){
-   const e=$(selector);e.replaceChildren();
-   for(const [key,label] of items){const node=el('option','',label);node.value=key;e.append(node)}
-   if(items.some(([k])=>k===previous))e.value=previous;
+ const short=n=>new Intl.NumberFormat('ko-KR',{notation:'compact',maximumFractionDigits:1}).format(Number(n));
+ const colors=['#3f6d7d','#7a63aa','#44866d','#ba705f','#758446','#b07b43','#6685b4','#975f86','#4b8e94','#8e8862','#725b95','#a46b6b','#55797d','#718f5b'];
+ const kst=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+ let dataset={sources:[]},history=[],initialized=false,ready=false;
+ const topicFilter=new Map();
+ function active(){
+   const days=Number($('#trendRange').value)||14;
+   const min=VoteAtlasTrends.dateAgo(kst(),days-1),scope=$('#trendScope').value;
+   return history.filter(x=>x.date>=min && (scope==='all'||x.scope===scope));
  }
- function currentRows(){
-   const cutoff=VoteAtlasTrends.dateAgo(today(),Number($('#trendRange').value)-1),scope=$('#trendScope').value;
-   return rows.filter(r=>r.date>=cutoff&&(scope==='all'||r.scope===scope));
+ function addOption(select,value,label){
+   const n=el('option','',label);n.value=value;select.append(n);
  }
- function chosen(input){
-   const app=$('#trendApp').value,topic=$('#trendTopic').value;
-   return input.filter(r=>(app==='all'||r.app===app)&&(topic==='all'||r.topic===topic));
- }
- function rebuildTopics(){
-   const a=$('#trendApp').value,items=VoteAtlasTrends.groups(currentRows().filter(x=>a==='all'||x.app===a));
-   const map=new Map();
-   for(const x of items)map.set(x.topic,(map.get(x.topic)||0)+x.points.length);
-   const prev=$('#trendTopic').value;
-   options('#trendTopic',[['all','모든 투표 주제'],...[...map].sort((x,y)=>y[1]-x[1]||x[0].localeCompare(y[0],'ko')).map(([name])=>[name,name])],prev);
- }
- function frame(name,max,days){
-   const svg=svgEl('svg',{viewBox:'0 0 800 270',role:'img','aria-label':name,preserveAspectRatio:'xMidYMid meet'});
-   const L=68,R=20,T=18,B=40,W=800,H=270,innerW=W-L-R,innerH=H-T-B,anchor=today(),first=VoteAtlasTrends.dateAgo(anchor,days-1);
-   const px=date=>L+VoteAtlasTrends.differenceDays(first,date)*innerW/Math.max(1,days-1);
-   const py=value=>T+innerH*(1-value/max);
+ function drawAppChart(app,observations,days){
+   const shell=el('section','trend-per-app');
+   const head=el('div','trend-per-app-head');
+   const h3=el('h3','',app.name);
+   const spikes=VoteAtlasTrends.changes(observations).filter(c=>c.spike);
+   const stats=el('span','trend-per-app-meta',
+     new Set(observations.map(x=>x.event_id)).size+'개 투표 · '+observations.length+'개 날짜별 기록 · 급증 '+spikes.length+'건');
+   head.append(h3,stats);
+   shell.append(head);
+
+   const optionRow=el('div','trend-app-filter');
+   const label=el('label','','투표 주제');
+   const select=el('select','','');
+   select.setAttribute('aria-label',app.name+' 투표 주제 선택');
+   addOption(select,'all','모든 투표 표시');
+   const topics=VoteAtlasTrends.groups(observations).sort((a,b)=>a.topic.localeCompare(b.topic,'ko'));
+   for(const topic of topics)addOption(select,topic.topic,topic.topic+' ('+topic.eventCount+'개 투표)');
+   select.value=topics.some(x=>x.topic===topicFilter.get(app.id))?topicFilter.get(app.id):'all';
+   select.onchange=()=>{topicFilter.set(app.id,select.value);render()};
+   label.append(select);
+   optionRow.append(label);
+   shell.append(optionRow);
+
+   const plotRows=observations.filter(x=>select.value==='all'||x.topic===select.value);
+   const series=VoteAtlasTrends.eventSeries(plotRows,Infinity);
+   if(!series.length){
+     shell.append(el('p','trend-chart-empty', '선택한 주제에서 기록된 득표수가 없습니다.'));
+     return shell;
+   }
+   const diff=VoteAtlasTrends.changes(plotRows).filter(x=>x.spike);
+   const totalSpikes=diff.length;
+   const W=920,H=340,L=81,R=23,T=26,B=47;
+   const innerW=W-L-R,innerH=H-T-B,begin=VoteAtlasTrends.dateAgo(kst(),days-1);
+   const px=date=>L+VoteAtlasTrends.differenceDays(begin,date)*innerW/Math.max(1,days-1);
+   const highest=Math.max(1,...series.flatMap(s=>s.points.map(p=>p.total_votes)));
+   const yMax=highest*1.08;
+   const py=v=>T+innerH*(1-v/yMax);
+   const graph=svg('svg',{viewBox:'0 0 '+W+' '+H,role:'img',
+     'aria-label':app.name+' 투표별 날짜별 득표수 선그래프, 급증 구간은 노란색 배경',preserveAspectRatio:'xMidYMid meet'});
    for(let i=0;i<=4;i++){
-     const y=T+i*innerH/4;
-     svg.append(svgEl('line',{x1:L,x2:W-R,y1:y,y2:y,stroke:'#e4ede4','stroke-width':1}));
-     const label=svgEl('text',{x:L-8,y:y+3,'text-anchor':'end',fill:'#829385','font-size':11});
-     label.textContent=compact(Math.round(max*(1-i/4)));svg.append(label);
+     const y=T+innerH*i/4;
+     graph.append(svg('line',{x1:L,x2:W-R,y1:y,y2:y,stroke:'#e6e8ea','stroke-width':1}));
+     const txt=svg('text',{x:L-10,y:y+4,'text-anchor':'end','font-size':12,fill:'#7d8489'});
+     txt.textContent=short(Math.round(yMax*(1-i/4)));graph.append(txt);
    }
-   const step=days===7?1:Math.max(1,Math.ceil(days/6));
-   for(let i=0;i<days;i+=step){
-     const label=svgEl('text',{x:L+i*innerW/Math.max(1,days-1),y:H-12,'text-anchor':'middle',fill:'#839687','font-size':10});
-     label.textContent=VoteAtlasTrends.dateAgo(anchor,days-1-i).slice(5);svg.append(label);
+   const xstep=days<=7?1:Math.max(1,Math.ceil(days/7));
+   for(let i=0;i<days;i+=xstep){
+     const x=L+i*innerW/Math.max(1,days-1);
+     const label=svg('text',{x,y:H-13,'text-anchor':'middle',fill:'#828b90','font-size':11});
+     label.textContent=VoteAtlasTrends.dateAgo(kst(),days-1-i).slice(5);graph.append(label);
    }
-   return {svg,px,py,innerW,innerH,L,T,first,anchor};
- }
- const empty=(id,msg)=>$(id).replaceChildren(el('p','trend-chart-empty',msg));
- function lineChart(data,days){
-   const root=$('#trendLineChart'),legend=$('#trendLegend');root.replaceChildren();legend.replaceChildren();
-   const series=VoteAtlasTrends.eventSeries(data,8);
-   if(!series.length){empty('#trendLineChart','선택한 조건에서 관측된 득표 기록이 없습니다.');return}
-   const max=Math.max(1,...series.flatMap(s=>s.points.map(p=>p.total_votes)))*1.06;
-   const {svg,px,py}=frame('회차별 일별 누적 득표, 누락 일자는 연결하지 않음',max,days);
-   series.forEach((s,i)=>{
-     const color=colors[i%colors.length];let segment=[];
-     function stroke(){
-       if(segment.length>=2)svg.append(svgEl('polyline',{
-         points:segment.map(p=>px(p.date).toFixed(1)+','+py(p.total_votes).toFixed(1)).join(' '),
-         stroke:color,fill:'none','stroke-width':2.5,'stroke-linejoin':'round','stroke-linecap':'round'}));
-       segment=[];
-     }
-     for(const p of s.points){
-       if(segment.length&&VoteAtlasTrends.differenceDays(segment.at(-1).date,p.date)>1)stroke();
+   // Yellow BACKGROUND around the specific vote's jump, not an ambiguous yellow line.
+   for(const p of diff){
+     const first=plotRows.find(row=>row.event_id===p.event_id&&row.date===p.previous_date);
+     if(!first)continue;
+     const x1=px(p.previous_date),x2=px(p.date),y1=py(first.total_votes),y2=py(p.total_votes);
+     graph.append(svg('rect',{
+       x:Math.min(x1,x2)-7,y:Math.max(T,Math.min(y1,y2)-14),
+       width:Math.abs(x2-x1)+14,
+       height:Math.min(H-B-Math.max(T,Math.min(y1,y2)-14),Math.abs(y2-y1)+28),
+       rx:7,fill:'#ffe56b',opacity:0.38
+     },p.title+' / '+p.previous_date+' → '+p.date+' / 전일 대비 +'+fmt(p.delta)+'표'));
+   }
+   series.forEach((s,index)=>{
+     const color=colors[index%colors.length],points=s.points;
+     let segments=[],segment=[];
+     const flush=()=>{if(segment.length)segments.push(segment);segment=[]};
+     for(const p of points){
+       if(segment.length){
+         const last=segment[segment.length-1];
+         if(VoteAtlasTrends.differenceDays(last.date,p.date)!==1||
+           last.roster_hash!==p.roster_hash||last.scope!==p.scope)flush();
+       }
        segment.push(p);
-     }stroke();
-     for(const p of s.points)svg.append(svgEl('circle',{cx:px(p.date),cy:py(p.total_votes),r:3.6,fill:color,stroke:'#fff','stroke-width':1.2},
-       appName(p.app)+' · '+s.title+'\n'+p.date+' '+fmt(p.total_votes)+'표\n'+(p.scope==='visible_candidates'?'부분 후보 합계':'전체 후보 합계')+'\n'+p.observed_at));
-     const label=el('span','trend-legend-item'),dot=el('span','trend-dot');dot.style.background=color;
-     label.append(dot,el('span','',appName(s.points[0].app)+' · '+s.title+(s.scope==='visible_candidates'?' (부분)':'')));
-     legend.append(label);
+     }
+     flush();
+     for(const part of segments){
+       if(part.length<2)continue;
+       const coords=part.map(p=>px(p.date).toFixed(2)+','+py(p.total_votes).toFixed(2)).join(' ');
+       graph.append(svg('polyline',{points:coords,stroke:color,'stroke-width':2.9,
+         fill:'none','stroke-linejoin':'round','stroke-linecap':'round'}));
+     }
+     for(const p of points){
+       const isSpike=diff.some(d=>d.event_id===p.event_id&&d.date===p.date);
+       graph.append(svg('circle',{
+         cx:px(p.date),cy:py(p.total_votes),r:isSpike?5.7:3.8,
+         fill:isSpike?'#ffce32':color,stroke:isSpike?'#72591b':'#fff',
+         'stroke-width':isSpike?1.5:1.2},
+         s.title+'\n'+p.date+' · '+fmt(p.total_votes)+'표'+
+         (p.scope==='visible_candidates'?' (부분 후보 기준)':' (전체 후보 기준)')+
+         (isSpike?' · 노란색: 전일 대비 급증':'')
+       ));
+     }
    });
-   root.append(svg);
- }
- function deltaChart(data,days){
-   const list=VoteAtlasTrends.groupChanges(data),root=$('#trendDeltaChart');root.replaceChildren();
-   if(!list.length){empty('#trendDeltaChart','동일 회차가 연속된 두 날짜에 수집되면 증가량이 표시됩니다.');return}
-   const map=new Map();
-   for(const entry of list){if(!map.has(entry.date))map.set(entry.date,{date:entry.date,delta:0,count:0});const x=map.get(entry.date);x.delta+=entry.delta;x.count+=entry.count}
-   const max=Math.max(1,...[...map.values()].map(x=>x.delta))*1.1;
-   const {svg,py,innerW,innerH,L,T,anchor}=frame('동일 회차의 전일 대비 득표 증가량',max,days);
-   for(let i=0;i<days;i++){
-     const date=VoteAtlasTrends.dateAgo(anchor,days-1-i),record=map.get(date);
-     if(!record)continue; // No observation is not a zero vote count.
-     const width=Math.min(innerW/days*.7,24),h=record.delta/max*innerH;
-     svg.append(svgEl('rect',{x:L+(i+.5)*innerW/days-width/2,y:T+innerH-h,
-       width,height:Math.max(1,h),rx:2,fill:'#74a081'},
-       date+' · +'+fmt(record.delta)+'표 · '+record.count+'개 회차'));
-   }root.append(svg);
- }
- function alertsView(input){
-   const host=$('#trendAlerts');host.replaceChildren();
-   const all=VoteAtlasTrends.changes(input).filter(x=>x.delta>0)
-     .sort((a,b)=>b.delta-a.delta||b.date.localeCompare(a.date)).slice(0,14);
-   if(!all.length){host.append(el('p','trend-chart-empty','아직 비교 가능한 연속 일자의 증가 기록이 없습니다.'));return}
-   for(const p of all){
-     const button=el('button','trend-alert');button.type='button';
-     const l=el('span','trend-alert-main');
-     l.append(el('strong','',appName(p.app)+' · '+p.topic),el('small','',p.title+' · '+p.previous_date+' → '+p.date));
-     const r=el('span','trend-alert-values');
-     if(p.spike)r.append(el('span','trend-spike-badge','급증 후보'));
-     r.append(el('strong','','+'+fmt(p.delta)+'표'));
-     r.append(el('small','',p.percent===null?'이전 기록 0표':'+'+p.percent.toFixed(1)+'%'));
-     button.append(l,r);
-     button.onclick=()=>{$('#trendApp').value=p.app;rebuildTopics();$('#trendTopic').value=p.topic;render();$('#voteTrends').scrollIntoView({behavior:'smooth',block:'start'})};
-     host.append(button);
-   }
+   const plot=el('div','trend-app-plot');plot.append(graph);shell.append(plot);
+   const key=el('div','trend-legend');
+   series.forEach((s,i)=>{
+     const item=el('span','trend-legend-item');
+     const line=el('span','trend-line-key');line.style.background=colors[i%colors.length];
+     item.append(line,el('span','',s.title+(s.scope==='visible_candidates'?' (부분 후보)':'')));
+     item.title=s.title;key.append(item);
+   });
+   shell.append(key);
+   const bottom=el('p','trend-app-note','노란색 배경: '+totalSpikes+'개 급증 구간 · 마우스를 올리면 개별 투표명과 득표수를 확인할 수 있습니다.');
+   shell.append(bottom);
+   return shell;
  }
  function render(){
    if(!ready)return;
-   const input=currentRows(),show=chosen(input),changes=VoteAtlasTrends.changes(input);
-   set('#trendAppCount',new Set(input.map(x=>x.app)).size+'개');
-   set('#trendTopicCount',VoteAtlasTrends.groups(input).length+'종');
-   set('#trendChangeCount',fmt(changes.length)+'건');
-   set('#trendSpikeCount',fmt(changes.filter(x=>x.spike).length)+'건');
-   const partial=show.some(x=>x.scope==='visible_candidates');
-   set('#trendNotice',show.length?
-     '선택 조건 관측 '+fmt(show.length)+'건 · '+new Set(show.map(x=>x.event_id)).size+'개 회차 · '+
-     (partial?'부분 후보 합계 포함 · 전체 투표수와 다를 수 있음':'전체 후보 기준')+
-     ' · 결측 날짜는 표시하지 않음':
-     '이 기간에 수집한 투표 관측 기록이 없습니다. 없는 날짜의 득표수는 추정하지 않습니다.');
-   set('#trendUpdated',rows.length?'최근 관측 '+rows.at(-1).date+' · '+fmt(rows.length)+'개 기록':'관측 데이터 없음');
+   const rows=active(),comparisons=VoteAtlasTrends.changes(rows),spikes=comparisons.filter(x=>x.spike);
+   $('#trendAppCount').textContent=new Set(rows.map(r=>r.app)).size+'개';
+   $('#trendTopicCount').textContent=VoteAtlasTrends.groups(rows).length+'종';
+   $('#trendChangeCount').textContent=fmt(comparisons.length)+'건';
+   $('#trendSpikeCount').textContent=fmt(spikes.length)+'건';
+   $('#trendUpdated').textContent=history.length?'최근 관측 '+history[history.length-1].date+' · 총 '+history.length+'개 기록':'관측 기록 없음';
+   $('#trendNotice').textContent=rows.length?
+     '앱별로 구분된 그래프에 각 투표를 별도 선으로 표시합니다. 현재 '+fmt(rows.length)+'개 날짜별 기록, 급증 '+spikes.length+'건을 노란색 배경으로 표시했습니다.':
+     '선택한 기간에 날짜별 득표 기록이 없습니다. 수집되지 않은 날짜는 임의로 연결하지 않습니다.';
+   const root=$('#trendAppCharts'),missing=$('#trendAppMissing');root.replaceChildren();missing.replaceChildren();
+   const sources=dataset.sources||[];
+   const appIds=[...new Set(rows.map(x=>x.app))];
+   const ordered=appIds.map(id=>sources.find(s=>s.id===id)||{id,name:id});
    const days=Number($('#trendRange').value)||14;
-   lineChart(show,days);deltaChart(show,days);alertsView(input);
- }
- function bind(){
-   if(bound)return;bound=true;
-   $('#trendApp').onchange=()=>{rebuildTopics();render()};
-   $('#trendTopic').onchange=render;
-   $('#trendRange').onchange=()=>{rebuildTopics();render()};
-   $('#trendScope').onchange=()=>{rebuildTopics();render()};
+   for(const app of ordered){
+     const filtered=rows.filter(x=>x.app===app.id);
+     root.append(drawAppChart(app,filtered,days));
+   }
+   if(!ordered.length)root.append(el('p','trend-chart-empty','아직 그래프로 표시할 앱의 투표 기록이 없습니다.'));
+   const emptyApps=sources.filter(a=>!appIds.includes(a.id));
+   if(emptyApps.length)missing.append(el('p','trend-no-data-apps',
+     '기록이 아직 없는 앱: '+emptyApps.map(a=>a.name).join(' · ')+' — 자동 수집으로 날짜별 득표가 확인되면 앱별 그래프가 추가됩니다.'));
  }
  async function load(data){
-   source=data||source;bind();
-   try{
-     const r=await fetch('data/vote_history.json?t='+Date.now(),{cache:'no-store'});
-     if(!r.ok)throw Error('HTTP '+r.status);
-     const document=await r.json();
-     if(!Array.isArray(document.observations))throw Error('Invalid vote history');
-     rows=VoteAtlasTrends.normalizeHistory(document);
-   }catch(_error){rows=[]}
-   ready=true;
-   const counts=new Map();
-   for(const p of currentRows())counts.set(p.app,(counts.get(p.app)||0)+1);
-   const appPrev=$('#trendApp').value;
-   options('#trendApp',[['all','모든 앱'],...(source.sources||[]).map(a=>[a.id,a.name+' ('+(counts.get(a.id)||0)+'건)'])],appPrev);
-   if(!initialized&&counts.size)$('#trendApp').value=[...counts].sort((a,b)=>b[1]-a[1])[0][0];
-   rebuildTopics();
+   dataset=data||dataset;
+   const ids=['trendRange','trendScope'];
    if(!initialized){
-     const groups=VoteAtlasTrends.groups(currentRows().filter(x=>$('#trendApp').value==='all'||x.app===$('#trendApp').value));
-     if(groups.length)$('#trendTopic').value=groups[0].topic;
+     for(const id of ids)$('#'+id).addEventListener('change',render);
+     initialized=true;
    }
-   initialized=true;render();
+   try{
+     const res=await fetch('data/vote_history.json?t='+Date.now(),{cache:'no-store'});
+     if(!res.ok)throw Error('HTTP '+res.status);
+     const value=await res.json();
+     if(!Array.isArray(value.observations))throw Error('Missing observations');
+     history=VoteAtlasTrends.normalizeHistory(value);
+   }catch(_err){
+     history=[];
+     $('#trendNotice').textContent='수집 이력 파일을 읽지 못했습니다. GitHub Actions 수집 상태를 확인해 주세요.';
+   }
+   ready=true;render();
  }
  return {load,render};
 })();
