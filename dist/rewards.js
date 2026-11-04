@@ -410,7 +410,7 @@ function renderRows(){
     button.type='button';
     button.onclick=event=>{
       event.stopPropagation();
-      const selected=options[Number(select.value)];
+      const selected=select.value===''?null:options[Number(select.value)];
       if(!selected){
         $('#calcCostStatus').textContent='표당 소모 재화가 여러 종류이므로 이 표에서 재화 종류를 선택해 주세요.';
         select.focus();return;
