@@ -152,3 +152,14 @@
 .trend-details-note{font-size:10px;color:#858585;margin-top:12px;line-height:1.8}
 @media(max-width:950px){.trend-app-charts{grid-template-columns:1fr}}
 @media(max-width:780px){.trend-compact-app .trend-app-plot svg{height:185px}.trend-detail-stats>div{min-width:120px}.trend-app-charts{gap:10px}}
+
+/* Detail view uses the full content width; dashboard previews remain two columns. */
+.trend-detail-view .trend-app-charts{grid-template-columns:minmax(0,1fr)}
+.trend-detail-view .trend-per-app .trend-app-plot{overflow:visible}
+.trend-compact-app .trend-per-app-head{
+ display:grid;grid-template-columns:minmax(0,1fr) auto;
+ grid-template-areas:"title link" "meta meta";
+}
+.trend-compact-app .trend-per-app-head h3{grid-area:title}
+.trend-compact-app .trend-per-app-meta{grid-area:meta;margin-top:2px}
+.trend-compact-app .trend-open-hint{grid-area:link;align-self:start}
