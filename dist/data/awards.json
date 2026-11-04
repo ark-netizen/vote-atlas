@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "updated_at": "2026-11-04T11:00:00+09:00",
-  "description": "공식자료/신뢰 가능한 보도에 근거한 회차별 플랫폼 이력. 추정 플랫폼은 확정 목록에 넣지 않음.",
+  "updated_at": "2026-11-04T12:10:00+09:00",
+  "description": "시상식·팬투표 원문 근거 포함. 2026 최신 확인을 우선하되 2025 사례는 회차 2025로 명시. 개최일과 온라인 투표 기간을 구별하며, 2026 투표처 미확인 행사는 확정으로 처리하지 않음.",
   "awards": [
     {
       "id": "apan-star",
@@ -1114,6 +1114,507 @@
       "checked_at": "2026-11-04",
       "voting_periods": [],
       "voting_milestones": []
+    },
+    {
+      "id": "world-webtoon-awards-2026",
+      "name": "월드 웹툰 어워즈",
+      "category": "웹툰·만화",
+      "year": 2026,
+      "voting": "confirmed",
+      "platforms": [
+        {
+          "name": "월드 웹툰 어워즈 공식 홈페이지",
+          "role": "온라인 독자투표 · 본상 평가 50%, 인기상 100%",
+          "source_url": "https://www.webtoonawards.kr/"
+        }
+      ],
+      "note": "문화체육관광부·한국콘텐츠진흥원 주최. 본상 20편 대상 독자 투표, 본상 10편 선정에 심사 50%+투표 50%. 인기상은 독자 투표 100%. 시상식 12/3 별마당도서관.",
+      "aliases": [
+        "월드웹툰어워즈",
+        "World Webtoon Awards"
+      ],
+      "event_date": "2026-12-03",
+      "event_end_date": "2026-12-03",
+      "event_timezone": "Asia/Seoul",
+      "event_source_url": "https://nwww.newsis.com/view/NISX20260917_0003793175",
+      "voting_periods": [
+        {
+          "title": "본상 후보 20편 독자 투표",
+          "platform": "월드 웹툰 어워즈 공식 홈페이지",
+          "start_date": "2026-09-17",
+          "end_date": "2026-10-19",
+          "source_url": "https://nwww.newsis.com/view/NISX20260917_0003793175",
+          "detail": "온라인 독자투표 결과 50% 반영 · 인기상은 투표 100%"
+        }
+      ],
+      "voting_milestones": [],
+      "sources": [
+        {
+          "label": "문체부 투표 공지 보도(2026-09-17)",
+          "url": "https://nwww.newsis.com/view/NISX20260917_0003793175"
+        },
+        {
+          "label": "2026 수상작·시상식 안내(2026-11-03)",
+          "url": "https://www.hankyung.com/article/202611032131i"
+        },
+        {
+          "label": "2025 공식 사이트 경로(운영 이력)",
+          "url": "https://welcon.kocca.kr/en/info/business/1955636"
+        }
+      ],
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "korea-game-awards-2026",
+      "name": "대한민국 게임대상",
+      "category": "게임",
+      "year": 2026,
+      "voting": "confirmed",
+      "platforms": [
+        {
+          "name": "대한민국 게임대상 공식 홈페이지",
+          "role": "대국민 투표 · 본상 25%, 인기게임상 80%, 인기성우상 50%",
+          "source_url": "http://award.kgames.or.kr/2026gameawards/vote/game_vote_public_main.asp"
+        }
+      ],
+      "note": "문화체육관광부 주최·한국게임산업협회 주관. 11/18 부산 벡스코 시상식. 공식 홈페이지에서 11/16 17:00까지 투표.",
+      "aliases": [
+        "Korea Game Awards",
+        "게임대상"
+      ],
+      "event_date": "2026-11-18",
+      "event_end_date": "2026-11-18",
+      "event_timezone": "Asia/Seoul",
+      "event_source_url": "https://web3.newspim.com/news/view/20261026000724",
+      "voting_periods": [
+        {
+          "title": "본상·인기게임상·인기성우상 대국민 투표",
+          "platform": "대한민국 게임대상 공식 홈페이지",
+          "start_date": "2026-10-26",
+          "end_date": "2026-11-16",
+          "source_url": "https://www.gametoc.co.kr/news/articleView.html?idxno=112493",
+          "detail": "11월 16일 17:00(KST) 마감"
+        }
+      ],
+      "voting_milestones": [],
+      "sources": [
+        {
+          "label": "2026 대한민국 게임대상 온라인 투표(뉴스핌)",
+          "url": "https://web3.newspim.com/news/view/20261026000724"
+        },
+        {
+          "label": "공식 대국민 투표 및 마감 시각(게임톡)",
+          "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=112493"
+        }
+      ],
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "ridi-awards-2025",
+      "name": "리디 어워즈",
+      "category": "웹툰·웹소설·만화",
+      "year": 2025,
+      "voting": "confirmed",
+      "platforms": [
+        {
+          "name": "리디",
+          "role": "리디 자체 웹·앱 독자 투표 · 1인 1일 1회 부문별 2작품",
+          "source_url": "https://ridicorp.com/2025/12/ridi_awards_2025/"
+        }
+      ],
+      "note": "2025년 최근 공식 투표 운영 사례. 2026년 투표 일정과 플랫폼은 아직 공식 확인되지 않았으므로 2025년 이력으로 기록. 2025 수상작 발표는 12/29(별도 현장 시상식 날짜 미확인).",
+      "aliases": [
+        "RIDI Awards",
+        "리디어워즈"
+      ],
+      "event_date": "",
+      "event_end_date": "",
+      "event_timezone": "Asia/Seoul",
+      "event_source_url": "https://ridicorp.com/2025/12/ridi_awards_2025/",
+      "voting_periods": [
+        {
+          "title": "2025 리디 어워즈 독자 투표",
+          "platform": "리디",
+          "start_date": "2025-12-01",
+          "end_date": "2025-12-14",
+          "source_url": "https://ridicorp.com/2025/12/ridi_awards_2025/",
+          "detail": "12/29 수상작 발표 · 독자투표로 선정"
+        }
+      ],
+      "voting_milestones": [],
+      "sources": [
+        {
+          "label": "리디 2025 어워즈 투표 공식 발표",
+          "url": "https://ridicorp.com/2025/12/ridi_awards_2025/"
+        },
+        {
+          "label": "리디 10년간 독자투표 현황",
+          "url": "https://ridicorp.com/story/ridi_awards_2025-2/"
+        }
+      ],
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "bucheon-comics-awards-2026",
+      "name": "부천만화대상",
+      "category": "웹툰·만화",
+      "year": 2026,
+      "voting": "unknown",
+      "platforms": [],
+      "note": "2026 제23회 시상식은 9/18 부천국제만화축제 개막식 개최. 과거 2023년에는 부천국제만화축제 홈페이지(bicof.com)에서 독자인기상 100% 독자투표를 진행했으나, 2026년 동일 투표 부문·플랫폼 운영 여부는 확인되지 않음.",
+      "aliases": [
+        "Bucheon Comics Awards",
+        "부천 만화대상"
+      ],
+      "event_date": "2026-09-18",
+      "event_end_date": "2026-09-18",
+      "event_timezone": "Asia/Seoul",
+      "event_source_url": "https://news.bucheon.go.kr/home/kor/M771882326/board.do?act=detail&deleteAt=N&idx=cb00d1a0008a85e71a41b8741facbffef5236442c45ef546a5c",
+      "voting_periods": [],
+      "voting_milestones": [],
+      "sources": [
+        {
+          "label": "2026 제23회 부천만화대상 시상일(부천시·한국만화영상진흥원)",
+          "url": "https://news.bucheon.go.kr/home/kor/M771882326/board.do?act=detail&deleteAt=N&idx=cb00d1a0008a85e71a41b8741facbffef5236442c45ef546a5c"
+        },
+        {
+          "label": "2023 독자인기상 공식 홈페이지 투표 이력",
+          "url": "https://kmas.or.kr/webzine/event/2023080015"
+        }
+      ],
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "biaf-2026",
+      "name": "부천국제애니메이션페스티벌(BIAF)",
+      "category": "애니메이션",
+      "year": 2026,
+      "voting": "unknown",
+      "platforms": [],
+      "note": "제28회 국제 애니메이션 영화제(10/23~10/27). 장편·단편 관객상이 존재하나 관객 투표 방식 및 별도의 온라인 팬 투표 플랫폼은 확인되지 않음. 영화제 개최 기간을 시상식 날짜로 임의 기재하지 않음.",
+      "aliases": [
+        "BIAF",
+        "Bucheon International Animation Festival"
+      ],
+      "event_date": "",
+      "event_end_date": "",
+      "event_timezone": "Asia/Seoul",
+      "event_source_url": "https://www.kobiz.or.kr/new/kor/02_overseas/festival/festivalView.jsp?cd=20051201&seq=57757&type=FESTIVAL",
+      "voting_periods": [],
+      "voting_milestones": [],
+      "sources": [
+        {
+          "label": "BIAF2026 개최기간(영화진흥위원회 KoBiz)",
+          "url": "https://www.kobiz.or.kr/new/kor/02_overseas/festival/festivalView.jsp?cd=20051201&seq=57757&type=FESTIVAL"
+        },
+        {
+          "label": "2026 경쟁 부문 관객상 명시",
+          "url": "https://filmfreeway.com/biaf"
+        }
+      ],
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "indie-anifest-2026",
+      "name": "서울인디애니페스트",
+      "category": "애니메이션",
+      "year": 2026,
+      "voting": "unknown",
+      "platforms": [],
+      "note": "제22회 영화제 9/17~9/22, 관객상 '축제의 별' 등 수상 이력 확인. 9/22 공식 수상작 발표. 온라인 공개 투표 플랫폼은 확인되지 않음.",
+      "aliases": [
+        "Indie-AniFest",
+        "인디애니페스트"
+      ],
+      "event_date": "",
+      "event_end_date": "",
+      "event_timezone": "Asia/Seoul",
+      "event_source_url": "https://ianifest.org/sub/award.asp",
+      "voting_periods": [],
+      "voting_milestones": [],
+      "sources": [
+        {
+          "label": "2026 공식 행사·수상내역",
+          "url": "https://ianifest.org/sub/award.asp"
+        },
+        {
+          "label": "2026 수상작 공식 발표",
+          "url": "https://ianifest.org/sub/notice.asp?URL=&idx=1&num=3920&page=1&page_code=3"
+        }
+      ],
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "contents-animation-2026",
+      "name": "대한민국 콘텐츠대상 — 애니메이션",
+      "category": "애니메이션",
+      "year": 2026,
+      "voting": "unknown",
+      "platforms": [],
+      "note": "2026 애니메이션 부문 5점 시상. 한국콘텐츠진흥원에서 '국민심사위원'을 별도 모집(7/31~8/31), 1차 후보 심사에서 국민심사 20% 반영. 누구나 참여하는 공개 팬 투표나 별도 앱 선정과는 다르므로 플랫폼 미확인으로 분류.",
+      "aliases": [
+        "대한민국콘텐츠대상 애니메이션",
+        "Korea Content Awards Animation"
+      ],
+      "event_date": "",
+      "event_end_date": "",
+      "event_timezone": "Asia/Seoul",
+      "event_source_url": "https://www.culture.go.kr/portal/cltBnf/cltSup/view.do?indRow=120&menuNo=200104&rcrtSn=226791&viewTp=3",
+      "voting_periods": [],
+      "voting_milestones": [],
+      "sources": [
+        {
+          "label": "2026 콘텐츠대상 애니메이션 국민심사위원 모집(공공 문화포털)",
+          "url": "https://www.culture.go.kr/portal/cltBnf/cltSup/view.do?indRow=120&menuNo=200104&rcrtSn=226791&viewTp=3"
+        }
+      ],
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "contents-character-2026",
+      "name": "대한민국 콘텐츠대상 — 캐릭터",
+      "category": "캐릭터·IP",
+      "year": 2026,
+      "voting": "unknown",
+      "platforms": [],
+      "note": "2026 캐릭터 부문 5점 시상 공고 확인. 후보 추천 공고(7/31~8/31)는 일반 공개 인기투표가 아님. 공식 대국민 투표 및 투표처는 미확인.",
+      "aliases": [
+        "대한민국콘텐츠대상 캐릭터",
+        "Korea Content Awards Character"
+      ],
+      "event_date": "",
+      "event_end_date": "",
+      "event_timezone": "Asia/Seoul",
+      "event_source_url": "https://www.culture.go.kr/portal/cltBnf/cltSup/view.do?indRow=20&menuNo=200104&rcrtSn=226790&viewTp=3",
+      "voting_periods": [],
+      "voting_milestones": [],
+      "sources": [
+        {
+          "label": "2026 콘텐츠대상 캐릭터 부문 공식 공고(공공 문화포털)",
+          "url": "https://www.culture.go.kr/portal/cltBnf/cltSup/view.do?indRow=20&menuNo=200104&rcrtSn=226790&viewTp=3"
+        }
+      ],
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "crunchyroll-anime-2026",
+      "name": "크런치롤 애니메이션 어워즈",
+      "category": "애니메이션",
+      "year": 2026,
+      "voting": "confirmed",
+      "platforms": [
+        {
+          "name": "Crunchyroll Anime Awards 공식 홈페이지",
+          "role": "2026 글로벌 팬 투표 + 심사위원 평가",
+          "source_url": "https://www.crunchyroll.com/news/guides/2026/1/28/anime-awards-2026-guide"
+        },
+        {
+          "name": "MyAnimeList",
+          "role": "2026 공식 추가 투표 채널",
+          "source_url": "https://www.crunchyroll.com/news/guides/2026/1/28/anime-awards-2026-guide"
+        }
+      ],
+      "note": "제10회, 5월 23일 일본 도쿄 시상식. 공식 홈페이지·크런치롤·MyAnimeList를 통해 팬 투표 운영. 팬과 심사위원이 함께 최종 수상작 결정.",
+      "aliases": [
+        "Crunchyroll Anime Awards",
+        "Anime Awards 2026",
+        "크런치롤 어워즈"
+      ],
+      "event_date": "2026-05-23",
+      "event_end_date": "2026-05-23",
+      "event_timezone": "Asia/Tokyo",
+      "event_source_url": "https://www.crunchyroll.com/news/guides/2026/1/28/anime-awards-2026-guide",
+      "voting_periods": [
+        {
+          "title": "Anime Awards 2026 팬 투표",
+          "platform": "Crunchyroll·MyAnimeList·공식 홈페이지",
+          "start_date": "2026-04-02",
+          "end_date": "2026-04-15",
+          "source_url": "https://www.youtube.com/watch?v=AU0M2vbEWjM",
+          "detail": "각 부문 팬 투표 · Crunchyroll 공식 안내"
+        }
+      ],
+      "voting_milestones": [],
+      "sources": [
+        {
+          "label": "Crunchyroll 공식 2026 운영·투표 채널 안내",
+          "url": "https://www.crunchyroll.com/news/guides/2026/1/28/anime-awards-2026-guide"
+        },
+        {
+          "label": "2026 공개 투표 기간·후보 공개(공식 영상)",
+          "url": "https://www.youtube.com/watch?v=AU0M2vbEWjM"
+        }
+      ],
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "anime-trending-2026",
+      "name": "애니메 트렌딩 어워즈(Anime Trending Awards)",
+      "category": "애니메이션",
+      "year": 2026,
+      "voting": "confirmed",
+      "platforms": [
+        {
+          "name": "Anime Trending",
+          "role": "2026 12회 애니메이션·캐릭터·음악 부문 글로벌 팬 투표",
+          "source_url": "https://www.anitrendz.com/ata/results/2026"
+        }
+      ],
+      "note": "제12회 2026 결과 공개. Anime Trending 자체 투표 및 결과 페이지에서 부문별 실제 투표 수 공개. 2026년 개별 투표 시작·종료일은 공식 근거 미확인으로 달력에 추정하지 않음.",
+      "aliases": [
+        "Anime Trending Awards",
+        "ATA 2026"
+      ],
+      "event_date": "",
+      "event_end_date": "",
+      "event_timezone": "Asia/Seoul",
+      "event_source_url": "https://www.anitrendz.com/ata/results/2026",
+      "voting_periods": [],
+      "voting_milestones": [],
+      "sources": [
+        {
+          "label": "2026 공식 결과·투표수",
+          "url": "https://www.anitrendz.com/ata/results/2026"
+        },
+        {
+          "label": "2026 결과 발표(Anime Trending)",
+          "url": "https://www.anitrendz.com/news/2026/03/22/12th-anime-trending-awards-winners-2"
+        }
+      ],
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "golden-joystick-2026",
+      "name": "골든 조이스틱 어워즈",
+      "category": "게임",
+      "year": 2026,
+      "voting": "confirmed",
+      "platforms": [
+        {
+          "name": "Golden Joysticks 공식 투표",
+          "role": "주요 21개 게임상·Ultimate Game of the Year 이용자 투표",
+          "source_url": "https://www.gamesradar.com/goldenjoystickawards/"
+        }
+      ],
+      "note": "영국 현지 11월 11일 런던 시상식. 본투표 9/25~10/23, 올해의 게임 최종 투표 10/26~10/30(영국 현지 기준). 해외 일정은 영국 현지 날짜로 기록하여 국내(KST) 날짜와 다를 수 있음.",
+      "aliases": [
+        "Golden Joystick Awards",
+        "GJA"
+      ],
+      "event_date": "2026-11-11",
+      "event_end_date": "2026-11-11",
+      "event_timezone": "Europe/London",
+      "event_source_url": "https://www.futureevents.uk/goldenjoystickawards2026",
+      "voting_periods": [
+        {
+          "title": "주요 21개 부문 대중 투표",
+          "platform": "Golden Joysticks 공식 투표",
+          "start_date": "2026-09-25",
+          "end_date": "2026-10-23",
+          "source_url": "https://www.futureevents.uk/goldenjoystickawards2026",
+          "detail": "영국 현지 달력 기준. 10/23 자정 마감은 일부 시간대에서 10/24에 해당"
+        },
+        {
+          "title": "Ultimate Game of the Year 투표",
+          "platform": "Golden Joysticks 공식 투표",
+          "start_date": "2026-10-26",
+          "end_date": "2026-10-30",
+          "source_url": "https://www.gamesradar.com/goldenjoystickawards/",
+          "detail": "영국 현지 일정 기준"
+        }
+      ],
+      "voting_milestones": [],
+      "sources": [
+        {
+          "label": "공식 주최사 개최·투표 일정",
+          "url": "https://www.futureevents.uk/goldenjoystickawards2026"
+        },
+        {
+          "label": "GamesRadar 공식 투표 일정",
+          "url": "https://www.gamesradar.com/goldenjoystickawards/"
+        }
+      ],
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "the-game-awards-2026",
+      "name": "더 게임 어워즈(The Game Awards)",
+      "category": "게임",
+      "year": 2026,
+      "voting": "confirmed",
+      "platforms": [
+        {
+          "name": "The Game Awards 공식 홈페이지",
+          "role": "본상 팬 투표 10% + 심사위원단 90%",
+          "source_url": "https://thegameawards.com/faq"
+        },
+        {
+          "name": "빌리빌리(Bilibili)",
+          "role": "중국 지역 팬 투표 경로",
+          "source_url": "https://thegameawards.com/faq"
+        }
+      ],
+      "note": "미국 로스앤젤레스 현지 12/10 개최(한국시간 12/11 오전). 일반 부문 팬 투표는 공식 홈페이지에서 12/9 18:00 PT 마감(한국시간 12/10 11:00). Players' Voice의 2026 회차별 투표 시작·마감 일정은 미발표.",
+      "aliases": [
+        "The Game Awards",
+        "TGA",
+        "게임 어워즈"
+      ],
+      "event_date": "2026-12-11",
+      "event_end_date": "2026-12-11",
+      "event_timezone": "Asia/Seoul",
+      "event_source_url": "https://thegameawards.com/faq",
+      "voting_periods": [],
+      "voting_milestones": [
+        {
+          "title": "일반상 팬 투표 마감 (12/9 18:00 PT)",
+          "platform": "The Game Awards 공식 홈페이지",
+          "date": "2026-12-10",
+          "source_url": "https://thegameawards.com/faq",
+          "detail": "한국시간 12/10 오전 11:00 · 시작일 미발표"
+        }
+      ],
+      "sources": [
+        {
+          "label": "2026 TGA 공식 FAQ·투표 규정",
+          "url": "https://thegameawards.com/faq"
+        },
+        {
+          "label": "2026 개최일 공식 발표",
+          "url": "https://thegameawards.com/news/tga-returns-december-10-2026"
+        }
+      ],
+      "checked_at": "2026-11-04"
+    },
+    {
+      "id": "gyeonggi-cosplay-2026",
+      "name": "경기국제코스프레페스티벌",
+      "category": "코스프레",
+      "year": 2026,
+      "voting": "unknown",
+      "platforms": [],
+      "note": "부천국제만화축제와 함께 열리는 국제 코스프레 챔피언십 행사. 전 세계 14개국 코스어 참가 안내. 별도 대중 투표/팬 인기상 투표 플랫폼은 2026년 자료에서 미확인.",
+      "aliases": [
+        "Gyeonggi International Cosplay Festival",
+        "GICOF"
+      ],
+      "event_date": "",
+      "event_end_date": "",
+      "event_timezone": "Asia/Seoul",
+      "event_source_url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pRo=10&pSeq=10106",
+      "voting_periods": [],
+      "voting_milestones": [],
+      "sources": [
+        {
+          "label": "2026 BICOF 코스프레 챔피언십(문체부)",
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pRo=10&pSeq=10106"
+        },
+        {
+          "label": "부천시 공식 소개",
+          "url": "https://www.bucheon.go.kr/site/homepage/menu/viewMenu?menuid=148006001010001005"
+        }
+      ],
+      "checked_at": "2026-11-04"
     }
   ],
   "discovered": [],
@@ -1125,5 +1626,13 @@
     "items_scanned": 0,
     "new_candidates": 0
   },
-  "schedule_notes": "공식 개최기간 및 출처 확인된 투표기간만 달력에 표시. 시작일만 확인된 경우 단일 마일스톤 표시; 정보 미확인 행사 일정은 추정하지 않음. 기간은 양 끝 날짜 포함/KST."
+  "schedule_notes": "국내 행사는 KST, 해외 행사는 event_timezone 및 개별 note에 명시한 현지 날짜 또는 KST 환산일 기준. 확인되지 않은 시상식·투표일은 추정하지 않음.",
+  "subculture_scope": [
+    "웹툰·만화",
+    "웹툰·웹소설·만화",
+    "게임",
+    "애니메이션",
+    "캐릭터·IP",
+    "코스프레"
+  ]
 }
