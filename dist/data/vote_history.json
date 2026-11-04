@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T13:34:43+09:00",
+  "updated_at": "2026-11-04T13:41:50+09:00",
   "notes": "Daily latest observed candidate-vote sum. Missing dates not backfilled. Scope may be partial. No unique participant count.",
   "observations": [
     {
@@ -1088,11 +1088,11 @@
       "event_id": "fannstar-44cc63324b1b2581",
       "app": "fannstar",
       "title": "그룹 · 11월 1주차",
-      "total_votes": 979144,
+      "total_votes": 980794,
       "candidate_count": 31,
       "roster_hash": "7ef5b4b2618552bc3a4f",
       "scope": "visible_candidates",
-      "observed_at": "2026-11-04T13:34:43+09:00",
+      "observed_at": "2026-11-04T13:41:50+09:00",
       "source_url": "https://fannstar.tf.co.kr/rank/view/star"
     },
     {
@@ -1100,11 +1100,11 @@
       "event_id": "fannstar-54e830206b7a6e20",
       "app": "fannstar",
       "title": "뉴스타 · 11월 1주차",
-      "total_votes": 77947,
+      "total_votes": 77972,
       "candidate_count": 19,
       "roster_hash": "8007112e0a5edb6b32da",
       "scope": "visible_candidates",
-      "observed_at": "2026-11-04T13:34:43+09:00",
+      "observed_at": "2026-11-04T13:41:50+09:00",
       "source_url": "https://fannstar.tf.co.kr/rank/view/newgen"
     },
     {
@@ -1112,11 +1112,11 @@
       "event_id": "fannstar-72e4fab6cb6ee3e9",
       "app": "fannstar",
       "title": "생일 · 12월",
-      "total_votes": 5666885,
+      "total_votes": 5672298,
       "candidate_count": 37,
       "roster_hash": "3b0c438f9e634d0c2818",
       "scope": "visible_candidates",
-      "observed_at": "2026-11-04T13:34:43+09:00",
+      "observed_at": "2026-11-04T13:41:50+09:00",
       "source_url": "https://fannstar.tf.co.kr/rank/view/adsbirth"
     },
     {
@@ -1124,11 +1124,11 @@
       "event_id": "fannstar-9467a5d4518b4e3e",
       "app": "fannstar",
       "title": "글로벌 핫스타 · 11월 1주차",
-      "total_votes": 719530,
+      "total_votes": 720400,
       "candidate_count": 24,
       "roster_hash": "88093ad51ef96c7c658a",
       "scope": "visible_candidates",
-      "observed_at": "2026-11-04T13:34:43+09:00",
+      "observed_at": "2026-11-04T13:41:50+09:00",
       "source_url": "https://fannstar.tf.co.kr/rank/view/topic?mode=global"
     },
     {
@@ -1140,7 +1140,7 @@
       "candidate_count": 15,
       "roster_hash": "69d115c1d06cf6bbeb0b",
       "scope": "visible_candidates",
-      "observed_at": "2026-11-04T13:34:43+09:00",
+      "observed_at": "2026-11-04T13:41:50+09:00",
       "source_url": "https://fannstar.tf.co.kr/rank/view/topic?mode=women"
     },
     {
@@ -1148,11 +1148,11 @@
       "event_id": "fannstar-c9a0d5f344f571ad",
       "app": "fannstar",
       "title": "트로트 · 11월 1주차",
-      "total_votes": 1041857,
+      "total_votes": 1042335,
       "candidate_count": 29,
       "roster_hash": "e9ecc0a9637f6d237e3b",
       "scope": "visible_candidates",
-      "observed_at": "2026-11-04T13:34:43+09:00",
+      "observed_at": "2026-11-04T13:41:50+09:00",
       "source_url": "https://fannstar.tf.co.kr/rank/view/class"
     },
     {
@@ -1160,11 +1160,11 @@
       "event_id": "fannstar-da74b89a370d1630",
       "app": "fannstar",
       "title": "위클리뮤직 · 11월 1주차",
-      "total_votes": 410161,
+      "total_votes": 411661,
       "candidate_count": 31,
       "roster_hash": "2f63aee28aedbe85c06b",
       "scope": "visible_candidates",
-      "observed_at": "2026-11-04T13:34:43+09:00",
+      "observed_at": "2026-11-04T13:41:50+09:00",
       "source_url": "https://fannstar.tf.co.kr/rank/view/wmusic"
     },
     {
@@ -1172,11 +1172,11 @@
       "event_id": "fannstar-ee2f08399a6dc242",
       "app": "fannstar",
       "title": "솔로 · 11월 1주차",
-      "total_votes": 6048514,
+      "total_votes": 6065694,
       "candidate_count": 43,
       "roster_hash": "39fe08ccdf42ae6c4bad",
       "scope": "visible_candidates",
-      "observed_at": "2026-11-04T13:34:43+09:00",
+      "observed_at": "2026-11-04T13:41:50+09:00",
       "source_url": "https://fannstar.tf.co.kr/rank/view/each"
     },
     {
@@ -1184,11 +1184,11 @@
       "event_id": "muniverse-83410d02-db67-4a85-bffa-f706d86bfb83",
       "app": "muniverse",
       "title": "[예선투표] it’s Live BEST PICK - 4th",
-      "total_votes": 22984,
+      "total_votes": 22989,
       "candidate_count": 26,
       "roster_hash": "8e775f4a007c8a39e936",
       "scope": "all_candidates",
-      "observed_at": "2026-11-04T13:34:43+09:00",
+      "observed_at": "2026-11-04T13:41:50+09:00",
       "source_url": "https://www.muniverse.io/votes/83410d02-db67-4a85-bffa-f706d86bfb83"
     },
     {
@@ -1196,11 +1196,11 @@
       "event_id": "muniverse-ce926d51-dd85-4409-a07e-11fd9402d533",
       "app": "muniverse",
       "title": "쇼! 음악중심 969회 | 글로벌 사전투표",
-      "total_votes": 195426,
+      "total_votes": 195490,
       "candidate_count": 50,
       "roster_hash": "21db17e2f1effd9166c2",
       "scope": "all_candidates",
-      "observed_at": "2026-11-04T13:34:43+09:00",
+      "observed_at": "2026-11-04T13:41:50+09:00",
       "source_url": "https://www.muniverse.io/votes/ce926d51-dd85-4409-a07e-11fd9402d533"
     },
     {
@@ -1208,11 +1208,11 @@
       "event_id": "muniverse-e55e8c9f-5f92-4328-9055-b065f2bbc5eb",
       "app": "muniverse",
       "title": "WEEKLY M PICK 2026년 11월 1주차",
-      "total_votes": 190316,
+      "total_votes": 190506,
       "candidate_count": 482,
       "roster_hash": "f830d249f3029248be37",
       "scope": "all_candidates",
-      "observed_at": "2026-11-04T13:34:43+09:00",
+      "observed_at": "2026-11-04T13:41:50+09:00",
       "source_url": "https://www.muniverse.io/votes/e55e8c9f-5f92-4328-9055-b065f2bbc5eb"
     },
     {
@@ -1220,11 +1220,11 @@
       "event_id": "muniverse-ee314cd6-d1cc-4433-a870-5ee83f215658",
       "app": "muniverse",
       "title": "쇼! 음악중심 968회 | STAGE M PICK",
-      "total_votes": 230498,
+      "total_votes": 230659,
       "candidate_count": 18,
       "roster_hash": "ff34fa8e4e453509ae96",
       "scope": "all_candidates",
-      "observed_at": "2026-11-04T13:34:43+09:00",
+      "observed_at": "2026-11-04T13:41:50+09:00",
       "source_url": "https://www.muniverse.io/votes/ee314cd6-d1cc-4433-a870-5ee83f215658"
     }
   ],
