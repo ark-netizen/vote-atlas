@@ -27,7 +27,7 @@ public final class MainActivity extends Activity {
 
         TextView title = label("Vote Atlas  ·  자동 수집", 24);
         layout.addView(title);
-        layout.addView(label("\n버전 0.5 · 갤럭시 S10e\n\n앱을 한 번 실행하고 '자동 수집 시작'을 누르면 아이돌챔프의 공개 투표 목록과 상세 화면을 자동으로 이동해 투표 데이터 수집을 시도합니다.\n\n화면이 켜지고 잠금 해제되어 있어야 합니다. 자동 투표, 구매, 광고 시청은 하지 않습니다. 화면 구성에 따라 일부 데이터는 수집되지 않을 수 있습니다.\n", 14));
+        layout.addView(label("\n버전 0.6 · 갤럭시 S10e\n\n앱을 한 번 실행하고 '자동 수집 시작'을 누르면 아이돌챔프의 공개 투표 목록과 상세 화면을 자동으로 이동해 투표 데이터 수집을 시도합니다.\n\n화면이 켜지고 잠금 해제되어 있어야 합니다. 자동 투표, 구매, 광고 시청은 하지 않습니다. 화면 구성에 따라 일부 데이터는 수집되지 않을 수 있습니다.\n", 14));
 
         button(layout, "① 접근성 권한 설정 (처음 한 번)", v ->
                 startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)));
@@ -56,7 +56,16 @@ public final class MainActivity extends Activity {
                     .setNegativeButton("닫기", null)
                     .setPositiveButton("설정 열기", (d, w) ->
                         startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))).show();
-            } else toast("아이돌챔프를 열고 투표 화면 자동 탐색을 시작합니다.");
+            } else {
+                Intent open = getPackageManager().getLaunchIntentForPackage("com.nwz.ichampclient");
+                if (open == null) {
+                    toast("아이돌챔프 앱이 설치되어 있지 않습니다.");
+                    IdolChampService.requestStop(this);
+                } else {
+                    toast("아이돌챔프를 실행해 투표를 탐색합니다.");
+                    startActivity(open);
+                }
+            }
         });
         button(layout, "자동 수집 중지", v -> {
             if (IdolChampService.requestStop(this)) toast("수집 중지 요청 완료");
