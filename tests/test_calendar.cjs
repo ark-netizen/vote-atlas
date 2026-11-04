@@ -44,7 +44,7 @@ test('Today is highlighted at full-cell level on both vote and awards calendars'
  const style=fs.readFileSync(path.join(__dirname,'../dist/dashboard-modern.css'),'utf8');
  const vote=fs.readFileSync(path.join(__dirname,'../dist/app.js'),'utf8');
  const award=fs.readFileSync(path.join(__dirname,'../dist/awards.js'),'utf8');
- const start=style.indexOf('/* TODAY / 2026-11-04');
+ const start=style.indexOf('/* TODAY HIGHLIGHT:');
  assert.ok(start>0,'today-specific styles must exist after the dashboard base rules');
  const highlight=style.slice(start);
  assert.match(highlight,/\.calendar-grid \.day\.current \{/);
