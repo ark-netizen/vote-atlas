@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Vote Atlas 수집기</string>
+    <string name="service_name">아이돌챔프 화면 읽기</string>
+    <string name="service_description">사용자 허가 후 아이돌챔프의 공개 투표 화면 텍스트만 읽습니다. 다른 앱, 로그인, 결제, 투표 화면을 수집하거나 버튼을 누르지 않습니다.</string>
+</resources>
