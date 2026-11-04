@@ -15,22 +15,42 @@ const VoteAtlasCost = (() => {
    if(![totalUnits,unitPrice,equivalent,adjusted].every(Number.isFinite))return null;
    return {votes:v,unitsPerVote:perVote,totalUnits,unitPrice,equivalent,adjusted,paidShare:paid};
  }
+ function normalizeOptions(cost){
+   if(!cost)return [];
+   if(Array.isArray(cost.options)&&cost.options.length)
+     return cost.options.filter(o=>o&&typeof o.currency==='string'&&
+       Number.isFinite(Number(o.units_per_vote))&&Number(o.units_per_vote)>=0)
+       .map(o=>({currency:o.currency,units_per_vote:Number(o.units_per_vote),
+         votes_per_unit:o.votes_per_unit||null}));
+   if(Array.isArray(cost.cost_options)&&cost.cost_options.length)
+     return cost.cost_options.filter(v=>Number.isFinite(Number(v))&&Number(v)>=0)
+       .map(v=>({currency:cost.currency||'재화 종류 미확인',units_per_vote:Number(v)}));
+   return [];
+ }
  function summarizeSeries(series){
    const rounds=series?.rounds||[];
-   const observed=rounds.filter(e=>e.vote_cost && Array.isArray(e.vote_cost.cost_options)&&e.vote_cost.cost_options.length);
-   const missing=rounds.length-observed.length;
-   const formats=new Map();
+   const observed=rounds.filter(e=>normalizeOptions(e.vote_cost).length);
+   const signatures=new Map();
    for(const e of observed){
-     const c=e.vote_cost;
-     const key=String(c.currency||'재화')+'|'+c.cost_options.join(',')+'|'+c.status;
-     if(!formats.has(key))formats.set(key,{currency:c.currency||'재화',options:c.cost_options,
-       status:c.status,source_url:c.source_url,checked_at:c.checked_at,count:0});
-     formats.get(key).count++;
+     const cost=e.vote_cost,options=normalizeOptions(cost);
+     const key=JSON.stringify(options);
+     if(!signatures.has(key))signatures.set(key,{options,source_url:cost.source_url,
+       checked_at:cost.checked_at,count:0,scope:cost.scope,
+       evidence:cost.evidence,status:cost.status});
+     signatures.get(key).count++;
    }
-   const variants=[...formats.values()];
+   const variants=[...signatures.values()];
    const exact=variants.length===1&&variants[0].options.length===1
-     &&variants[0].status==='verified'?variants[0]:null;
-   return {variants,observed:observed.length,total:rounds.length,missing,exact};
+      &&variants[0].count===rounds.length?variants[0]:null;
+   return {variants,observed:observed.length,total:rounds.length,
+     missing:rounds.length-observed.length,exact};
+ }
+ function display(cost){
+   const options=normalizeOptions(cost);
+   if(!options.length)return '미확인';
+   return options.map(x=>x.votes_per_unit
+     ? x.currency+' 1개당 '+x.votes_per_unit+'표'
+     : x.currency+' '+x.units_per_vote+'개/표').join(' 또는 ');
  }
  const amount=value=>new Intl.NumberFormat('ko-KR',{maximumFractionDigits:2}).format(value);
  return {calculate,summarizeSeries,amount};
