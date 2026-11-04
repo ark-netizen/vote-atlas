@@ -82,8 +82,8 @@ def acquire(app, report):
         certs = set()
         for file in files:
             cert = run(str(signer), 'verify', '--print-certs', '--print-certs-pem', str(file))
-            certificates = re.findall(r'-----BEGIN CERTIFICATE-----\\s*([A-Za-z0-9+/=\\s]+?)-----END CERTIFICATE-----', cert, re.S)
-            digests = [hashlib.sha256(base64.b64decode(re.sub(r'\\s+', '', pem))).hexdigest() for pem in certificates]
+            certificates = re.findall(r'-----BEGIN CERTIFICATE-----\s*([A-Za-z0-9+/=\s]+?)-----END CERTIFICATE-----', cert, re.S)
+            digests = [hashlib.sha256(base64.b64decode(re.sub(r'\s+', '', pem))).hexdigest() for pem in certificates]
             if not digests:
                 raise ValueError('Signing certificate not found: ' + cert[:1200])
             certs.add(tuple(sorted(digests)))
