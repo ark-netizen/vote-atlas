@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-04T01:22:16.918Z",
+  "updated_at": "2026-11-04T01:25:38.775Z",
   "description": "공식자료/신뢰 가능한 보도에 근거한 회차별 플랫폼 이력. 추정 플랫폼은 확정 목록에 넣지 않음.",
   "awards": [
     {
@@ -44,16 +44,16 @@
       "platforms": [
         {
           "name": "셀럽챔프",
-          "role": "인기상·본상 팬 투표",
+          "role": "공동 공식 팬 투표 · 플랫폼별 합산 비중 50%",
           "source_url": "https://v.daum.net/v/20260828024107328"
         },
         {
           "name": "마이원픽",
-          "role": "공식 투표 · 13개 부문",
+          "role": "공동 공식 팬 투표 · 플랫폼별 합산 비중 50%",
           "source_url": "https://press.newsgs.co.kr/newsRead.php?no=1044617"
         }
       ],
-      "note": "본상 팬 투표 10% 반영. 두 플랫폼 공동 운영. 플랫폼 간 합산 비율은 별도 검증 대상.",
+      "note": "셀럽챔프와 마이원픽 투표 결과를 각 50% 합산. 본상 심사에서 팬 투표 반영 비중은 10%로 안내됨. 선정 부문마다 별도 투표 규정 확인 필요.",
       "aliases": [
         "KDA",
         "코리아 드라마 어워즈"
@@ -67,6 +67,10 @@
         {
           "label": "마이원픽 파트너십",
           "url": "https://press.newsgs.co.kr/newsRead.php?no=1044617"
+        },
+        {
+          "label": "플랫폼 투표 결과 50:50 합산 보도",
+          "url": "https://news.nate.com/view/20260803n15384?mid=n0107"
         }
       ],
       "checked_at": "2026-11-04"
