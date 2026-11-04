@@ -2,7 +2,7 @@ import sys
 import unittest
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"scripts"))
-from vote_cost import muniverse_listing_costs
+from vote_cost import muniverse_listing_costs, muniverse_api_cost
 from vote_cost_rules import check_document,match_event_rule
 
 class PerVoteCostTest(unittest.TestCase):
@@ -43,5 +43,23 @@ class PerVoteCostTest(unittest.TestCase):
  def test_source_validation_requires_specific_price_text(self):
   self.assertFalse(check_document("Login required to vote",["1회 투표 시 하트비트 3개"]))
   self.assertTrue(check_document("official notice: "+"a"*160+" 1회 투표 시 하트비트 3개",["1회 투표 시 하트비트 3개"]))
+
+class MuniverseApiCostTests(unittest.TestCase):
+ def test_each_api_currency_has_independent_units(self):
+  detail={"voteCode":"abc","costPaidEnabled":True,"costPaid":1,
+          "costFreeEnabled":True,"costFree":10,
+          "costAdEnabled":True,"costAd":5}
+  cost=muniverse_api_cost(detail,"2026-11-04T13:29:34+09:00")
+  self.assertEqual([o['units_per_vote'] for o in cost['options']],[1,10,5])
+  self.assertEqual([o['currency'] for o in cost['options']],["골드루미","프리루미","애드루미"])
+  self.assertIsNone(cost['units_per_vote'])
+  self.assertEqual(cost['source_kind'],'official_api')
+ def test_disabled_and_invalid_api_costs_are_never_guessed(self):
+  detail={"voteCode":"z","costPaidEnabled":False,"costPaid":1,
+          "costFreeEnabled":True,"costFree":10,"costAdEnabled":True,"costAd":0}
+  cost=muniverse_api_cost(detail,"2026-11-04T13:29:34+09:00")
+  self.assertEqual(cost['cost_options'],[10])
+  self.assertEqual(cost['options'][0]['currency'],"프리루미")
+  self.assertIsNone(muniverse_api_cost({"voteCode":"z","costAdEnabled":False,"costAd":10},"2026-11-04T13:29:34+09:00"))
 
 if __name__=='__main__':unittest.main()
