@@ -9,6 +9,7 @@ on:
       - 'tests/test_neutral_theme.cjs'
       - 'tests/test_urban_design.cjs'
       - 'tests/test_modern_dashboard.cjs'
+      - 'tests/test_ux_density.cjs'
       - 'tests/test_calendar.cjs'
       - 'tests/test_reward_groups.cjs'
       - 'dist/reward-groups.js'
@@ -42,4 +43,4 @@ jobs:
           node --test tests/test_awards_calendar.cjs
           python3 -m unittest discover -s tests -p 'test_awards.py' -v
       - name: Test artist ranking logic
-        run: node --test tests/test_rankings.cjs tests/test_calendar.cjs tests/test_rewards_ui.cjs tests/test_reward_groups.cjs tests/test_neutral_theme.cjs tests/test_urban_design.cjs tests/test_modern_dashboard.cjs
+        run: node --test tests/test_rankings.cjs tests/test_calendar.cjs tests/test_rewards_ui.cjs tests/test_reward_groups.cjs tests/test_neutral_theme.cjs tests/test_urban_design.cjs tests/test_modern_dashboard.cjs tests/test_ux_density.cjs
