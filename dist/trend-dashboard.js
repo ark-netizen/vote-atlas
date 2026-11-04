@@ -95,7 +95,7 @@ const VoteAtlasTrendDashboard=(()=>{
  function alertsView(input){
    const host=$('#trendAlerts');host.replaceChildren();
    const all=VoteAtlasTrends.changes(input).filter(x=>x.delta>0)
-     .sort((a,b)=>Number(b.spike)-Number(a.spike)||b.delta-a.delta||b.date.localeCompare(a.date)).slice(0,14);
+     .sort((a,b)=>b.delta-a.delta||b.date.localeCompare(a.date)).slice(0,14);
    if(!all.length){host.append(el('p','trend-chart-empty','아직 비교 가능한 연속 일자의 증가 기록이 없습니다.'));return}
    for(const p of all){
      const button=el('button','trend-alert');button.type='button';

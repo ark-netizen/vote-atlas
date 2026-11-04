@@ -43,17 +43,27 @@ const VoteAtlasTrends=(()=>{
    const out=[];
    for(const values of byEvent.values()){
      values.sort((a,b)=>a.date.localeCompare(b.date)||String(a.observed_at||'').localeCompare(String(b.observed_at||'')));
+     let recentDeltas=[];
      for(let i=1;i<values.length;i++){
        const prev=values[i-1],current=values[i];
-       // Different dated observations of the *same* vote round, never a new
-       // monthly/weekly round reset. Changing candidate roster is also excluded.
-       if(differenceDays(prev.date,current.date)!==1)continue;
-       if(prev.scope!==current.scope || prev.roster_hash!==current.roster_hash)continue;
+       // Only consecutive days of the same round and identical published roster.
+       if(differenceDays(prev.date,current.date)!==1 ||
+          prev.scope!==current.scope || prev.roster_hash!==current.roster_hash){
+         recentDeltas=[];continue;
+       }
        const delta=current.total_votes-prev.total_votes;
-       if(delta<0)continue; // corrections/reset cannot be called added votes
+       if(delta<0){recentDeltas=[];continue} // corrections or resets are not growth
+       const baseline=recentDeltas.slice(-3).sort((a,b)=>a-b);
+       const median=baseline.length ? baseline[Math.floor(baseline.length/2)] : null;
+       const outsized=baseline.length>=2 && delta>=10000 &&
+         delta>=Math.max(2.5*median,median+20000);
+       const highRate=delta>=10000 && prev.total_votes>0 &&
+         delta/prev.total_votes>=0.5;
        out.push({...current,previous_date:prev.date,previous_votes:prev.total_votes,
          delta,percent:prev.total_votes>0?delta/prev.total_votes*100:null,
-         spike:(delta>=10000&&(prev.total_votes>0 && delta/prev.total_votes>=0.5))||delta>=100000});
+         spike:outsized||highRate});
+       recentDeltas.push(delta);
+       if(recentDeltas.length>3)recentDeltas.shift();
      }
    }
    return out.sort((a,b)=>b.date.localeCompare(a.date)||b.delta-a.delta);

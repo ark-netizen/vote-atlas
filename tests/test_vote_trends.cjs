@@ -53,3 +53,11 @@ test('invalid/missing observations excluded without implied zero values',()=>{
  assert.equal(rows.length,1);
  assert.equal(t.changes(rows).length,0);
 });
+
+test('absolute vote size alone is not a relative anomaly',()=>{
+ const rows=t.normalizeHistory({observations:[
+   date('2026-11-01','large',1000000),date('2026-11-02','large',1100000),
+   date('2026-11-01','sudden',20000),date('2026-11-02','sudden',37000)]});
+ assert.equal(t.changes(rows).find(x=>x.event_id==='large').spike,false);
+ assert.equal(t.changes(rows).find(x=>x.event_id==='sudden').spike,true);
+});
