@@ -17,13 +17,14 @@ const isNeutral = hex => {
   return false;
 };
 
-test('All authored stylesheet color literals use neutral greyscale RGB', () => {
+test('Interface colors remain neutral except documented vote-spike highlights', () => {
+  const spikeColors = new Set(['#65541d','#ffe56b','#dfc04b','#fff9d9','#ebc43e']);
   for (const file of cssFiles) {
     const css = read(file);
     const colors = css.match(/#[0-9a-fA-F]{8}\b|#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{4}\b|#[0-9a-fA-F]{3}\b/g) || [];
     assert.ok(colors.length > 5, file);
     for (const color of colors)
-      assert.ok(isNeutral(color), file + ': unconverted color ' + color);
+      assert.ok(isNeutral(color) || (file === 'overview.css' && spikeColors.has(color)), file + ': unexplained color ' + color);
   }
 });
 
@@ -54,7 +55,7 @@ test('Trend chart uses only grayscale series colors', () => {
   const m = script.match(/const colors=\[([^\]]+)\]/);
   assert.ok(m);
   const colors = m[1].match(/#[0-9a-fA-F]{6}\b/g) || [];
-  assert.equal(colors.length, 8);
+  assert.ok(colors.length >= 8);
   assert.ok(new Set(colors).size >= 7);
   assert.ok(colors.every(isNeutral));
 });

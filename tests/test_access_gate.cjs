@@ -33,7 +33,7 @@ test('Every dashboard is hidden and only loads its main JavaScript after guard',
   const pages = [['index.html', 'app.js'], ['overview.html', 'overview.js'], ['rewards.html', 'rewards.js']];
   for (const [page, script] of pages) {
     const html = read(page);
-    assert.match(html, /<body class="protected-view">/);
+    assert.match(html, /<body class="protected-view(?:\s+[^"]+)?">/);
     assert.ok(html.includes('<link rel="stylesheet" href="access.css">'));
     assert.match(html, /src="access-crypto\.js"/);
     assert.ok(html.includes('src="access-guard.js" data-app-script="' + script + '"'));
