@@ -107,15 +107,9 @@ public final class IdolChampService extends AccessibilityService {
         actions = details = listSwipes = detailSwipes = captured = 0;
         startedAt = android.os.SystemClock.elapsedRealtime();
         DailyScheduler.status(this, "아이돌챔프 실행 및 안전한 투표 목록 탐색 시작");
-        Intent launch = getPackageManager().getLaunchIntentForPackage(PACKAGE);
-        if (launch == null) { finish("아이돌챔프 미설치"); return; }
-        try {
-            launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
-            startActivity(launch);
-            queueTick(3000);
-        } catch (Exception ex) {
-            finish("Android가 백그라운드에서 아이돌챔프 실행을 차단했습니다.");
-        }
+        // The foreground Activity opens IdolChamp directly in response to user tap.
+        // The accessibility service never initiates an Android background activity.
+        queueTick(3200);
     }
 
     private void queueTick(long millis) {
@@ -188,6 +182,7 @@ public final class IdolChampService extends AccessibilityService {
                 details++; actions++; stage = Stage.DETAIL;
                 detailSwipes = 0;
                 detailText.clear();
+                detailText.add("투표");
                 List<String> cardText = new ArrayList<>();
                 subtree(card, 0, cardText);
                 detailText.addAll(cardText);
