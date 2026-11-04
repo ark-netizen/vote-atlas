@@ -57,19 +57,28 @@ def launch(app):
 
 def enter_votes(app):
     launch(app)
-    for _ in range(4):
-        xml=capture();ns=screen_nodes(xml)
-        # Only dismiss optional screens. Never accept consent or submit a vote.
-        close=next((n for n in ns if n['text'] in ['나중에','닫기','건너뛰기','나중에 하기','Skip','Not now']),None)
-        if close: tap(close['bounds']);continue
-        choices=[n for n in ns if n['text'].strip() in app['nav']]
+    last_screen = ''
+    # Splash screens and initial network load may take longer than the fixed launch delay.
+    # Poll only observable UI; do not tap unverified coordinates or consent buttons.
+    for attempt in range(10):
+        xml = capture()
+        ns = screen_nodes(xml)
+        last_screen = ' | '.join(n['text'] for n in ns if n['text'].strip())[:240]
+        close = next((n for n in ns if n['text'] in ['나중에', '닫기', '건너뛰기', '나중에 하기', 'Skip', 'Not now']), None)
+        if close:
+            tap(close['bounds'])
+            continue
+        choices = [n for n in ns if n['text'].strip() in app['nav']]
         if choices:
-            tap(max(choices,key=lambda n:n['bounds'][1])['bounds']);return capture()
-        if cards(xml): return xml
-        if any(re.search(r'로그인|sign in|log in',n['text'],re.I) for n in ns):
+            tap(max(choices, key=lambda n: n['bounds'][1])['bounds'])
+            return capture()
+        if cards(xml):
+            return xml
+        if any(re.search(r'로그인|sign in|log in', n['text'], re.I) for n in ns):
             raise RuntimeError('LOGIN_REQUIRED: 로그인한 실제 기기에서 실행 필요')
-        break
-    raise RuntimeError('NAV_UNVERIFIED: 현재 앱 화면에서 투표 탭을 식별하지 못함')
+        if attempt < 9:
+            time.sleep(2.5)
+    raise RuntimeError('NAV_UNVERIFIED: 현재 앱 화면에서 투표 탭을 식별하지 못함; visible=' + repr(last_screen))
 
 def ocr_cards(ns):
     """For image-only lists, associate a date line with the immediately preceding title."""
