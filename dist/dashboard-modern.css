@@ -1170,3 +1170,59 @@ body.urban-interface.modern-interface .main-content,
     font-size:12px;
   }
 }
+
+
+/* Current-day column overlay in the awards calendar.
+   It stays visible on top of connected vote bars without blocking bar clicks. */
+.modern-interface .award-calendar-week .award-date-cell.today {
+  position:relative;
+}
+.modern-interface .award-calendar-week .award-date-cell.today::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:5;
+  pointer-events:none;
+  box-sizing:border-box;
+  border:2px solid #304f95;
+  border-radius:2px;
+  background:transparent;
+}
+.modern-interface .award-calendar-week .award-date-cell.today .cal-day-num {
+  position:relative;
+  z-index:7;
+  width:31px;
+  min-width:31px;
+  height:31px;
+  background:#304f95 !important;
+  color:#ffffff !important;
+  border-radius:7px;
+  font-size:13px;
+  font-weight:800;
+}
+.modern-interface .award-calendar-week .award-date-cell.today .award-date-button::after {
+  display:block;
+  position:absolute;
+  z-index:7;
+  content:"오늘";
+  top:10px;
+  right:8px;
+  padding:4px 6px;
+  border-radius:5px;
+  background:#304f95;
+  color:#ffffff;
+  font-size:10px;
+  font-weight:800;
+  line-height:1;
+  pointer-events:none;
+}
+@media(max-width:760px){
+  /* The awards grid retains a minimum width and horizontal scroll on phones. */
+  .modern-interface .award-calendar-week .award-date-cell.today .award-date-button::after {
+    display:block;
+    top:10px;
+    right:5px;
+    padding:4px;
+    font-size:9px;
+  }
+}
