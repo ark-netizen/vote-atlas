@@ -50,6 +50,7 @@ final class UploadClient {
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 try {
                     connection.setRequestMethod("PUT");
+                    connection.setInstanceFollowRedirects(false);
                     connection.setConnectTimeout(12000);
                     connection.setReadTimeout(20000);
                     connection.setDoOutput(true);
@@ -68,6 +69,7 @@ final class UploadClient {
             } catch (Exception ex) {
                 result = ex.getMessage() == null ? "업로드 실패" : ex.getMessage();
             } finally { BUSY.set(false); }
+            DailyScheduler.status(app, "GitHub 업로드: " + result);
             if (callback != null) callback.complete(result);
         });
     }
