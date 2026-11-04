@@ -8,21 +8,26 @@
 <link rel="stylesheet" href="overview.css">
 <link rel="stylesheet" href="rewards.css">
 <link rel="stylesheet" href="urban.css">
-<meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="access.css"><style>body.protected-view > :not(#accessScreen):not(script){display:none!important}</style></head>
+<meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="workspace-nav.css"><link rel="stylesheet" href="access.css"><style>body.protected-view > :not(#accessScreen):not(script){display:none!important}</style></head>
 <body class="protected-view urban-interface">
 <div class="shell">
 <aside class="rail">
-<a href="overview.html" class="brand"><span class="brandmark">V<span>·</span></span><span>vote atlas<small>FANDOM VOTING INTELLIGENCE</small></span></a>
+<a href="overview.html" class="brand" aria-label="Vote Atlas 통합 대시보드"><span class="brandmark logo">V<span>·</span></span><span>vote atlas<small>FANDOM VOTING INTELLIGENCE</small></span></a>
 <div class="workspace">팬덤 투표 데이터베이스<small>공식 공개 정보 · 자동 수집</small></div>
-<div class="rail-title">WORKSPACE</div>
-<nav aria-label="서비스 메뉴">
-<a class="nav" href="overview.html"><span class="nav-glyph" aria-hidden="true"></span> 통합 대시보드</a>
-<a class="nav active" href="rewards.html" aria-current="page"><span class="nav-glyph" aria-hidden="true"></span> 리워드</a><a class="nav" href="awards.html"><span class="nav-glyph" aria-hidden="true"></span> 어워즈·시상식</a>
-<a class="nav" href="index.html"><span class="nav-glyph" aria-hidden="true"></span> 월간 투표 캘린더</a>
-<a class="nav" href="overview.html#sources"><span class="nav-glyph" aria-hidden="true"></span> 수집 현황</a>
-<a class="nav" href="https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml" target="_blank" rel="noopener noreferrer"><span class="nav-glyph" aria-hidden="true"></span> 자동 수집 내역</a>
+<div class="rail-title nav-label">WORKSPACE</div>
+<nav class="workspace-menu" aria-label="서비스 메뉴">
+<a class="nav nav-button workspace-menu-item" data-nav-key="overview" href="overview.html"><span class="nav-glyph" aria-hidden="true"></span><span class="workspace-menu-text">통합 대시보드</span></a>
+<a class="nav nav-button workspace-menu-item" data-nav-key="calendar" href="index.html"><span class="nav-glyph" aria-hidden="true"></span><span class="workspace-menu-text">투표 캘린더</span></a>
+<a class="nav nav-button workspace-menu-item" data-nav-key="list" href="index.html?view=list"><span class="nav-glyph" aria-hidden="true"></span><span class="workspace-menu-text">전체 투표</span></a>
+<a class="nav nav-button workspace-menu-item active" data-nav-key="rewards" href="rewards.html"><span class="nav-glyph" aria-hidden="true"></span><span class="workspace-menu-text">리워드</span></a>
+<a class="nav nav-button workspace-menu-item" data-nav-key="awards" href="awards.html"><span class="nav-glyph" aria-hidden="true"></span><span class="workspace-menu-text">어워즈·시상식</span></a>
+<a class="nav nav-button workspace-menu-item" data-nav-key="trends" href="overview.html#voteTrends"><span class="nav-glyph" aria-hidden="true"></span><span class="workspace-menu-text">득표 추이</span></a>
+<a class="nav nav-button workspace-menu-item" data-nav-key="artists" href="overview.html#artists"><span class="nav-glyph" aria-hidden="true"></span><span class="workspace-menu-text">아티스트 순위</span></a>
+<a class="nav nav-button workspace-menu-item" data-nav-key="sources" href="index.html?view=sources"><span class="nav-glyph" aria-hidden="true"></span><span class="workspace-menu-text">수집 현황</span></a>
+<a class="nav nav-button workspace-menu-item" data-nav-key="collect" href="https://github.com/ark-netizen/vote-atlas/actions/workflows/collect-public.yml" target="_blank" rel="noopener noreferrer"><span class="nav-glyph" aria-hidden="true"></span><span class="workspace-menu-text">자동 수집 내역</span></a>
 </nav>
-<div class="rail-bottom"><strong>확인된 리워드만<br>기본 목록에.</strong><p>원문에 없는 집행 조건이나 광고 장소·기간은 추측하지 않습니다.</p></div>
+
+<div class="rail-bottom sidebar-bottom"><strong>VOTE ATLAS</strong><p>공식 공개 정보 · 일별 수집 기록</p></div>
 </aside>
 <main class="main">
 <header class="top"><div class="crumb">VOTE ATLAS <span>/</span> REWARDS</div><div class="meta"><span id="updated">데이터 불러오는 중</span><button type="button" id="reload">새로고침 ↻</button></div></header>
@@ -64,6 +69,6 @@
 <button class="close" id="closeDetail" type="button" aria-label="상세 닫기">×</button>
 <div id="detailContent"></div>
 </dialog>
-<script src="reward-groups.js"></script><script src="reward-series.js"></script><script src="access-crypto.js"></script><script src="access-guard.js" data-app-script="rewards.js"></script>
+<script src="reward-groups.js"></script><script src="reward-series.js"></script><script src="workspace-nav.js"></script><script src="access-crypto.js"></script><script src="access-guard.js" data-app-script="rewards.js"></script>
 </body>
 </html>
