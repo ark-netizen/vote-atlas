@@ -8,6 +8,115 @@ function anchor(label,href){
   const safe=validLink(href);if(!safe)return textNode('span','',label);
   const link=textNode('a','',label+' ↗');link.href=safe;link.target='_blank';link.rel='noopener noreferrer';return link;
 }
+
+const awardsCalendar = window.VoteAtlasAwardsCalendar;
+const calendarToday = new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+let awardCalYear = Number(calendarToday.slice(0,4));
+let awardCalMonth = Number(calendarToday.slice(5,7))-1;
+let awardSelectedDate = calendarToday;
+const dateShort = value => {
+ const parts=String(value||'').split('-');
+ return parts.length===3 ? Number(parts[1])+'월 '+Number(parts[2])+'일' : '날짜 미확인';
+};
+const scheduleSpan = item => item.start_date===item.end_date ? dateShort(item.start_date) :
+ dateShort(item.start_date)+' ~ '+dateShort(item.end_date);
+const scheduleKindLabel = kind => kind==='ceremony'?'시상식':kind==='milestone'?'투표 시작':'팬 투표';
+function renderDayAgenda(items){
+ const root=$('#awardDayAgenda');root.replaceChildren();
+ const todayItems=items.filter(x=>awardsCalendar.onDay(x,awardSelectedDate)).sort((a,b)=>{
+  const priority={ceremony:0,milestone:1,vote:2};
+  return priority[a.kind]-priority[b.kind]||a.award_name.localeCompare(b.award_name,'ko');
+ });
+ $('#awardDayTitle').textContent=awardSelectedDate.replaceAll('-','.')+' · '+todayItems.length+'건';
+ if(!todayItems.length){
+  root.append(textNode('p','discover-empty','이 날짜에는 등록된 시상식 또는 팬 투표 일정이 없습니다.'));
+  return;
+ }
+ for(const item of todayItems){
+  const card=textNode('article','award-schedule-entry '+item.kind);
+  card.append(textNode('span','schedule-tag',scheduleKindLabel(item.kind)));
+  card.append(textNode('strong','',item.award_name));
+  card.append(textNode('p','',item.title+(item.platform?' · '+item.platform:'')));
+  card.append(textNode('p','',scheduleSpan(item)+(item.detail?' · '+item.detail:'')));
+  if(item.kind==='ceremony'&&item.platforms.length)card.append(textNode('p','',
+    '확인된 투표처: '+item.platforms.join(' / ')));
+  if(item.source_url)card.append(anchor('일정 확인 출처',item.source_url));
+  root.append(card);
+ }
+}
+function renderMonthAgenda(items){
+ const root=$('#awardMonthAgenda');root.replaceChildren();
+ $('#awardMonthCount').textContent=items.length+'건';
+ if(!items.length){root.append(textNode('p','discover-empty','이달에 날짜가 확인된 일정이 없습니다.'));return}
+ const first=awardsCalendar.monthKey(awardCalYear,awardCalMonth,1);
+ for(const item of items.slice().sort((a,b)=>{
+  const aStart=a.start_date<first?first:a.start_date,bStart=b.start_date<first?first:b.start_date;
+  return aStart.localeCompare(bStart)||a.kind.localeCompare(b.kind)||a.award_name.localeCompare(b.award_name,'ko');
+ })){
+  const button=textNode('button','award-month-item '+item.kind);
+  button.type='button';button.setAttribute('aria-label',item.award_name+' '+item.title+' '+scheduleSpan(item));
+  const content=textNode('span','month-item-main');
+  content.append(textNode('strong','',item.award_name),
+    textNode('small','',scheduleKindLabel(item.kind)+' · '+item.title+(item.platform?' · '+item.platform:'')));
+  button.append(content,textNode('span','month-item-date',scheduleSpan(item)));
+  button.onclick=()=>{
+   awardSelectedDate = item.start_date<first?first:item.start_date;
+   renderAwardsCalendar();
+   $('#awardDayTitle').scrollIntoView({behavior:'smooth',block:'nearest'});
+  };
+  root.append(button);
+ }
+}
+function renderAwardsCalendar(){
+ if(!awardsCalendar){
+  $('#awardCalendarGrid').textContent='달력 모듈을 불러오지 못했습니다.';
+  return;
+ }
+ const kind=$('#calendarKind').value;
+ const schedules=awardsCalendar.filteredItems(awardsCalendar.buildSchedule(records.awards),kind);
+ const monthItems=schedules.filter(x=>awardsCalendar.overlapsMonth(x,awardCalYear,awardCalMonth));
+ $('#awardMonth').textContent=awardCalYear+'년 '+(awardCalMonth+1)+'월';
+ $('#calendarTotal').textContent='이달 '+monthItems.length+'건 · 개최/투표 일정을 각각 집계';
+ const grid=$('#awardCalendarGrid');grid.replaceChildren();
+ const visibleMonth=awardCalYear+'-'+String(awardCalMonth+1).padStart(2,'0');
+ for(const day of awardsCalendar.monthDays(awardCalYear,awardCalMonth)){
+  const inMonth=day.slice(0,7)===visibleMonth;
+  const dayItems=inMonth?schedules.filter(x=>awardsCalendar.onDay(x,day)):[];
+  const cell=textNode('div','award-date-cell'+(inMonth?'':' out-month')+(day===calendarToday?' today':'')+(day===awardSelectedDate?' selected':''));
+  cell.setAttribute('role','gridcell');
+  const button=textNode('button','award-date-button');
+  button.type='button';button.setAttribute('aria-pressed',day===awardSelectedDate?'true':'false');
+  button.setAttribute('aria-label',day+' · 등록 일정 '+dayItems.length+'건');
+  button.append(textNode('span','cal-day-num',Number(day.slice(8,10))));
+  for(const item of dayItems.slice(0,3)){
+    const mini=textNode('span','cal-mini-event '+item.kind, (item.kind==='ceremony'?'시상식 ':item.kind==='milestone'?'시작 ':'투표 ')+item.award_name);
+    mini.title=item.award_name+' · '+item.title+(item.platform?' ('+item.platform+')':'');
+    button.append(mini);
+  }
+  if(dayItems.length>3)button.append(textNode('span','cal-more','+'+(dayItems.length-3)+'개 더'));
+  button.onclick=()=>{
+   if(!inMonth){
+    awardCalYear=Number(day.slice(0,4));awardCalMonth=Number(day.slice(5,7))-1;
+   }
+   awardSelectedDate=day;
+   renderAwardsCalendar();
+  };
+  cell.append(button);grid.append(cell);
+ }
+ renderDayAgenda(schedules);
+ renderMonthAgenda(monthItems);
+}
+function moveAwardMonth(direction){
+ const date=new Date(Date.UTC(awardCalYear,awardCalMonth+direction,1));
+ awardCalYear=date.getUTCFullYear();
+ awardCalMonth=date.getUTCMonth();
+ const start=awardsCalendar.monthKey(awardCalYear,awardCalMonth,1);
+ const next=awardsCalendar.filteredItems(awardsCalendar.buildSchedule(records.awards),$('#calendarKind').value)
+   .filter(x=>awardsCalendar.overlapsMonth(x,awardCalYear,awardCalMonth));
+ awardSelectedDate=next.length?(next[0].start_date<start?start:next[0].start_date):start;
+ renderAwardsCalendar();
+}
+
 function renderAwards(){
  const q=$('#query').value.trim().toLocaleLowerCase('ko-KR'), cat=$('#category').value, platform=$('#platform').value, verified=$('#verification').value;
  const filtered=records.awards.filter(a=>{
@@ -52,9 +161,9 @@ function discoverCards(id,items,emptyLabel){
  }
 }
 function exportCSV(){
- const rows=[['행사명','분류','회차 연도','투표확인','개최일','플랫폼','부문·운영방식','설명','공식 근거']];
+ const rows=[['행사명','분류','회차 연도','투표확인','개최일','개최 종료일','투표 기간','플랫폼','부문·운영방식','설명','공식 근거']];
  const awards=records.awards;
- for(const a of awards)rows.push([a.name,a.category,a.year,a.voting,a.event_date||'',(a.platforms||[]).map(p=>p.name).join(' / '),(a.platforms||[]).map(p=>p.name+' : '+p.role).join(' / '),a.note||'',(a.sources||[]).map(s=>s.url).join(' / ')]);
+ for(const a of awards)rows.push([a.name,a.category,a.year,a.voting,a.event_date||'',a.event_end_date||'',(a.voting_periods||[]).map(x=>x.title+': '+x.start_date+'~'+x.end_date+' ('+x.platform+')').join(' / '),(a.platforms||[]).map(p=>p.name).join(' / '),(a.platforms||[]).map(p=>p.name+' : '+p.role).join(' / '),a.note||'',(a.sources||[]).map(s=>s.url).join(' / ')]);
  const cell=value=>{let s=String(value??'');if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'};
  const csv='\ufeff'+rows.map(r=>r.map(cell).join(',')).join('\r\n'),blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
  const url=URL.createObjectURL(blob),el=document.createElement('a');el.href=url;el.download='vote-atlas-awards.csv';document.body.append(el);el.click();el.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
@@ -76,6 +185,7 @@ function render(){
  discoverCards('#candidateList',records.discovered||[],'새로운 행사로 분류된 기사가 아직 없습니다.');
  discoverCards('#newsList',records.latest_news||[],'기존 시상식의 새로운 투표 관련 기사가 아직 없습니다.');
  renderAwards();
+ renderAwardsCalendar();
 }
 async function load(){
  try{
@@ -88,4 +198,13 @@ async function load(){
 for(const id of ['#query','#category','#platform','#verification'])$(id).addEventListener(id==='#query'?'input':'change',renderAwards);
 $('#reload').addEventListener('click',load);
 $('#csv').addEventListener('click',exportCSV);
+$('#prevAwardMonth').addEventListener('click',()=>moveAwardMonth(-1));
+$('#nextAwardMonth').addEventListener('click',()=>moveAwardMonth(1));
+$('#todayAwardMonth').addEventListener('click',()=>{
+ awardCalYear=Number(calendarToday.slice(0,4));
+ awardCalMonth=Number(calendarToday.slice(5,7))-1;
+ awardSelectedDate=calendarToday;
+ renderAwardsCalendar();
+});
+$('#calendarKind').addEventListener('change',renderAwardsCalendar);
 load();
