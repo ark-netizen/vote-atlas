@@ -26,22 +26,17 @@
 <button type="button" class="stat" data-summary="lineup"><span>후보 목록 확보</span><strong id="countLineup">—</strong><small>부분 후보 포함 ↗</small></button>
 </section>
 <section class="panel trend-panel" id="voteTrends" aria-label="앱별 투표 득표 추이">
-<div class="panelhead"><div><span class="section-index">01 · DAILY VOTE INTELLIGENCE</span><h2>앱별 · 투표 주제별 득표 추이</h2></div><span class="caption" id="trendUpdated">일별 관측 데이터 준비 중</span></div>
-<p class="trend-explainer">각 회차의 <b>후보별 공개 득표 합계</b>를 수집한 날짜로 표시합니다. 같은 투표의 <b>연속된 두 날짜</b>를 비교해 일별 증가량과 급증 후보를 계산합니다. 새 회차 시작이나 후보 구성 변경은 증가량에서 제외합니다.</p>
+<div class="panelhead"><div><span class="section-index">01 · DAILY VOTE INTELLIGENCE</span><h2>앱별 득표 추이 · 투표별 선그래프</h2></div><span class="caption" id="trendUpdated">일별 관측 데이터 준비 중</span></div>
+<p class="trend-explainer">앱마다 개별 그래프를 배치하고, 한 앱의 <b>각 투표를 별도의 선</b>으로 그립니다. 후보별 공개 득표 합계의 실제 관측값을 사용하며, <b>급증 구간은 노란색 배경</b>으로 강조합니다. 신규 투표로 넘어갈 때 이전 투표와 선을 연결하지 않습니다.</p>
 <div class="trend-quick-stats"><div><span>관측된 앱</span><strong id="trendAppCount">—</strong></div><div><span>투표 주제</span><strong id="trendTopicCount">—</strong></div><div><span>전일 대비 비교 가능</span><strong id="trendChangeCount">—</strong></div><div><span>급증 후보</span><strong id="trendSpikeCount">—</strong></div></div>
-<div class="trend-filter-row">
-<label>앱 <select id="trendApp" aria-label="분석할 앱"><option value="all">전체 앱</option></select></label>
-<label>투표 주제 <select id="trendTopic" aria-label="분석할 투표 주제"><option value="all">전체 주제</option></select></label>
-<label>관측 기간 <select id="trendRange" aria-label="관측 기간"><option value="7">최근 7일</option><option value="14" selected>최근 14일</option><option value="30">최근 30일</option><option value="90">최근 90일</option></select></label>
-<label>득표 범위 <select id="trendScope" aria-label="공개 후보 범위"><option value="all">전체 · 부분 구분</option><option value="all_candidates">전체 후보 확인</option><option value="visible_candidates">부분 후보만 확인</option></select></label>
+<div class="trend-filter-row trend-chart-controls">
+<label>관측 기간 <select id="trendRange" aria-label="전체 앱 그래프 관측 기간"><option value="7">최근 7일</option><option value="14" selected>최근 14일</option><option value="30">최근 30일</option><option value="90">최근 90일</option></select></label>
+<label>득표 집계 범위 <select id="trendScope" aria-label="투표 후보 공개 범위"><option value="all">전체 후보 · 부분 후보 모두</option><option value="all_candidates">전체 후보 확인</option><option value="visible_candidates">부분 후보만 확인</option></select></label>
 </div>
-<div id="trendNotice" class="trend-status" role="status">수집된 날짜별 득표 이력을 불러오고 있습니다.</div>
-<div class="trend-visual-grid">
-<div class="trend-chart-card"><div class="trend-chart-heading"><h3>날짜별 수집 득표</h3><span>회차별 누적 득표 · 표</span></div><div id="trendLineChart" class="trend-chart" role="region" aria-label="투표 회차별 득표 추이 그래프"></div><div id="trendLegend" class="trend-legend"></div></div>
-<div class="trend-chart-card"><div class="trend-chart-heading"><h3>일별 증가량</h3><span>동일 회차 · 연속 일자만 비교</span></div><div id="trendDeltaChart" class="trend-chart" role="region" aria-label="일별 득표 증가량 막대 그래프"></div><p class="trend-explainer small">후보 명단이 바뀌거나 수집이 누락된 날짜는 증가량을 계산하지 않습니다.</p></div>
-</div>
-<div class="trend-alert-head"><h3>득표 급증 · 상승 순위</h3><span>증가량 순 · ‘급증 후보’는 규모·비율 기준의 참고 표시</span></div>
-<div id="trendAlerts" class="trend-alerts" aria-live="polite"></div>
+<div class="trend-highlight-key"><span class="trend-yellow-key" aria-hidden="true"></span> <strong>노란색 배경</strong>은 해당 투표의 전일 대비 득표가 갑자기 증가한 구간입니다. 같은 앱 안에서 각 투표가 서로 다른 색의 선으로 표시됩니다.</div>
+<div id="trendNotice" class="trend-status" role="status">앱별 득표 이력을 불러오고 있습니다.</div>
+<div id="trendAppCharts" class="trend-app-charts" aria-live="polite"></div>
+<div id="trendAppMissing" class="trend-app-missing"></div>
 </section>
 <section class="panel filter-panel" aria-label="캘린더 투표 필터"><div class="panelhead"><div><span class="section-index">FILTERS · CALENDAR & LIST</span><h2>캘린더 표시 조건</h2></div><button type="button" id="clearOverviewFilters" class="clear-overview-filters">전체 초기화</button></div><div class="filters"><label class="search"><span>⌕</span><input type="search" id="query" placeholder="투표명 · 리워드 · 후보 검색" aria-label="통합 검색"></label>
 <select id="app" aria-label="앱 선택"><option value="all">모든 앱</option></select>
