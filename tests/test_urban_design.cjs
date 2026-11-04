@@ -12,10 +12,10 @@ const pages = [
  ['trend-detail.html','overview.css','01 / VOTE TREND DETAIL']
 ];
 
-test('All four pages opt into the editorial design and use an information masthead',()=>{
+test('Every workspace page opts into the editorial design and use an information masthead',()=>{
  for(const [name,source,label] of pages){
   const html=read(name);
-  assert.match(html, /class="protected-view urban-interface"/,name);
+  assert.match(html, /class="protected-view urban-interface(?:\s+[^"]+)?"/,name);
   assert.match(html, /class="urban-utility"/,name);
   assert.ok(html.includes(label),name+' missing desk label');
   const sourcePosition=html.indexOf('href="'+source+'"');
