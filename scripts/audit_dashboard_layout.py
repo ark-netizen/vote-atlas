@@ -203,6 +203,82 @@ def run():
                         for issue in stress["issues"][:9]:
                             print("  STRESS_ISSUE "+
                                   json.dumps(issue,ensure_ascii=False),flush=True)
+                    if path == "rewards.html":
+                        # End-to-end: calculate in a viewport-fixed side window
+                        # without resizing the KPI strip or jumping the page.
+                        try:
+                            page.evaluate("window.scrollTo(0,document.body.scrollHeight)")
+                            page.wait_for_timeout(100)
+                            before = page.evaluate("""() => ({
+                              scroll:window.scrollY,
+                              statsWidth:document.querySelector('.reward-stats')
+                                .getBoundingClientRect().width,
+                              viewport:window.innerWidth
+                            })""")
+                            page.locator("#openVoteCalc").click(timeout=6000)
+                            after = page.evaluate("""() => {
+                              const el=document.querySelector('#voteCalcPanel');
+                              const r=el.getBoundingClientRect();
+                              return {
+                                visible:!el.hidden,
+                                expanded:document.querySelector('#openVoteCalc')
+                                  .getAttribute('aria-expanded'),
+                                top:r.top,left:r.left,right:r.right,
+                                fixed:getComputedStyle(el).position==='fixed',
+                                scroll:window.scrollY,
+                                statsWidth:document.querySelector('.reward-stats')
+                                  .getBoundingClientRect().width,
+                                pageWidth:document.documentElement.scrollWidth
+                              };
+                            }""")
+                            failures = []
+                            if not after["visible"] or after["expanded"] != "true":
+                                failures.append("drawer did not open")
+                            if not after["fixed"] or abs(after["top"]) > 2:
+                                failures.append("drawer does not remain viewport-fixed")
+                            if after["left"] < -2 or after["right"] > width+2:
+                                failures.append("drawer exceeds viewport width")
+                            if abs(after["scroll"]-before["scroll"]) > 2:
+                                failures.append("opening drawer jumped underlying page")
+                            if abs(after["statsWidth"]-before["statsWidth"]) > 2:
+                                failures.append("opening drawer resized KPI area")
+                            if after["pageWidth"] > width+2:
+                                failures.append("drawer causes full-page horizontal scroll")
+                            if width in (375,1366):
+                                page.screenshot(path=str(OUT/f"rewards-calculator-open-{width}.png"),
+                                    animations="disabled",timeout=15000)
+                            page.locator("#calcVotes").fill("100")
+                            if not page.locator("#calcValue").inner_text().strip().endswith("원"):
+                                failures.append("calculator stopped producing a value")
+                            page.keyboard.press("Escape")
+                            if not page.locator("#voteCalcPanel").is_hidden():
+                                failures.append("Escape did not close drawer")
+                            page.locator("#openVoteCalc").click(timeout=6000)
+                            page.locator("#closeVoteCalc").click(timeout=6000)
+                            if not page.locator("#voteCalcPanel").is_hidden():
+                                failures.append("close button did not hide drawer")
+                            entry = {
+                                "page":path, "viewport":width,"drawer_test":True,
+                                "issues":[{"container":"#voteCalcPanel",
+                                  "kind":"drawer-interaction", "px":0,"sample":msg}
+                                  for msg in failures]
+                            }
+                            rows.append(entry)
+                            print(f"DRAWER {width:4d}px failures={len(failures)}",
+                                  flush=True)
+                            for issue in entry["issues"]:
+                                print("  DRAWER_ISSUE "+
+                                    json.dumps(issue,ensure_ascii=False),flush=True)
+                        except Exception as exc:
+                            entry={
+                                "page":path,"viewport":width,"drawer_test":True,
+                                "issues":[{"container":"#voteCalcPanel",
+                                    "kind":"drawer-exception","px":0,
+                                    "sample":str(exc)[:240]}]
+                            }
+                            rows.append(entry)
+                            print("  DRAWER_ISSUE "+
+                                  json.dumps(entry["issues"][0],ensure_ascii=False),flush=True)
                     print(f"LAYOUT {path:30s} {width:4d}px "
                           f"cards={result['checkedCards']:3d} "
                           f"overflow={len(result['issues']):2d}",

@@ -36,31 +36,12 @@
 
 <h1>리워드</h1>
 
-<div class="reward-analysis-row"><section class="stats reward-stats" aria-label="리워드 통계">
+<section class="stats reward-stats" aria-label="리워드 통계">
 <div class="stat"><span>리워드 확인 시리즈</span><strong id="countKnown">—</strong></div>
 <div class="stat"><span>진행 중 투표 시리즈</span><strong id="countActive">—</strong></div>
 <div class="stat"><span>7일 내 마감 시리즈</span><strong id="countSoon">—</strong></div>
 <div class="stat"><span>리워드 미확인</span><strong id="countUnknown">—</strong></div>
 </section>
-<aside class="vote-calc-panel" aria-labelledby="voteCalcTitle">
- <div class="vote-calc-head"><span>VOTE / CURRENCY</span><h2 id="voteCalcTitle">투표 재화 환산기</h2><p id="calcContext">직접 입력 · 앱별 수집값 선택 가능</p></div>
- <div class="vote-calc-fields">
-  <label class="calc-wide">투표수 <input id="calcVotes" type="number" inputmode="numeric" min="0" step="1" value="413776"></label>
-  <label>재화명 <input id="calcCurrency" type="text" maxlength="40" value="루미"></label>
-  <label>1표당 필요 재화 <input id="calcUnits" type="number" inputmode="decimal" min="0" step="any" value="10"></label>
-  <label>구매 상품 재화 수 <input id="calcBundleUnits" type="number" inputmode="decimal" min="0.001" step="any" value="100"></label>
-  <label>상품 가격 (원) <input id="calcBundlePrice" type="number" inputmode="decimal" min="0" step="any" value="1100"></label>
-  <label class="calc-wide">유료 사용 비율 가정 (%) <input id="calcPaidShare" type="number" inputmode="decimal" min="0" max="100" step="1" value="100"></label>
- </div>
- <div class="vote-calc-results">
-  <div class="calc-small-row"><span>필요 재화 합계</span><strong id="calcTotalUnits">—</strong></div>
-  <div class="calc-small-row"><span>재화 구매 환산 단가</span><strong id="calcUnitPrice">—</strong></div>
-  <div class="calc-main-result"><span>100% 유료 구매 가정 환산 가치</span><strong id="calcValue">—</strong></div>
-  <div class="calc-small-row"><span>유료 비율 반영 환산 가치</span><strong id="calcPaidValue">—</strong></div>
- </div>
- <p id="calcCostStatus" class="calc-caution">기본값은 1표당 10루미, 루미 100개당 1,100원이라는 예시 조건입니다. 공식 투표값으로 확정된 수치가 아닙니다.</p>
- <p class="calc-caution">실제 매출·수익이 아닙니다. 무료 재화·구매율·할인·환불·수수료 등은 알 수 없습니다.</p>
-</aside></div>
 <section class="panel reward-panel">
 <div class="panelhead"><div><h2>투표별 리워드</h2></div><span id="resultsCount" class="caption" role="status" aria-live="polite">—</span></div>
 <div class="reward-filters">
@@ -90,6 +71,27 @@
 </div>
 </main>
 </div>
+<button type="button" id="openVoteCalc" class="vote-calc-launch" aria-controls="voteCalcPanel" aria-expanded="false"><span aria-hidden="true" class="vote-calc-launch-mark">∑</span> 재화 환산기</button>
+<div id="voteCalcBackdrop" class="vote-calc-backdrop" hidden></div>
+<aside id="voteCalcPanel" class="vote-calc-panel" aria-labelledby="voteCalcTitle" tabindex="-1" hidden>
+ <div class="vote-calc-head"><div class="vote-calc-toolbar"><h2 id="voteCalcTitle">투표 재화 환산기</h2><button type="button" class="vote-calc-close" id="closeVoteCalc" aria-label="계산기 닫기">×</button></div><p id="calcContext">직접 입력 · 앱별 수집값 선택 가능</p></div>
+ <div class="vote-calc-fields">
+  <label class="calc-wide">투표수 <input id="calcVotes" type="number" inputmode="numeric" min="0" step="1" value="413776"></label>
+  <label>재화명 <input id="calcCurrency" type="text" maxlength="40" value="루미"></label>
+  <label>1표당 필요 재화 <input id="calcUnits" type="number" inputmode="decimal" min="0" step="any" value="10"></label>
+  <label>구매 상품 재화 수 <input id="calcBundleUnits" type="number" inputmode="decimal" min="0.001" step="any" value="100"></label>
+  <label>상품 가격 (원) <input id="calcBundlePrice" type="number" inputmode="decimal" min="0" step="any" value="1100"></label>
+  <label class="calc-wide">유료 사용 비율 가정 (%) <input id="calcPaidShare" type="number" inputmode="decimal" min="0" max="100" step="1" value="100"></label>
+ </div>
+ <div class="vote-calc-results">
+  <div class="calc-small-row"><span>필요 재화 합계</span><strong id="calcTotalUnits">—</strong></div>
+  <div class="calc-small-row"><span>재화 구매 환산 단가</span><strong id="calcUnitPrice">—</strong></div>
+  <div class="calc-main-result"><span>100% 유료 구매 가정 환산 가치</span><strong id="calcValue">—</strong></div>
+  <div class="calc-small-row"><span>유료 비율 반영 환산 가치</span><strong id="calcPaidValue">—</strong></div>
+ </div>
+ <p id="calcCostStatus" class="calc-caution">기본값은 1표당 10루미, 루미 100개당 1,100원이라는 예시 조건입니다. 공식 투표값으로 확정된 수치가 아닙니다.</p>
+ <p class="calc-caution">실제 매출·수익이 아닙니다. 무료 재화·구매율·할인·환불·수수료 등은 알 수 없습니다.</p>
+</aside>
 <dialog id="rewardDetail" aria-labelledby="detailTitle">
 <button class="close" id="closeDetail" type="button" aria-label="상세 닫기">×</button>
 <div id="detailContent"></div>

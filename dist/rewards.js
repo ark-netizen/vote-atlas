@@ -229,6 +229,27 @@ function durationLabel(b){
  if(/촬영일/.test(b.period_rule||''))return '송출 일수 미확인 · 촬영일만 명시';
  return b.period_rule||'송출·제공 일수 미확인';
 }
+let voteCalcLastFocus = null;
+function openVoteCalc(trigger) {
+ const drawer=$('#voteCalcPanel'),button=$('#openVoteCalc'),backdrop=$('#voteCalcBackdrop');
+ if(drawer.hidden)voteCalcLastFocus=trigger||document.activeElement||button;
+ drawer.hidden=false;
+ backdrop.hidden=false;
+ button.setAttribute('aria-expanded','true');
+ drawer.scrollTop=0;
+ // Only the drawer scrolls; opening it never moves the underlying table/page.
+ $('#calcVotes').focus({preventScroll:true});
+}
+function closeVoteCalc() {
+ const drawer=$('#voteCalcPanel');
+ if(drawer.hidden)return;
+ drawer.hidden=true;
+ $('#voteCalcBackdrop').hidden=true;
+ $('#openVoteCalc').setAttribute('aria-expanded','false');
+ const focusTarget=voteCalcLastFocus?.isConnected?voteCalcLastFocus:$('#openVoteCalc');
+ voteCalcLastFocus=null;
+ focusTarget.focus({preventScroll:true});
+}
 function runCurrencyCalculator(){
  const fields={votes:$('#calcVotes').value,unitsPerVote:$('#calcUnits').value,
    bundleUnits:$('#calcBundleUnits').value,bundlePrice:$('#calcBundlePrice').value,
@@ -263,7 +284,7 @@ function selectCostForCalc(series,option,context){
  $('#calcCostStatus').textContent='1표당 재화: '+VoteAtlasCost.display({options:[option]})+
     ' · '+context+' · 유료 상품 단가 별도 확인 필요. 무료·유료 재화 구성과 실제 매출은 미확인입니다.';
  runCurrencyCalculator();
- document.querySelector('.vote-calc-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+ openVoteCalc();
 }
 function renderCostRuleTable(){
  const body=$('#costRuleRows');body.replaceChildren();
@@ -410,7 +431,7 @@ function renderRows(){
     button.type='button';
     button.onclick=event=>{
       event.stopPropagation();
-      const selected=select.value===''?null:options[Number(select.value)];
+      const selected=options[Number(select.value)];
       if(!selected){
         $('#calcCostStatus').textContent='표당 소모 재화가 여러 종류이므로 이 표에서 재화 종류를 선택해 주세요.';
         select.focus();return;
@@ -602,6 +623,15 @@ for(const id of ['calcVotes','calcCurrency','calcUnits','calcBundleUnits','calcB
   runCurrencyCalculator();
  });
 }
+$('#openVoteCalc').addEventListener('click',event=>openVoteCalc(event.currentTarget));
+$('#closeVoteCalc').addEventListener('click',closeVoteCalc);
+$('#voteCalcBackdrop').addEventListener('click',closeVoteCalc);
+document.addEventListener('keydown',event=>{
+ if(event.key==='Escape' && !$('#voteCalcPanel').hidden && !$('#rewardDetail').open){
+  event.preventDefault();
+  closeVoteCalc();
+ }
+});
 runCurrencyCalculator();
 $('#reload').onclick = load;
 $('#closeDetail').onclick = () => $('#rewardDetail').close();
