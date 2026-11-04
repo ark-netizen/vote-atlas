@@ -47,7 +47,6 @@ public final class IdolChampService extends AccessibilityService {
     private final Set<String> listPages = new HashSet<>();
     private final LinkedHashSet<String> detailText = new LinkedHashSet<>();
     private boolean running = false;
-    private boolean manual = false;
     private boolean ocrPending = false;
     private TextRecognizer recognizer;
     private long startedAt = 0;
@@ -59,29 +58,17 @@ public final class IdolChampService extends AccessibilityService {
     private static final int MAX_MINUTES = 15;
     private Runnable pendingTick;
 
-    public static void requestScheduledRun(Context context) {
-        context.getSharedPreferences("settings", Context.MODE_PRIVATE).edit()
-                .putBoolean("run_requested", true).apply();
-        IdolChampService active = instance.get();
-        if (active == null) {
-            DailyScheduler.status(context, "접근성 수집 서비스가 실행 중이지 않습니다. 설정에서 서비스 권한을 확인해 주세요.");
-            DailyScheduler.retry(context, 30);
-            return;
-        }
-        active.handler.post(() -> active.start(false));
-    }
-
     public static boolean requestManualRun(Context context) {
         IdolChampService active = instance.get();
         if (active == null) return false;
-        active.handler.post(() -> active.start(true));
+        active.handler.post(active::start);
         return true;
     }
 
     public static boolean requestStop(Context context) {
         IdolChampService active = instance.get();
         if (active == null) return false;
-        active.handler.post(() -> active.finish("사용자 요청으로 수집 중지", false));
+        active.handler.post(() -> active.finish("사용자 요청으로 수집 중지"));
         return true;
     }
 
@@ -89,30 +76,13 @@ public final class IdolChampService extends AccessibilityService {
         super.onServiceConnected();
         instance = new WeakReference<>(this);
         recognizer = TextRecognition.getClient(new KoreanTextRecognizerOptions.Builder().build());
-        if (getSharedPreferences("settings", MODE_PRIVATE).getBoolean("run_requested", false)) {
-            handler.postDelayed(() -> start(false), 900);
-        }
     }
 
     @Override public void onAccessibilityEvent(AccessibilityEvent event) {
         if (event == null || event.getPackageName() == null) return;
         if (!PACKAGE.contentEquals(event.getPackageName())) return;
         if (running && pendingTick == null && !ocrPending) queueTick(1100);
-        // User-driven reading remains available while the collector is switched on.
-        if (!running && getSharedPreferences("settings", MODE_PRIVATE).getBoolean("active", false)) {
-            handler.removeCallbacks(userCapture);
-            handler.postDelayed(userCapture, 700);
-        }
     }
-
-    private final Runnable userCapture = () -> {
-        AccessibilityNodeInfo root = getRootInActiveWindow();
-        if (!correctPackage(root)) return;
-        JSONObject parsed = PollParser.parse(allText(root));
-        if (parsed == null) return;
-        ObservationStore.add(this, parsed);
-        if (DailyScheduler.onWifi(this)) UploadClient.upload(this, false, null);
-    };
 
     private boolean ready() {
         if (!DailyScheduler.onWifi(this)) {
@@ -128,32 +98,23 @@ public final class IdolChampService extends AccessibilityService {
         return true;
     }
 
-    private void start(boolean manualRequest) {
+    private void start() {
         if (running) return;
-        if (!manualRequest && !getSharedPreferences("settings", MODE_PRIVATE)
-                .getBoolean("daily_enabled", false)) return;
-        if (!ready()) {
-            getSharedPreferences("settings", MODE_PRIVATE).edit().putBoolean("run_requested", false).apply();
-            if (!manualRequest) DailyScheduler.retry(this, 30);
-            return;
-        }
-        manual = manualRequest;
+        if (!ready()) return;
         running = true;
         stage = Stage.LAUNCH;
         visited.clear(); listPages.clear(); detailText.clear(); ocrPending = false;
         actions = details = listSwipes = detailSwipes = captured = 0;
         startedAt = android.os.SystemClock.elapsedRealtime();
-        getSharedPreferences("settings", MODE_PRIVATE).edit()
-                .putBoolean("run_requested", false).apply();
         DailyScheduler.status(this, "아이돌챔프 실행 및 안전한 투표 목록 탐색 시작");
         Intent launch = getPackageManager().getLaunchIntentForPackage(PACKAGE);
-        if (launch == null) { finish("아이돌챔프 미설치", false); return; }
+        if (launch == null) { finish("아이돌챔프 미설치"); return; }
         try {
             launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
             startActivity(launch);
             queueTick(3000);
         } catch (Exception ex) {
-            finish("Android가 백그라운드에서 아이돌챔프 실행을 차단했습니다.", false);
+            finish("Android가 백그라운드에서 아이돌챔프 실행을 차단했습니다.");
         }
     }
 
@@ -168,15 +129,20 @@ public final class IdolChampService extends AccessibilityService {
 
     private void process() {
         if (!running) return;
-        if (!ready()) { finish("화면 또는 Wi-Fi 상태로 자동 탐색 중지", false); return; }
+        if (!ready()) { finish("화면 또는 Wi-Fi 상태로 자동 탐색 중지"); return; }
         if (actions >= MAX_ACTIONS || details >= MAX_DETAILS ||
                 android.os.SystemClock.elapsedRealtime() - startedAt > MAX_MINUTES * 60_000L) {
-            finish("안전한 탐색 한도 도달", true);
+            finish("안전한 탐색 한도 도달");
             return;
         }
         AccessibilityNodeInfo root = getRootInActiveWindow();
         if (!correctPackage(root)) {
-            finish("아이돌챔프 화면을 읽지 못했습니다. 직접 열려 있는지 확인해 주세요.", false);
+            if (stage == Stage.LAUNCH && actions < 8) {
+                actions++;
+                queueTick(1000);
+                return;
+            }
+            finish("아이돌챔프 화면에서 벗어나 수집 중지");
             return;
         }
         if (stage == Stage.LAUNCH) {
@@ -194,7 +160,7 @@ public final class IdolChampService extends AccessibilityService {
         if (stage == Stage.DETAIL) {
             detailText.addAll(allText(root));
             if (detailText.size() > 480) {
-                finish("예상하지 못한 상세 화면 데이터", false);
+                finish("예상하지 못한 상세 화면 데이터");
                 return;
             }
             // Each visible page is read before scrolling, including text rendered as images.
@@ -208,7 +174,7 @@ public final class IdolChampService extends AccessibilityService {
         String page = String.join("|", allText(root));
         String signature = Integer.toHexString(page.hashCode());
         if (listPages.size() > MAX_LIST_SWIPES + MAX_DETAILS + 5) {
-            finish("목록 중복 탐색 한도", true); return;
+            finish("목록 중복 탐색 한도"); return;
         }
         List<AccessibilityNodeInfo> cards = new ArrayList<>();
         findCards(root, cards, 0);
@@ -221,50 +187,41 @@ public final class IdolChampService extends AccessibilityService {
             if (safeClick(card)) {
                 details++; actions++; stage = Stage.DETAIL;
                 detailSwipes = 0;
+                detailText.clear();
+                List<String> cardText = new ArrayList<>();
+                subtree(card, 0, cardText);
+                detailText.addAll(cardText);
                 queueTick(1800);
                 return;
             }
         }
         if (listSwipes >= MAX_LIST_SWIPES || !listPages.add(signature)) {
-            finish("목록 탐색 종료", true); return;
+            finish("목록 탐색 종료"); return;
         }
         if (scroll(root)) {
             listSwipes++; actions++; queueTick(1700);
         } else {
-            finish("목록을 더 스크롤할 수 없음", true);
+            finish("목록을 더 스크롤할 수 없음");
         }
     }
 
-    private void finish(String reason, boolean scanned) {
+    private void finish(String reason) {
+        if (!running) return;
         running = false;
         ocrPending = false;
         stage = Stage.IDLE;
         if (pendingTick != null) { handler.removeCallbacks(pendingTick); pendingTick = null; }
         String message = reason + " · 상세 " + details + "건 방문 · 투표 " + captured + "건 기록";
         DailyScheduler.status(this, message);
-        if (DailyScheduler.onWifi(this)) UploadClient.upload(this, true, null);
-        if (!manual) {
-            // A zero-record day is *not* a successful collection.
-            if (scanned && captured > 0) {
-                getSharedPreferences("settings", MODE_PRIVATE).edit()
-                    .putString("last_complete_day", DailyPlan.today(System.currentTimeMillis())).apply();
-            } else {
-                int retry = getSharedPreferences("settings", MODE_PRIVATE).getInt("daily_retries", 0);
-                String day = DailyPlan.today(System.currentTimeMillis());
-                String last = getSharedPreferences("settings", MODE_PRIVATE).getString("retry_day", "");
-                if (!day.equals(last)) retry = 0;
-                getSharedPreferences("settings", MODE_PRIVATE).edit()
-                    .putString("retry_day", day).putInt("daily_retries", retry + 1).apply();
-                if (retry < 2) DailyScheduler.retry(this, 60);
-            }
-        }
+        if (DailyScheduler.onWifi(this) && ObservationStore.pending(this).length() > 0)
+            UploadClient.upload(this, true, result -> DailyScheduler.status(this, message + " · 전송: " + result));
     }
 
     private void continueDetail() {
         if (!running || stage != Stage.DETAIL) return;
         AccessibilityNodeInfo root = getRootInActiveWindow();
         if (!correctPackage(root)) {
-            finish("아이돌챔프 화면에서 벗어나 탐색 중지", false);
+            finish("아이돌챔프 화면에서 벗어나 탐색 중지");
             return;
         }
         if (detailSwipes < MAX_DETAIL_SWIPES && scroll(root)) {
@@ -434,10 +391,10 @@ public final class IdolChampService extends AccessibilityService {
         if (v.length() >= 2 && v.length() <= 200) out.add(v);
     }
 
-    @Override public void onInterrupt() { finish("서비스 중단", false); }
+    @Override public void onInterrupt() { finish("서비스 중단"); }
     @Override public void onDestroy() {
         super.onDestroy();
-        if (running) finish("서비스 종료", false);
+        if (running) finish("서비스 종료");
         if (recognizer != null) recognizer.close();
         instance = new WeakReference<>(null);
     }
