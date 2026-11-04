@@ -1,8 +1,8 @@
 {
   "file": "vote-atlas-idolchamp-s10e.apk",
-  "bytes": 46889078,
-  "sha256": "6da74e211408d098905e520e7a0d9328a3280ab9a0106adf24472fc8b838798e",
-  "built_at": "2026-11-04T04:09:04+00:00",
+  "bytes": 46889254,
+  "sha256": "6baf3c9a942d1705bfd94254e72505994c1a3049bd5656b4005f5d200b1ce804",
+  "built_at": "2026-11-04T04:25:03+00:00",
   "qa": {
     "android_unit_tests": "passed",
     "apk_zip_integrity": "passed",
