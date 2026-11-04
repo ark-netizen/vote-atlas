@@ -14,6 +14,7 @@ const calendarToday = new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',yea
 let awardCalYear = Number(calendarToday.slice(0,4));
 let awardCalMonth = Number(calendarToday.slice(5,7))-1;
 let awardSelectedDate = calendarToday;
+let awardSelectedEventId = null;
 const dateShort = value => {
  const parts=String(value||'').split('-');
  return parts.length===3 ? Number(parts[1])+'월 '+Number(parts[2])+'일' : '날짜 미확인';
@@ -25,7 +26,7 @@ function renderDayAgenda(items){
  const root=$('#awardDayAgenda');root.replaceChildren();
  const todayItems=items.filter(x=>awardsCalendar.onDay(x,awardSelectedDate)).sort((a,b)=>{
   const priority={ceremony:0,milestone:1,vote:2};
-  return priority[a.kind]-priority[b.kind]||a.award_name.localeCompare(b.award_name,'ko');
+  return Number(b.id===awardSelectedEventId)-Number(a.id===awardSelectedEventId)||priority[a.kind]-priority[b.kind]||a.award_name.localeCompare(b.award_name,'ko');
  });
  $('#awardDayTitle').textContent=awardSelectedDate.replaceAll('-','.')+' · '+todayItems.length+'건';
  if(!todayItems.length){
@@ -33,7 +34,7 @@ function renderDayAgenda(items){
   return;
  }
  for(const item of todayItems){
-  const card=textNode('article','award-schedule-entry '+item.kind);
+  const card=textNode('article','award-schedule-entry '+item.kind+(item.id===awardSelectedEventId?' selected-event':''));
   card.append(textNode('span','schedule-tag',scheduleKindLabel(item.kind)));
   card.append(textNode('strong','',item.award_name));
   card.append(textNode('p','',item.title+(item.platform?' · '+item.platform:'')));
@@ -61,6 +62,7 @@ function renderMonthAgenda(items){
   button.append(content,textNode('span','month-item-date',scheduleSpan(item)));
   button.onclick=()=>{
    awardSelectedDate = item.start_date<first?first:item.start_date;
+   awardSelectedEventId = item.id;
    renderAwardsCalendar();
    $('#awardDayTitle').scrollIntoView({behavior:'smooth',block:'nearest'});
   };
@@ -79,29 +81,53 @@ function renderAwardsCalendar(){
  $('#calendarTotal').textContent='이달 '+monthItems.length+'건 · 개최/투표 일정을 각각 집계';
  const grid=$('#awardCalendarGrid');grid.replaceChildren();
  const visibleMonth=awardCalYear+'-'+String(awardCalMonth+1).padStart(2,'0');
- for(const day of awardsCalendar.monthDays(awardCalYear,awardCalMonth)){
-  const inMonth=day.slice(0,7)===visibleMonth;
-  const dayItems=inMonth?schedules.filter(x=>awardsCalendar.onDay(x,day)):[];
-  const cell=textNode('div','award-date-cell'+(inMonth?'':' out-month')+(day===calendarToday?' today':'')+(day===awardSelectedDate?' selected':''));
-  cell.setAttribute('role','gridcell');
-  const button=textNode('button','award-date-button');
-  button.type='button';button.setAttribute('aria-pressed',day===awardSelectedDate?'true':'false');
-  button.setAttribute('aria-label',day+' · 등록 일정 '+dayItems.length+'건');
-  button.append(textNode('span','cal-day-num',Number(day.slice(8,10))));
-  for(const item of dayItems.slice(0,3)){
-    const mini=textNode('span','cal-mini-event '+item.kind, (item.kind==='ceremony'?'시상식 ':item.kind==='milestone'?'시작 ':'투표 ')+item.award_name);
-    mini.title=item.award_name+' · '+item.title+(item.platform?' ('+item.platform+')':'');
-    button.append(mini);
+ const weeks=awardsCalendar.layoutMonthBars(schedules,awardCalYear,awardCalMonth);
+ for(const week of weeks){
+  const row=textNode('div','award-calendar-week');
+  row.setAttribute('role','row');
+  row.style.gridTemplateRows='34px repeat('+Math.max(week.laneCount,1)+', 28px)';
+  for(const [index,day] of week.dates.entries()){
+   const inMonth=day.slice(0,7)===visibleMonth;
+   const count=inMonth?schedules.filter(x=>awardsCalendar.onDay(x,day)).length:0;
+   const cell=textNode('div','award-date-cell'+(inMonth?'':' out-month')+(day===calendarToday?' today':'')+(day===awardSelectedDate?' selected':''));
+   cell.style.gridColumn=String(index+1);
+   cell.style.gridRow='1 / -1';
+   cell.setAttribute('role','gridcell');
+   const button=textNode('button','award-date-button');
+   button.type='button';
+   button.setAttribute('aria-pressed',day===awardSelectedDate?'true':'false');
+   button.setAttribute('aria-label',day+' · 등록 일정 '+count+'건');
+   button.append(textNode('span','cal-day-num',Number(day.slice(8,10))));
+   button.onclick=()=>{
+    if(!inMonth){awardCalYear=Number(day.slice(0,4));awardCalMonth=Number(day.slice(5,7))-1;}
+    awardSelectedDate=day;
+    awardSelectedEventId=null;
+    renderAwardsCalendar();
+   };
+   cell.append(button);row.append(cell);
   }
-  if(dayItems.length>3)button.append(textNode('span','cal-more','+'+(dayItems.length-3)+'개 더'));
-  button.onclick=()=>{
-   if(!inMonth){
-    awardCalYear=Number(day.slice(0,4));awardCalMonth=Number(day.slice(5,7))-1;
-   }
-   awardSelectedDate=day;
-   renderAwardsCalendar();
-  };
-  cell.append(button);grid.append(cell);
+  for(const segment of week.segments){
+   const item=segment.item;
+   const bar=textNode('button','award-range-bar '+item.kind+
+     (segment.continuesBefore?' continues-before':'')+
+     (segment.continuesAfter?' continues-after':'')+
+     (item.id===awardSelectedEventId?' selected-event':''));
+   bar.type='button';
+   bar.style.gridColumn=(segment.first+1)+' / '+(segment.last+2);
+   bar.style.gridRow=String(segment.lane+2);
+   const label=item.award_name+(item.kind==='vote'?' · '+item.title:item.kind==='milestone'?' · 투표 시작':'');
+   bar.append(textNode('span','award-range-text',label));
+   bar.title=item.award_name+' · '+item.title+(item.platform?' · '+item.platform:'')+' · '+scheduleSpan(item);
+   bar.setAttribute('aria-label',bar.title);
+   bar.onclick=()=>{
+    awardSelectedDate=segment.firstDate;
+    awardSelectedEventId=item.id;
+    renderAwardsCalendar();
+    $('#awardDayTitle').scrollIntoView({behavior:'smooth',block:'nearest'});
+   };
+   row.append(bar);
+  }
+  grid.append(row);
  }
  renderDayAgenda(schedules);
  renderMonthAgenda(monthItems);
@@ -114,6 +140,7 @@ function moveAwardMonth(direction){
  const next=awardsCalendar.filteredItems(awardsCalendar.buildSchedule(records.awards),$('#calendarKind').value)
    .filter(x=>awardsCalendar.overlapsMonth(x,awardCalYear,awardCalMonth));
  awardSelectedDate=next.length?(next[0].start_date<start?start:next[0].start_date):start;
+ awardSelectedEventId=null;
  renderAwardsCalendar();
 }
 
@@ -204,6 +231,7 @@ $('#todayAwardMonth').addEventListener('click',()=>{
  awardCalYear=Number(calendarToday.slice(0,4));
  awardCalMonth=Number(calendarToday.slice(5,7))-1;
  awardSelectedDate=calendarToday;
+ awardSelectedEventId=null;
  renderAwardsCalendar();
 });
 $('#calendarKind').addEventListener('change',renderAwardsCalendar);

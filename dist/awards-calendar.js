@@ -68,5 +68,71 @@
     if (kind === 'vote') return items.filter(x => x.kind === 'vote' || x.kind === 'milestone');
     return items;
   }
-  return {isDate,monthKey,monthDays,buildSchedule,onDay,overlapsMonth,filteredItems};
+
+  // Place one continuous range bar across adjacent dates within each week.
+  // Keep ongoing events on the same lane across week boundaries whenever possible.
+  function layoutMonthBars(items, year, month) {
+    const days = monthDays(year, month);
+    const monthStart = monthKey(year, month, 1);
+    const monthEnd = monthKey(year, month + 1, 0);
+    const valid = (Array.isArray(items) ? items : []).filter(item =>
+      item && item.id && isDate(item.start_date) && isDate(item.end_date) &&
+      item.start_date <= item.end_date &&
+      item.start_date <= monthEnd && item.end_date >= monthStart
+    );
+    const weeks = [];
+    let previousLanes = new Map();
+    for (let offset = 0; offset < days.length; offset += 7) {
+      const dates = days.slice(offset, offset + 7);
+      const weekStart = dates[0], weekEnd = dates[6];
+      const active = valid.filter(item =>
+        item.start_date <= weekEnd && item.end_date >= weekStart
+      ).map(item => {
+        const firstDate = [item.start_date, weekStart, monthStart].sort().at(-1);
+        const lastDate = [item.end_date, weekEnd, monthEnd].sort()[0];
+        return {item, firstDate, lastDate,
+          first: dates.indexOf(firstDate), last: dates.indexOf(lastDate)};
+      }).filter(entry => entry.first >= 0 && entry.last >= entry.first);
+      // Carry-over ranges are assigned first so their lanes don't jump
+      // when a different award starts in the next week.
+      active.sort((a, b) => {
+        const previousA = previousLanes.has(a.item.id), previousB = previousLanes.has(b.item.id);
+        if (previousA !== previousB) return previousA ? -1 : 1;
+        if (previousA && previousB) return previousLanes.get(a.item.id) - previousLanes.get(b.item.id);
+        return a.first - b.first ||
+          b.last - a.last ||
+          a.item.start_date.localeCompare(b.item.start_date) ||
+          String(a.item.id).localeCompare(String(b.item.id));
+      });
+      const occupied = new Map(), nextLanes = new Map(), segments = [];
+      for (const entry of active) {
+        const free = lane => {
+          const taken = occupied.get(lane) || new Set();
+          for (let day = entry.first; day <= entry.last; day++) {
+            if (taken.has(day)) return false;
+          }
+          return true;
+        };
+        let lane = previousLanes.get(entry.item.id);
+        if (lane === undefined || !free(lane)) {
+          lane = 0;
+          while (!free(lane)) lane++;
+        }
+        if (!occupied.has(lane)) occupied.set(lane, new Set());
+        for (let day = entry.first; day <= entry.last; day++) occupied.get(lane).add(day);
+        nextLanes.set(entry.item.id, lane);
+        segments.push({
+          item:entry.item, lane, first:entry.first, last:entry.last,
+          firstDate:entry.firstDate, lastDate:entry.lastDate,
+          continuesBefore:entry.item.start_date < entry.firstDate,
+          continuesAfter:entry.item.end_date > entry.lastDate
+        });
+      }
+      segments.sort((a,b) => a.lane - b.lane || a.first - b.first || a.item.id.localeCompare(b.item.id));
+      weeks.push({dates,segments,laneCount:Math.max(0,...segments.map(s => s.lane + 1))});
+      previousLanes = nextLanes;
+    }
+    return weeks;
+  }
+  return {isDate,monthKey,monthDays,buildSchedule,onDay,overlapsMonth,filteredItems,layoutMonthBars};
 });
