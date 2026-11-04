@@ -25,8 +25,17 @@ function safeURL(s){try{const u=new URL(s);return u.protocol==='https:'||u.proto
 function empty(title,body){return `<div class="empty-state"><span class="empty-icon">▦</span><div><h3>${esc(title)}</h3><p>${esc(body)}</p></div></div>`}
 function toast(s){$('#toast').textContent=s;$('#toast').style.display='block';setTimeout(()=>$('#toast').style.display='none',3000)}
 async function load(){
- try{const r=await fetch('https://raw.githubusercontent.com/ark-netizen/vote-atlas/main/dist/data/events.json?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error();const next=await r.json();if(!Array.isArray(next.events)||!Array.isArray(next.sources))throw Error();data=next;if(!$('#appFilters').children.length)enabled=new Set(data.sources.map(s=>s.id));render();}
- catch{$('#statusBanner').innerHTML='<span class="status-symbol">!</span><div><b>데이터를 불러오지 못했습니다</b><p>잠시 후 새로고침해 주세요. 이전에 표시된 데이터를 유지합니다.</p></div>';toast('데이터 연결 실패');}
+ try{
+  const result=await VoteAtlasDataLoader.loadEvents();
+  const next=result.data;
+  data=next;
+  if(!$('#appFilters').children.length)enabled=new Set(data.sources.map(s=>s.id));
+  render();
+ }catch(error){
+  console.error('Vote Atlas voting-data load failed:',error);
+  $('#statusBanner').innerHTML='<span class="status-symbol">!</span><div><b>데이터를 불러오지 못했습니다</b><p>사이트 데이터와 원본 데이터 연결을 확인할 수 없습니다. 새로고침으로 다시 시도해 주세요. 기존 데이터가 있으면 유지합니다.</p></div>';
+  toast('데이터 연결 실패');
+ }
 }
 function render(){
  $('#appFilters').innerHTML=data.sources.map(s=>`<label class="app-filter" style="--c:${s.color}"><input type="checkbox" value="${esc(s.id)}" ${enabled.has(s.id)?'checked':''}><span>${esc(s.name)}</span><span class="app-number">${data.events.filter(e=>e.app===s.id).length}</span></label>`).join('');
