@@ -4,6 +4,8 @@ on:
     branches: [main]
     paths:
       - 'scripts/web_collect.py'
+      - 'scripts/vote_history.py'
+      - 'tests/test_vote_history.py'
       - 'scripts/official_web_rules.py'
       - 'scripts/reward_parse.py'
       - 'scripts/official_sns_collect.py'
@@ -27,18 +29,22 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: python -m pip install -r requirements.txt
       - run: python -m unittest discover -s tests -v
       - run: python scripts/web_collect.py
+      - name: Preserve daily vote history from verified observations
+        run: python scripts/vote_history.py --backfill-git
       - name: Save collection and source status
         if: always()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add dist/data/events.json
+          git add dist/data/events.json dist/data/vote_history.json
           if ! git diff --cached --quiet; then
             git commit -m 'Update official voting data'
             git pull --rebase origin main
@@ -48,5 +54,7 @@ jobs:
         if: always()
         with:
           name: collected-voting-data
-          path: dist/data/events.json
+          path: |
+            dist/data/events.json
+            dist/data/vote_history.json
           retention-days: 7
