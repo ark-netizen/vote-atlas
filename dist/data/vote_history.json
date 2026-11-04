@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "updated_at": null,
+  "notes": "Dated observed vote totals only; historical points will be recovered from actual repository commits.",
+  "observations": []
+}

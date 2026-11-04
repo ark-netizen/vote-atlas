@@ -27,7 +27,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Check dashboard JavaScript
-        run: node --check dist/overview.js && node --check dist/app.js && node --check dist/rankings.js && node --check dist/calendar-utils.js && node --check dist/rewards.js && node --check dist/reward-groups.js && node --check dist/reward-series.js && node --check dist/awards.js && python3 -m unittest discover -s tests -p 'test_awards.py' -v && node --test tests/test_rankings.cjs tests/test_calendar.cjs tests/test_rewards_ui.cjs tests/test_reward_groups.cjs tests/test_reward_series.cjs
+        run: node --check dist/overview.js && node --check dist/app.js && node --check dist/rankings.js && node --check dist/calendar-utils.js && node --check dist/rewards.js && node --check dist/reward-groups.js && node --check dist/reward-series.js && node --check dist/vote-trends.js && node --check dist/trend-dashboard.js && node --check dist/awards.js && python3 -m unittest discover -s tests -p 'test_awards.py' -v && node --test tests/test_rankings.cjs tests/test_calendar.cjs tests/test_rewards_ui.cjs tests/test_reward_groups.cjs tests/test_reward_series.cjs tests/test_vote_trends.cjs
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload dashboard

@@ -31,6 +31,7 @@ async function load(){
    $('#app').firstChild.value='all';
    for(const s of data.sources){for(const selector of ['#app','#artistApp']){const o=doc('option','',s.name);o.value=s.id;$(selector).append(o)}}
    refresh();
+   VoteAtlasTrendDashboard.load(records);
   }catch(e){showError('수집 데이터를 불러오지 못했습니다. 저장소 상태를 확인해 주세요.')}
 }
 function refresh(){
