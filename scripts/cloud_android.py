@@ -45,7 +45,7 @@ def acquire(app, report):
     signer = sorted((sdk / 'build-tools').glob('*/apksigner'))[-1]
     aapt = signer.parent / 'aapt'
     package = app['package']
-    url = 'https://d.apkpure.com/b/XAPK/' + package + '?version=latest'
+    url = 'https://d.apkpure.net/b/XAPK/' + package + '?version=latest'
     report['apk_source'] = url
     report['publisher_identity_verified'] = False
     report['apk_source_note'] = 'Third-party mirror; valid APK signatures do not independently prove publisher identity.'
