@@ -35,7 +35,8 @@ def snapshot(event, updated_at):
         return None
     local = observed.astimezone(KST)
     day = local.date().isoformat()
-    if not (event.get("start", "") <= day <= event.get("end", "")):
+    if not (isinstance(event.get("start"), str) and isinstance(event.get("end"), str)
+            and event["start"] <= day <= event["end"]):
         return None
     candidates = event.get("candidates")
     if not isinstance(candidates, list) or not candidates:
@@ -43,6 +44,8 @@ def snapshot(event, updated_at):
     amounts = []
     roster = []
     for candidate in candidates:
+        if not isinstance(candidate, dict):
+            return None
         value = candidate.get("votes")
         if isinstance(value, bool) or (isinstance(value, str) and not value.isdigit()):
             return None
