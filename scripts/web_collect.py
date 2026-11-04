@@ -9,6 +9,7 @@ import time
 import urllib.request
 from bs4 import BeautifulSoup
 from reward_parse import extract_entries
+from vote_cost import official_vote_cost
 from official_web_rules import collect_official_rules
 from official_sns_collect import collect_official_sns
 
@@ -83,12 +84,25 @@ def collect_muniverse(previous):
             seen.add(code)
             old = previous.get('muniverse-' + code)
             # Refresh recent results for corrections; older published results remain archived.
-            if old and old.get('winner') and moment(item['endTime']) < NOW - dt.timedelta(days=7):
+            if old and old.get('winner') and moment(item['endTime']) < NOW - dt.timedelta(days=7) and old.get('vote_cost'):
                 events.append(old)
                 continue
             try:
                 detail = json.loads(get('https://api.muniverse.io/api/v2/votes/' + code))
-                events.append(muniverse_event(detail))
+                event = muniverse_event(detail)
+                # Explicit official public vote page, not a guess from a similar program.
+                # Once a vote has confirmed cost evidence, preserve it on subsequent scrapes.
+                if old and old.get('vote_cost'):
+                    event['vote_cost'] = old['vote_cost']
+                else:
+                    try:
+                        vote_url = 'https://www.muniverse.io/votes/' + code
+                        observed_cost = official_vote_cost(get(vote_url), vote_url, STAMP)
+                        if observed_cost:
+                            event['vote_cost'] = observed_cost
+                    except Exception as cost_exc:
+                        errors.append(f'{code} cost: {type(cost_exc).__name__}: {cost_exc}')
+                events.append(event)
             except Exception as exc:
                 errors.append(f'{code}: {type(exc).__name__}: {exc}')
         if not listing.get('next'):
