@@ -4,6 +4,9 @@ on:
     branches: [main]
     paths:
       - 'scripts/web_collect.py'
+      - 'scripts/vote_cost.py'
+      - 'scripts/vote_cost_rules.py'
+      - 'tests/test_vote_cost.py'
       - 'scripts/vote_history.py'
       - 'tests/test_vote_history.py'
       - 'scripts/official_web_rules.py'
