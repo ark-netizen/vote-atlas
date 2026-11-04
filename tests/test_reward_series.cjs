@@ -44,3 +44,39 @@ test('different monthly editions are not mixed with unrelated event programs',()
  round('b','BIRTHDAY M PICK 2026년 11월',350)];
  assert.equal(series.build(rounds,[],rewards).length,2);
 });
+
+test('1st, incorrect 2st, 3rd, 4th share one program if the reward remains the same',()=>{
+ const titles=[
+  '[결선투표] it’s Live BEST PICK - 1st',
+  '[결선투표] it’s Live BEST PICK - 2st',
+  '[결선투표] it’s Live BEST PICK - 3rd',
+  '[예선투표] it’s Live BEST PICK - 1st',
+  '[예선투표] it’s Live BEST PICK - 2nd',
+  '[예선투표] it’s Live BEST PICK - 3st',
+  '[예선투표] it’s Live BEST PICK - 4th'
+ ];
+ const events=titles.map((title,i)=>({
+  id:String(i),app:'muniverse',title,start:'2026-08-01',end:'2026-08-06',
+  reward:i===6?'최종 1위 아티스트에게 트로피 수여\n→ it’s Live BEST PICK 실물 트로피 수여':'최종 1위 아티스트에게 트로피 수여',
+  candidates:[{name:'가수',rank:1,votes:i+1}],
+  lineup_complete:true,source_url:'https://www.muniverse.io/votes/test'+i
+ }));
+ const result=series.build(events,[],rewards);
+ assert.equal(result.length,1);
+ assert.equal(result[0].title,'it’s Live BEST PICK');
+ assert.equal(result[0].rounds.length,7);
+ assert.equal(result[0].benefits.length,1);
+ assert.equal(result[0].benefits[0].condition,'1위');
+ assert.deepEqual(result[0].stageMetrics.map(s=>[s.name,s.rounds]),[['결선',3],['예선',4]]);
+});
+test('same program but truly changed benefit or duration stays separate',()=>{
+ const events=[
+  {...round('a','[결선투표] it’s Live BEST PICK - 1st',200),reward:'최종 1위 아티스트에게 트로피 수여',reward_lines:[]},
+  {...round('b','[결선투표] it’s Live BEST PICK - 2nd',300),reward:'최종 1위 강남역 전광판 광고 7일간 송출',reward_lines:[]}
+ ];
+ const result=series.build(events,[],rewards);
+ assert.equal(result.length,2);
+ assert.equal(result[0].rounds.length,1);
+ assert.ok(result.every(row=>row.rewardVariantLabel));
+ assert.ok(result.some(row=>row.benefits[0].period_rule==='7일간'));
+});

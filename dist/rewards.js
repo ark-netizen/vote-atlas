@@ -253,8 +253,11 @@ function renderRows(){
   const name=element('td','');
   const app=element('span','app-name',appOf(series.app).name);
   app.style.color=appOf(series.app).color||'#507b5e';
-  name.append(app,element('br'),element('strong','reward-type-title',series.title));
+  name.append(app,element('br'),element('strong','reward-type-title',series.title+(series.rewardVariantLabel?' · '+series.rewardVariantLabel:'')));
   name.append(element('div','reward-occurrences',series.rounds.length+'개 회차 / 혜택 '+series.benefits.length+'종'));
+  if(series.stageMetrics?.length>1){
+    name.append(element('small','series-small',series.stageMetrics.map(s=>s.name+' '+s.rounds+'회').join(' · ')));
+  }
   tr.append(name);
   const count=element('td','');
   count.append(element('strong','',series.rounds.length+'개 회차'));
@@ -291,6 +294,11 @@ function renderRows(){
   const metrics=element('td','');
   metrics.append(element('strong','series-votes',formatMetric(series.metrics.meanVotes,'표')));
   metrics.append(element('small','series-small','회차별 수집 득표 평균 · 전체 후보 기준'));
+  if(series.stageMetrics?.length>1){
+    for(const stage of series.stageMetrics){
+      metrics.append(element('small','series-small',stage.name+' '+stage.rounds+'회 평균: '+formatMetric(stage.metrics.meanVotes,'표')));
+    }
+  }
   if(series.metrics.partialVoteRounds){
    metrics.append(element('small','series-small','부분 후보 공개 '+series.metrics.partialVoteRounds+'회차 · 평균 제외'));
   }
@@ -307,14 +315,15 @@ function renderRows(){
 function openSeries(series){
  const root=$('#detailContent');root.replaceChildren();
  root.append(element('span','tag',appOf(series.app).name));
- const heading=element('h2','',series.title);heading.id='detailTitle';root.append(heading);
+ const heading=element('h2','',series.title+(series.rewardVariantLabel?' · '+series.rewardVariantLabel:''));heading.id='detailTitle';root.append(heading);
  const dl=element('dl','detail-grid');
  for(const [label,value] of [
   ['투표 시리즈',series.title],['확인된 회차',series.rounds.length+'회'],
   ['평균 득표 (수집 시점)',formatMetric(series.metrics.meanVotes,'표')],
   ['득표 평균 산출 회차',series.metrics.knownVoteRounds+'회 / 전체 후보 득표 확인된 회차만'],
   ['부분 후보 회차',series.metrics.partialVoteRounds+'회 · 평균 계산에서 제외'],
-  ['평균 실제 참여자 수',series.metrics.meanParticipants===null?'미확인 · 득표 수와 중복 참여자는 구분 불가':formatMetric(series.metrics.meanParticipants,'명')]
+  ['평균 실제 참여자 수',series.metrics.meanParticipants===null?'미확인 · 득표 수와 중복 참여자는 구분 불가':formatMetric(series.metrics.meanParticipants,'명')],
+  ...(series.stageMetrics?.length>1?series.stageMetrics.map(s=>[s.name+' 평균 득표',formatMetric(s.metrics.meanVotes,'표')+' · '+s.rounds+'회차 (유효 득표 '+s.metrics.knownVoteRounds+'회차)']):[])
  ])addDetailRow(dl,label,value);
  root.append(dl);
  root.append(element('p','detail-caution',series.metrics.scope));
