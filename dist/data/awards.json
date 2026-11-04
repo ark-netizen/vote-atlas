@@ -1162,7 +1162,8 @@
           "url": "https://welcon.kocca.kr/en/info/business/1955636"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "group": "서브컬처"
     },
     {
       "id": "korea-game-awards-2026",
@@ -1207,7 +1208,8 @@
           "url": "https://www.gametoc.co.kr/news/articleView.html?idxno=112493"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "group": "서브컬처"
     },
     {
       "id": "ridi-awards-2025",
@@ -1252,7 +1254,8 @@
           "url": "https://ridicorp.com/story/ridi_awards_2025-2/"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "group": "서브컬처"
     },
     {
       "id": "bucheon-comics-awards-2026",
@@ -1282,7 +1285,8 @@
           "url": "https://kmas.or.kr/webzine/event/2023080015"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "group": "서브컬처"
     },
     {
       "id": "biaf-2026",
@@ -1312,7 +1316,8 @@
           "url": "https://filmfreeway.com/biaf"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "group": "서브컬처"
     },
     {
       "id": "indie-anifest-2026",
@@ -1342,7 +1347,8 @@
           "url": "https://ianifest.org/sub/notice.asp?URL=&idx=1&num=3920&page=1&page_code=3"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "group": "서브컬처"
     },
     {
       "id": "contents-animation-2026",
@@ -1368,7 +1374,8 @@
           "url": "https://www.culture.go.kr/portal/cltBnf/cltSup/view.do?indRow=120&menuNo=200104&rcrtSn=226791&viewTp=3"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "group": "서브컬처"
     },
     {
       "id": "contents-character-2026",
@@ -1394,7 +1401,8 @@
           "url": "https://www.culture.go.kr/portal/cltBnf/cltSup/view.do?indRow=20&menuNo=200104&rcrtSn=226790&viewTp=3"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "group": "서브컬처"
     },
     {
       "id": "crunchyroll-anime-2026",
@@ -1445,7 +1453,8 @@
           "url": "https://www.youtube.com/watch?v=AU0M2vbEWjM"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "group": "서브컬처"
     },
     {
       "id": "anime-trending-2026",
@@ -1481,7 +1490,8 @@
           "url": "https://www.anitrendz.com/news/2026/03/22/12th-anime-trending-awards-winners-2"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "group": "서브컬처"
     },
     {
       "id": "golden-joystick-2026",
@@ -1534,7 +1544,8 @@
           "url": "https://www.gamesradar.com/goldenjoystickawards/"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "group": "서브컬처"
     },
     {
       "id": "the-game-awards-2026",
@@ -1584,7 +1595,8 @@
           "url": "https://thegameawards.com/news/tga-returns-december-10-2026"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "group": "서브컬처"
     },
     {
       "id": "gyeonggi-cosplay-2026",
@@ -1614,7 +1626,8 @@
           "url": "https://www.bucheon.go.kr/site/homepage/menu/viewMenu?menuid=148006001010001005"
         }
       ],
-      "checked_at": "2026-11-04"
+      "checked_at": "2026-11-04",
+      "group": "서브컬처"
     }
   ],
   "discovered": [],
