@@ -116,3 +116,24 @@ test('awards legend markers have isolated classes and a fixed 8px size', () => {
  assert.match(css,/width:8px!important/);
  assert.match(css,/height:8px!important/);
 });
+
+test('award group filter supports all, subculture only and exclusion',()=>{
+ const records=[
+  {id:'webtoon',group:'서브컬처'},
+  {id:'music',category:'음악'},
+  {id:'novel',group:'서브컬처'},
+  {id:'drama',group:null}
+ ];
+ const pick=group=>records.filter(a=>calendar.matchesAwardGroup(a,group)).map(a=>a.id);
+ assert.deepEqual(pick('all'),['webtoon','music','novel','drama']);
+ assert.deepEqual(pick('subculture'),['webtoon','novel']);
+ assert.deepEqual(pick('exclude-subculture'),['music','drama']);
+});
+test('subculture exclusion is available in both calendar and award directory',()=>{
+ const fs=require('node:fs'),path=require('node:path');
+ const html=fs.readFileSync(path.join(__dirname,'../dist/awards.html'),'utf8');
+ const js=fs.readFileSync(path.join(__dirname,'../dist/awards.js'),'utf8');
+ assert.match(html,/<option value="exclude-subculture">서브컬처 제외<\/option>/);
+ assert.match(js,/\['exclude-subculture','서브컬처 제외'\]/);
+ assert.ok((js.match(/matchesAwardGroup\(/g)||[]).length>=3);
+});

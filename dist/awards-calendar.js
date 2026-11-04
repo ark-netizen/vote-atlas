@@ -134,5 +134,12 @@
     }
     return weeks;
   }
-  return {isDate,monthKey,monthDays,buildSchedule,onDay,overlapsMonth,filteredItems,layoutMonthBars};
+  // One definition is shared by the calendar and awards directory.
+  // Legacy records without group are treated as regular, not subculture.
+  function matchesAwardGroup(award, group) {
+    if (group === 'subculture') return award?.group === '서브컬처';
+    if (group === 'exclude-subculture') return award?.group !== '서브컬처';
+    return true;
+  }
+  return {isDate,monthKey,monthDays,buildSchedule,onDay,overlapsMonth,filteredItems,layoutMonthBars,matchesAwardGroup};
 });
