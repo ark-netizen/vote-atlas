@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated_at": "2026-11-04T02:02:35.899Z",
+  "updated_at": "2026-11-05T16:24:48+09:00",
   "description": "시상식·팬투표 원문 근거 포함. 2026 최신 확인을 우선하되 2025 사례는 회차 2025로 명시. 개최일과 온라인 투표 기간을 구별하며, 2026 투표처 미확인 행사는 확정으로 처리하지 않음.",
   "awards": [
     {
@@ -1630,14 +1630,135 @@
       "group": "서브컬처"
     }
   ],
-  "discovered": [],
-  "latest_news": [],
+  "discovered": [
+    {
+      "id": "df4fe600969e1b250d",
+      "title": "카카오게임즈 ‘로스트 아이돌론스’, 플레이스테이션 시상식 최종 후보",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9OZGtOVmMzZHB1NUpKN1h0enVhb0taZ0lzVEdxVTk5MGJYMVRfdkVZTlpkNTdzMWk5NWZKMGUybUJhdkNmcHpjY2Jhb29iTW9sMFFQdldqd08yYVhUTFZGMnRuOTQ5QUVZdmJTNjNEYXZ5VXlT0gF0QVVfeXFMT05ka05WYzNkcHU1Sko3WHR6dWFvS1pnSXNUR3FVOTkwYlgxVF92RVlOWmQ1N3MxaTk1ZkowZTJtQmF2Q2ZwemNjYmFvb2JNb2wwUVB2V2p3TzJhWFRMVkYydG45NDlBRVl2YlM2M0RhdnlVeVM?oc=5",
+      "published": "2026-11-03T17:08:17+09:00",
+      "platform_mentions": [],
+      "award_name": "플레이스테이션 시상식"
+    },
+    {
+      "id": "218f28b578c55234c2",
+      "title": "'버추얼 아이콘 어워즈' 본선 팬투표 개막",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBIMWc3ZWkxWGRxdW5SdXZrRUU3MEwyMUl4ODVtSFlxNnY3dU5hU3MxMjRMUlZaNUpTYklLcklNQjhFaHhUS3RXSzBFV0Zia1R5MWg5V0VxTHFWYUVHb3dCelV3Wjk?oc=5",
+      "published": "2026-11-03T14:43:58+09:00",
+      "platform_mentions": [],
+      "award_name": "버추얼 아이콘 어워즈"
+    },
+    {
+      "id": "879ec35418765b8670",
+      "title": "‘제1회 버추얼 아이콘 어워즈’ 본투표 2일 개막… 버추얼 아이돌·스트리머 6개 상 팬 투표 진행",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBQZGZGZ0VXenZ6bUpBaTFlSmk2NGlxY2FEZFRRMFdYY2RHdTVFRnBLdFpBdGNXU2VocUhzWlpQOGVhUl96VmVyNXRPaS1BN0N6LXc2Tm85SW1Ca0k4RWJoZkFnNnVmWnBkMk9F?oc=5",
+      "published": "2026-11-02T20:16:00+09:00",
+      "platform_mentions": [],
+      "award_name": "제1회 버추얼 아이콘 어워즈"
+    },
+    {
+      "id": "6844c9f4c1ec0a54f6",
+      "title": "“편견 넘어 빛나는 재능”…‘제 1회 버추얼 아이콘 어워즈’ 내년 2월 27~28일 개최",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBGVjMyNl9TZV8zcUwydFA0bXBqMm16eWdpZlZ6Z3kwWmdsbmtFemZ1S1dJalNsMEZfSGlrdWVjZ3loYy0yT2lzdVU0RnJtQ3hrOTBtUmIxSDJsQjR3VjJyeGJOcXI?oc=5",
+      "published": "2026-11-02T12:02:03+09:00",
+      "platform_mentions": [],
+      "award_name": "제 1회 버추얼 아이콘 어워즈"
+    },
+    {
+      "id": "c32c66c4dc2ce345eb",
+      "title": "펄어비스 '붉은사막 인핸스드', PS 어워즈 후보..콘솔서도 게임성 인정",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9ZcEl2dmxic1BBdEFRTzhmZ2xDWjlkcjZmVVUzQmtaM2FGLUxITG9ZNy1DS1VDZjE0MFFUdUZfbm9JMG9PTXo1NExMUldIeG5ReUpoZXBfbG9SNlhueE1yUG1KTXE?oc=5",
+      "published": "2026-11-02T10:53:27+09:00",
+      "platform_mentions": [],
+      "award_name": "PS 어워즈"
+    },
+    {
+      "id": "1467fc93954a206eb0",
+      "title": "국내 첫 버추얼 전문 시상식 열린다…‘버추얼 아이콘 어워즈’ 내년 2월 개최",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1wUWZsbEFkWVJUVW5SNHQwVnVHaDhWNDFvZHpSUU9CMUZJdE5mOEw5ZTJvb0dTa01vRkpodE13eVMzYU0wai1pc0Z3WmdDR1paWnJqNW5lWmR3QnBMb3fSAWNBVV95cUxPaTE4SzV2Z3lUQWFDbnVLZ1ZLNWRxRWxGVWNpRTl1U0duTmFuWmVHSnl5U3BFYTBDVHNiQlY2NzlKYnlqeGNNUlljNTlsYjRxVVF6ZFVzWUhqRDJIbzJFT0lOcmM?oc=5",
+      "published": "2026-11-02T10:38:00+09:00",
+      "platform_mentions": [],
+      "award_name": "버추얼 아이콘 어워즈"
+    },
+    {
+      "id": "816a649e4523da9208",
+      "title": "KOVHIA, 내년 2월 첫 '버추얼 아이콘 어워즈' 개최…플레이브·이세돌 등 투표 시작",
+      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE01SUE0bTJPaEcxRVhhMjhJNVYtMmZ1RlkybkRjNmRHSGEwUXZzeGVmSzhYQmZvWmhXWFFCMF9KRWJ6UzZjSEctSmZlTGFORERVaHVjWnZRaFZiYkozWXE0dlZVRzJfZw?oc=5",
+      "published": "2026-11-02T09:17:10+09:00",
+      "platform_mentions": [],
+      "award_name": "버추얼 아이콘 어워즈"
+    }
+  ],
+  "latest_news": [
+    {
+      "id": "07a7221877dc9875be",
+      "title": "인기상 누가? 유픽 ‘2026 에이판 스타 어워즈’ 공식 팬 투표 플랫폼 선정",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5vUmFzRFE0eFhfSUplSjQtN2YxNjRUVmVfM09SdFFCYnliX2RnVUloQ3dKcVE5Vld5c01vcmxkUnBtdDNybDUxUDlUdjROWHZ3aTZsbXZ4dU9NTG9VOF9Na21NUmJQbzFk?oc=5",
+      "published": "2026-11-03T16:27:09+09:00",
+      "platform_mentions": [
+        "유픽"
+      ],
+      "award_id": "apan-star",
+      "award_name": "APAN 스타 어워즈"
+    },
+    {
+      "id": "d776ce2739e8325b68",
+      "title": "게임대상 표심 잡기 나선 게임사들…대국민 투표 참여 독려",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE42X3h2Tnd6SzZ4NmxuTldydG9jVlJHRWg4bW5xTUtET2pDSnloS2ltdEhsb092UlJNbmpxVG96QzRFaW1kX01tY1cxRTBGMS1naEU4eW1B?oc=5",
+      "published": "2026-11-03T11:01:10+09:00",
+      "platform_mentions": [],
+      "award_id": "korea-game-awards-2026",
+      "award_name": "대한민국 게임대상"
+    },
+    {
+      "id": "9b4aa1cb468a90517c",
+      "title": "'2026 에이판 스타 어워즈' 공식 투표 플랫폼에 유픽 선정…6일 예선 시작",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOZXdmLTVUWmpaZi1lWVJaWmlWR25HTUYwNWM4MW9WbWxCR2ZBajhYTUpzZFBMbzFlZUJNMWtwQ25jOGR3YVduWUJlYk1uQTdOb2NhOWNscUFjd3FpOFh5UkFBTkQ3YVgtT3ZReGk5N3pVYmV2Q05OOVRNV200ZEtPWlNn?oc=5",
+      "published": "2026-11-03T10:54:17+09:00",
+      "platform_mentions": [
+        "유픽"
+      ],
+      "award_id": "apan-star",
+      "award_name": "APAN 스타 어워즈"
+    },
+    {
+      "id": "483b8c24d7a5f17a98",
+      "title": "2026 에이판 스타 어워즈, '총 6개 부문' 투표 진행…12월 23일 개최 ('2026 에이판 스타 어워즈')",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9YSFZJVzNKbW1FU1VjVGhNV2JfZjRybUwzMm1uUzZWY0Q2cU51WjdiZ01TTi1UcTcyMlRIaGh4SkNsZGVVYnQ4RS0wNVBuSEZUdUhCbHdvLTBCU1dvNmhfNUo2RQ?oc=5",
+      "published": "2026-11-03T09:20:07+09:00",
+      "platform_mentions": [],
+      "award_id": "apan-star",
+      "award_name": "APAN 스타 어워즈"
+    },
+    {
+      "id": "25b26abaa0b4c1254d",
+      "title": "유픽, ‘2026 에이판 스타 어워즈’ 공식 팬 투표 플랫폼 선정…6일 예선 시작",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5OX2VKQVgyLWNud3Q0VmNBSWhtaXlFdS1TOFoycTZBZ28xLXhTU29RZE9xU3B5cmZ0ODRSa1l0bnB1UVY5T2YwOUZ0MFM0N0I0cGVkNlFtWEs?oc=5",
+      "published": "2026-11-03T09:13:32+09:00",
+      "platform_mentions": [
+        "유픽"
+      ],
+      "award_id": "apan-star",
+      "award_name": "APAN 스타 어워즈"
+    },
+    {
+      "id": "a9708dabfb2879f07c",
+      "title": "유픽, ‘2026 에이판 스타 어워즈’ 공식 팬 투표 앱 선정",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9DdjU0N0RFcjBuZ1hBbjlhZThUWUw2OTZWYTlqNVdTdUpBbUJEVV9QLS1CcjVpc3l1U0pDSkRHa05ES25DN2c2VmVkTHlIdTh6YzNUSkptdjJ3eHU1dG5IenFWNWYwcXUwTXBpclBQWUZxZw?oc=5",
+      "published": "2026-11-03T08:45:50+09:00",
+      "platform_mentions": [
+        "유픽"
+      ],
+      "award_id": "apan-star",
+      "award_name": "APAN 스타 어워즈"
+    }
+  ],
   "discovery_status": {
-    "last_checked_at": null,
-    "feed_status": "아직 일일 자동 검색이 실행되지 않았습니다.",
-    "feeds_checked": 0,
-    "items_scanned": 0,
-    "new_candidates": 0
+    "last_checked_at": "2026-11-05T16:24:48+09:00",
+    "feed_status": "정상",
+    "feeds_checked": 16,
+    "items_scanned": 17,
+    "new_candidates": 7,
+    "errors": []
   },
   "schedule_notes": "국내 행사는 KST, 해외 행사는 event_timezone 및 개별 note에 명시한 현지 날짜 또는 KST 환산일 기준. 확인되지 않은 시상식·투표일은 추정하지 않음.",
   "subculture_scope": [
