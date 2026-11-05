@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-05T16:01:50+09:00",
+  "updated_at": "2026-11-06T05:07:09+09:00",
   "notes": "Daily latest observed candidate-vote sum. Missing dates not backfilled. Scope may be partial. No unique participant count.",
   "observations": [
     {
@@ -1358,6 +1358,102 @@
       "scope": "all_candidates",
       "observed_at": "2026-11-05T16:01:50+09:00",
       "source_url": "https://www.muniverse.io/votes/ee314cd6-d1cc-4433-a870-5ee83f215658"
+    },
+    {
+      "date": "2026-11-06",
+      "event_id": "fannstar-44cc63324b1b2581",
+      "app": "fannstar",
+      "title": "그룹 · 11월 1주차",
+      "total_votes": 1713017,
+      "candidate_count": 31,
+      "roster_hash": "7ef5b4b2618552bc3a4f",
+      "scope": "visible_candidates",
+      "observed_at": "2026-11-06T05:07:09+09:00",
+      "source_url": "https://fannstar.tf.co.kr/rank/view/star"
+    },
+    {
+      "date": "2026-11-06",
+      "event_id": "fannstar-54e830206b7a6e20",
+      "app": "fannstar",
+      "title": "뉴스타 · 11월 1주차",
+      "total_votes": 130650,
+      "candidate_count": 20,
+      "roster_hash": "943e5bee438300132f70",
+      "scope": "visible_candidates",
+      "observed_at": "2026-11-06T05:07:09+09:00",
+      "source_url": "https://fannstar.tf.co.kr/rank/view/newgen"
+    },
+    {
+      "date": "2026-11-06",
+      "event_id": "fannstar-72e4fab6cb6ee3e9",
+      "app": "fannstar",
+      "title": "생일 · 12월",
+      "total_votes": 8601399,
+      "candidate_count": 37,
+      "roster_hash": "3b0c438f9e634d0c2818",
+      "scope": "visible_candidates",
+      "observed_at": "2026-11-06T05:07:09+09:00",
+      "source_url": "https://fannstar.tf.co.kr/rank/view/adsbirth"
+    },
+    {
+      "date": "2026-11-06",
+      "event_id": "fannstar-9467a5d4518b4e3e",
+      "app": "fannstar",
+      "title": "글로벌 핫스타 · 11월 1주차",
+      "total_votes": 1252769,
+      "candidate_count": 24,
+      "roster_hash": "88093ad51ef96c7c658a",
+      "scope": "visible_candidates",
+      "observed_at": "2026-11-06T05:07:09+09:00",
+      "source_url": "https://fannstar.tf.co.kr/rank/view/topic?mode=global"
+    },
+    {
+      "date": "2026-11-06",
+      "event_id": "fannstar-b18005067f3ecff2",
+      "app": "fannstar",
+      "title": "女스타랭킹 · 11월 1주차",
+      "total_votes": 86947,
+      "candidate_count": 15,
+      "roster_hash": "69d115c1d06cf6bbeb0b",
+      "scope": "visible_candidates",
+      "observed_at": "2026-11-06T05:07:09+09:00",
+      "source_url": "https://fannstar.tf.co.kr/rank/view/topic?mode=women"
+    },
+    {
+      "date": "2026-11-06",
+      "event_id": "fannstar-c9a0d5f344f571ad",
+      "app": "fannstar",
+      "title": "트로트 · 11월 1주차",
+      "total_votes": 1600632,
+      "candidate_count": 29,
+      "roster_hash": "e9ecc0a9637f6d237e3b",
+      "scope": "visible_candidates",
+      "observed_at": "2026-11-06T05:07:09+09:00",
+      "source_url": "https://fannstar.tf.co.kr/rank/view/class"
+    },
+    {
+      "date": "2026-11-06",
+      "event_id": "fannstar-da74b89a370d1630",
+      "app": "fannstar",
+      "title": "위클리뮤직 · 11월 1주차",
+      "total_votes": 632047,
+      "candidate_count": 31,
+      "roster_hash": "2f63aee28aedbe85c06b",
+      "scope": "visible_candidates",
+      "observed_at": "2026-11-06T05:07:09+09:00",
+      "source_url": "https://fannstar.tf.co.kr/rank/view/wmusic"
+    },
+    {
+      "date": "2026-11-06",
+      "event_id": "fannstar-ee2f08399a6dc242",
+      "app": "fannstar",
+      "title": "솔로 · 11월 1주차",
+      "total_votes": 9553983,
+      "candidate_count": 45,
+      "roster_hash": "7d6c38daaec80bb4c107",
+      "scope": "visible_candidates",
+      "observed_at": "2026-11-06T05:07:09+09:00",
+      "source_url": "https://fannstar.tf.co.kr/rank/view/each"
     }
   ],
   "git_backfill_done": true,
