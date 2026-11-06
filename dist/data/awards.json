@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated_at": "2026-11-05T16:24:48+09:00",
+  "updated_at": "2026-11-06T16:24:45+09:00",
   "description": "시상식·팬투표 원문 근거 포함. 2026 최신 확인을 우선하되 2025 사례는 회차 2025로 명시. 개최일과 온라인 투표 기간을 구별하며, 2026 투표처 미확인 행사는 확정으로 처리하지 않음.",
   "awards": [
     {
@@ -1632,6 +1632,30 @@
   ],
   "discovered": [
     {
+      "id": "b94d1ada9f02ab6543",
+      "title": "로프트아일랜드, ‘혁신의숲 어워즈’ 3차 투표 1위…사업 성과·성장 가능성 주목",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE53cWlZdjcxTURHSGh5VEstdWJlQnBoR3o0dXBHU3pzZ2JUVFczMF9ZcFlwaVpQSGZXWEJDdVhyUXhfdTUyb0hQSmJlU1NPei1QRXE5azBwVW5BZVFtRXFKSWVWNNIBZ0FVX3lxTFBOWlRSekFfeGFaZXhxN2xWdGNaMDgtWThqT0hLWklpOEoyRHpMNFdIb1hHaUhzY1VjSGRyNl9TOGV5bFREbE1LUkt2aDc0R2lINzN4ajRWMW16SXdZMEpfb1VfLXRRTG8?oc=5",
+      "published": "2026-11-04T08:00:00+09:00",
+      "platform_mentions": [],
+      "award_name": "혁신의숲 어워즈"
+    },
+    {
+      "id": "30eceb793bd8b0d725",
+      "title": "카카오게임즈 ‘로스트 아이돌론스’, 플레이스테이션 어워즈 후보 선정[오늘의 게임 업데이트]",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9EcDU3TW5tYlJoUHpIakd4c0FsT3ZtWUZhazJLaTdON3Q5akhfcEdyN2ctTmxxOWlsZUl2dVA3MURqYUpuYy1mZTZfNzlsVkdJWXRB0gFTQVVfeXFMT0RwNTdNbm1iUmhQekhqR3hzQWxPdm1ZRmFrMktpN043dDlqSF9wR3I3Zy1ObHE5aWxlSXZ1UDcxRGphSm5jLWZlNl83OWxWR0lZdEE?oc=5",
+      "published": "2026-11-04T05:00:00+09:00",
+      "platform_mentions": [],
+      "award_name": "플레이스테이션 어워즈"
+    },
+    {
+      "id": "a5c811c551ec1cd14d",
+      "title": "카카오게임즈 '로스트 아이돌론스: 베일 오브 더 위치', 플레이스테이션 어워즈 최종 후보",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE50NHR2TFBRUGtqcHJJdThWU0Z5SDFEWE9SZDdUN1pOYzZSbEhkVGhRZm42el9vNWY3d1ZkN0ppT3dDdFg0TGRXOGtIcEpJZWtrWEZwa2NPYWVhbEgwOVpQSWF2UHJhaWlSdGROeQ?oc=5",
+      "published": "2026-11-03T17:14:28+09:00",
+      "platform_mentions": [],
+      "award_name": "플레이스테이션 어워즈"
+    },
+    {
       "id": "df4fe600969e1b250d",
       "title": "카카오게임즈 ‘로스트 아이돌론스’, 플레이스테이션 시상식 최종 후보",
       "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9OZGtOVmMzZHB1NUpKN1h0enVhb0taZ0lzVEdxVTk5MGJYMVRfdkVZTlpkNTdzMWk5NWZKMGUybUJhdkNmcHpjY2Jhb29iTW9sMFFQdldqd08yYVhUTFZGMnRuOTQ5QUVZdmJTNjNEYXZ5VXlT0gF0QVVfeXFMT05ka05WYzNkcHU1Sko3WHR6dWFvS1pnSXNUR3FVOTkwYlgxVF92RVlOWmQ1N3MxaTk1ZkowZTJtQmF2Q2ZwemNjYmFvb2JNb2wwUVB2V2p3TzJhWFRMVkYydG45NDlBRVl2YlM2M0RhdnlVeVM?oc=5",
@@ -1689,6 +1713,37 @@
     }
   ],
   "latest_news": [
+    {
+      "id": "37cf6351ecff1789e0",
+      "title": "‘2026 다날 에이판 스타 어워즈’, 유픽서 공식 투표 시작…영광의 주인공은 누구?",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBRSlJLV1lRM3VZaFlidUR3ODRmclAyM1llTk9uRTBNWjdCeEM4aUtTQ3gtYkVHMkUyLWd3eWZKbEJGdUx4Q0I4eWxtdFZndEVqVUhablN2V1NTckU1?oc=5",
+      "published": "2026-11-06T09:41:59+09:00",
+      "platform_mentions": [
+        "유픽"
+      ],
+      "award_id": "apan-star",
+      "award_name": "APAN 스타 어워즈"
+    },
+    {
+      "id": "c845407465f6c447ff",
+      "title": "글로벌 팬덤 플랫폼 유픽, ‘2026 다날 에이판 스타 어워즈’ 인기상 6개 부문 투표 시작",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE54ZlBaYjZ3RkctWnctMkREZ1FJUEp6T2V1TE0yRWNial9HTTBmYldCWE5ERjNtLU52MWltTzhmZWRwc3BfSnVteG45cTFvNk5ialBJSzZsLUcxYWdvODZBbGJ4cHVzaVFjdzEzUEZURWNuZw?oc=5",
+      "published": "2026-11-06T08:53:36+09:00",
+      "platform_mentions": [
+        "유픽"
+      ],
+      "award_id": "apan-star",
+      "award_name": "APAN 스타 어워즈"
+    },
+    {
+      "id": "e2ed02d5606fabcc76",
+      "title": "‘2026 마마 어워즈’, 팬스초이스 투표…BTS·하츠투하츠 1위→에반·엔시티 드림 공동 4위",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBfWGVSTnIyZmtDNzVGNURpZDNPTE40VmdfTTZsTXJrTnA0RFp6MmN0b3djZFZESXZkaFNoNW1LWWljeE5FOU4wSDd3QjZZY2cxYXZ2MFFoRW1NcUN4amVNYVcxSDRTNjl0bktUSmx3ODZoZw?oc=5",
+      "published": "2026-11-05T22:09:33+09:00",
+      "platform_mentions": [],
+      "award_id": "mama",
+      "award_name": "MAMA AWARDS"
+    },
     {
       "id": "07a7221877dc9875be",
       "title": "인기상 누가? 유픽 ‘2026 에이판 스타 어워즈’ 공식 팬 투표 플랫폼 선정",
@@ -1753,11 +1808,11 @@
     }
   ],
   "discovery_status": {
-    "last_checked_at": "2026-11-05T16:24:48+09:00",
+    "last_checked_at": "2026-11-06T16:24:45+09:00",
     "feed_status": "정상",
     "feeds_checked": 16,
-    "items_scanned": 17,
-    "new_candidates": 7,
+    "items_scanned": 13,
+    "new_candidates": 3,
     "errors": []
   },
   "schedule_notes": "국내 행사는 KST, 해외 행사는 event_timezone 및 개별 note에 명시한 현지 날짜 또는 KST 환산일 기준. 확인되지 않은 시상식·투표일은 추정하지 않음.",
