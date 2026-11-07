@@ -14,47 +14,47 @@
         {
           "rank": 1,
           "name": "진 (JIN)",
-          "votes": 4933141
+          "votes": 5252906
         },
         {
           "rank": 2,
           "name": "V (뷔)",
-          "votes": 4709883
+          "votes": 5017292
         },
         {
           "rank": 3,
           "name": "조슈아",
-          "votes": 243320
+          "votes": 266419
         },
         {
           "rank": 4,
           "name": "황치열",
-          "votes": 208061
+          "votes": 212061
         },
         {
           "rank": 5,
           "name": "수빈",
-          "votes": 76270
+          "votes": 81820
         },
         {
           "rank": 6,
           "name": "김준민",
-          "votes": 47845
+          "votes": 53870
         },
         {
           "rank": 7,
           "name": "명재현",
-          "votes": 31360
+          "votes": 31695
         },
         {
           "rank": 8,
           "name": "카즈타",
-          "votes": 20646
+          "votes": 22497
         },
         {
           "rank": 9,
           "name": "도영",
-          "votes": 19208
+          "votes": 19383
         },
         {
           "rank": 10,
@@ -74,17 +74,17 @@
         {
           "rank": 13,
           "name": "박효신",
-          "votes": 2290
+          "votes": 2545
         },
         {
           "rank": 14,
-          "name": "성훈",
-          "votes": 2000
+          "name": "니키",
+          "votes": 2108
         },
         {
           "rank": 15,
-          "name": "니키",
-          "votes": 1983
+          "name": "성훈",
+          "votes": 2050
         },
         {
           "rank": 16,
@@ -94,20 +94,20 @@
         {
           "rank": 17,
           "name": "한승우",
-          "votes": 375
+          "votes": 450
         },
         {
           "rank": 18,
           "name": "강유찬",
-          "votes": 350
+          "votes": 425
         },
         {
-          "rank": 18,
+          "rank": 19,
           "name": "온유 (ONEW)",
           "votes": 350
         },
         {
-          "rank": 18,
+          "rank": 19,
           "name": "민호",
           "votes": 350
         },
@@ -203,9 +203,9 @@
       "reward_entries": [],
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/adsbirth",
-      "collected_at": "2026-11-07T04:33:30+09:00",
+      "collected_at": "2026-11-07T15:14:17+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "12월 생일투표 11.02 ~ 11.23\n1 진 (JIN) 4,933,141표\n2 V (뷔) 4,709,883표\n3 조슈아 243,320표\n4 황치열 208,061표\n5 수빈 76,270표\n6 김준민 47,845표\n7 명재현 31,360표\n8 카즈타 20,646표\n9 도영 19,208표\n10 안신 10,500표\n11 켄신 3,345표\n12 강다니엘 3,310표\n13 박효신 2,290표\n14 성훈 2,000표\n15 니키 1,983표\n16 김지웅 575표\n17 한승우 375표\n18 강유찬 350표\n18 온유 (ONEW) 350표\n18 민호 350표\n21 키야 300표\n22 사나 5표\n23 배이 0표\n23 김성민 0표\n23 다이스케 0표\n23 이션 0표\n23 나태주 0표\n23 에릭 0표\n23 문별 0표\n23 에이나 (A-NA) 0표\n23 영케이 0표\n23 신원 0표\n23 유나 0표\n23 재찬 0표\n23 김채연 0표\n23 현우 0표\n23 주은 (JUUN) 0표"
+      "evidence": "12월 생일투표 11.02 ~ 11.23\n1 진 (JIN) 5,252,906표\n2 V (뷔) 5,017,292표\n3 조슈아 266,419표\n4 황치열 212,061표\n5 수빈 81,820표\n6 김준민 53,870표\n7 명재현 31,695표\n8 카즈타 22,497표\n9 도영 19,383표\n10 안신 10,500표\n11 켄신 3,345표\n12 강다니엘 3,310표\n13 박효신 2,545표\n14 니키 2,108표\n15 성훈 2,050표\n16 김지웅 575표\n17 한승우 450표\n18 강유찬 425표\n19 온유 (ONEW) 350표\n19 민호 350표\n21 키야 300표\n22 사나 5표\n23 배이 0표\n23 김성민 0표\n23 다이스케 0표\n23 이션 0표\n23 나태주 0표\n23 에릭 0표\n23 문별 0표\n23 에이나 (A-NA) 0표\n23 영케이 0표\n23 신원 0표\n23 유나 0표\n23 재찬 0표\n23 김채연 0표\n23 현우 0표\n23 주은 (JUUN) 0표"
     },
     {
       "id": "muniverse-1ec4d041-2ac7-4dca-8254-b52b5e034e24",
@@ -217,201 +217,201 @@
       "end_at": "2026-11-11T17:00:00+09:00",
       "date_precision": "minute",
       "year_inferred": false,
-      "leader": "라이즈",
+      "leader": "플레이브",
       "winner": null,
       "result_status": "not_final",
       "candidates": [
         {
           "rank": 1,
-          "name": "라이즈",
-          "votes": 10640,
-          "id": 30601
+          "name": "플레이브",
+          "votes": 16622,
+          "id": 30765
         },
         {
           "rank": 2,
-          "name": "플레이브",
-          "votes": 9814,
-          "id": 30765
+          "name": "라이즈",
+          "votes": 15304,
+          "id": 30601
         },
         {
           "rank": 3,
           "name": "베이비몬스터",
-          "votes": 2622,
+          "votes": 3651,
           "id": 30704
         },
         {
           "rank": 4,
           "name": "앤더블",
-          "votes": 2154,
+          "votes": 3569,
           "id": 30879
         },
         {
           "rank": 5,
-          "name": "트레저",
-          "votes": 1445,
-          "id": 30699
+          "name": "투모로우바이투게더",
+          "votes": 1877,
+          "id": 30749
         },
         {
           "rank": 6,
           "name": "투어스",
-          "votes": 1370,
+          "votes": 1610,
           "id": 30899
         },
         {
           "rank": 7,
-          "name": "미야오",
-          "votes": 1012,
-          "id": 30942
+          "name": "트레저",
+          "votes": 1565,
+          "id": 30699
         },
         {
           "rank": 8,
           "name": "리센느",
-          "votes": 872,
+          "votes": 1188,
           "id": 30857
         },
         {
           "rank": 9,
           "name": "알파드라이브원",
-          "votes": 752,
+          "votes": 1027,
           "id": 30926
         },
         {
           "rank": 10,
-          "name": "투모로우바이투게더",
-          "votes": 710,
-          "id": 30749
+          "name": "미야오",
+          "votes": 1022,
+          "id": 30942
         },
         {
           "rank": 11,
+          "name": "세븐틴",
+          "votes": 642,
+          "id": 30721
+        },
+        {
+          "rank": 12,
+          "name": "엔시티 드림",
+          "votes": 615,
+          "id": 30787
+        },
+        {
+          "rank": 13,
+          "name": "에이티즈",
+          "votes": 567,
+          "id": 30999
+        },
+        {
+          "rank": 14,
           "name": "앤팀",
           "votes": 565,
           "id": 30811
         },
         {
-          "rank": 12,
-          "name": "에이티즈",
-          "votes": 547,
-          "id": 30999
-        },
-        {
-          "rank": 13,
-          "name": "세븐틴",
-          "votes": 536,
-          "id": 30721
-        },
-        {
-          "rank": 14,
+          "rank": 15,
           "name": "임영웅",
-          "votes": 470,
+          "votes": 539,
           "id": 30600
         },
         {
-          "rank": 15,
+          "rank": 16,
           "name": "방탄소년단",
-          "votes": 368,
+          "votes": 513,
           "id": 30848
         },
         {
-          "rank": 16,
+          "rank": 17,
+          "name": "에반",
+          "votes": 512,
+          "id": 30722
+        },
+        {
+          "rank": 18,
+          "name": "포레스텔라",
+          "votes": 370,
+          "id": 30589
+        },
+        {
+          "rank": 19,
+          "name": "엔시티 위시",
+          "votes": 356,
+          "id": 30936
+        },
+        {
+          "rank": 20,
+          "name": "스트레이 키즈",
+          "votes": 346,
+          "id": 30882
+        },
+        {
+          "rank": 21,
           "name": "엔믹스",
           "votes": 340,
           "id": 30917
         },
         {
-          "rank": 17,
-          "name": "엔시티 드림",
-          "votes": 313,
-          "id": 30787
-        },
-        {
-          "rank": 18,
+          "rank": 22,
           "name": "니쥬",
           "votes": 310,
           "id": 30872
         },
         {
-          "rank": 19,
-          "name": "에반",
-          "votes": 262,
-          "id": 30722
+          "rank": 23,
+          "name": "아홉",
+          "votes": 305,
+          "id": 30566
         },
         {
-          "rank": 20,
-          "name": "엔시티 위시",
-          "votes": 249,
-          "id": 30936
+          "rank": 24,
+          "name": "엔하이픈",
+          "votes": 266,
+          "id": 30793
         },
         {
-          "rank": 21,
-          "name": "스트레이 키즈",
-          "votes": 235,
-          "id": 30882
-        },
-        {
-          "rank": 22,
+          "rank": 25,
           "name": "보이넥스트도어",
-          "votes": 223,
+          "votes": 238,
           "id": 30985
         },
         {
-          "rank": 23,
+          "rank": 26,
           "name": "샤이니",
           "votes": 200,
           "id": 30832
         },
         {
-          "rank": 24,
+          "rank": 27,
           "name": "에스에프나인",
           "votes": 190,
           "id": 30906
         },
         {
-          "rank": 25,
-          "name": "엔하이픈",
-          "votes": 180,
-          "id": 30793
-        },
-        {
-          "rank": 26,
-          "name": "포레스텔라",
-          "votes": 150,
-          "id": 30589
-        },
-        {
-          "rank": 27,
-          "name": "아홉",
-          "votes": 120,
-          "id": 30566
-        },
-        {
-          "rank": 27,
+          "rank": 28,
           "name": "하데스",
           "votes": 120,
           "id": 30766
         },
         {
           "rank": 29,
+          "name": "빅뱅",
+          "votes": 115,
+          "id": 30648
+        },
+        {
+          "rank": 30,
           "name": "슈퍼주니어",
           "votes": 110,
           "id": 31027
         },
         {
-          "rank": 30,
+          "rank": 31,
           "name": "에이투오 소울",
           "votes": 109,
           "id": 30554
         },
         {
-          "rank": 31,
+          "rank": 32,
           "name": "롱샷",
           "votes": 105,
           "id": 30739
-        },
-        {
-          "rank": 32,
-          "name": "빅뱅",
-          "votes": 95,
-          "id": 30648
         },
         {
           "rank": 33,
@@ -427,2700 +427,2700 @@
         },
         {
           "rank": 35,
+          "name": "아일릿",
+          "votes": 70,
+          "id": 30693
+        },
+        {
+          "rank": 36,
           "name": "인피니트",
           "votes": 65,
           "id": 30834
         },
         {
-          "rank": 36,
+          "rank": 37,
+          "name": "엑스러브",
+          "votes": 50,
+          "id": 30587
+        },
+        {
+          "rank": 38,
           "name": "13파운드",
           "votes": 40,
           "id": 30775
         },
         {
-          "rank": 37,
+          "rank": 38,
+          "name": "넥스지",
+          "votes": 40,
+          "id": 30949
+        },
+        {
+          "rank": 40,
           "name": "르세라핌",
-          "votes": 30,
+          "votes": 31,
           "id": 30756
         },
         {
-          "rank": 37,
+          "rank": 40,
+          "name": "하츠투하츠",
+          "votes": 31,
+          "id": 30795
+        },
+        {
+          "rank": 42,
+          "name": "비투비",
+          "votes": 30,
+          "id": 30617
+        },
+        {
+          "rank": 42,
+          "name": "하츠웨이브",
+          "votes": 30,
+          "id": 30713
+        },
+        {
+          "rank": 42,
           "name": "크래비티",
           "votes": 30,
           "id": 30878
         },
         {
-          "rank": 37,
-          "name": "넥스지",
-          "votes": 30,
-          "id": 30949
-        },
-        {
-          "rank": 40,
+          "rank": 45,
           "name": "있지",
-          "votes": 21,
+          "votes": 22,
           "id": 30914
         },
         {
-          "rank": 41,
+          "rank": 46,
           "name": "엠비오",
           "votes": 20,
           "id": 30989
         },
         {
-          "rank": 42,
+          "rank": 47,
           "name": "코르티스",
           "votes": 11,
           "id": 30844
         },
         {
-          "rank": 43,
+          "rank": 48,
           "name": "스테이씨",
           "votes": 10,
           "id": 30657
         },
         {
-          "rank": 43,
+          "rank": 48,
           "name": "다이몬",
           "votes": 10,
           "id": 30694
         },
         {
-          "rank": 43,
+          "rank": 48,
           "name": "드래곤포니",
           "votes": 10,
           "id": 30804
         },
         {
-          "rank": 43,
+          "rank": 48,
           "name": "프로미스나인",
           "votes": 10,
           "id": 30842
         },
         {
-          "rank": 43,
+          "rank": 48,
           "name": "이스트샤인",
           "votes": 10,
           "id": 30849
         },
         {
-          "rank": 43,
+          "rank": 48,
           "name": "에이머스",
           "votes": 10,
           "id": 30955
         },
         {
-          "rank": 49,
+          "rank": 48,
+          "name": "아이칠린",
+          "votes": 10,
+          "id": 30990
+        },
+        {
+          "rank": 48,
+          "name": "모모랜드",
+          "votes": 10,
+          "id": 31007
+        },
+        {
+          "rank": 56,
           "name": "플레어 유",
-          "votes": 2,
+          "votes": 7,
           "id": 30643
         },
         {
-          "rank": 49,
+          "rank": 57,
+          "name": "아이브",
+          "votes": 3,
+          "id": 30876
+        },
+        {
+          "rank": 58,
+          "name": "에스파",
+          "votes": 2,
+          "id": 30679
+        },
+        {
+          "rank": 58,
           "name": "장한음",
           "votes": 2,
           "id": 30829
         },
         {
-          "rank": 49,
+          "rank": 58,
           "name": "휘브",
           "votes": 2,
           "id": 30968
         },
         {
-          "rank": 52,
-          "name": "하츠투하츠",
+          "rank": 61,
+          "name": "갓 더 비트",
           "votes": 1,
-          "id": 30795
+          "id": 30867
         },
         {
-          "rank": 53,
+          "rank": 61,
+          "name": "세이마이네임",
+          "votes": 1,
+          "id": 30988
+        },
+        {
+          "rank": 63,
           "name": "조용필",
           "votes": 0,
           "id": 30552
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "넬",
           "votes": 0,
           "id": 30553
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이파란",
           "votes": 0,
           "id": 30555
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이슈",
           "votes": 0,
           "id": 30556
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "골든차일드",
           "votes": 0,
           "id": 30557
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "도드리",
           "votes": 0,
           "id": 30558
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "브라이언",
           "votes": 0,
           "id": 30559
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "미아이",
           "votes": 0,
           "id": 30560
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "빅스",
           "votes": 0,
           "id": 30561
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "범진",
           "votes": 0,
           "id": 30562
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "라필루스",
           "votes": 0,
           "id": 30563
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "루시",
           "votes": 0,
           "id": 30564
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "우수현",
           "votes": 0,
           "id": 30565
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "베이비 돈 크라이",
           "votes": 0,
           "id": 30567
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "규리",
           "votes": 0,
           "id": 30568
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "윤준",
           "votes": 0,
           "id": 30569
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "아이들",
           "votes": 0,
           "id": 30570
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "정승환",
           "votes": 0,
           "id": 30571
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "세븐어스",
           "votes": 0,
           "id": 30572
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "송가인",
           "votes": 0,
           "id": 30573
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "주니엘",
           "votes": 0,
           "id": 30574
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "잔나비",
           "votes": 0,
           "id": 30575
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "비에이이173",
           "votes": 0,
           "id": 30576
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "최성윤(Y)",
           "votes": 0,
           "id": 30577
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "데이식스",
           "votes": 0,
           "id": 30578
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "코스모시",
           "votes": 0,
           "id": 30579
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "티엔엑스",
           "votes": 0,
           "id": 30580
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "성민",
           "votes": 0,
           "id": 30581
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "슬레이",
           "votes": 0,
           "id": 30582
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "젠블루",
           "votes": 0,
           "id": 30583
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "영탁",
           "votes": 0,
           "id": 30584
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "영빈",
           "votes": 0,
           "id": 30585
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "제이오원",
           "votes": 0,
           "id": 30586
         },
         {
-          "rank": 53,
-          "name": "엑스러브",
-          "votes": 0,
-          "id": 30587
-        },
-        {
-          "rank": 53,
+          "rank": 63,
           "name": "준케이",
           "votes": 0,
           "id": 30588
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "오드유스",
           "votes": 0,
           "id": 30590
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "유완",
           "votes": 0,
           "id": 30591
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "저스트비",
           "votes": 0,
           "id": 30592
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "티아이오티",
           "votes": 0,
           "id": 30593
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "더보이즈",
           "votes": 0,
           "id": 30594
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "온리원오브",
           "votes": 0,
           "id": 30595
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이하이",
           "votes": 0,
           "id": 30596
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "땡절스",
           "votes": 0,
           "id": 30597
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "힛지스",
           "votes": 0,
           "id": 30598
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "도하",
           "votes": 0,
           "id": 30599
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "원팩트",
           "votes": 0,
           "id": 30602
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "키키",
           "votes": 0,
           "id": 30603
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "비원에이포",
           "votes": 0,
           "id": 30604
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "테종",
           "votes": 0,
           "id": 30605
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "엑신",
           "votes": 0,
           "id": 30606
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "라잇썸",
           "votes": 0,
           "id": 30607
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "신수현",
           "votes": 0,
           "id": 30608
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "비비업",
           "votes": 0,
           "id": 30609
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "데이네버체인지",
           "votes": 0,
           "id": 30610
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "지오디",
           "votes": 0,
           "id": 30611
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "김진환",
           "votes": 0,
           "id": 30612
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "블루화",
           "votes": 0,
           "id": 30613
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "나이비스",
           "votes": 0,
           "id": 30614
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "현아",
           "votes": 0,
           "id": 30615
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "감성단속반",
           "votes": 0,
           "id": 30616
         },
         {
-          "rank": 53,
-          "name": "비투비",
-          "votes": 0,
-          "id": 30617
-        },
-        {
-          "rank": 53,
+          "rank": 63,
           "name": "원 오어 에잇",
           "votes": 0,
           "id": 30618
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "피프티피프티",
           "votes": 0,
           "id": 30619
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "펜타곤",
           "votes": 0,
           "id": 30620
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "장키키",
           "votes": 0,
           "id": 30621
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에이스",
           "votes": 0,
           "id": 30622
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "트라이비",
           "votes": 0,
           "id": 30623
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "선예",
           "votes": 0,
           "id": 30624
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "하현상",
           "votes": 0,
           "id": 30625
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "신장미",
           "votes": 0,
           "id": 30626
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "오위스",
           "votes": 0,
           "id": 30627
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "하티크",
           "votes": 0,
           "id": 30628
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "소녀시대",
           "votes": 0,
           "id": 30629
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "체이서",
           "votes": 0,
           "id": 30630
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이엑스아이디",
           "votes": 0,
           "id": 30631
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "강혜연",
           "votes": 0,
           "id": 30632
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "원위",
           "votes": 0,
           "id": 30633
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "다크비",
           "votes": 0,
           "id": 30634
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "버비",
           "votes": 0,
           "id": 30635
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "강다니엘",
           "votes": 0,
           "id": 30636
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "백아연",
           "votes": 0,
           "id": 30637
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "헤이즈",
           "votes": 0,
           "id": 30638
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "크레이즈엔젤",
           "votes": 0,
           "id": 30639
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이예준",
           "votes": 0,
           "id": 30640
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "김희재",
           "votes": 0,
           "id": 30641
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "러블리즈",
           "votes": 0,
           "id": 30642
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "크랙시",
           "votes": 0,
           "id": 30644
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "카드",
           "votes": 0,
           "id": 30645
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "승한 앤 소울",
           "votes": 0,
           "id": 30646
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "큐티 스트릿",
           "votes": 0,
           "id": 30647
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "시크릿넘버",
           "votes": 0,
           "id": 30649
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "탁송이",
           "votes": 0,
           "id": 30650
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "던",
           "votes": 0,
           "id": 30651
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "레인보우18",
           "votes": 0,
           "id": 30652
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "틴탑",
           "votes": 0,
           "id": 30653
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "키노",
           "votes": 0,
           "id": 30654
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "장범준",
           "votes": 0,
           "id": 30655
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "메이딘",
           "votes": 0,
           "id": 30656
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이지훈",
           "votes": 0,
           "id": 30658
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "미완소년",
           "votes": 0,
           "id": 30659
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "클로즈 유어 아이즈",
           "votes": 0,
           "id": 30660
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "위아이",
           "votes": 0,
           "id": 30661
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "동방신기",
           "votes": 0,
           "id": 30662
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "갓세븐",
           "votes": 0,
           "id": 30663
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "엑스지",
           "votes": 0,
           "id": 30664
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "여자친구",
           "votes": 0,
           "id": 30665
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "김양",
           "votes": 0,
           "id": 30666
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "텐피트",
           "votes": 0,
           "id": 30667
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "한가빈",
           "votes": 0,
           "id": 30668
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "서이브",
           "votes": 0,
           "id": 30669
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이리온",
           "votes": 0,
           "id": 30670
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이준영",
           "votes": 0,
           "id": 30671
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "서경수",
           "votes": 0,
           "id": 30672
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "판타지보이즈",
           "votes": 0,
           "id": 30673
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "박태훈",
           "votes": 0,
           "id": 30674
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "그라나다",
           "votes": 0,
           "id": 30675
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "블링원",
           "votes": 0,
           "id": 30676
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "메이딘 에스",
           "votes": 0,
           "id": 30677
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "엔싸인",
           "votes": 0,
           "id": 30678
         },
         {
-          "rank": 53,
-          "name": "에스파",
-          "votes": 0,
-          "id": 30679
-        },
-        {
-          "rank": 53,
+          "rank": 63,
           "name": "우당탕탕 소녀단",
           "votes": 0,
           "id": 30680
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "수진",
           "votes": 0,
           "id": 30681
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "티오지",
           "votes": 0,
           "id": 30682
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "니나",
           "votes": 0,
           "id": 30683
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "우주소녀",
           "votes": 0,
           "id": 30684
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "킥플립",
           "votes": 0,
           "id": 30685
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "빅나티",
           "votes": 0,
           "id": 30686
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "기리보이",
           "votes": 0,
           "id": 30687
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "비웨이브",
           "votes": 0,
           "id": 30688
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "고스트나인",
           "votes": 0,
           "id": 30689
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "픽시",
           "votes": 0,
           "id": 30691
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "따따블",
           "votes": 0,
           "id": 30692
         },
         {
-          "rank": 53,
-          "name": "아일릿",
-          "votes": 0,
-          "id": 30693
-        },
-        {
-          "rank": 53,
+          "rank": 63,
           "name": "청하",
           "votes": 0,
           "id": 30695
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "맵시",
           "votes": 0,
           "id": 30696
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에이투오 메이",
           "votes": 0,
           "id": 30697
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "씨아이엑스",
           "votes": 0,
           "id": 30698
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "권은비",
           "votes": 0,
           "id": 30700
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "유어즈",
           "votes": 0,
           "id": 30701
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "나율",
           "votes": 0,
           "id": 30702
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "아스트로",
           "votes": 0,
           "id": 30703
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "걸셋",
           "votes": 0,
           "id": 30705
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "하성운",
           "votes": 0,
           "id": 30706
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "드림캐쳐",
           "votes": 0,
           "id": 30707
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "유니스",
           "votes": 0,
           "id": 30708
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "위너",
           "votes": 0,
           "id": 30709
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "앳하트",
           "votes": 0,
           "id": 30710
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "큐더블유이알",
           "votes": 0,
           "id": 30711
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "디어 앨리스",
           "votes": 0,
           "id": 30712
         },
         {
-          "rank": 53,
-          "name": "하츠웨이브",
-          "votes": 0,
-          "id": 30713
-        },
-        {
-          "rank": 53,
+          "rank": 63,
           "name": "에이엠피",
           "votes": 0,
           "id": 30714
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "박현호",
           "votes": 0,
           "id": 30715
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "싸이",
           "votes": 0,
           "id": 30716
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "래빈",
           "votes": 0,
           "id": 30717
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "아이오아이",
           "votes": 0,
           "id": 30718
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "딕펑스",
           "votes": 0,
           "id": 30719
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "미니마니",
           "votes": 0,
           "id": 30720
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "예나",
           "votes": 0,
           "id": 30723
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "온앤오프",
           "votes": 0,
           "id": 30724
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "오르빗",
           "votes": 0,
           "id": 30725
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "잭팟",
           "votes": 0,
           "id": 30726
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에이비식스",
           "votes": 0,
           "id": 30727
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "휘나",
           "votes": 0,
           "id": 30728
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "루네이트",
           "votes": 0,
           "id": 30729
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "유성은",
           "votes": 0,
           "id": 30730
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "캣츠아이",
           "votes": 0,
           "id": 30731
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "김준수",
           "votes": 0,
           "id": 30732
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "조휘",
           "votes": 0,
           "id": 30733
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "아이엔아이",
           "votes": 0,
           "id": 30734
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "레이턴시",
           "votes": 0,
           "id": 30735
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "한태이",
           "votes": 0,
           "id": 30736
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "누에라",
           "votes": 0,
           "id": 30737
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "국카스텐",
           "votes": 0,
           "id": 30738
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "존박",
           "votes": 0,
           "id": 30740
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "임창정",
           "votes": 0,
           "id": 30741
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "펀치",
           "votes": 0,
           "id": 30742
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "비보이즈",
           "votes": 0,
           "id": 30743
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "박지현",
           "votes": 0,
           "id": 30744
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "투피엠",
           "votes": 0,
           "id": 30745
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "뉴비트",
           "votes": 0,
           "id": 30746
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "미미로즈",
           "votes": 0,
           "id": 30747
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이세계아이돌",
           "votes": 0,
           "id": 30748
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이브",
           "votes": 0,
           "id": 30750
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에이엔",
           "votes": 0,
           "id": 30751
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "가비엔제이",
           "votes": 0,
           "id": 30752
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "비디유",
           "votes": 0,
           "id": 30753
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "송지우",
           "votes": 0,
           "id": 30754
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "한로로",
           "votes": 0,
           "id": 30755
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에이핑크",
           "votes": 0,
           "id": 30757
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "다비치",
           "votes": 0,
           "id": 30758
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "초코원X초코투",
           "votes": 0,
           "id": 30759
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이지민",
           "votes": 0,
           "id": 30760
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "서인국",
           "votes": 0,
           "id": 30761
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "권의빈",
           "votes": 0,
           "id": 30762
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "드림노트",
           "votes": 0,
           "id": 30763
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "아이콘",
           "votes": 0,
           "id": 30764
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "디케이지",
           "votes": 0,
           "id": 30767
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "강혜원",
           "votes": 0,
           "id": 30768
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이펙스",
           "votes": 0,
           "id": 30769
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "유스피어",
           "votes": 0,
           "id": 30770
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "유아유",
           "votes": 0,
           "id": 30771
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "준희",
           "votes": 0,
           "id": 30772
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이민혁(HUTA)",
           "votes": 0,
           "id": 30774
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "어반자카파",
           "votes": 0,
           "id": 30776
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "디모 렉스",
           "votes": 0,
           "id": 30777
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "엔티엑스",
           "votes": 0,
           "id": 30778
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "엠빅",
           "votes": 0,
           "id": 30779
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이채연",
           "votes": 0,
           "id": 30780
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "앨리스",
           "votes": 0,
           "id": 30781
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "트렌드지",
           "votes": 0,
           "id": 30782
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "아이덴티티",
           "votes": 0,
           "id": 30783
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "엘라스트",
           "votes": 0,
           "id": 30784
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "하이파이 유니콘",
           "votes": 0,
           "id": 30785
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이도진",
           "votes": 0,
           "id": 30786
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "핫이슈",
           "votes": 0,
           "id": 30788
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "엠씨엔디",
           "votes": 0,
           "id": 30789
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "캔디샵",
           "votes": 0,
           "id": 30790
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "선미",
           "votes": 0,
           "id": 30791
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "배드빌런",
           "votes": 0,
           "id": 30792
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "비비지",
           "votes": 0,
           "id": 30794
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "프림로즈",
           "votes": 0,
           "id": 30796
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "유나이트",
           "votes": 0,
           "id": 30797
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "트리플에스",
           "votes": 0,
           "id": 30798
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에버글로우",
           "votes": 0,
           "id": 30799
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "유주",
           "votes": 0,
           "id": 30800
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "정혜린",
           "votes": 0,
           "id": 30801
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에이오에이",
           "votes": 0,
           "id": 30802
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "첫사랑",
           "votes": 0,
           "id": 30803
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "븨븨에스",
           "votes": 0,
           "id": 30805
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "오유진 ",
           "votes": 0,
           "id": 30806
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "멜로망스",
           "votes": 0,
           "id": 30807
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "라포엠",
           "votes": 0,
           "id": 30808
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "십센치",
           "votes": 0,
           "id": 30809
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "공원소녀",
           "votes": 0,
           "id": 30810
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "워터파이어",
           "votes": 0,
           "id": 30812
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "권진아",
           "votes": 0,
           "id": 30813
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "류수정",
           "votes": 0,
           "id": 30814
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "치즈",
           "votes": 0,
           "id": 30815
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이븐",
           "votes": 0,
           "id": 30816
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "산토스 브라보스",
           "votes": 0,
           "id": 30817
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "업텐션",
           "votes": 0,
           "id": 30818
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에스투잇",
           "votes": 0,
           "id": 30819
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "마이티마우스",
           "votes": 0,
           "id": 30820
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "엑스디너리 히어로즈",
           "votes": 0,
           "id": 30821
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "김준태",
           "votes": 0,
           "id": 30822
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "하지원",
           "votes": 0,
           "id": 30823
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "모디세이",
           "votes": 0,
           "id": 30824
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "비던",
           "votes": 0,
           "id": 30825
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "박지훈",
           "votes": 0,
           "id": 30826
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "최유리",
           "votes": 0,
           "id": 30827
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "유키스",
           "votes": 0,
           "id": 30828
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이브",
           "votes": 0,
           "id": 30830
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "하트오브우먼",
           "votes": 0,
           "id": 30831
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "나상현씨밴드",
           "votes": 0,
           "id": 30833
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "볼빨간사춘기",
           "votes": 0,
           "id": 30835
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "슈퍼엠",
           "votes": 0,
           "id": 30836
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "원어스",
           "votes": 0,
           "id": 30837
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "자두",
           "votes": 0,
           "id": 30838
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "빅톤",
           "votes": 0,
           "id": 30839
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "피커스",
           "votes": 0,
           "id": 30840
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "더킹덤",
           "votes": 0,
           "id": 30841
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "효린",
           "votes": 0,
           "id": 30843
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "펜타클",
           "votes": 0,
           "id": 30845
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "아크",
           "votes": 0,
           "id": 30846
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "재쓰비",
           "votes": 0,
           "id": 30847
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "더윈드",
           "votes": 0,
           "id": 30850
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에이댑",
           "votes": 0,
           "id": 30851
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "피어",
           "votes": 0,
           "id": 30852
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "규빈",
           "votes": 0,
           "id": 30853
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "민지운",
           "votes": 0,
           "id": 30854
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "올아워즈",
           "votes": 0,
           "id": 30855
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "하이키",
           "votes": 0,
           "id": 30856
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "하동균",
           "votes": 0,
           "id": 30858
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "나인아이",
           "votes": 0,
           "id": 30859
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "올데이 프로젝트",
           "votes": 0,
           "id": 30860
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "해나",
           "votes": 0,
           "id": 30861
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "언차일드",
           "votes": 0,
           "id": 30862
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "수호",
           "votes": 0,
           "id": 30863
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "케이브",
           "votes": 0,
           "id": 30864
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "올린",
           "votes": 0,
           "id": 30865
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "씨엠디엠",
           "votes": 0,
           "id": 30866
         },
         {
-          "rank": 53,
-          "name": "갓 더 비트",
-          "votes": 0,
-          "id": 30867
-        },
-        {
-          "rank": 53,
+          "rank": 63,
           "name": "빌리",
           "votes": 0,
           "id": 30868
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "엔시티 127",
           "votes": 0,
           "id": 30869
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "클라씨",
           "votes": 0,
           "id": 30870
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "오마이걸",
           "votes": 0,
           "id": 30871
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "투에이엠",
           "votes": 0,
           "id": 30873
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "민",
           "votes": 0,
           "id": 30874
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "비아이",
           "votes": 0,
           "id": 30875
         },
         {
-          "rank": 53,
-          "name": "아이브",
-          "votes": 0,
-          "id": 30876
-        },
-        {
-          "rank": 53,
+          "rank": 63,
           "name": "민경아 ",
           "votes": 0,
           "id": 30877
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "대성",
           "votes": 0,
           "id": 30880
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "블낫블",
           "votes": 0,
           "id": 30881
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "트와이스",
           "votes": 0,
           "id": 30883
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "뉴이",
           "votes": 0,
           "id": 30884
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "김수찬",
           "votes": 0,
           "id": 30885
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "김장훈",
           "votes": 0,
           "id": 30886
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "유니코드",
           "votes": 0,
           "id": 30887
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "하입프린세스",
           "votes": 0,
           "id": 30888
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "듀에토",
           "votes": 0,
           "id": 30889
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "정세운",
           "votes": 0,
           "id": 30890
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이예지",
           "votes": 0,
           "id": 30891
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "엑소",
           "votes": 0,
           "id": 30892
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "미주",
           "votes": 0,
           "id": 30893
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "하이라이트 (비스트)",
           "votes": 0,
           "id": 30894
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "블랭키",
           "votes": 0,
           "id": 30895
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "닥터코어 911",
           "votes": 0,
           "id": 30896
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "도원경",
           "votes": 0,
           "id": 30897
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "보이드",
           "votes": 0,
           "id": 30898
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "라임라잇",
           "votes": 0,
           "id": 30900
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "소디엑",
           "votes": 0,
           "id": 30901
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "자이언티",
           "votes": 0,
           "id": 30902
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "케이시",
           "votes": 0,
           "id": 30903
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "전소미",
           "votes": 0,
           "id": 30904
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "캐치더영",
           "votes": 0,
           "id": 30905
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "어센더",
           "votes": 0,
           "id": 30907
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "태진아",
           "votes": 0,
           "id": 30908
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "오메가엑스",
           "votes": 0,
           "id": 30909
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "마마무",
           "votes": 0,
           "id": 30910
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에스플릿",
           "votes": 0,
           "id": 30911
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "제로베이스원",
           "votes": 0,
           "id": 30912
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "싸이커스",
           "votes": 0,
           "id": 30913
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "데일리디렉션",
           "votes": 0,
           "id": 30915
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "티에이엔",
           "votes": 0,
           "id": 30916
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "템페스트",
           "votes": 0,
           "id": 30918
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "나태주",
           "votes": 0,
           "id": 30919
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "김세정",
           "votes": 0,
           "id": 30920
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "일레븐",
           "votes": 0,
           "id": 30921
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "김용빈",
           "votes": 0,
           "id": 30922
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "황치열",
           "votes": 0,
           "id": 30923
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "엔시티",
           "votes": 0,
           "id": 30924
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "남우현",
           "votes": 0,
           "id": 30925
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "로켓펀치",
           "votes": 0,
           "id": 30927
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "앰퍼샌드원",
           "votes": 0,
           "id": 30928
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "보아",
           "votes": 0,
           "id": 30929
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "아워벌스데이",
           "votes": 0,
           "id": 30930
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "클라씨",
           "votes": 0,
           "id": 30931
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "인어미닛",
           "votes": 0,
           "id": 30932
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "김재중",
           "votes": 0,
           "id": 30933
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "우아",
           "votes": 0,
           "id": 30934
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "안타레스",
           "votes": 0,
           "id": 30935
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "박강현",
           "votes": 0,
           "id": 30937
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에잇턴",
           "votes": 0,
           "id": 30938
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에이투오 라이트",
           "votes": 0,
           "id": 30939
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "오아베",
           "votes": 0,
           "id": 30940
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "웨이션브이",
           "votes": 0,
           "id": 30941
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "나빌레라",
           "votes": 0,
           "id": 30943
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "악뮤",
           "votes": 0,
           "id": 30944
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "블리처스",
           "votes": 0,
           "id": 30945
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "82메이저",
           "votes": 0,
           "id": 30946
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "조유리",
           "votes": 0,
           "id": 30947
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "소유",
           "votes": 0,
           "id": 30948
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "츄",
           "votes": 0,
           "id": 30950
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "박현규",
           "votes": 0,
           "id": 30951
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "파우",
           "votes": 0,
           "id": 30952
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "보이프렌드",
           "votes": 0,
           "id": 30953
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "더블원",
           "votes": 0,
           "id": 30954
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "사무엘",
           "votes": 0,
           "id": 30956
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "더 픽스",
           "votes": 0,
           "id": 30957
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "클릭비",
           "votes": 0,
           "id": 30958
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "레드벨벳",
           "votes": 0,
           "id": 30959
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "키빗업",
           "votes": 0,
           "id": 30960
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이프아이",
           "votes": 0,
           "id": 30961
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "빅오션",
           "votes": 0,
           "id": 30962
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "한승우",
           "votes": 0,
           "id": 30963
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에이티비오",
           "votes": 0,
           "id": 30964
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "아르테미스",
           "votes": 0,
           "id": 30965
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "엔플라잉",
           "votes": 0,
           "id": 30966
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "튜넥스",
           "votes": 0,
           "id": 30967
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "아이유",
           "votes": 0,
           "id": 30969
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "한이서",
           "votes": 0,
           "id": 30970
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "드리핀",
           "votes": 0,
           "id": 30971
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이찬원",
           "votes": 0,
           "id": 30972
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "베리베리",
           "votes": 0,
           "id": 30973
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "김연자",
           "votes": 0,
           "id": 30974
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "키라스",
           "votes": 0,
           "id": 30975
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이보람",
           "votes": 0,
           "id": 30976
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "몬스타엑스",
           "votes": 0,
           "id": 30977
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "씨야",
           "votes": 0,
           "id": 30978
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에토네",
           "votes": 0,
           "id": 30979
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "뉴진스",
           "votes": 0,
           "id": 30980
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "황민현",
           "votes": 0,
           "id": 30981
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "데이차일드",
           "votes": 0,
           "id": 30982
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "케이윌",
           "votes": 0,
           "id": 30983
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "폴킴",
           "votes": 0,
           "id": 30984
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "김연우",
           "votes": 0,
           "id": 30986
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "케플러",
           "votes": 0,
           "id": 30987
         },
         {
-          "rank": 53,
-          "name": "세이마이네임",
-          "votes": 0,
-          "id": 30988
-        },
-        {
-          "rank": 53,
-          "name": "아이칠린",
-          "votes": 0,
-          "id": 30990
-        },
-        {
-          "rank": 53,
+          "rank": 63,
           "name": "비춰",
           "votes": 0,
           "id": 30991
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "에프엑스",
           "votes": 0,
           "id": 30992
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "김혜림",
           "votes": 0,
           "id": 30993
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "경리",
           "votes": 0,
           "id": 30994
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "루셈블",
           "votes": 0,
           "id": 30995
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "배너",
           "votes": 0,
           "id": 30996
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "베이온",
           "votes": 0,
           "id": 30997
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "웨이커",
           "votes": 0,
           "id": 30998
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "요아소비",
           "votes": 0,
           "id": 31000
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "수지",
           "votes": 0,
           "id": 31001
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "영파씨",
           "votes": 0,
           "id": 31002
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "브브걸",
           "votes": 0,
           "id": 31003
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "키제",
           "votes": 0,
           "id": 31004
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "네이즈",
           "votes": 0,
           "id": 31005
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "경서",
           "votes": 0,
           "id": 31006
         },
         {
-          "rank": 53,
-          "name": "모모랜드",
-          "votes": 0,
-          "id": 31007
-        },
-        {
-          "rank": 53,
+          "rank": 63,
           "name": "아이딧",
           "votes": 0,
           "id": 31008
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "시크릿",
           "votes": 0,
           "id": 31009
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "곽연지",
           "votes": 0,
           "id": 31010
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "키스오브라이프",
           "votes": 0,
           "id": 31011
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "원호",
           "votes": 0,
           "id": 31012
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "퀸즈아이",
           "votes": 0,
           "id": 31013
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "디그니티",
           "votes": 0,
           "id": 31014
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "JJ프로젝트",
           "votes": 0,
           "id": 31015
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "나우즈",
           "votes": 0,
           "id": 31016
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "키비츠",
           "votes": 0,
           "id": 31017
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "최수호",
           "votes": 0,
           "id": 31018
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "우디",
           "votes": 0,
           "id": 31019
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "퍼플키스",
           "votes": 0,
           "id": 31020
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "백예린",
           "votes": 0,
           "id": 31021
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "남유정 ",
           "votes": 0,
           "id": 31022
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "블랙핑크",
           "votes": 0,
           "id": 31023
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "어센트",
           "votes": 0,
           "id": 31024
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "비비",
           "votes": 0,
           "id": 31025
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "우즈",
           "votes": 0,
           "id": 31026
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "튜이드",
           "votes": 0,
           "id": 31028
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "이오닛",
           "votes": 0,
           "id": 31029
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "FT아일랜드",
           "votes": 0,
           "id": 31030
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "앵두걸스",
           "votes": 0,
           "id": 31031
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "카라",
           "votes": 0,
           "id": 31032
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "씨엔블루",
           "votes": 0,
           "id": 31033
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "아일리원",
           "votes": 0,
           "id": 31034
         },
         {
-          "rank": 53,
+          "rank": 63,
           "name": "김재환",
           "votes": 0,
           "id": 31035
@@ -3148,7 +3148,7 @@
           "execution_end_at": null,
           "source_kind": "official_web",
           "source_url": "https://www.muniverse.io/votes/1ec4d041-2ac7-4dca-8254-b52b5e034e24",
-          "checked_at": "2026-11-07T04:33:30+09:00"
+          "checked_at": "2026-11-07T15:14:17+09:00"
         },
         {
           "id": "510db2d6cc4f0e5f",
@@ -3162,12 +3162,12 @@
           "execution_end_at": null,
           "source_kind": "official_web",
           "source_url": "https://www.muniverse.io/votes/1ec4d041-2ac7-4dca-8254-b52b5e034e24",
-          "checked_at": "2026-11-07T04:33:30+09:00"
+          "checked_at": "2026-11-07T15:14:17+09:00"
         }
       ],
       "source": "공식 공개 데이터",
       "source_url": "https://www.muniverse.io/votes/1ec4d041-2ac7-4dca-8254-b52b5e034e24",
-      "collected_at": "2026-11-07T04:33:30+09:00",
+      "collected_at": "2026-11-07T15:14:17+09:00",
       "verification": "공식 상세 응답 확인",
       "evidence": "📣 WEEKLY M PICK 글로벌 팬이 직접 뽑는 K-POP 주간 원 픽 🏆 1등 리워드 : K-POP의 본진, 쇼! 음악중심 촬영일 모든 MBC 전광판을 점령하라 1️⃣ 쇼! 음악중심 촬영일 MBC 본사 초대형 실내 전광판 리워드 광고 송출 *초대형 실내 전광판 광고 영상 👉 https://x.com/muniverse_io/status/2009097739112730712?s=20 2️⃣ 쇼! 음악중심 촬영일 MBC 본사 옥외 전광판 리워드 광고 송출 *옥외 전광판 영상(예시) ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿ 👉 https://x.com/i/status/1999705845844599210 📅 투표 기간 매주 금요일 10:00 ~ 그 다음 주 수요일 17:00 (KST) ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿ 🗳️ 투표 방식 프리루미 를 사용해 무제한 투표 가능 *프리루미(Free Lumy)란? 프리루미는 Muniverse의 다양한 이벤트 참여를 통해 무료로 획득할 수 있는 포인트입니다. 현재는 Muniverse 앱의 충전소에서 출석체크를 통해 하루 100개씩 획득할 수 있습니다. (Munivese APP > Store > 충전소) 🎫 투표 및 방청 응모 안내 투표 1표 = 방청 응모권 1장 WEEKLY M PICK에 투표할 때마다 <쇼! 음악중심> 방청 응모권이 1장씩 자동 적립됩니다. 적립된 응모권이 많을수록 <쇼! 음악중심> 방청 당첨 기회가 높아집니다. 📌 방청 응모 방식 변경 기존 SNS 투표 인증 이벤트가 종료되고, WEEKLY M PICK 투표를 통해 <쇼! 음악중심> 방청에 자동으로 응모됩니다. 별도의 SNS 인증이나 댓글 참여 없이 WEEKLY M PICK에 투표하면 방청 응모권이 자동 적립됩니다. Muniverse에서 친구에게 서비스를 소개하고 함께 프리루미를 받을 수 있는 추천친구 제도 를 운영합니다. - 추천친구 혜택 추천자와 추천받은 친구 양쪽 계정 모두 프리루미 300개가 지급됩니다. - 이용 방법 Muniverse 회원가입 시 추천인 아이디를 입력합니다. 추천인 아이디는 이메일 아이디 형식으로 입력할 수 있습니다. 추천인 아이디 입력은 선택 사항입니다. 추천받은 친구의 가입이 완료되면 추천자와 등록자에게 각각 프리루미 300개가 지급됩니다. - 이용 안내 추천은 계정당 최대 50명까지 가능합니다. 추천 횟수에 대한 일일 제한은 없습니다. 프리루미 지급 내역은 지급 내역에서 확인할 수 있습니다. 🗓️ 매주 돌아오는 M PICK! 당신의 원 픽에게 최고의 무대를 선물하세요 ✨",
       "provider_status": "OPEN",
@@ -3191,7 +3191,7 @@
         "source_kind": "official_api",
         "source_url": "https://api.muniverse.io/api/v2/votes/1ec4d041-2ac7-4dca-8254-b52b5e034e24",
         "currency_definition_url": "https://www.muniverse.io/notices/45",
-        "checked_at": "2026-11-07T04:33:30+09:00",
+        "checked_at": "2026-11-07T15:14:17+09:00",
         "evidence": "costFree=10",
         "free_vote_available": false,
         "note": "골드·프리·애드루미는 공식 API에서 사용 가능 여부와 투표당 수량이 각각 확인됨"
@@ -3214,32 +3214,32 @@
         {
           "rank": 1,
           "name": "인어미닛",
-          "votes": 11624,
+          "votes": 11734,
           "id": 31061
         },
         {
           "rank": 2,
           "name": "베이비몬스터",
-          "votes": 6261,
+          "votes": 9027,
           "id": 31060
         },
         {
           "rank": 3,
-          "name": "유어즈",
-          "votes": 255,
-          "id": 31059
+          "name": "김재환",
+          "votes": 455,
+          "id": 31062
         },
         {
           "rank": 4,
           "name": "플레어 유",
-          "votes": 219,
+          "votes": 294,
           "id": 31058
         },
         {
           "rank": 5,
-          "name": "김재환",
-          "votes": 110,
-          "id": 31062
+          "name": "유어즈",
+          "votes": 255,
+          "id": 31059
         }
       ],
       "lineup_complete": true,
@@ -3263,12 +3263,12 @@
           "execution_end_at": null,
           "source_kind": "official_web",
           "source_url": "https://www.muniverse.io/votes/a7fa7f34-df29-4a02-8d60-4a733433c963",
-          "checked_at": "2026-11-07T04:33:30+09:00"
+          "checked_at": "2026-11-07T15:14:17+09:00"
         }
       ],
       "source": "공식 공개 데이터",
       "source_url": "https://www.muniverse.io/votes/a7fa7f34-df29-4a02-8d60-4a733433c963",
-      "collected_at": "2026-11-07T04:33:30+09:00",
+      "collected_at": "2026-11-07T15:14:17+09:00",
       "verification": "공식 상세 응답 확인",
       "evidence": "🎶 it’s Live BEST PICK 생생한 밴드 사운드와 퍼포먼스로 K-POP 아티스트의 라이브를 만나는 it’s Live! 매월 공개된 it’s Live 무대 중 팬들의 투표로 이달의 BEST PICK을 선정합니다. 가장 빛나는 라이브를 선보인 아티스트에게 여러분의 마음을 담은 실물 트로피를 선물해 주세요! 💝 🎬 it’s Live 공식 YouTube 채널에서 무대 보기 📅 투표 일정 예선투표 매월 첫 번째 월요일 13:00 ~ 목요일 15:00 결선투표 예선투표 종료 다음 날인 금요일 13:00 ~ 다음 주 화요일 17:00 ※ 모든 일정은 한국 표준시(KST) 기준입니다. ※ 예선투표 상위 5팀이 결선투표에 진출합니다. 🗳️ 투표 방법 무료 투표 프리루미 10개로 1표를 투표할 수 있으며, 하루 최대 5표까지 참여할 수 있습니다. 추가 투표 골드루미 1개로 1표를 투표할 수 있으며, 보유한 골드루미 내에서 제한 없이 참여할 수 있습니다. *프리루미(Free Lumy)란? Free Lumy는 Muniverse 앱의 출석 체크 및 추천 친구를 통해 무료로 획득할 수 있는 포인트입니다. 📱 Free Lumy 획득 경로 출석 체크: Muniverse APP > Store > 충전소에서 출석 체크하고 매일 100 Free Lumy 획득 가능 추천 친구: 회원가입할 때 추천 친구의 이메일을 입력하면 서로 300 Free Lum y 획득 가능 *골드루미(Gold Lumy)란? Muniverse의 유료 상품 및 디지털 서비스 이용에 사용할 수 있는 충전형 포인트입니다. Muniverse APP > Store > 골드루미 🏆 리워드 최종 1위 아티스트에게 트로피 수여 → it’s Live BEST PICK 실물 트로피 수여 최종 투표 순위 공개 → it’s Live 공식 채널을 통해 공개 팬들의 투표가 아티스트를 위한 실제 트로피가 됩니다. 최고의 라이브 무대에 투표하고, 응원하는 아티스트에게 특별한 순간을 선물해 주세요! 💝 ※ 1회 투표 시 최대 100,000표까지 투표할 수 있습니다. ※ 예선투표 결과는 최종 결과에 합산되지 않으며, 결선투표 결과만으로 최종 승자가 결정됩니다.",
       "provider_status": "OPEN",
@@ -3298,7 +3298,7 @@
         "source_kind": "official_api",
         "source_url": "https://api.muniverse.io/api/v2/votes/a7fa7f34-df29-4a02-8d60-4a733433c963",
         "currency_definition_url": "https://www.muniverse.io/notices/45",
-        "checked_at": "2026-11-07T04:33:30+09:00",
+        "checked_at": "2026-11-07T15:14:17+09:00",
         "evidence": "costPaid=1 / costFree=10",
         "free_vote_available": false,
         "note": "골드·프리·애드루미는 공식 API에서 사용 가능 여부와 투표당 수량이 각각 확인됨"
@@ -3318,212 +3318,212 @@
         {
           "rank": 1,
           "name": "진 (JIN)",
-          "votes": 2740411
+          "votes": 2930583
         },
         {
           "rank": 2,
           "name": "이찬원",
-          "votes": 2577337
+          "votes": 2792069
         },
         {
           "rank": 3,
           "name": "임영웅",
-          "votes": 1187310
+          "votes": 1288373
         },
         {
           "rank": 4,
           "name": "지민",
-          "votes": 889757
+          "votes": 959577
         },
         {
           "rank": 5,
           "name": "제이홉",
-          "votes": 769028
+          "votes": 823241
         },
         {
           "rank": 6,
           "name": "정국",
-          "votes": 697331
+          "votes": 744924
         },
         {
           "rank": 7,
           "name": "박창근",
-          "votes": 377990
+          "votes": 404125
         },
         {
           "rank": 8,
           "name": "양준일",
-          "votes": 285632
+          "votes": 303747
         },
         {
           "rank": 9,
           "name": "Agust D (슈가)",
-          "votes": 271957
+          "votes": 293818
         },
         {
           "rank": 10,
           "name": "RM",
-          "votes": 220274
+          "votes": 234012
         },
         {
           "rank": 11,
           "name": "V (뷔)",
-          "votes": 219106
+          "votes": 232517
         },
         {
           "rank": 12,
           "name": "최수호",
-          "votes": 132249
+          "votes": 148169
         },
         {
           "rank": 13,
           "name": "정동원 (JD1)",
-          "votes": 90584
+          "votes": 95889
         },
         {
           "rank": 14,
           "name": "강다니엘",
-          "votes": 84508
+          "votes": 88563
         },
         {
           "rank": 15,
           "name": "전유진",
-          "votes": 83068
+          "votes": 86295
         },
         {
           "rank": 16,
-          "name": "김기태",
-          "votes": 74879
+          "name": "WOODZ (우즈)",
+          "votes": 82348
         },
         {
           "rank": 17,
-          "name": "WOODZ (우즈)",
-          "votes": 73099
+          "name": "김기태",
+          "votes": 79734
         },
         {
           "rank": 18,
           "name": "백호",
-          "votes": 70558
+          "votes": 77183
         },
         {
           "rank": 19,
           "name": "이승윤",
-          "votes": 63519
+          "votes": 71204
         },
         {
           "rank": 20,
           "name": "김수찬",
-          "votes": 60775
+          "votes": 65203
         },
         {
           "rank": 21,
           "name": "영탁",
-          "votes": 50167
+          "votes": 52892
         },
         {
           "rank": 22,
           "name": "백청강",
-          "votes": 45024
+          "votes": 48249
         },
         {
           "rank": 23,
           "name": "손태진",
-          "votes": 42765
+          "votes": 45905
         },
         {
           "rank": 24,
           "name": "김희재",
-          "votes": 42075
+          "votes": 43400
         },
         {
           "rank": 25,
           "name": "황치열",
-          "votes": 41731
+          "votes": 43031
         },
         {
           "rank": 26,
           "name": "김현중",
-          "votes": 31383
+          "votes": 33408
         },
         {
           "rank": 27,
-          "name": "김용빈",
-          "votes": 28985
+          "name": "장민호",
+          "votes": 32546
         },
         {
           "rank": 28,
-          "name": "장민호",
-          "votes": 28781
+          "name": "김용빈",
+          "votes": 30560
         },
         {
           "rank": 29,
           "name": "홍지윤",
-          "votes": 27780
+          "votes": 28555
         },
         {
           "rank": 30,
           "name": "헨리 (HENRY)",
-          "votes": 27540
+          "votes": 28340
         },
         {
           "rank": 31,
-          "name": "박지훈",
-          "votes": 21725
+          "name": "윤지성",
+          "votes": 22146
         },
         {
           "rank": 32,
-          "name": "윤지성",
-          "votes": 20008
+          "name": "박지훈",
+          "votes": 21875
         },
         {
           "rank": 33,
           "name": "하성운",
-          "votes": 12450
+          "votes": 13850
         },
         {
           "rank": 34,
+          "name": "김성규",
+          "votes": 11075
+        },
+        {
+          "rank": 35,
           "name": "김우석",
           "votes": 10703
         },
         {
-          "rank": 35,
-          "name": "김성규",
-          "votes": 10625
-        },
-        {
           "rank": 36,
-          "name": "김종현 (JR)",
-          "votes": 7975
+          "name": "산들",
+          "votes": 8225
         },
         {
           "rank": 37,
-          "name": "정동하",
-          "votes": 7671
+          "name": "김종현 (JR)",
+          "votes": 8175
         },
         {
           "rank": 38,
-          "name": "산들",
-          "votes": 7575
+          "name": "정동하",
+          "votes": 8121
         },
         {
           "rank": 39,
           "name": "유노윤호 (U-KNOW)",
-          "votes": 7090
+          "votes": 7165
         },
         {
           "rank": 40,
           "name": "황영웅",
-          "votes": 5153
+          "votes": 6203
         },
         {
           "rank": 41,
           "name": "원호",
-          "votes": 3300
+          "votes": 3800
         },
         {
           "rank": 42,
           "name": "손동표",
-          "votes": 2734
+          "votes": 3112
         },
         {
           "rank": 43,
@@ -3533,12 +3533,12 @@
         {
           "rank": 44,
           "name": "김재환",
-          "votes": 1175
+          "votes": 1450
         },
         {
           "rank": 45,
           "name": "성리",
-          "votes": 750
+          "votes": 800
         },
         {
           "rank": 46,
@@ -3552,9 +3552,9 @@
       "reward_entries": [],
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/each",
-      "collected_at": "2026-11-07T04:33:30+09:00",
+      "collected_at": "2026-11-07T15:14:17+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "11월 1주차 11.02 ~ 11.09\n1 진 (JIN) 2,740,411표\n2 이찬원 2,577,337표\n3 임영웅 1,187,310표\n4 지민 889,757표\n5 제이홉 769,028표\n6 정국 697,331표\n7 박창근 377,990표\n8 양준일 285,632표\n9 Agust D (슈가) 271,957표\n10 RM 220,274표\n11 V (뷔) 219,106표\n12 최수호 132,249표\n13 정동원 (JD1) 90,584표\n14 강다니엘 84,508표\n15 전유진 83,068표\n16 김기태 74,879표\n17 WOODZ (우즈) 73,099표\n18 백호 70,558표\n19 이승윤 63,519표\n20 김수찬 60,775표\n21 영탁 50,167표\n22 백청강 45,024표\n23 손태진 42,765표\n24 김희재 42,075표\n25 황치열 41,731표\n26 김현중 31,383표\n27 김용빈 28,985표\n28 장민호 28,781표\n29 홍지윤 27,780표\n30 헨리 (HENRY) 27,540표\n31 박지훈 21,725표\n32 윤지성 20,008표\n33 하성운 12,450표\n34 김우석 10,703표\n35 김성규 10,625표\n36 김종현 (JR) 7,975표\n37 정동하 7,671표\n38 산들 7,575표\n39 유노윤호 (U-KNOW) 7,090표\n40 황영웅 5,153표\n41 원호 3,300표\n42 손동표 2,734표\n43 최강창민 (MAX CHANGMIN) 2,300표\n44 김재환 1,175표\n45 성리 750표\n46 아이유 (IU) 3표"
+      "evidence": "11월 1주차 11.02 ~ 11.09\n1 진 (JIN) 2,930,583표\n2 이찬원 2,792,069표\n3 임영웅 1,288,373표\n4 지민 959,577표\n5 제이홉 823,241표\n6 정국 744,924표\n7 박창근 404,125표\n8 양준일 303,747표\n9 Agust D (슈가) 293,818표\n10 RM 234,012표\n11 V (뷔) 232,517표\n12 최수호 148,169표\n13 정동원 (JD1) 95,889표\n14 강다니엘 88,563표\n15 전유진 86,295표\n16 WOODZ (우즈) 82,348표\n17 김기태 79,734표\n18 백호 77,183표\n19 이승윤 71,204표\n20 김수찬 65,203표\n21 영탁 52,892표\n22 백청강 48,249표\n23 손태진 45,905표\n24 김희재 43,400표\n25 황치열 43,031표\n26 김현중 33,408표\n27 장민호 32,546표\n28 김용빈 30,560표\n29 홍지윤 28,555표\n30 헨리 (HENRY) 28,340표\n31 윤지성 22,146표\n32 박지훈 21,875표\n33 하성운 13,850표\n34 김성규 11,075표\n35 김우석 10,703표\n36 산들 8,225표\n37 김종현 (JR) 8,175표\n38 정동하 8,121표\n39 유노윤호 (U-KNOW) 7,165표\n40 황영웅 6,203표\n41 원호 3,800표\n42 손동표 3,112표\n43 최강창민 (MAX CHANGMIN) 2,300표\n44 김재환 1,450표\n45 성리 800표\n46 아이유 (IU) 3표"
     },
     {
       "id": "fannstar-da74b89a370d1630",
@@ -3570,37 +3570,37 @@
         {
           "rank": 1,
           "name": "PLAVE (플레이브)",
-          "votes": 470245
+          "votes": 492495
         },
         {
           "rank": 2,
           "name": "정한X조슈아 (SEVENTEEN)",
-          "votes": 211325
+          "votes": 215252
         },
         {
           "rank": 3,
           "name": "김재환",
-          "votes": 23930
+          "votes": 27290
         },
         {
           "rank": 4,
           "name": "알파드라이브원 (ALPHA DRIVE ONE)",
-          "votes": 13903
+          "votes": 14968
         },
         {
           "rank": 5,
           "name": "에이티즈 (ATEEZ)",
-          "votes": 10087
+          "votes": 10877
         },
         {
           "rank": 6,
           "name": "강다니엘",
-          "votes": 5900
+          "votes": 5950
         },
         {
           "rank": 7,
           "name": "KickFlip (킥플립)",
-          "votes": 4150
+          "votes": 4425
         },
         {
           "rank": 8,
@@ -3620,22 +3620,22 @@
         {
           "rank": 11,
           "name": "아일릿 (ILLIT)",
-          "votes": 275
+          "votes": 300
         },
         {
           "rank": 12,
+          "name": "라이즈 (RIIZE)",
+          "votes": 236
+        },
+        {
+          "rank": 13,
           "name": "NiziU (니쥬)",
           "votes": 225
         },
         {
-          "rank": 13,
+          "rank": 14,
           "name": "AND2BLE (앤더블)",
           "votes": 200
-        },
-        {
-          "rank": 14,
-          "name": "라이즈 (RIIZE)",
-          "votes": 181
         },
         {
           "rank": 15,
@@ -3659,67 +3659,67 @@
         },
         {
           "rank": 19,
+          "name": "NCT WISH (엔시티 위시)",
+          "votes": 25
+        },
+        {
+          "rank": 19,
           "name": "CLOSE YOUR EYES (클로즈 유어 아이즈)",
           "votes": 25
         },
         {
-          "rank": 20,
+          "rank": 21,
           "name": "장한별",
           "votes": 0
         },
         {
-          "rank": 20,
+          "rank": 21,
           "name": "WE GO-6",
           "votes": 0
         },
         {
-          "rank": 20,
+          "rank": 21,
           "name": "JAY B (제이비)",
           "votes": 0
         },
         {
-          "rank": 20,
+          "rank": 21,
           "name": "엑스러브 (XLOV)",
           "votes": 0
         },
         {
-          "rank": 20,
+          "rank": 21,
           "name": "하루",
           "votes": 0
         },
         {
-          "rank": 20,
+          "rank": 21,
           "name": "IVE (아이브)",
           "votes": 0
         },
         {
-          "rank": 20,
+          "rank": 21,
           "name": "A2O LITE",
           "votes": 0
         },
         {
-          "rank": 20,
+          "rank": 21,
           "name": "박우진",
           "votes": 0
         },
         {
-          "rank": 20,
+          "rank": 21,
           "name": "MEOVV (미야오)",
           "votes": 0
         },
         {
-          "rank": 20,
+          "rank": 21,
           "name": "엑스디너리 히어로즈 (Xdinary Heroes)",
           "votes": 0
         },
         {
-          "rank": 20,
+          "rank": 21,
           "name": "성한빈",
-          "votes": 0
-        },
-        {
-          "rank": 20,
-          "name": "NCT WISH (엔시티 위시)",
           "votes": 0
         }
       ],
@@ -3729,9 +3729,9 @@
       "reward_entries": [],
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/wmusic",
-      "collected_at": "2026-11-07T04:33:30+09:00",
+      "collected_at": "2026-11-07T15:14:17+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "11월 1주차 (26.09.28.~26.11.01) 11.02 ~ 11.09\n1 PLAVE (플레이브) 470,245표\n2 정한X조슈아 (SEVENTEEN) 211,325표\n3 김재환 23,930표\n4 알파드라이브원 (ALPHA DRIVE ONE) 13,903표\n5 에이티즈 (ATEEZ) 10,087표\n6 강다니엘 5,900표\n7 KickFlip (킥플립) 4,150표\n8 엔믹스 (NMIXX) 698표\n9 CRAVITY (크래비티) 525표\n10 크러쉬 (Crush) 450표\n11 아일릿 (ILLIT) 275표\n12 NiziU (니쥬) 225표\n13 AND2BLE (앤더블) 200표\n14 라이즈 (RIIZE) 181표\n15 손빈아 75표\n15 JUST B (저스트비) 75표\n15 A2O SOUL 75표\n15 MODYSSEY (모디세이) 75표\n19 CLOSE YOUR EYES (클로즈 유어 아이즈) 25표\n20 장한별 0표\n20 WE GO-6 0표\n20 JAY B (제이비) 0표\n20 엑스러브 (XLOV) 0표\n20 하루 0표\n20 IVE (아이브) 0표\n20 A2O LITE 0표\n20 박우진 0표\n20 MEOVV (미야오) 0표\n20 엑스디너리 히어로즈 (Xdinary Heroes) 0표\n20 성한빈 0표\n20 NCT WISH (엔시티 위시) 0표"
+      "evidence": "11월 1주차 (26.09.28.~26.11.01) 11.02 ~ 11.09\n1 PLAVE (플레이브) 492,495표\n2 정한X조슈아 (SEVENTEEN) 215,252표\n3 김재환 27,290표\n4 알파드라이브원 (ALPHA DRIVE ONE) 14,968표\n5 에이티즈 (ATEEZ) 10,877표\n6 강다니엘 5,950표\n7 KickFlip (킥플립) 4,425표\n8 엔믹스 (NMIXX) 698표\n9 CRAVITY (크래비티) 525표\n10 크러쉬 (Crush) 450표\n11 아일릿 (ILLIT) 300표\n12 라이즈 (RIIZE) 236표\n13 NiziU (니쥬) 225표\n14 AND2BLE (앤더블) 200표\n15 손빈아 75표\n15 JUST B (저스트비) 75표\n15 A2O SOUL 75표\n15 MODYSSEY (모디세이) 75표\n19 NCT WISH (엔시티 위시) 25표\n19 CLOSE YOUR EYES (클로즈 유어 아이즈) 25표\n21 장한별 0표\n21 WE GO-6 0표\n21 JAY B (제이비) 0표\n21 엑스러브 (XLOV) 0표\n21 하루 0표\n21 IVE (아이브) 0표\n21 A2O LITE 0표\n21 박우진 0표\n21 MEOVV (미야오) 0표\n21 엑스디너리 히어로즈 (Xdinary Heroes) 0표\n21 성한빈 0표"
     },
     {
       "id": "fannstar-c9a0d5f344f571ad",
@@ -3747,97 +3747,97 @@
         {
           "rank": 1,
           "name": "김용빈",
-          "votes": 880286
+          "votes": 937644
         },
         {
           "rank": 2,
           "name": "최수호",
-          "votes": 372609
+          "votes": 402271
         },
         {
           "rank": 3,
-          "name": "황영웅",
-          "votes": 150626
+          "name": "장민호",
+          "votes": 163381
         },
         {
           "rank": 4,
-          "name": "장민호",
-          "votes": 149206
+          "name": "황영웅",
+          "votes": 158414
         },
         {
           "rank": 5,
           "name": "홍자",
-          "votes": 62984
+          "votes": 68807
         },
         {
           "rank": 6,
           "name": "오유진",
-          "votes": 57325
+          "votes": 57900
         },
         {
           "rank": 7,
           "name": "하루",
-          "votes": 53877
+          "votes": 56402
         },
         {
           "rank": 8,
           "name": "성리",
-          "votes": 24404
+          "votes": 25554
         },
         {
           "rank": 9,
           "name": "최재명",
-          "votes": 22106
+          "votes": 24464
         },
         {
           "rank": 10,
           "name": "영탁",
-          "votes": 20735
+          "votes": 22290
         },
         {
           "rank": 11,
           "name": "양지원",
-          "votes": 17675
+          "votes": 18325
         },
         {
           "rank": 12,
-          "name": "김의영",
-          "votes": 11686
+          "name": "윤태화",
+          "votes": 11800
         },
         {
           "rank": 13,
-          "name": "윤태화",
-          "votes": 11175
+          "name": "김의영",
+          "votes": 11786
         },
         {
           "rank": 14,
           "name": "유지우",
-          "votes": 10001
+          "votes": 10364
         },
         {
           "rank": 15,
           "name": "전유진",
-          "votes": 8111
+          "votes": 8922
         },
         {
           "rank": 16,
           "name": "장한별",
-          "votes": 7931
+          "votes": 8186
         },
         {
           "rank": 17,
           "name": "손빈아",
-          "votes": 6750
+          "votes": 6950
         },
         {
           "rank": 18,
           "name": "이수연",
-          "votes": 6505
+          "votes": 6855
         },
         {
           "rank": 19,
           "name": "춘길",
-          "votes": 5852
+          "votes": 6613
         },
         {
           "rank": 20,
@@ -3847,12 +3847,12 @@
         {
           "rank": 21,
           "name": "박지후",
-          "votes": 2000
+          "votes": 2475
         },
         {
           "rank": 22,
           "name": "이창민",
-          "votes": 1975
+          "votes": 2175
         },
         {
           "rank": 23,
@@ -3896,9 +3896,9 @@
       "reward_entries": [],
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/class",
-      "collected_at": "2026-11-07T04:33:30+09:00",
+      "collected_at": "2026-11-07T15:14:17+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "11월 1주차 11.02 ~ 11.09\n1 김용빈 880,286표\n2 최수호 372,609표\n3 황영웅 150,626표\n4 장민호 149,206표\n5 홍자 62,984표\n6 오유진 57,325표\n7 하루 53,877표\n8 성리 24,404표\n9 최재명 22,106표\n10 영탁 20,735표\n11 양지원 17,675표\n12 김의영 11,686표\n13 윤태화 11,175표\n14 유지우 10,001표\n15 전유진 8,111표\n16 장한별 7,931표\n17 손빈아 6,750표\n18 이수연 6,505표\n19 춘길 5,852표\n20 김중연 5,233표\n21 박지후 2,000표\n22 이창민 1,975표\n23 정동원 (JD1) 1,120표\n24 김희재 250표\n25 지영일 224표\n26 남궁진 200표\n27 손태진 100표\n28 크리스영 45표\n29 박지현 0표"
+      "evidence": "11월 1주차 11.02 ~ 11.09\n1 김용빈 937,644표\n2 최수호 402,271표\n3 장민호 163,381표\n4 황영웅 158,414표\n5 홍자 68,807표\n6 오유진 57,900표\n7 하루 56,402표\n8 성리 25,554표\n9 최재명 24,464표\n10 영탁 22,290표\n11 양지원 18,325표\n12 윤태화 11,800표\n13 김의영 11,786표\n14 유지우 10,364표\n15 전유진 8,922표\n16 장한별 8,186표\n17 손빈아 6,950표\n18 이수연 6,855표\n19 춘길 6,613표\n20 김중연 5,233표\n21 박지후 2,475표\n22 이창민 2,175표\n23 정동원 (JD1) 1,120표\n24 김희재 250표\n25 지영일 224표\n26 남궁진 200표\n27 손태진 100표\n28 크리스영 45표\n29 박지현 0표"
     },
     {
       "id": "fannstar-b18005067f3ecff2",
@@ -4011,27 +4011,27 @@
         {
           "rank": 1,
           "name": "PLAVE (플레이브)",
-          "votes": 705622
+          "votes": 733170
         },
         {
           "rank": 2,
           "name": "Stray Kids (스트레이 키즈)",
-          "votes": 248125
+          "votes": 265257
         },
         {
           "rank": 3,
           "name": "NEXZ (넥스지)",
-          "votes": 180507
+          "votes": 196639
         },
         {
           "rank": 4,
           "name": "투모로우바이투게더 (TXT)",
-          "votes": 116146
+          "votes": 123571
         },
         {
           "rank": 5,
           "name": "엔싸인 (n.SSign)",
-          "votes": 109394
+          "votes": 116339
         },
         {
           "rank": 6,
@@ -4041,47 +4041,47 @@
         {
           "rank": 7,
           "name": "TWS (투어스)",
-          "votes": 30875
+          "votes": 32925
         },
         {
           "rank": 8,
           "name": "에이티즈 (ATEEZ)",
-          "votes": 17960
+          "votes": 18665
         },
         {
           "rank": 9,
           "name": "오메가엑스 (OMEGA X)",
-          "votes": 15625
+          "votes": 17800
         },
         {
           "rank": 10,
           "name": "TREASURE (트레저)",
-          "votes": 14197
+          "votes": 15922
         },
         {
           "rank": 11,
           "name": "엔하이픈 (ENHYPEN)",
-          "votes": 11250
+          "votes": 13375
         },
         {
           "rank": 12,
           "name": "하데스 (HADES)",
-          "votes": 8080
+          "votes": 9580
         },
         {
           "rank": 13,
           "name": "AHOF (아홉)",
-          "votes": 5826
+          "votes": 6001
         },
         {
           "rank": 14,
           "name": "보이넥스트도어 (BOYNEXTDOOR)",
-          "votes": 2327
+          "votes": 3427
         },
         {
           "rank": 15,
           "name": "CORTIS (코르티스)",
-          "votes": 1294
+          "votes": 1389
         },
         {
           "rank": 16,
@@ -4096,7 +4096,7 @@
         {
           "rank": 18,
           "name": "세븐틴 (SEVENTEEN)",
-          "votes": 225
+          "votes": 275
         },
         {
           "rank": 19,
@@ -4135,9 +4135,9 @@
       "reward_entries": [],
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/topic?mode=global",
-      "collected_at": "2026-11-07T04:33:30+09:00",
+      "collected_at": "2026-11-07T15:14:17+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "11월 1주차 11.02 ~ 11.09\n1 PLAVE (플레이브) 705,622표\n2 Stray Kids (스트레이 키즈) 248,125표\n3 NEXZ (넥스지) 180,507표\n4 투모로우바이투게더 (TXT) 116,146표\n5 엔싸인 (n.SSign) 109,394표\n6 연준 62,241표\n7 TWS (투어스) 30,875표\n8 에이티즈 (ATEEZ) 17,960표\n9 오메가엑스 (OMEGA X) 15,625표\n10 TREASURE (트레저) 14,197표\n11 엔하이픈 (ENHYPEN) 11,250표\n12 하데스 (HADES) 8,080표\n13 AHOF (아홉) 5,826표\n14 보이넥스트도어 (BOYNEXTDOOR) 2,327표\n15 CORTIS (코르티스) 1,294표\n16 에반 375표\n17 ZEROBASEONE (제로베이스원) 325표\n18 세븐틴 (SEVENTEEN) 225표\n19 &TEAM (앤팀) 30표\n20 소디엑 (XODIAC) 0표\n20 BIGBANG (빅뱅) 0표\n20 IVE (아이브) 0표\n20 에스파 (aespa) 0표\n20 KickFlip (킥플립) 0표"
+      "evidence": "11월 1주차 11.02 ~ 11.09\n1 PLAVE (플레이브) 733,170표\n2 Stray Kids (스트레이 키즈) 265,257표\n3 NEXZ (넥스지) 196,639표\n4 투모로우바이투게더 (TXT) 123,571표\n5 엔싸인 (n.SSign) 116,339표\n6 연준 62,241표\n7 TWS (투어스) 32,925표\n8 에이티즈 (ATEEZ) 18,665표\n9 오메가엑스 (OMEGA X) 17,800표\n10 TREASURE (트레저) 15,922표\n11 엔하이픈 (ENHYPEN) 13,375표\n12 하데스 (HADES) 9,580표\n13 AHOF (아홉) 6,001표\n14 보이넥스트도어 (BOYNEXTDOOR) 3,427표\n15 CORTIS (코르티스) 1,389표\n16 에반 375표\n17 ZEROBASEONE (제로베이스원) 325표\n18 세븐틴 (SEVENTEEN) 275표\n19 &TEAM (앤팀) 30표\n20 소디엑 (XODIAC) 0표\n20 BIGBANG (빅뱅) 0표\n20 IVE (아이브) 0표\n20 에스파 (aespa) 0표\n20 KickFlip (킥플립) 0표"
     },
     {
       "id": "fannstar-54e830206b7a6e20",
@@ -4153,22 +4153,22 @@
         {
           "rank": 1,
           "name": "CORTIS (코르티스)",
-          "votes": 75621
+          "votes": 79942
         },
         {
           "rank": 2,
           "name": "에반",
-          "votes": 38477
+          "votes": 42234
         },
         {
           "rank": 3,
           "name": "WHIB (휘브)",
-          "votes": 13243
+          "votes": 13293
         },
         {
           "rank": 4,
           "name": "알파드라이브원 (ALPHA DRIVE ONE)",
-          "votes": 5740
+          "votes": 6020
         },
         {
           "rank": 5,
@@ -4178,12 +4178,12 @@
         {
           "rank": 6,
           "name": "NAZE (네이즈)",
-          "votes": 4950
+          "votes": 5050
         },
         {
           "rank": 7,
           "name": "NOWZ (나우즈)",
-          "votes": 2350
+          "votes": 2475
         },
         {
           "rank": 8,
@@ -4257,9 +4257,9 @@
       "reward_entries": [],
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/newgen",
-      "collected_at": "2026-11-07T04:33:30+09:00",
+      "collected_at": "2026-11-07T15:14:17+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "11월 1주차 11.02 ~ 11.09\n1 CORTIS (코르티스) 75,621표\n2 에반 38,477표\n3 WHIB (휘브) 13,243표\n4 알파드라이브원 (ALPHA DRIVE ONE) 5,740표\n5 UNIS (유니스) 5,725표\n6 NAZE (네이즈) 4,950표\n7 NOWZ (나우즈) 2,350표\n8 라이즈 (RIIZE) 1,715표\n9 AND2BLE (앤더블) 1,532표\n10 A2O SOUL 1,500표\n11 A2O LITE 977표\n12 CLOSE YOUR EYES (클로즈 유어 아이즈) 110표\n13 TUIDE (튜이드) 55표\n14 FLARE U (플레어 유) 0표\n14 AEN (에이엔) 0표\n14 ALL(H)OURS (올아워즈) 0표\n14 UNCHILD (언차일드) 0표\n14 LNGSHOT (롱샷) 0표\n14 VAYONN 0표\n14 KEYVITUP (키빗업) 0표"
+      "evidence": "11월 1주차 11.02 ~ 11.09\n1 CORTIS (코르티스) 79,942표\n2 에반 42,234표\n3 WHIB (휘브) 13,293표\n4 알파드라이브원 (ALPHA DRIVE ONE) 6,020표\n5 UNIS (유니스) 5,725표\n6 NAZE (네이즈) 5,050표\n7 NOWZ (나우즈) 2,475표\n8 라이즈 (RIIZE) 1,715표\n9 AND2BLE (앤더블) 1,532표\n10 A2O SOUL 1,500표\n11 A2O LITE 977표\n12 CLOSE YOUR EYES (클로즈 유어 아이즈) 110표\n13 TUIDE (튜이드) 55표\n14 FLARE U (플레어 유) 0표\n14 AEN (에이엔) 0표\n14 ALL(H)OURS (올아워즈) 0표\n14 UNCHILD (언차일드) 0표\n14 LNGSHOT (롱샷) 0표\n14 VAYONN 0표\n14 KEYVITUP (키빗업) 0표"
     },
     {
       "id": "fannstar-44cc63324b1b2581",
@@ -4275,102 +4275,102 @@
         {
           "rank": 1,
           "name": "방탄소년단",
-          "votes": 1596612
+          "votes": 1703133
         },
         {
           "rank": 2,
           "name": "AHOF (아홉)",
-          "votes": 98769
+          "votes": 103964
         },
         {
           "rank": 3,
           "name": "잔나비",
-          "votes": 71157
+          "votes": 72342
         },
         {
           "rank": 4,
           "name": "Stray Kids (스트레이 키즈)",
-          "votes": 68020
+          "votes": 72275
         },
         {
           "rank": 5,
           "name": "PLAVE (플레이브)",
-          "votes": 66853
+          "votes": 70363
         },
         {
           "rank": 6,
           "name": "JO1 (제이오원)",
-          "votes": 48770
+          "votes": 52575
         },
         {
           "rank": 7,
           "name": "&TEAM (앤팀)",
-          "votes": 33489
+          "votes": 34436
         },
         {
           "rank": 8,
           "name": "2PM (투피엠)",
-          "votes": 18350
+          "votes": 19025
         },
         {
           "rank": 9,
           "name": "엔하이픈 (ENHYPEN)",
-          "votes": 13724
+          "votes": 14084
         },
         {
           "rank": 10,
           "name": "세븐틴 (SEVENTEEN)",
-          "votes": 10306
+          "votes": 10464
         },
         {
           "rank": 11,
           "name": "인피니트 (INFINITE)",
-          "votes": 9343
+          "votes": 9693
         },
         {
           "rank": 12,
           "name": "에이티즈 (ATEEZ)",
-          "votes": 8760
+          "votes": 9236
         },
         {
           "rank": 13,
           "name": "SUPER JUNIOR (슈퍼주니어)",
-          "votes": 7742
+          "votes": 8367
         },
         {
           "rank": 14,
-          "name": "아스트로 (ASTRO)",
-          "votes": 7425
+          "name": "다섯장",
+          "votes": 7900
         },
         {
           "rank": 15,
-          "name": "다섯장",
-          "votes": 6550
+          "name": "아스트로 (ASTRO)",
+          "votes": 7700
         },
         {
           "rank": 16,
-          "name": "SF9",
-          "votes": 6420
+          "name": "하이라이트 (HIGHLIGHT)",
+          "votes": 6925
         },
         {
           "rank": 17,
-          "name": "투모로우바이투게더 (TXT)",
-          "votes": 6096
+          "name": "SF9",
+          "votes": 6545
         },
         {
           "rank": 18,
-          "name": "하이라이트 (HIGHLIGHT)",
-          "votes": 6045
+          "name": "투모로우바이투게더 (TXT)",
+          "votes": 6111
         },
         {
           "rank": 19,
-          "name": "SS501",
-          "votes": 4395
+          "name": "TREASURE (트레저)",
+          "votes": 4470
         },
         {
           "rank": 20,
-          "name": "TREASURE (트레저)",
-          "votes": 4037
+          "name": "SS501",
+          "votes": 4395
         },
         {
           "rank": 21,
@@ -4380,22 +4380,22 @@
         {
           "rank": 22,
           "name": "씨엔블루 (CNBLUE)",
-          "votes": 1729
+          "votes": 2050
         },
         {
           "rank": 23,
           "name": "JBJ95",
-          "votes": 1260
+          "votes": 1490
         },
         {
           "rank": 24,
           "name": "TWS (투어스)",
-          "votes": 1088
+          "votes": 1113
         },
         {
           "rank": 25,
           "name": "IN2IT (인투잇)",
-          "votes": 850
+          "votes": 900
         },
         {
           "rank": 26,
@@ -4405,7 +4405,7 @@
         {
           "rank": 27,
           "name": "라이즈 (RIIZE)",
-          "votes": 380
+          "votes": 381
         },
         {
           "rank": 28,
@@ -4434,9 +4434,9 @@
       "reward_entries": [],
       "source": "공식 웹페이지",
       "source_url": "https://fannstar.tf.co.kr/rank/view/star",
-      "collected_at": "2026-11-07T04:33:30+09:00",
+      "collected_at": "2026-11-07T15:14:17+09:00",
       "verification": "공식 페이지 표시 후보 확인 · 연도 추정 · 전체 후보 여부 미확인",
-      "evidence": "11월 1주차 11.02 ~ 11.09\n1 방탄소년단 1,596,612표\n2 AHOF (아홉) 98,769표\n3 잔나비 71,157표\n4 Stray Kids (스트레이 키즈) 68,020표\n5 PLAVE (플레이브) 66,853표\n6 JO1 (제이오원) 48,770표\n7 &TEAM (앤팀) 33,489표\n8 2PM (투피엠) 18,350표\n9 엔하이픈 (ENHYPEN) 13,724표\n10 세븐틴 (SEVENTEEN) 10,306표\n11 인피니트 (INFINITE) 9,343표\n12 에이티즈 (ATEEZ) 8,760표\n13 SUPER JUNIOR (슈퍼주니어) 7,742표\n14 아스트로 (ASTRO) 7,425표\n15 다섯장 6,550표\n16 SF9 6,420표\n17 투모로우바이투게더 (TXT) 6,096표\n18 하이라이트 (HIGHLIGHT) 6,045표\n19 SS501 4,395표\n20 TREASURE (트레저) 4,037표\n21 CORTIS (코르티스) 2,601표\n22 씨엔블루 (CNBLUE) 1,729표\n23 JBJ95 1,260표\n24 TWS (투어스) 1,088표\n25 IN2IT (인투잇) 850표\n26 오메가엑스 (OMEGA X) 810표\n27 라이즈 (RIIZE) 380표\n28 아일릿 (ILLIT) 350표\n29 알파드라이브원 (ALPHA DRIVE ONE) 245표\n30 지오디 (god) 0표\n30 엔플라잉 (N.Flying) 0표"
+      "evidence": "11월 1주차 11.02 ~ 11.09\n1 방탄소년단 1,703,133표\n2 AHOF (아홉) 103,964표\n3 잔나비 72,342표\n4 Stray Kids (스트레이 키즈) 72,275표\n5 PLAVE (플레이브) 70,363표\n6 JO1 (제이오원) 52,575표\n7 &TEAM (앤팀) 34,436표\n8 2PM (투피엠) 19,025표\n9 엔하이픈 (ENHYPEN) 14,084표\n10 세븐틴 (SEVENTEEN) 10,464표\n11 인피니트 (INFINITE) 9,693표\n12 에이티즈 (ATEEZ) 9,236표\n13 SUPER JUNIOR (슈퍼주니어) 8,367표\n14 다섯장 7,900표\n15 아스트로 (ASTRO) 7,700표\n16 하이라이트 (HIGHLIGHT) 6,925표\n17 SF9 6,545표\n18 투모로우바이투게더 (TXT) 6,111표\n19 TREASURE (트레저) 4,470표\n20 SS501 4,395표\n21 CORTIS (코르티스) 2,601표\n22 씨엔블루 (CNBLUE) 2,050표\n23 JBJ95 1,490표\n24 TWS (투어스) 1,113표\n25 IN2IT (인투잇) 900표\n26 오메가엑스 (OMEGA X) 810표\n27 라이즈 (RIIZE) 381표\n28 아일릿 (ILLIT) 350표\n29 알파드라이브원 (ALPHA DRIVE ONE) 245표\n30 지오디 (god) 0표\n30 엔플라잉 (N.Flying) 0표"
     },
     {
       "id": "muniverse-ee314cd6-d1cc-4433-a870-5ee83f215658",
@@ -4580,12 +4580,12 @@
           "execution_end_at": null,
           "source_kind": "official_web",
           "source_url": "https://www.muniverse.io/votes/ee314cd6-d1cc-4433-a870-5ee83f215658",
-          "checked_at": "2026-11-07T04:33:30+09:00"
+          "checked_at": "2026-11-07T15:14:17+09:00"
         }
       ],
       "source": "공식 공개 데이터",
       "source_url": "https://www.muniverse.io/votes/ee314cd6-d1cc-4433-a870-5ee83f215658",
-      "collected_at": "2026-11-07T04:33:30+09:00",
+      "collected_at": "2026-11-07T15:14:17+09:00",
       "verification": "공식 상세 응답 확인 · 종료·결과 공개 시각 확인",
       "evidence": "📣 STAGE M PICK 100% 팬 투표로 선정하는 ‘쇼! 음악중심 이번 주 최고의 무대’ 📅 투표 기간 토요일 17:00 ~ 다음 주 목요일 12:00 (KST) 🗳️ 투표 방법 무료 투표 : 프리루미를 사용해 1일 최대 10표 투표 가능 추가 투표 : 골드루미를 사용해 추가 투표 가능 *프리루미(Free Lumy)란? Free Lumy는 Muniverse 앱의 출석 체크 및 추천 친구를 통해 무료로 획득할 수 있는 포인트입니다. 📱 Free Lumy 획득 경로 출석 체크: Muniverse APP > Store > 충전소에서 출석 체크하고 매일 100 Free Lumy 획득 가능 추천 친구: 회원가입할 때 추천 친구의 이메일을 입력하면 서로 300 Free Lum y 획득 가능 *골드루미(Gold Lumy)란? 골드루미는 Muniverse 내 유료 상품 및 디지털 서비스 이용 시 사용되는 충전형 포인트입니다. (Muniverse APP > Store > 골드루미) 🏆 리워드 1위 아티스트 → STAGE M PICK 트로피 수여 투표 순위 → MBC 쇼! 음악중심 방송에서 발표 💡 주의 투표는 목요일 11:59:59 마감 일정/리워드는 방송사 사정에 따라 변경될 수 있음 ✨ 이번 주 최고의 무대에 투표하세요 ※ 1회 투표 시 최대 100,000표까지 투표할 수 있습니다.",
       "provider_status": "CLOSED",
@@ -4615,7 +4615,7 @@
         "source_kind": "official_api",
         "source_url": "https://api.muniverse.io/api/v2/votes/ee314cd6-d1cc-4433-a870-5ee83f215658",
         "currency_definition_url": "https://www.muniverse.io/notices/45",
-        "checked_at": "2026-11-07T04:33:30+09:00",
+        "checked_at": "2026-11-07T15:14:17+09:00",
         "evidence": "costPaid=1 / costFree=10",
         "free_vote_available": false,
         "note": "골드·프리·애드루미는 공식 API에서 사용 가능 여부와 투표당 수량이 각각 확인됨"
@@ -4942,7 +4942,7 @@
       "reward_entries": [],
       "source": "공식 공개 데이터",
       "source_url": "https://www.muniverse.io/votes/ce926d51-dd85-4409-a07e-11fd9402d533",
-      "collected_at": "2026-11-07T04:33:30+09:00",
+      "collected_at": "2026-11-07T15:14:17+09:00",
       "verification": "공식 상세 응답 확인 · 종료·결과 공개 시각 확인",
       "evidence": "📣 <Show! Music Core> Global pre-voting 📅 투표 기간 방송 주 화요일 18:00 ~ 목요일 11:00 (KST) 🗳️ 투표 방식 애드루미(Ad Lumy)를 사용하여 투표 *투표 일정은 내부 사정에 따라 변동될 수 있습니다. *자세한 내용은 공지사항, 자주 묻는 질문 그리고 <쇼! 음악중심> 공식 채널에서 확인 부탁드립니다. -> <쇼! 음악중심> 게시판 바로가기 💡 애드루미(Ad Lumy)란? 애드루미(Ad Lumy)는 광고 시청 등을 통해 무료로 적립할 수 있는 포인트입니다. 📱 애드루미(Ad Lumy) 적립 방법 1️⃣ 뮤니버스 앱 설치(iOS/android) 2️⃣ 뮤니버스 앱 접속 후 하단 탭에서 'Store' 이동 3️⃣ 상단의 '충전소'에서 광고 시청, 행운의 룰렛, 미션 참여 등을 통해 애드루미(Ad Lumy) 받기! *애드루미(Ad Lumy)는 앱에서만 적립이 가능합니다.",
       "provider_status": "CLOSED",
@@ -4966,7 +4966,7 @@
         "source_kind": "official_api",
         "source_url": "https://api.muniverse.io/api/v2/votes/ce926d51-dd85-4409-a07e-11fd9402d533",
         "currency_definition_url": "https://www.muniverse.io/notices/45",
-        "checked_at": "2026-11-07T04:33:30+09:00",
+        "checked_at": "2026-11-07T15:14:17+09:00",
         "evidence": "costAd=5",
         "free_vote_available": false,
         "note": "골드·프리·애드루미는 공식 API에서 사용 가능 여부와 투표당 수량이 각각 확인됨"
@@ -5164,12 +5164,12 @@
           "execution_end_at": null,
           "source_kind": "official_web",
           "source_url": "https://www.muniverse.io/votes/83410d02-db67-4a85-bffa-f706d86bfb83",
-          "checked_at": "2026-11-07T04:33:30+09:00"
+          "checked_at": "2026-11-07T15:14:17+09:00"
         }
       ],
       "source": "공식 공개 데이터",
       "source_url": "https://www.muniverse.io/votes/83410d02-db67-4a85-bffa-f706d86bfb83",
-      "collected_at": "2026-11-07T04:33:30+09:00",
+      "collected_at": "2026-11-07T15:14:17+09:00",
       "verification": "공식 상세 응답 확인 · 종료·결과 공개 시각 확인",
       "evidence": "🎶 it’s Live BEST PICK 생생한 밴드 사운드와 퍼포먼스로 K-POP 아티스트의 라이브를 만나는 it’s Live! 매월 공개된 it’s Live 무대 중 팬들의 투표로 이달의 BEST PICK을 선정합니다. 가장 빛나는 라이브를 선보인 아티스트에게 여러분의 마음을 담은 실물 트로피를 선물해 주세요! 💝 🎬 it’s Live 공식 YouTube 채널에서 무대 보기 📅 투표 일정 예선투표 매월 첫 번째 월요일 13:00 ~ 목요일 15:00 결선투표 예선투표 종료 다음 날인 금요일 13:00 ~ 다음 주 화요일 17:00 ※ 모든 일정은 한국 표준시(KST) 기준입니다. ※ 예선투표 상위 5팀이 결선투표에 진출합니다. 🗳️ 투표 방법 무료 투표 프리루미 10개로 1표를 투표할 수 있으며, 하루 최대 5표까지 참여할 수 있습니다. 추가 투표 골드루미 1개로 1표를 투표할 수 있으며, 보유한 골드루미 내에서 제한 없이 참여할 수 있습니다. *프리루미(Free Lumy)란? Free Lumy는 Muniverse 앱의 출석 체크 및 추천 친구를 통해 무료로 획득할 수 있는 포인트입니다. 📱 Free Lumy 획득 경로 출석 체크: Muniverse APP > Store > 충전소에서 출석 체크하고 매일 100 Free Lumy 획득 가능 추천 친구: 회원가입할 때 추천 친구의 이메일을 입력하면 서로 300 Free Lum y 획득 가능 *골드루미(Gold Lumy)란? Muniverse의 유료 상품 및 디지털 서비스 이용에 사용할 수 있는 충전형 포인트입니다. Muniverse APP > Store > 골드루미 🏆 리워드 최종 1위 아티스트에게 트로피 수여 → it’s Live BEST PICK 실물 트로피 수여 최종 투표 순위 공개 → it’s Live 공식 채널을 통해 공개 팬들의 투표가 아티스트를 위한 실제 트로피가 됩니다. 최고의 라이브 무대에 투표하고, 응원하는 아티스트에게 특별한 순간을 선물해 주세요! 💝",
       "provider_status": "CLOSED",
@@ -5199,7 +5199,7 @@
         "source_kind": "official_api",
         "source_url": "https://api.muniverse.io/api/v2/votes/83410d02-db67-4a85-bffa-f706d86bfb83",
         "currency_definition_url": "https://www.muniverse.io/notices/45",
-        "checked_at": "2026-11-07T04:33:30+09:00",
+        "checked_at": "2026-11-07T15:14:17+09:00",
         "evidence": "costPaid=1 / costFree=10",
         "free_vote_available": false,
         "note": "골드·프리·애드루미는 공식 API에서 사용 가능 여부와 투표당 수량이 각각 확인됨"
@@ -8134,7 +8134,7 @@
           "execution_end_at": null,
           "source_kind": "official_web",
           "source_url": "https://www.muniverse.io/votes/e55e8c9f-5f92-4328-9055-b065f2bbc5eb",
-          "checked_at": "2026-11-07T04:33:30+09:00"
+          "checked_at": "2026-11-07T15:14:17+09:00"
         },
         {
           "id": "510db2d6cc4f0e5f",
@@ -8148,12 +8148,12 @@
           "execution_end_at": null,
           "source_kind": "official_web",
           "source_url": "https://www.muniverse.io/votes/e55e8c9f-5f92-4328-9055-b065f2bbc5eb",
-          "checked_at": "2026-11-07T04:33:30+09:00"
+          "checked_at": "2026-11-07T15:14:17+09:00"
         }
       ],
       "source": "공식 공개 데이터",
       "source_url": "https://www.muniverse.io/votes/e55e8c9f-5f92-4328-9055-b065f2bbc5eb",
-      "collected_at": "2026-11-07T04:33:30+09:00",
+      "collected_at": "2026-11-07T15:14:17+09:00",
       "verification": "공식 상세 응답 확인 · 종료·결과 공개 시각 확인",
       "evidence": "📣 WEEKLY M PICK 글로벌 팬이 직접 뽑는 K-POP 주간 원 픽 🏆 1등 리워드 : K-POP의 본진, 쇼! 음악중심 촬영일 모든 MBC 전광판을 점령하라 1️⃣ 쇼! 음악중심 촬영일 MBC 본사 초대형 실내 전광판 리워드 광고 송출 *초대형 실내 전광판 광고 영상 👉 https://x.com/muniverse_io/status/2009097739112730712?s=20 2️⃣ 쇼! 음악중심 촬영일 MBC 본사 옥외 전광판 리워드 광고 송출 *옥외 전광판 영상(예시) ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿ 👉 https://x.com/i/status/1999705845844599210 📅 투표 기간 매주 금요일 10:00 ~ 그 다음 주 수요일 17:00 (KST) ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿ 🗳️ 투표 방식 프리루미 를 사용해 무제한 투표 가능 *프리루미(Free Lumy)란? 프리루미는 Muniverse의 다양한 이벤트 참여를 통해 무료로 획득할 수 있는 포인트입니다. 현재는 Muniverse 앱의 충전소에서 출석체크를 통해 하루 100개씩 획득할 수 있습니다. (Munivese APP > Store > 충전소) 🎫 투표 및 방청 응모 안내 투표 1표 = 방청 응모권 1장 WEEKLY M PICK에 투표할 때마다 <쇼! 음악중심> 방청 응모권이 1장씩 자동 적립됩니다. 적립된 응모권이 많을수록 <쇼! 음악중심> 방청 당첨 기회가 높아집니다. 📌 방청 응모 방식 변경 기존 SNS 투표 인증 이벤트가 종료되고, WEEKLY M PICK 투표를 통해 <쇼! 음악중심> 방청에 자동으로 응모됩니다. 별도의 SNS 인증이나 댓글 참여 없이 WEEKLY M PICK에 투표하면 방청 응모권이 자동 적립됩니다. Muniverse에서 친구에게 서비스를 소개하고 함께 프리루미를 받을 수 있는 추천친구 제도 를 운영합니다. - 추천친구 혜택 추천자와 추천받은 친구 양쪽 계정 모두 프리루미 300개가 지급됩니다. - 이용 방법 Muniverse 회원가입 시 추천인 아이디를 입력합니다. 추천인 아이디는 이메일 아이디 형식으로 입력할 수 있습니다. 추천인 아이디 입력은 선택 사항입니다. 추천받은 친구의 가입이 완료되면 추천자와 등록자에게 각각 프리루미 300개가 지급됩니다. - 이용 안내 추천은 계정당 최대 50명까지 가능합니다. 추천 횟수에 대한 일일 제한은 없습니다. 프리루미 지급 내역은 지급 내역에서 확인할 수 있습니다. 🗓️ 매주 돌아오는 M PICK! 당신의 원 픽에게 최고의 무대를 선물하세요 ✨",
       "provider_status": "CLOSED",
@@ -8177,7 +8177,7 @@
         "source_kind": "official_api",
         "source_url": "https://api.muniverse.io/api/v2/votes/e55e8c9f-5f92-4328-9055-b065f2bbc5eb",
         "currency_definition_url": "https://www.muniverse.io/notices/45",
-        "checked_at": "2026-11-07T04:33:30+09:00",
+        "checked_at": "2026-11-07T15:14:17+09:00",
         "evidence": "costFree=10",
         "free_vote_available": false,
         "note": "골드·프리·애드루미는 공식 API에서 사용 가능 여부와 투표당 수량이 각각 확인됨"
@@ -9432,7 +9432,7 @@
       "reward_entries": [],
       "source": "공식 공개 데이터",
       "source_url": "https://www.muniverse.io/votes/4ecb40b0-c9e7-4ade-88ac-22698a307ecb",
-      "collected_at": "2026-11-07T04:33:30+09:00",
+      "collected_at": "2026-11-07T15:14:17+09:00",
       "verification": "공식 상세 응답 확인 · 종료·결과 공개 시각 확인",
       "evidence": "📣  <Show! Music Core> APP live voting 📅 투표 기간 생방송 시작 후 앱 내 투표 오픈 시 참여 가능 🗳️ 투표 방식 애드루미(Ad Lumy) 또는 골드루미(Gold Lumy)를 사용하여 투표 (최대 5표) *생방송 투표는 방송 시간 중에만 진행되며, 결방 시에는 진행되지 않습니다. *생방송 딜레이 및 점수 집계 상황에 따라 방송 고지 이전에 투표가 조기 종료될 수 있습니다. *투표가 완료된 후 환불 및 취소가 불가능합니다 *자세한 내용은 공지사항, 자주 묻는 질문 그리고 <쇼! 음악중심> 공식 채널에서 확인 부탁드립니다. 💡 애드루미(Ad Lumy)란? 애드루미(Ad Lumy)는 광고 시청 등을 통해 무료로 적립할 수 있는 포인트입니다. 📱 애드루미(Ad Lumy) 적립 방법 1️⃣ 뮤니버스 앱 설치(iOS/android) 2️⃣ 뮤니버스 앱 접속 후 하단 탭에서 'Store' 이동 3️⃣ 상단의 '충전소'에서 광고 시청, 행운의 룰렛, 미션 참여 등을 통해 애드루미(Ad Lumy) 받기! *애드루미(Ad Lumy)는 앱에서만 적립이 가능합니다. 💡 골드루미(Gold Lumy)란? 골드루미는 Muniverse 내 유료 상품 및 디지털 서비스 이용 시 사용되는 충전형 포인트입니다. (Muniverse APP > Store > 골드루미) ※ 1회 투표 시 최대 100,000표까지 투표할 수 있습니다.",
       "provider_status": "CLOSED",
@@ -9462,7 +9462,7 @@
         "source_kind": "official_api",
         "source_url": "https://api.muniverse.io/api/v2/votes/4ecb40b0-c9e7-4ade-88ac-22698a307ecb",
         "currency_definition_url": "https://www.muniverse.io/notices/45",
-        "checked_at": "2026-11-07T04:33:30+09:00",
+        "checked_at": "2026-11-07T15:14:17+09:00",
         "evidence": "costPaid=60 / costAd=50",
         "free_vote_available": false,
         "note": "골드·프리·애드루미는 공식 API에서 사용 가능 여부와 투표당 수량이 각각 확인됨"
@@ -56261,8 +56261,8 @@
       "count": 78,
       "method": "공식 공개 웹 데이터",
       "message": "최근 90일 투표 78건 · 후보·득표·기간 확인",
-      "attempted_at": "2026-11-07T04:33:30+09:00",
-      "last_success": "2026-11-07T04:33:30+09:00",
+      "attempted_at": "2026-11-07T15:14:17+09:00",
+      "last_success": "2026-11-07T15:14:17+09:00",
       "errors": []
     },
     {
@@ -56314,13 +56314,13 @@
         "state": "verified_rules",
         "count": 1,
         "url": "https://info.mubeat.tv/board/606/?language=en",
-        "checked_at": "2026-11-07T04:33:30+09:00"
+        "checked_at": "2026-11-07T15:14:17+09:00"
       },
       "official_sns_status": {
         "state": "blocked",
         "count": 0,
         "account": "https://x.com/MubeatOfficial",
-        "checked_at": "2026-11-07T04:33:30+09:00",
+        "checked_at": "2026-11-07T15:14:17+09:00",
         "error": "HTTPError: HTTP Error 403: Forbidden"
       },
       "cost_rules_verified": 2,
@@ -56360,7 +56360,7 @@
         "state": "blocked",
         "count": 0,
         "account": "https://x.com/coogoong",
-        "checked_at": "2026-11-07T04:33:30+09:00",
+        "checked_at": "2026-11-07T15:14:17+09:00",
         "error": "HTTPError: HTTP Error 403: Forbidden"
       }
     },
@@ -56387,13 +56387,14 @@
       ],
       "verified": true,
       "state": "partial",
-      "count": 8,
+      "count": 7,
       "method": "공식 공개 웹 데이터",
-      "message": "현재 투표 8개 부문 · 페이지 표시 후보·득표 확인 (전체 후보·과거 최종 결과 미확인)",
-      "attempted_at": "2026-11-07T04:33:30+09:00",
-      "last_success": "2026-11-07T04:33:30+09:00",
+      "message": "현재 투표 7개 부문 · 페이지 표시 후보·득표 확인 (전체 후보·과거 최종 결과 미확인)",
+      "attempted_at": "2026-11-07T15:14:17+09:00",
+      "last_success": "2026-11-07T15:14:17+09:00",
       "errors": [
-        "/rank/view/ethe: ValueError: Unknown period: 투표마감까지 D-5, 07:25"
+        "/rank/view/topic?mode=women: URLError: <urlopen error _ssl.c:994: The handshake operation timed out>",
+        "/rank/view/ethe: URLError: <urlopen error _ssl.c:994: The handshake operation timed out>"
       ],
       "cost_rules_verified": 2,
       "cost_rules_blocked": 0
@@ -56415,7 +56416,7 @@
         "state": "verified_rules",
         "count": 1,
         "url": "https://mnetplus.world/contents/ko/stages/mama-event",
-        "checked_at": "2026-11-07T04:33:30+09:00"
+        "checked_at": "2026-11-07T15:14:17+09:00"
       }
     },
     {
@@ -56449,7 +56450,7 @@
         "state": "verified_rules",
         "count": 2,
         "url": "https://help.stayge.io/en/articles/What-is-the-LiNC-Comeback-SPOTLIGHT-Vote-c0ffe83a",
-        "checked_at": "2026-11-07T04:33:30+09:00"
+        "checked_at": "2026-11-07T15:14:17+09:00"
       },
       "cost_rules_verified": 2,
       "cost_rules_blocked": 0
@@ -56471,7 +56472,7 @@
         "state": "verified_rules",
         "count": 1,
         "url": "https://apps.apple.com/kr/app/higher-%ED%95%98%EC%9D%B4%EC%96%B4/id1672001935",
-        "checked_at": "2026-11-07T04:33:30+09:00"
+        "checked_at": "2026-11-07T15:14:17+09:00"
       }
     }
   ],
@@ -56491,9 +56492,9 @@
       "app": "higher",
       "source_url": "https://apps.apple.com/kr/app/higher-%ED%95%98%EC%9D%B4%EC%96%B4/id1672001935",
       "source_kind": "official_web",
-      "checked_at": "2026-11-07T04:33:30+09:00",
-      "content_hash": "dccf7d1674a8a774074bc605db0d1b384f3ed9c1ec4e18281d4c38633f635ead",
-      "evidence_excerpt": "‎Higher 하이어 앱 - App Store 검색 투데이 게임 앱 Arcade 플랫폼 iPhone iPad Mac Vision Watch TV Higher 하이어 \"Your Voice, Higher Your Bias\" iPhone 전용 무료 · 앱 내 구입 · iPhone⁠용으로 디자인됨 · macOS⁠용으로는 확인되지 않음 공유 496개의 평가 2.9 연령 등급 12+ 세 차트 #95 엔터테인먼트 개발자 Vision Bridge Partners Corp. 언어 EN 영어 크기 209.5 MB iPhone HIGHER는 글로벌 K-POP 팬 누구나 최애의 투표에 참여하고, 아티스트의 특별한 순간을 담은 '타임피스'를 즐기며 영상을 공유할 수 있는 글로벌 팬덤 소셜 플랫폼입니다. 아티스트 성장의 여정에 직접 참여할 수 있도록 다양한 서비스와 콘텐츠를 제공합니다. HIGHER와 함께 K-POP의 모든 것을 경험하고 새로운 팬덤 문화를 만들어 나가요! [주요 기능 안내] 1. SBS 인기가요 투표 참여 • 실시간 투표: 매주 생방송 중 진행되며, 투표 결과는 SBS 인기가요 1위 선정에 직접 반영됩니다. • 핫스테이지 투표 (주간/월간/연간): 생방송 직후 이주의 무대를 뽑는 '주간' 투표, 주간 1·2위 중 최애를 가리는 '이달의 핫스테이지', 전 세계에 무대 영상을 홍보하는 '연간' 투표가 진행됩니다. (인증 사진은 앱과 SNS 공개) • 엔딩 요정 투표 (주간/월간): 팬의 손끝에서 무대의 마지막이 완성됩니다. 내 아티스트에게 단독 엔딩 무대를 선물해 보세요. 2. 생일 투표 및 다양한 테마 투표 • 일 년에 한 번뿐인 아티스트의 생일을 축하하며 직접 제작한 생일 광고를 팬들과 함께 선물할 수 있습니다. • 생일 투표 외에도 '이주의 아티스트', '하이픽' 등 매주 열리는 다양한 주제의 투표에 참여해 보세요. 3. HIGHER 독점 공개! 특별한 순간 '타임피스' • 데뷔, 컴백, 음악방송 1위, 엔딩 요정, 사전녹화 현장 등 아티스트의 특별한 순간을 '타임피스'로 소장하세요. • 매주 새로운 콘텐츠로 업데이트되며, 다양한 이벤트와 프로모션을 통해 획득할 수 있습니다. 4. 빵빵한 이벤트 응모 • MBC 쇼! 음악중심, SBS 인기가요 방청권 및 싸인 폴라로이드, 싸인 CD 등 아티스트와 관련된 풍성한 이벤트에 도전하세요. 5. 고화질 영상 감상 및 공유 • &TEAM, aespa, AHOF, ALPHA DRIVE ONE, AND2BLE, ATEEZ, BABYMONSTER, BLACKPINK, BOYNEXTDOOR, BTS, CORTIS, DAY6, ENHYPEN, Hearts2Hearts, IVE, ITZY, KISS OF LIFE, MONSTA X, NCT, n.SSign, NMIXX, PLAVE, RESCENE, RIIZE, SEVENTEEN, Stray Kids, TREASURE, TWS, TWICE, TXT, VIVIZ, ZEROBASEONE 등 다수의 아티스트의 SBS 인기가요 고화질 무대를 HIGHER에서 가장 먼저 감상하",
+      "checked_at": "2026-11-07T15:14:17+09:00",
+      "content_hash": "42077ef70e8817fae807968a6a360c276875bf6515ede7ca25d5e1d83631a957",
+      "evidence_excerpt": "‎Higher 하이어 앱 - App Store 검색 투데이 게임 앱 Arcade 플랫폼 iPhone iPad Mac Vision Watch TV Higher 하이어 \"Your Voice, Higher Your Bias\" iPhone 전용 무료 · 앱 내 구입 · iPhone⁠용으로 디자인됨 · macOS⁠용으로는 확인되지 않음 공유 496개의 평가 2.9 연령 등급 12+ 세 차트 #109 엔터테인먼트 개발자 Vision Bridge Partners Corp. 언어 EN 영어 크기 209.5 MB iPhone HIGHER는 글로벌 K-POP 팬 누구나 최애의 투표에 참여하고, 아티스트의 특별한 순간을 담은 '타임피스'를 즐기며 영상을 공유할 수 있는 글로벌 팬덤 소셜 플랫폼입니다. 아티스트 성장의 여정에 직접 참여할 수 있도록 다양한 서비스와 콘텐츠를 제공합니다. HIGHER와 함께 K-POP의 모든 것을 경험하고 새로운 팬덤 문화를 만들어 나가요! [주요 기능 안내] 1. SBS 인기가요 투표 참여 • 실시간 투표: 매주 생방송 중 진행되며, 투표 결과는 SBS 인기가요 1위 선정에 직접 반영됩니다. • 핫스테이지 투표 (주간/월간/연간): 생방송 직후 이주의 무대를 뽑는 '주간' 투표, 주간 1·2위 중 최애를 가리는 '이달의 핫스테이지', 전 세계에 무대 영상을 홍보하는 '연간' 투표가 진행됩니다. (인증 사진은 앱과 SNS 공개) • 엔딩 요정 투표 (주간/월간): 팬의 손끝에서 무대의 마지막이 완성됩니다. 내 아티스트에게 단독 엔딩 무대를 선물해 보세요. 2. 생일 투표 및 다양한 테마 투표 • 일 년에 한 번뿐인 아티스트의 생일을 축하하며 직접 제작한 생일 광고를 팬들과 함께 선물할 수 있습니다. • 생일 투표 외에도 '이주의 아티스트', '하이픽' 등 매주 열리는 다양한 주제의 투표에 참여해 보세요. 3. HIGHER 독점 공개! 특별한 순간 '타임피스' • 데뷔, 컴백, 음악방송 1위, 엔딩 요정, 사전녹화 현장 등 아티스트의 특별한 순간을 '타임피스'로 소장하세요. • 매주 새로운 콘텐츠로 업데이트되며, 다양한 이벤트와 프로모션을 통해 획득할 수 있습니다. 4. 빵빵한 이벤트 응모 • MBC 쇼! 음악중심, SBS 인기가요 방청권 및 싸인 폴라로이드, 싸인 CD 등 아티스트와 관련된 풍성한 이벤트에 도전하세요. 5. 고화질 영상 감상 및 공유 • &TEAM, aespa, AHOF, ALPHA DRIVE ONE, AND2BLE, ATEEZ, BABYMONSTER, BLACKPINK, BOYNEXTDOOR, BTS, CORTIS, DAY6, ENHYPEN, Hearts2Hearts, IVE, ITZY, KISS OF LIFE, MONSTA X, NCT, n.SSign, NMIXX, PLAVE, RESCENE, RIIZE, SEVENTEEN, Stray Kids, TREASURE, TWS, TWICE, TXT, VIVIZ, ZEROBASEONE 등 다수의 아티스트의 SBS 인기가요 고화질 무대를 HIGHER에서 가장 먼저 감상",
       "history": [],
       "verified_source": true
     },
@@ -56512,7 +56513,7 @@
       "app": "linc",
       "source_url": "https://help.stayge.io/en/articles/What-is-the-LiNC-Comeback-SPOTLIGHT-Vote-c0ffe83a",
       "source_kind": "official_web",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "content_hash": "e19bc6dda0d0218b34f7eb981319b485e3c7d37cafdae392e3c66f18f1cc0910",
       "evidence_excerpt": "What is the LiNC Comeback SPOTLIGHT Vote? STAYGE CS Center Article Title, Content English Service Guide FAQ Legal Notice Notices Powered by Channel Talk Service Guide What is the LiNC Comeback SPOTLIGHT Vote? What is the LiNC Comeback SPOTLIGHT Vote? STAYGE CX • LiNC & tin 2026-09-21 Vote to put your artist on the LiNC billboard Seeing your favorite artist's video up on a subway billboard — every fan has pictured it at least once. LiNC Comeback SPOTLIGHT Vote makes that happen inside LiNC. The video of whoever is No.1 right now goes live on the Charging Station spotlight . This isn't a vote where you wait for the results. It's a live race to take the spot — and hold it. How to vote Go to the Vote tab and open LiNC Comeback SPOTLIGHT Vote Pick the artist you want to support and tap the vote button Each vote uses 3 Fan Points or 1 GEM , and there is no limit on how many times you can vote After voting, you can save your voting certificate and share it to Open Chat. (You can also find it under My Profile > Voting Certificate) Voting period Every Tuesday 12:00 – the following Monday 23:59 (KST) Voting closes Monday night, so the ranking can flip all the way through the weekend. Depending on comeback schedules, voting may not take place in weeks when there aren't enough candidates. Who can be a candidate Candidates are major comeback artists , listed by artist An artist can take part for up to 3 rounds after a new release (including debut singles) Comebacks with no video to put on",
       "history": [],
@@ -56533,7 +56534,7 @@
       "app": "linc",
       "source_url": "https://help.stayge.io/en/articles/What-is-the-LiNC-Comeback-SPOTLIGHT-Vote-c0ffe83a",
       "source_kind": "official_web",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "content_hash": "e19bc6dda0d0218b34f7eb981319b485e3c7d37cafdae392e3c66f18f1cc0910",
       "evidence_excerpt": "What is the LiNC Comeback SPOTLIGHT Vote? STAYGE CS Center Article Title, Content English Service Guide FAQ Legal Notice Notices Powered by Channel Talk Service Guide What is the LiNC Comeback SPOTLIGHT Vote? What is the LiNC Comeback SPOTLIGHT Vote? STAYGE CX • LiNC & tin 2026-09-21 Vote to put your artist on the LiNC billboard Seeing your favorite artist's video up on a subway billboard — every fan has pictured it at least once. LiNC Comeback SPOTLIGHT Vote makes that happen inside LiNC. The video of whoever is No.1 right now goes live on the Charging Station spotlight . This isn't a vote where you wait for the results. It's a live race to take the spot — and hold it. How to vote Go to the Vote tab and open LiNC Comeback SPOTLIGHT Vote Pick the artist you want to support and tap the vote button Each vote uses 3 Fan Points or 1 GEM , and there is no limit on how many times you can vote After voting, you can save your voting certificate and share it to Open Chat. (You can also find it under My Profile > Voting Certificate) Voting period Every Tuesday 12:00 – the following Monday 23:59 (KST) Voting closes Monday night, so the ranking can flip all the way through the weekend. Depending on comeback schedules, voting may not take place in weeks when there aren't enough candidates. Who can be a candidate Candidates are major comeback artists , listed by artist An artist can take part for up to 3 rounds after a new release (including debut singles) Comebacks with no video to put on",
       "history": [],
@@ -56555,7 +56556,7 @@
       "app": "mnetplus",
       "source_url": "https://mnetplus.world/contents/ko/stages/mama-event",
       "source_kind": "official_web",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "content_hash": "6f540003464aa4c67bccfd4d807fe4bb79d40be558bd0d8325882a058eb1ee78",
       "evidence_excerpt": "기다림은 제로, 몰입은 무제한 Mnet Plus Premium 지금 시작하기 홈 탐색하기 라이브 스테이지 엠플포인트 홈 탐색하기 라이브 스테이지 엠플포인트 한국어 로그인하기 앱 열기 앱 열기 홈 탐색하기 라이브 스테이지 엠플포인트 공유하기 Reward Card for MAMA 2026.08.27~2026.11.08 (KST) 2026 MAMA AWARDS 팔로우 ROUND 3 미션 기간 2026.10.12 - 11.08 KST ROUND 3 럭키드로우 참여기간 2026.11.09 - 11.12 KST ROUND 3 리워드 지급 안내 2026년 11월 중 ROUND 2 럭키드로우 참여기간 2026.10.12(월) - 10.21(수) KST ROUND 2 리워드 지급 안내 2026년 10월 중 Reward Card for MAMA란? 스탬프를 모으며 MAMA에 한 걸음씩 가까워지는 Reward Card! 리워드 스탬프를 모아 리워드에 도전해 보세요! 2026.10.12(월) - 11.08(일) KST MAMA AWARDS + RED CARPET 초대권 · 2명(1인 1매) MAMA AWARDS 초대권 · 3명(1인 1매) Mnet Plus Premium 1개월권 · 300명 3,000 엠플포인트 · 1,000명 100 엠플포인트 참여하러 가기 Reward Card for MAMA 유의사항 이벤트 기본 안내 본 이벤트는 엠넷플러스 회원을 대상으로 진행됩니다. 이벤트 참여를 위해서는 엠넷플러스 앱 로그인 및 Reward Card 생성이 필요합니다. 본 이벤트는 세번의 ROUND로 운영되며, 각 ROUND 일정은 확정 시 사전에 공지사항으로 안내합니다. <ROUND 1> 미션 진행 기간 : 2026.8.27 12:00~2026.09.20 23:59 (KST) 럭키드로우 참여 기간 : 2026.09.21 10:00~2026.09.30 23:59 (KST) 리워드 지급 안내 : 2026년 10월 중 안내 <ROUND 2> 미션 진행 기간: 2026.9.21 14:00~2026.10.11 23:59 (KST) 럭키드로우 개봉 기간: 2026.10.12 11:00~2026.10.21 23:59 (KST) 리워드 지급 시점: 2026년 10월 중 안내 <ROUND 3> 미션 진행 기간: 2026.10.12 14:00~2026.11.08 23:59 (KST) 럭키드로우 개봉 기간: 2026.11.09 11:00~2026.11.12 23:59 (KST) 리워드 지급 시점: 2026년 11월 중 안내 ROUND별 미션 구성과 경품은 각 ROUND마다 다르게 운영되며, 각 ROUND 시작일에 공지를 통해 안내합니다. ROUND별 일정, 미션 구성 및 경품은 회사 사정에 따라 변경될 수 있으며, 변경 시 사전 공지합니다. 만 14세 미만 이용자는 법정대리인의 동의 후 참여할 수 있으며, 추후 증빙 자료를 요구 받을 수 있습니다. 1계정 1기기로만 참여할 수 있으며, 복수 계정 및 기기를 이용한 참여는 제한되거나, 참여에서 배제되니 유의바랍니다. 모든 일정은 한국 ",
       "history": [],
@@ -56577,7 +56578,7 @@
       "app": "mubeat",
       "source_url": "https://info.mubeat.tv/board/606/?language=en",
       "source_kind": "official_web",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "content_hash": "0775bb4a44987465febcfc5364a0e871975911a6e94225580ca3912fdaa2c416",
       "evidence_excerpt": "Announcement Regarding Changes In Mubeat's <Show! Music Core> Voting MUBEAT LIVE AWARDS PURCHASE STAR BEATS MUBEAT+ BOARD DOWNLOAD DOWNLOAD BOARD Mubeat's latest news will be announced English English Afrikaans (Auto) беларуская мова (Auto) български (Auto) català (Auto) 中文（简体） (Auto) 中文（繁體） (Auto) Hrvatski (Auto) Česky (Auto) Dansk (Auto) eesti keel (Auto) Nederlands (Auto) Suomi (Auto) le français (Auto) Deutsch (Auto) ‎Ελληνική γλώσσ (Auto) हिन्दी (Auto) Magyar (Auto) Gaeilge (Auto) Indonesia (Auto) íslenska (Auto) Italiano (Auto) 日本語 (Auto) ភាសាខ្មែរ (Auto) 한국어 Македонски (Auto) Malti (Auto) Norsk (Auto) Polski (Auto) Português (Auto) Português-Portugal (Auto) română (Auto) Русский (Auto) el español (Auto) Kiswahili (Auto) Svenska (Auto) Lietuvių (Auto) latviešu (Auto) slovenčina (Auto) slovenščina (Auto) српски (Auto) தமிழ் (Auto) ภาษาไทย (Auto) Türkçe (Auto) Filipino (Auto) украї́нська (Auto) Tiếng Việt (Auto) (Auto) العربية (Auto) עִבְרִית (Auto) بهاس ملايو ALL FAQ NOTICE NEWS English English Afrikaans (Auto) беларуская мова (Auto) български (Auto) català (Auto) 中文（简体） (Auto) 中文（繁體） (Auto) Hrvatski (Auto) Česky (Auto) Dansk (Auto) eesti keel (Auto) Nederlands (Auto) Suomi (Auto) le français (Auto) Deutsch (Auto) ‎Ελληνική γλώσσ (Auto) हिन्दी (Auto) Magyar (Auto) Gaeilge (Auto) Indonesia (Auto) íslenska (Auto) Italiano (Auto) 日本語 (Auto) ភាសាខ្មែរ (Auto) 한국어 Македонски (Auto) Malti (Auto) Norsk (Auto) Polski (Auto) Português (Auto) Português-Portugal (Auto) română (Auto)",
       "history": [],
@@ -56589,25 +56590,25 @@
       "state": "verified_rules",
       "count": 2,
       "url": "https://help.stayge.io/en/articles/What-is-the-LiNC-Comeback-SPOTLIGHT-Vote-c0ffe83a",
-      "checked_at": "2026-11-07T04:33:30+09:00"
+      "checked_at": "2026-11-07T15:14:17+09:00"
     },
     "mubeat": {
       "state": "verified_rules",
       "count": 1,
       "url": "https://info.mubeat.tv/board/606/?language=en",
-      "checked_at": "2026-11-07T04:33:30+09:00"
+      "checked_at": "2026-11-07T15:14:17+09:00"
     },
     "higher": {
       "state": "verified_rules",
       "count": 1,
       "url": "https://apps.apple.com/kr/app/higher-%ED%95%98%EC%9D%B4%EC%96%B4/id1672001935",
-      "checked_at": "2026-11-07T04:33:30+09:00"
+      "checked_at": "2026-11-07T15:14:17+09:00"
     },
     "mnetplus": {
       "state": "verified_rules",
       "count": 1,
       "url": "https://mnetplus.world/contents/ko/stages/mama-event",
-      "checked_at": "2026-11-07T04:33:30+09:00"
+      "checked_at": "2026-11-07T15:14:17+09:00"
     }
   },
   "official_posts": [
@@ -56769,14 +56770,14 @@
       "state": "blocked",
       "count": 0,
       "account": "https://x.com/MubeatOfficial",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "error": "HTTPError: HTTP Error 403: Forbidden"
     },
     "coogoong": {
       "state": "blocked",
       "count": 0,
       "account": "https://x.com/coogoong",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "error": "HTTPError: HTTP Error 403: Forbidden"
     }
   },
@@ -56804,7 +56805,7 @@
       "id": "linc-0",
       "verified": true,
       "source_kind": "official_web",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "requirement_status": "verified_program_rule"
     },
     {
@@ -56830,7 +56831,7 @@
       "id": "linc-1",
       "verified": true,
       "source_kind": "official_web",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "requirement_status": "verified_program_rule"
     },
     {
@@ -56852,7 +56853,7 @@
       "id": "mubeat-2",
       "verified": true,
       "source_kind": "official_web",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "requirement_status": "verified_program_rule"
     },
     {
@@ -56880,7 +56881,7 @@
       "id": "mubeat-3",
       "verified": true,
       "source_kind": "official_web",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "requirement_status": "verified_program_rule"
     },
     {
@@ -56903,7 +56904,7 @@
       "id": "fannstar-4",
       "verified": true,
       "source_kind": "official_web",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "requirement_status": "verified_program_rule"
     },
     {
@@ -56927,7 +56928,7 @@
       "id": "fannstar-5",
       "verified": true,
       "source_kind": "official_web",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "requirement_status": "verified_program_rule"
     }
   ],
@@ -56935,39 +56936,39 @@
     "linc-0": {
       "state": "verified",
       "app": "linc",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "url": "https://help.stayge.io/ko/articles/SBS%EC%9D%B8%EA%B8%B0%EA%B0%80%EC%9A%94-%EC%82%AC%EC%A0%84%ED%88%AC%ED%91%9C-%EC%95%88%EB%82%B4-34d052e7"
     },
     "linc-1": {
       "state": "verified",
       "app": "linc",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "url": "https://help.stayge.io/en/articles/What-is-the-LiNC-Comeback-SPOTLIGHT-Vote-c0ffe83a"
     },
     "mubeat-2": {
       "state": "verified",
       "app": "mubeat",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "url": "https://info.mubeat.tv/board/606/?language=ko"
     },
     "mubeat-3": {
       "state": "verified",
       "app": "mubeat",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "url": "https://info.mubeat.tv/board/606/?language=ko"
     },
     "fannstar-4": {
       "state": "verified",
       "app": "fannstar",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "url": "https://fannstar.tf.co.kr/guide"
     },
     "fannstar-5": {
       "state": "verified",
       "app": "fannstar",
-      "checked_at": "2026-11-07T04:33:30+09:00",
+      "checked_at": "2026-11-07T15:14:17+09:00",
       "url": "https://fannstar.tf.co.kr/guide"
     }
   },
-  "updated_at": "2026-11-07T04:33:30+09:00"
+  "updated_at": "2026-11-07T15:14:17+09:00"
 }
