@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "updated_at": "2026-11-06T16:24:45+09:00",
+  "updated_at": "2026-11-07T15:36:11+09:00",
   "description": "시상식·팬투표 원문 근거 포함. 2026 최신 확인을 우선하되 2025 사례는 회차 2025로 명시. 개최일과 온라인 투표 기간을 구별하며, 2026 투표처 미확인 행사는 확정으로 처리하지 않음.",
   "awards": [
     {
@@ -1632,6 +1632,38 @@
   ],
   "discovered": [
     {
+      "id": "e8b70614a1aae04d45",
+      "title": "플레어 유, 데뷔 6개월 만의 첫 시상식 수상… “팬 투표로 받아 더 특별해” (‘2026 KGMA’)",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBuaDhJcVhGV05EaTBVN3RMaUoxYm9NZDNMNlN2SnRuUHdqWXRJTUVxT3kzQjktM3ZqbmFZT3ZzZmhhd2J2cHB5ckFzaktVMmZ4a2ZiaEoxV0VOZjc0LVJRMkVNUQ?oc=5",
+      "published": "2026-11-07T10:44:00+09:00",
+      "platform_mentions": [],
+      "award_name": "데뷔 6개월 만의 첫 시상식"
+    },
+    {
+      "id": "37d3beee76d5fe4eb3",
+      "title": "[Pocus 전시 해설 기획] 서울문화재단 《서울 언폴드엑스 어워즈 2027》… 인터랙티브 아트 10작 후보 공개, AI와 예술의 경계를 묻다",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBDSnozdWkxU0h2bUstQnFpVWNtNTVBM2djZVpJLWdpcVdzenh6aGlGVWVxekE0aXIwbjBXMTJhSS1vWXprOU0xZy0wd2o2U2FmS1Nj?oc=5",
+      "published": "2026-11-07T01:18:27+09:00",
+      "platform_mentions": [],
+      "award_name": "서울 언폴드엑스 어워즈"
+    },
+    {
+      "id": "a3365e09b869c55bab",
+      "title": "‘제1회 버추얼 아이콘 어워즈’ 본투표 2일 개막… 버추얼 아이돌·스트리머 6개 상 팬 투표 진행",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9XTWRYLXFUZTdwWkZEQndQbDZoWmRXUzZPejIwZFd4bXlFb2tVZkZVX3hyMTNjckdBLWRnQTdfV053SGJhUi1uS0NWUGxpZHJvTXhLU0d6WHZsZEh2dW9ERHNWWjJEX2NmOGVrVw?oc=5",
+      "published": "2026-11-06T14:05:00+09:00",
+      "platform_mentions": [],
+      "award_name": "제1회 버추얼 아이콘 어워즈"
+    },
+    {
+      "id": "2eae1b813ac5f76024",
+      "title": "서울문화재단, ‘서울 언폴드엑스 어워즈’ 후보 10작 공개…“12일 시민 온라인 투표 시작”",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5MZmE3ZGFrQzN2SXNUSWJuY1hMN19DaUF0SVVZamVXY0hlQWh6aFktZFNDbDVUcGN2Q1NCVkN6b08ydE5UdDhRdjZSQzc2RVkzdmlLTi1XeDFNTHkwTXVkcWtUTUFlX2d4LWs0?oc=5",
+      "published": "2026-11-05T09:11:48+09:00",
+      "platform_mentions": [],
+      "award_name": "서울 언폴드엑스 어워즈"
+    },
+    {
       "id": "b94d1ada9f02ab6543",
       "title": "로프트아일랜드, ‘혁신의숲 어워즈’ 3차 투표 1위…사업 성과·성장 가능성 주목",
       "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE53cWlZdjcxTURHSGh5VEstdWJlQnBoR3o0dXBHU3pzZ2JUVFczMF9ZcFlwaVpQSGZXWEJDdVhyUXhfdTUyb0hQSmJlU1NPei1QRXE5azBwVW5BZVFtRXFKSWVWNNIBZ0FVX3lxTFBOWlRSekFfeGFaZXhxN2xWdGNaMDgtWThqT0hLWklpOEoyRHpMNFdIb1hHaUhzY1VjSGRyNl9TOGV5bFREbE1LUkt2aDc0R2lINzN4ajRWMW16SXdZMEpfb1VfLXRRTG8?oc=5",
@@ -1713,6 +1745,15 @@
     }
   ],
   "latest_news": [
+    {
+      "id": "ae4c73a69cbd58d807",
+      "title": "‘2026 마마 어워즈’, BTS·하츠투하츠 1위 유지→투표수 7678만 돌파…부정 투표 대응 상황?",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBtQUpJOEZIYkJSendyalpfN3B2aFRuUHJPZzdfQmJ1S0tOdUR5U3pGZTFKM3ozTzRJVjFsMDFuYThMQldacjhzWVJLUkQyV3ZxOThDVlFOR3M2MDc5c1VqMUhWdlA2cWh2Z0IyY3pSVEdBZw?oc=5",
+      "published": "2026-11-06T21:54:15+09:00",
+      "platform_mentions": [],
+      "award_id": "mama",
+      "award_name": "MAMA AWARDS"
+    },
     {
       "id": "37cf6351ecff1789e0",
       "title": "‘2026 다날 에이판 스타 어워즈’, 유픽서 공식 투표 시작…영광의 주인공은 누구?",
@@ -1808,11 +1849,11 @@
     }
   ],
   "discovery_status": {
-    "last_checked_at": "2026-11-06T16:24:45+09:00",
+    "last_checked_at": "2026-11-07T15:36:11+09:00",
     "feed_status": "정상",
     "feeds_checked": 16,
-    "items_scanned": 13,
-    "new_candidates": 3,
+    "items_scanned": 10,
+    "new_candidates": 4,
     "errors": []
   },
   "schedule_notes": "국내 행사는 KST, 해외 행사는 event_timezone 및 개별 note에 명시한 현지 날짜 또는 KST 환산일 기준. 확인되지 않은 시상식·투표일은 추정하지 않음.",
